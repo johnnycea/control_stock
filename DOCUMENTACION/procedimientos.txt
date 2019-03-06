@@ -1,0 +1,22 @@
+CREATE DEFINER=`daemmulc`@`%` PROCEDURE `procedimiento_informe`(p_anio int, p_tipo_movimiento int, p_subvencion int, p_colegio varchar(50))
+BEGIN
+
+IF p_subvencion <> 0 then
+	/*INFORME POR SUBVENCION*/
+	select id_movimiento, month(fecha_ingreso) as mes, sum(monto), subvencion, colegio,
+	sep_preferente,sep_preferencial,sep_concentracion,sep_articulo_19,sep_ajustes,sep_total,scvtf_normal,scvtf_nivelacion
+	 from tb_movimientos
+	where year(fecha_ingreso) = p_anio and tipo_movimiento=p_tipo_movimiento and estado=1 and subvencion=p_subvencion and colegio=p_colegio
+	group by month(fecha_ingreso);
+
+ELSE 
+    /*INFORME DE TODAS LAS SUVENCIONES POR COLEGIO*/
+	/*select id_movimiento, month(fecha_ingreso) as mes, sum(monto), subvencion, colegio,
+	sep_preferente,sep_preferencial,sep_concentracion,sep_articulo_19,sep_ajustes,sep_total,scvtf_normal,scvtf_nivelacion
+	 from tb_movimientos
+	where year(fecha_ingreso) = p_anio and tipo_movimiento=p_tipo_movimiento and estado=1 and colegio=p_colegio
+	group by month(fecha_ingreso);*/
+     SELECT 'hola aqui no hay nada perrito';
+END IF;
+
+END

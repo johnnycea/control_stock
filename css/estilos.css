@@ -1,0 +1,118 @@
+
+body{
+  /* background-image: url("../imagenes/fondo6.jpg"); */
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  margin:0;
+}
+
+.card{
+    background-color:rgba(255, 255, 255, 0.73);
+    padding:10px;
+    border-radius: 4px;
+    border-style: solid;
+    border-width: 1px;
+
+}
+
+#calendar{
+  background:white;
+  padding:5px;
+}
+
+#login{
+    max-width: 350px;
+		margin: 0 auto;
+		margin-top: 80px;
+}
+
+#logo-inicio{
+	width: 210px;
+	height: 120px;
+	margin: 0px auto 10px;
+	display: block;
+	border-radius: 10%;
+}
+
+#encabezado{
+  height: 50px;
+	/* margin-top: -20px; */
+	box-shadow: 0rem 0.2rem 0.2rem #0B3B24;
+	/* width: 100%; */
+	background-color: black;
+}
+
+.sinpadding{
+  padding: 1px;
+}
+#divMenu{
+
+	/*background-image: url("../../imagenes/encabezado/encabezado.png");*/
+		/*background-image: url("../../imagenes/fondo2.jpg");*/
+	width: auto;
+	padding: 5px;
+}
+
+.boton1,.boton2,.boton3,.boton4,.boton5,.boton6,.boton7, .botonConfiguraciones, .botonCerrar{
+	border-radius: 0.2px;
+	box-shadow: 0px 0.2px 0.3px #0B3B24;
+	height:35px;
+	color:white;
+	font-size: 15px;
+	font-weight: bold;
+	border:none;
+  margin-top:5px;
+	/* margin: 1.2px; */
+	outline: none;
+	border-bottom-style: solid;
+	border-bottom-width: 3px;
+  transition: all 0.2s linear;
+}
+.boton1{
+	background:transparent;
+	border-bottom-color: #EE4203;
+}
+.boton1:hover{
+	 background:#EE4203;
+}
+
+.boton2{
+	background:transparent;
+	border-bottom-color: #a9db01;
+}
+.boton2:hover{
+	background:rgb(60,179,113);
+}
+
+.boton3{
+	background:transparent;
+	border-bottom-color: #28c3c3;
+}
+.boton3:hover{
+	background:#28c3c3;
+}
+
+.boton4{
+	background:transparent;
+	border-bottom-color: #FACC2E;
+}
+.boton4:hover{
+	background:#FACC2E;
+}
+
+.botonConfiguraciones{
+	background:transparent;
+	border-bottom-color: white;
+}
+.botonConfiguraciones:hover{
+	background:rgb(0, 0, 0);
+}
+
+.botonCerrar{
+	background:transparent;
+	border-bottom-color: #EE4203;
+}
+.botonCerrar:hover{
+	background: #EE4203;
+}
