@@ -12,7 +12,7 @@ $usuario = $_REQUEST["u"];
 $contrasena = $_REQUEST["c"];
 
 $usuario= $Funciones->limpiarTexto($usuario);
-$usuario= $Funciones->limpiarNumeroEntero($usuario);
+// $usuario= $Funciones->limpiarNumeroEntero($usuario);
 
         if(!$Usuario->validarRut($usuario)){
               echo "3"; //rut no valido

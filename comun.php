@@ -123,36 +123,6 @@ function VentanaCargando(){
   <?php
 }
 
-function cargarMenuCorrespondencia(){
-  $url= basename($_SERVER['PHP_SELF']);
-
-  if($url=="recepcion_correspondencia.php"){
-      echo '<a href="./recepcion_correspondencia.php" class="active btn btn-info col-12">Recepcion correspondencia </a>';
-  }else{
-      echo '<a href="./recepcion_correspondencia.php" class="btn btn-info col-12">Recepcion correspondencia </a>';
-  }
-
-     echo'<hr>';
-
-  if($url=="seguimiento_correspondencia.php"){
-      echo '<a href="./seguimiento_correspondencia.php" class="active btn btn-info col-12">Seguimiento Correspondencia</a>';
-  }else{
-      echo '<a href="./seguimiento_correspondencia.php" class="btn btn-info col-12">Seguimiento Correspondencia</a>';
-  }
-
-     echo'<hr>';
-
-  if($url=="historial_correspondencia.php"){
-      echo '<a href="./historial_correspondencia.php" class="active btn btn-info col-12">Historial correspondencia </a>';
-  }else{
-      echo '<a href="./historial_correspondencia.php" class="btn btn-info col-12">Historial correspondencia</a>';
-  }
-
-  ?>
-
-
-  <?php
-}
 
 function cargarMenuConfiguraciones(){
   $url= basename($_SERVER['PHP_SELF']);
@@ -165,10 +135,10 @@ function cargarMenuConfiguraciones(){
 
      echo'<hr>';
 
-  if($url=="colegios.php"){
-      echo '<a href="./colegios.php" class="active btn btn-info col-12">Colegios </a>';
+  if($url=="marca.php"){
+      echo '<a href="./marca.php" class="active btn btn-info col-12">Marca </a>';
   }else{
-      echo '<a href="./colegios.php" class="btn btn-info col-12">Colegios </a>';
+      echo '<a href="./marca.php" class="btn btn-info col-12">Marca </a>';
   }
 
      echo'<hr>';
@@ -186,6 +156,24 @@ function cargarMenuConfiguraciones(){
   }else{
       echo '<a href="./subvenciones.php" class="btn btn-info col-12">Subvenciones </a>';
   }
+
+  ?>
+
+
+  <?php
+}
+
+function cargarMenuProveedor(){
+  $url= basename($_SERVER['PHP_SELF']);
+
+  if($url=="usuarios.php"){
+      echo '<a href="./proveedores.php" class="active btn btn-info col-12">Proveedor </a>';
+  }else{
+      echo '<a href="./proveedores.php" class="btn btn-info col-12">Proveedor </a>';
+  }
+
+     echo'<hr>';
+
 
   ?>
 
@@ -214,7 +202,7 @@ function cargarMenuConfiguraciones(){
 //
 //
 //
-//  
+//
 // }
 
 function cargarMenuPrincipal(){
@@ -302,6 +290,29 @@ function cargarMenuPrincipal(){
                    }
              echo '</li>';
        }
+
+       if($usuario['tipo_usuario']==1){
+
+              //UN LINK
+              echo '<li class="nav-item">';
+                    if($url=="configuraciones.php" || $url=="usuarios.php" ){
+                      echo '<a class="nav-link active" href="./proveedores.php">Proveedores</span></a>';
+                    }else{
+                      echo '<a class="nav-link" href="./proveedores.php">Proveedores</span></a>';
+                    }
+              echo '</li>';
+        }
+       if($usuario['tipo_usuario']==1){
+
+              //UN LINK
+              echo '<li class="nav-item">';
+                    if($url=="configuraciones.php" || $url=="usuarios.php" ){
+                      echo '<a class="nav-link active" href="./facturas.php">Facturas</span></a>';
+                    }else{
+                      echo '<a class="nav-link" href="./facturas.php">Facturas</span></a>';
+                    }
+              echo '</li>';
+        }
 
 
      ?>

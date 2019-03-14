@@ -191,7 +191,7 @@ $("#formulario").submit(function(event){
       $.ajax({
         url:"./metodos_ajax/login/verificarDatos.php?u="+usuario+"&c="+contrasena,
         success:function(respuesta){
-          // alert(respuesta);
+          alert(respuesta);
             if(respuesta==1){
               $('#botonIngreso').removeClass("btn-warning");
               $('#botonIngreso').addClass("btn-success");
