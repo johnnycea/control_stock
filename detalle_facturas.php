@@ -59,6 +59,8 @@ echo '<script> var id_factura = '.$id_factura.'; </script>';
   $filas = $respuesta->fetch_array();
 
  ?>
+
+
 </div>
 
 </div>
@@ -117,7 +119,8 @@ echo '<script> var id_factura = '.$id_factura.'; </script>';
 
         <form id="formulario_detalle_factura_producto" class="" action="javascript:guardarProductoFactura()" method="post">
 
-           <!-- <input type="hidden" name="txt_id_proveedor" id="txt_id_proveedor" value=""> -->
+           <input type="hidden" name="txt_id_estado" id="txt_id_estado" value="1">
+           <input type="hidden" name="txt_id_factura" id="txt_id_factura" value="<?php echo $id_factura; ?>">
 
            <div class="form-group card border-info col-12">
              <div class="row">
@@ -163,13 +166,18 @@ echo '<script> var id_factura = '.$id_factura.'; </script>';
                        <label for="title" class="control-label">Descripción:</label>
                        <input type="text" required class="form-control" name="txt_descripcion_producto" id="txt_descripcion_producto" value="">
                 </div>
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-3">
+
+                       <label for="title" class="control-label">Stock Minimo:</label>
+                       <input type="text" required class="form-control" name="txt_stock_minimo" id="txt_stock_minimo" value="">
+                </div>
+                <div class="form-group col-md-3">
                        <label for="title" class="control-label">Cantidad:</label>
                        <input value="" class="form-control" type="text" id="txt_cantidad" name="txt_cantidad">
                 </div>
                 <div class="form-group col-md-3">
                        <label for="title" class="control-label">Valor Unitario:</label>
-                       <input type="text" required class="form-control" name="txt_valor_unitario" id="txt_valor_unitario" value="">
+                       <input type="text" class="form-control" name="txt_valor_unitario" id="txt_valor_unitario" value="">
                 </div>
 
 
@@ -179,13 +187,28 @@ echo '<script> var id_factura = '.$id_factura.'; </script>';
               <button class="btn btn-success btn-block" type="submit" name="button">Guardar</button>
             </div>
           </div>
-            </div>
+        </div>
 
         </form>
 
       </div>
 
-<script type="text/javascript" src="./js/script_facturas.js"></script>
+      <div style="" class=" card col-12">
+           <div class="container">
+         <br>
+         <br>
+            <!-- <input onkeyup="listarDetalleFacturas(this.value)" class="form-control col-9" type="text" name="txt_id_factura" id="txt_id_factura" value=""> -->
 
+          <div id='contenedor_listado_detalle_facturas'></div>
+
+        </div>
+
+      </div>
+
+
+<script type="text/javascript" src="./js/script_facturas.js"></script>
+<script type="text/javascript">
+  listarDetalleFacturas();
+</script>
 </body>
 </html>

@@ -4,9 +4,12 @@ require_once 'Conexion.php';
 class Facturas{
 
  private $id_factura;
+ private $id_producto;
  private $rut_proveedor;
  private $numero_factura;
  private $fecha;
+ private $cantidad;
+ private $valor;
 
  public function setIdFactura($id_factura){
    $this->id_factura = $id_factura;
@@ -20,6 +23,16 @@ class Facturas{
  public function setFecha($fecha){
    $this->fecha = $fecha;
  }
+ public function setCantidad($cantidad){
+   $this->cantidad = $cantidad;
+ }
+ public function setValor($valor){
+   $this->valor = $valor;
+ }
+ public function setIdProducto($id_producto){
+   $this->id_producto = $id_producto;
+ }
+
 
  function obtenerFacturas($texto_buscar,$condiciones){
      $conexion = new Conexion();
@@ -49,6 +62,13 @@ class Facturas{
     $resultado_consulta = $Conexion->query("select * from tb_facturas where id_factura=".$this->id_factura );
     return $resultado_consulta;
  }
+ public function obtenerProductoDetallefactura(){
+    $Conexion = new Conexion();
+    $Conexion = $Conexion->conectar();
+
+    $resultado_consulta = $Conexion->query("select * from tb_detalle_factura where id_producto=".$this->id_producto );
+    return $resultado_consulta;
+ }
 
  public function crearFactura(){
    $conexion = new Conexion();
@@ -59,6 +79,25 @@ class Facturas{
 
    $resultado= $conexion->query($consulta);
    return $resultado;
+ }
+ public function crearDetalleFactura(){
+   $conexion = new Conexion();
+   $conexion = $conexion->conectar();
+
+   $consulta = "insert INTO tb_detalle_factura (`id_factura`,`id_producto`,`cantidad`,`valor`) VALUES ('".$this->id_factura."', '".$this->id_producto."', '".$this->cantidad."', '".$this->valor."')";
+   // echo $consulta;
+
+   $resultado= $conexion->query($consulta);
+   return $resultado;
+ }
+
+ public function vistaDetalleFactura(){
+    $Conexion = new Conexion();
+    $Conexion = $Conexion->conectar();
+
+    $resultado_consulta = $Conexion->query("select * from vista_factura where id_factura=".$this->id_factura);
+     echo "select * from vista_factura where id_factura=".$this->id_factura;
+    return $resultado_consulta;
  }
 
    public function modificarFactura(){

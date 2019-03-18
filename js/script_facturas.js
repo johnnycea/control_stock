@@ -12,6 +12,19 @@ function listarFacturas(texto_buscar){
 			}
 		});
 }
+function listarDetalleFacturas(){
+
+   var id_factura = $("#txt_id_factura").val();
+
+		$.ajax({
+			url:"./metodos_ajax/facturas/mostrar_listado_detalle_facturas.php?id_factura="+id_factura,
+			method:"POST",
+			success:function(respuesta){
+				// alert(respuesta);
+				 $("#contenedor_listado_detalle_facturas").html(respuesta);
+			}
+		});
+}
 
 
 function guardarFactura(){
@@ -41,7 +54,7 @@ function guardarProductoFactura(){
 				method:"POST",
 				data: $("#formulario_detalle_factura_producto").serialize(),
 				success:function(respuesta){
-					  alert(respuesta);
+					  // alert(respuesta);
 
 					 if(respuesta==1){
                guardarDetalleFactura();
@@ -54,12 +67,15 @@ function guardarProductoFactura(){
 
 function guardarDetalleFactura(){
 
+
+// var id_factura = $("#txt_id_factura").val();
+
 			$.ajax({
-				url:"./metodos_ajax/factura/guardarDetalleProductoFactura.php",
+				url:"./metodos_ajax/facturas/guardarDetalleProductoFactura.php",
 				method:"POST",
 				data: $("#formulario_detalle_factura_producto").serialize(),
 				success:function(respuesta){
-					  alert(respuesta);
+					  // alert(respuesta);
 
 					 if(respuesta==1){
 						 swal("Guardado","Los datos se han guardado correctamente.","success");
@@ -67,6 +83,9 @@ function guardarDetalleFactura(){
 
 					 }else if(respuesta==2){
 						 swal("Ocurrió un error","Recargue la página e intente nuevamente.","error");
+
+					 }else if(respuesta==3){
+						 swal("El producto ya fue ingresado en esta factura","","info");
 					 }
 				}
 			});
@@ -93,6 +112,7 @@ function cargarDatosProducto(id_producto){
 			 $("#txt_descripcion_producto").val(producto.descripcion);
 			 $("#select_marca").val(producto.marca);
 			 $("#select_categoria").val(producto.categoria);
+			 $("#txt_stock_minimo").val(producto.stock_minimo);
 
 		}
 	});

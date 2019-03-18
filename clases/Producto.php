@@ -70,17 +70,17 @@ class Producto{
    return $resultado;
  }
 
-   public function modificarProveedor(){
+   public function modificarProducto(){
        $conexion = new Conexion();
        $conexion = $conexion->conectar();
 
-       $consulta="update tb_proveedores SET
-       razon_social = '".$this->razon_social."',
-       direccion = '".$this->direccion."',
-       telefono = '".$this->telefono."',
-       giro = '".$this->giro."',
-       correo = '".$this->correo."'
-        WHERE (rut_proveedor = '".$this->rut_proveedor."');";
+       $consulta="update tb_productos SET
+       descripcion = '".$this->descripcion."',
+       stock_minimo = '".$this->stock_minimo."',
+       id_categoria = '".$this->id_categoria."',
+       id_marca = '".$this->id_marca."',
+       id_estado = '".$this->id_estado."'
+        WHERE (id_producto = '".$this->id_producto."');";
 
        $resultado= $conexion->query($consulta);
        return $resultado;

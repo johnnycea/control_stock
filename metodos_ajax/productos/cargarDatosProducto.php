@@ -16,7 +16,8 @@ $id_producto = $Funciones->limpiarTexto($_REQUEST['id_producto']);
      $resultado = '
      {   "descripcion" : "'.$filas['descripcion'].'",
          "marca"       : "'.$filas['id_marca'].'",
-         "categoria"  : "'.$filas['id_categoria'].'"}
+         "categoria"  : "'.$filas['id_categoria'].'",
+         "stock_minimo"  : "'.$filas['stock_minimo'].'"}
 
      ';
 
