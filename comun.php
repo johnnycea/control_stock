@@ -207,124 +207,174 @@ function cargarMenuProveedor(){
 
 function cargarMenuPrincipal(){
 ?>
+
 <style>
+   .menu{
+     background: rgb(59, 159, 194);
+     padding: 5px;
+     margin-left: 10px;
+   }
+   .menu a{
+     text-decoration: none;
+     color: black;
+   }
 
-#contenedor_logo_menu{
-  height:40px;
-  width: 40px;
-  background:white;
-  margin-top: -10px;
-  margin-bottom: -10px;
-  margin-left: -10px;
-}
-#logo_menu{
-  background-image: url("./img/logo_daem.png");
-  height: 100%;
-  width:100%;
-  background-size: cover;
-  background-position: center;
-}
-
-.nav-link{
-  /* background-color: rgb(28, 196, 201); */
-  margin-right: 5px;
-}
-.nav-link:hover{
- color:white;
- /* background-color: rgb(13, 112, 115); */
-
-}
+   #icono_menu{
+     width: 80%;
+     margin-left: 10%;
+     margin-top: 10px;
+     margin-bottom: 5px;
+     padding:0px;
+   }
+   .botones_menu{
+     width: 80%;
+     margin-left: 10%;
+     margin-top: 10px;
+     margin-bottom: 5px;
+     padding:0px;
+     height: 70px;
+     background: #ffffff;
+     color: black;
+   }
+   .lista_iconos{
+     font-size: 40px;
+   }
 </style>
 
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark " style="background-image: url('img/fondo.jpg');">
-  <a class="navbar-brand" href="#">
-    <div id="contenedor_logo_menu">
-      <div id="logo_menu"></div>
+<div class="col-1 menu bg-dark">
+
+  <div class="card" id="icono_menu" >
+    <img class="card-img" src="./img/logo_cochento.jpg" alt="Card image">
+  </div>
+
+<a href="">
+    <div class="card botones_menu">
+      <center>
+        <!-- <i class="fa fa-list-ul lista_iconos"></i> -->
+        <img class="card-img" src="./img/iconos/maquina.png" style="width:50%;" alt="Card image">
+
+        <label for="">Ventas</label>
+      </center>
     </div>
-    <!-- <img src="./img/logo.png" width="80" height="50" class="d-inline-block align-top" alt=""> -->
-  </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarText">
-    <ul class="navbar-nav mr-auto">
+</a>
 
-     <?php
-     $url= basename($_SERVER['PHP_SELF']);
+<a href="./facturas.php">
+    <div class="card botones_menu">
+      <center>
+        <!-- <i class="fa fa-list-ul lista_iconos"></i> -->
+        <img class="card-img" src="./img/iconos/maquina.png" style="width:50%;" alt="Card image">
 
-     require_once './clases/Usuario.php';
-     $usuario= new Usuario();
-     $usuario= $usuario->obtenerUsuarioActual();
+        <label for="">Facturas</label>
+      </center>
+    </div>
+</a>
 
-     if($usuario['tipo_usuario']==1 || $usuario['tipo_usuario']==2){
+<a href="">
+    <div class="card botones_menu">
+      <center>
+        <!-- <i class="fa fa-list-ul lista_iconos"></i> -->
+        <img class="card-img" src="./img/iconos/maquina.png" style="width:50%;" alt="Card image">
 
-            //UN LINK
-            echo '<li class="nav-item">';
-                  if($url=="registro_movimientos.php"){
-                    echo '<a class="nav-link active" href="./registro_movimientos.php">Registro Movimientos</span></a>';
-                  }else{
-                    echo '<a class="nav-link" href="./registro_movimientos.php">Registro Movimientos</span></a>';
-                  }
-            echo '</li>';
+        <label for="">Stock</label>
+      </center>
+    </div>
+</a>
 
-      }
-      if($usuario['tipo_usuario']==1){
+<a href="./proveedores.php">
+    <div class="card botones_menu">
+      <center>
+        <!-- <i class="fa fa-list-ul lista_iconos"></i> -->
+        <img class="card-img" src="./img/iconos/maquina.png" style="width:50%;" alt="Card image">
 
-             //UN LINK
-             echo '<li class="nav-item">';
-                   if($url=="informes.php"){
-                     echo '<a class="nav-link active" href="./informes.php">Informes</span></a>';
-                   }else{
-                     echo '<a class="nav-link" href="./informes.php">Informes</span></a>';
-                   }
-             echo '</li>';
-       }
-      if($usuario['tipo_usuario']==1){
+        <label for="">Proveedor</label>
+      </center>
+    </div>
+</a>
 
-             //UN LINK
-             echo '<li class="nav-item">';
-                   if($url=="configuraciones.php" || $url=="usuarios.php" ){
-                     echo '<a class="nav-link active" href="./configuraciones.php">Configuraciones</span></a>';
-                   }else{
-                     echo '<a class="nav-link" href="./configuraciones.php">Configuraciones</span></a>';
-                   }
-             echo '</li>';
-       }
+<a href="./informes.php">
+    <div class="card botones_menu">
+      <center>
+        <!-- <i class="fa fa-list-ul lista_iconos"></i> -->
+        <img class="card-img" src="./img/iconos/maquina.png" style="width:50%;" alt="Card image">
 
-       if($usuario['tipo_usuario']==1){
+        <label for="">Informes</label>
+      </center>
+    </div>
+</a>
 
-              //UN LINK
-              echo '<li class="nav-item">';
-                    if($url=="configuraciones.php" || $url=="usuarios.php" ){
-                      echo '<a class="nav-link active" href="./proveedores.php">Proveedores</span></a>';
-                    }else{
-                      echo '<a class="nav-link" href="./proveedores.php">Proveedores</span></a>';
-                    }
-              echo '</li>';
-        }
-       if($usuario['tipo_usuario']==1){
+<a href="./configuraciones.php">
+    <div class="card botones_menu">
+      <center>
+        <!-- <i class="fa fa-list-ul lista_iconos"></i> -->
+        <img class="card-img" src="./img/iconos/maquina.png" style="width:50%;" alt="Card image">
 
-              //UN LINK
-              echo '<li class="nav-item">';
-                    if($url=="configuraciones.php" || $url=="usuarios.php" ){
-                      echo '<a class="nav-link active" href="./facturas.php">Facturas</span></a>';
-                    }else{
-                      echo '<a class="nav-link" href="./facturas.php">Facturas</span></a>';
-                    }
-              echo '</li>';
-        }
+        <label for="">Configurar</label>
+      </center>
+    </div>
+</a>
 
 
+
+
+</div>
+
+<?php
+// $url= basename($_SERVER['PHP_SELF']);
+//
+// require_once './clases/Usuario.php';
+// $usuario= new Usuario();
+// $usuario= $usuario->obtenerUsuarioActual();
+//
+//
+//
+//
+//       if($usuario['tipo_usuario']==1){
+//
+//              //UN LINK
+//              echo '<li class="nav-item">';
+//                    if($url=="configuraciones.php" ){
+//                      echo '<a class="nav-link active" href="./configuraciones.php">Configuraciones</span></a>';
+//                    }else{
+//                      echo '<a class="nav-link" href="./configuraciones.php">Configuraciones</span></a>';
+//                    }
+//              echo '</li>';
+//        }
+//
+//        if($usuario['tipo_usuario']==1){
+//
+//               //UN LINK
+//               echo '<li class="nav-item">';
+//                     if($url=="proveedores.php" ){
+//                       echo '<a class="nav-link active" href="./proveedores.php">Proveedores</span></a>';
+//                     }else{
+//                       echo '<a class="nav-link" href="./proveedores.php">Proveedores</span></a>';
+//                     }
+//               echo '</li>';
+//         }
+//        if($usuario['tipo_usuario']==1){
+//
+//               //UN LINK
+//               echo '<li class="nav-item">';
+//                     if($url=="facturas.php"){
+//                       echo '<a class="nav-link active" href="./facturas.php">Facturas</span></a>';
+//                     }else{
+//                       echo '<a class="nav-link" href="./facturas.php">Facturas</span></a>';
+//                     }
+//               echo '</li>';
+//         }
+//
+//
      ?>
 
-    </ul>
 
-     <label class="text-white"><?php echo $usuario['nombre'].' &nbsp;'; ?></label>
+
+     <!-- <label class="text-white"><?php //echo $usuario['nombre'].' &nbsp;'; ?></label>
      <a href="./cerrarSesion.php" class="btn btn-danger my-2 my-sm-0" >Salir</a>
-  </div>
-</nav>
-<div><hr></div>
-<div><hr></div>
+
+
+  </div> -->
+
+<!-- <div>Icons made by <a href="https://www.flaticon.es/autores/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.es/" 		    title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 		    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div> -->
 
 <?php
 }

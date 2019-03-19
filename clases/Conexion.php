@@ -18,9 +18,9 @@
       // $this->clave= "gastos_daem";
       // $this->bd= "daemmulc_gastos";
 
-      $this->servidor= "127.0.0.1";
+      $this->servidor= "localhost";
       $this->usuario= "root";
-      $this->clave= "johnnyjohnny";
+      $this->clave= "";
       $this->bd= "control_stock";
 
 

@@ -41,7 +41,7 @@ $usuario= $usuario->obtenerUsuarioActual();
 </head>
 <body>
 
-<?php cargarMenuPrincipal(); ?>
+
 
 
 <?php
@@ -61,14 +61,11 @@ echo '<script> var id_factura = '.$id_factura.'; </script>';
  ?>
 
 
-</div>
+<div class="row">
 
-</div>
+      <?php cargarMenuPrincipal(); ?>
 
-<br>
-
-
-      <div class="container">
+      <div class="col-10">
 
         <form id="formulario_detalle_factura" class="" action="javascript:guardarFactura()" method="post">
 
@@ -204,6 +201,8 @@ echo '<script> var id_factura = '.$id_factura.'; </script>';
            </div>
 
 
+
+</div>
 
 
 <script type="text/javascript" src="./js/script_facturas.js"></script>

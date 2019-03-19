@@ -5,6 +5,7 @@ body{
   background-attachment: fixed;
   background-size: cover;
   margin:0;
+  background-color: #ffffff;
 }
 
 .card{
@@ -16,6 +17,11 @@ body{
 
 }
 
+.boton-morado{
+  background-color: #6E6CAD;
+  color:white;
+}
+
 #calendar{
   background:white;
   padding:5px;
@@ -24,7 +30,7 @@ body{
 #login{
     max-width: 350px;
 		margin: 0 auto;
-		margin-top: 80px;
+		margin-top: 30px;
 }
 
 #logo-inicio{

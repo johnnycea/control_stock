@@ -24,30 +24,16 @@ $usuario= $usuario->obtenerUsuarioActual();
 </head>
 <body>
 
-<?php cargarMenuPrincipal(); ?>
-
-<br>
 
 
+<div class="row">
 
-<div class="container-fluid">
-  <div class="">
 
-      <!-- <div class="col-12 col-md-3">
+        <?php cargarMenuPrincipal(); ?>
 
-          <div class="card text-dark">
-            <div class="card-header ">
-                OPCIONES
-            </div>
-            <div class="card-body">
-                 <?php //cargarMenuProveedor(); ?>
-            </div>
-          </div>
+       <div class="col-10">
 
-      </div> -->
-       <div class="col-12">
-
-          <div  style="" class=" card col-12">
+          <div  style="" class=" col-12">
             <div class="container">
                  <button type="button" onclick="limpiarFormularioProveedor();" class="btn btn-success" data-target="#modal_proveedor" data-toggle="modal" name="button">Crear nuevo proveedor</button>
             </div>
@@ -68,8 +54,6 @@ $usuario= $usuario->obtenerUsuarioActual();
           </div>
 
        </div>
-
-  </div>
 
 </div>
 

@@ -50,16 +50,13 @@
 
 
 
-       <div class="col-md-4 offset-md-8">
+       <div class="col-md-4 offset-md-4">
 
     		<div class="container card card-info" style="" id="login">
 
                 <div class="card-head">
-                     <div clas="col-xs-12">
-                       <br>
-                        <center>
-                          <img src="./img/logo_daem.png" alt="">
-                        </center>
+                     <div clas="col-10">
+                           <img class="card-img" src="./img/logo_cochento.jpg" alt="">
                      </div>
                 </div>
 
@@ -116,18 +113,6 @@
         }
       </style>
 
-      <div class="col-md-4 offset-md-8">
-        <br>
-
-          <div class="text-center">
-            <br>
-            <div >
-              <span class="titulos2">Control Gastos</span>
-            </div>
-          </div>
-
-
-      </div>
 
     </div>
 
@@ -191,7 +176,7 @@ $("#formulario").submit(function(event){
       $.ajax({
         url:"./metodos_ajax/login/verificarDatos.php?u="+usuario+"&c="+contrasena,
         success:function(respuesta){
-          alert(respuesta);
+          // alert(respuesta);
             if(respuesta==1){
               $('#botonIngreso').removeClass("btn-warning");
               $('#botonIngreso').addClass("btn-success");

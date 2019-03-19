@@ -32,7 +32,7 @@ CREATE TABLE `detalle_venta` (
   KEY `FK_detalleventa_venta_idx` (`id_venta`),
   CONSTRAINT `FK_detalle_venta_producto` FOREIGN KEY (`id_producto`) REFERENCES `tb_productos` (`id_producto`) ON UPDATE CASCADE,
   CONSTRAINT `FK_detalleventa_venta` FOREIGN KEY (`id_venta`) REFERENCES `tb_ventas` (`id_venta`) ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -55,7 +55,7 @@ CREATE TABLE `tb_categoria` (
   `id_categoria` int(11) NOT NULL,
   `descripcion_categoria` varchar(45) NOT NULL,
   PRIMARY KEY (`id_categoria`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -84,7 +84,7 @@ CREATE TABLE `tb_detalle_factura` (
   KEY `FK_detalle_factura_productos_idx` (`id_producto`),
   CONSTRAINT `FK_detalle_factura_facturas` FOREIGN KEY (`id_factura`) REFERENCES `tb_facturas` (`id_factura`) ON UPDATE CASCADE,
   CONSTRAINT `FK_detalle_factura_productos` FOREIGN KEY (`id_producto`) REFERENCES `tb_productos` (`id_producto`) ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -108,7 +108,7 @@ CREATE TABLE `tb_estado_producto` (
   `id_estado` int(11) NOT NULL,
   `descripcion_estado` varchar(45) NOT NULL,
   PRIMARY KEY (`id_estado`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -132,7 +132,7 @@ CREATE TABLE `tb_estado_usuario` (
   `id_estado` int(11) NOT NULL,
   `descripcion_estado` varchar(45) NOT NULL,
   PRIMARY KEY (`id_estado`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -160,7 +160,7 @@ CREATE TABLE `tb_facturas` (
   PRIMARY KEY (`id_factura`),
   KEY `FK_tb_factura_proveedores_idx` (`rut_proveedor`),
   CONSTRAINT `FK_tb_factura_proveedores` FOREIGN KEY (`rut_proveedor`) REFERENCES `tb_proveedores` (`rut_proveedor`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -184,7 +184,7 @@ CREATE TABLE `tb_marca` (
   `id_marca` int(11) NOT NULL DEFAULT '1',
   `nombre_marca` varchar(45) NOT NULL,
   PRIMARY KEY (`id_marca`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -218,7 +218,7 @@ CREATE TABLE `tb_productos` (
   CONSTRAINT `FK_productos_estado` FOREIGN KEY (`id_estado`) REFERENCES `tb_estado_producto` (`id_estado`) ON UPDATE CASCADE,
   CONSTRAINT `FK_productos_marca` FOREIGN KEY (`id_marca`) REFERENCES `tb_marca` (`id_marca`) ON UPDATE CASCADE,
   CONSTRAINT `FK_produtos_categoria` FOREIGN KEY (`id_categoria`) REFERENCES `tb_categoria` (`id_categoria`) ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -247,7 +247,7 @@ CREATE TABLE `tb_proveedores` (
   `giro` varchar(45) NOT NULL,
   `correo` varchar(45) NOT NULL,
   PRIMARY KEY (`rut_proveedor`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -271,7 +271,7 @@ CREATE TABLE `tb_tipo_usuario` (
   `id_tipo_usuario` int(11) NOT NULL,
   `descripcion_tipo_usuario` varchar(45) NOT NULL,
   PRIMARY KEY (`id_tipo_usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -304,7 +304,7 @@ CREATE TABLE `tb_usuarios` (
   KEY `FK_usuario_estado_usuario_idx` (`estado`),
   CONSTRAINT `FK_usuario_estado_usuario` FOREIGN KEY (`estado`) REFERENCES `tb_estado_usuario` (`id_estado`) ON UPDATE CASCADE,
   CONSTRAINT `FK_usuario_tipo_usuario` FOREIGN KEY (`tipo_usuario`) REFERENCES `tb_tipo_usuario` (`id_tipo_usuario`) ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -329,7 +329,7 @@ CREATE TABLE `tb_ventas` (
   `total` int(11) NOT NULL,
   `fecha` datetime NOT NULL,
   PRIMARY KEY (`id_venta`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -349,7 +349,7 @@ DROP TABLE IF EXISTS `vista_factura`;
 /*!50001 DROP VIEW IF EXISTS `vista_factura`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8mb4;
-/*!50001 CREATE VIEW `vista_factura` AS SELECT 
+/*!50001 CREATE VIEW `vista_factura` AS SELECT
  1 AS `id_factura`,
  1 AS `Codigo`,
  1 AS `Descripcion`,
@@ -367,7 +367,7 @@ DROP TABLE IF EXISTS `vista_usuario`;
 /*!50001 DROP VIEW IF EXISTS `vista_usuario`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8mb4;
-/*!50001 CREATE VIEW `vista_usuario` AS SELECT 
+/*!50001 CREATE VIEW `vista_usuario` AS SELECT
  1 AS `rut`,
  1 AS `digito_verificador`,
  1 AS `nombre`,
@@ -388,7 +388,6 @@ SET character_set_client = @saved_cs_client;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
 /*!50003 SET character_set_client  = utf8mb4 */ ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
@@ -414,7 +413,6 @@ DELIMITER ;
 /*!50001 SET @saved_col_connection     = @@collation_connection */;
 /*!50001 SET character_set_client      = utf8mb4 */;
 /*!50001 SET character_set_results     = utf8mb4 */;
-/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `vista_factura` AS select `df`.`id_factura` AS `id_factura`,`p`.`id_producto` AS `Codigo`,`p`.`descripcion` AS `Descripcion`,`m`.`nombre_marca` AS `Marca`,`c`.`descripcion_categoria` AS `Categoria`,`df`.`cantidad` AS `Cantidad`,`df`.`valor` AS `Valor` from (((`tb_detalle_factura` `df` join `tb_productos` `p` on((`p`.`id_producto` = `df`.`id_producto`))) join `tb_marca` `m` on((`p`.`id_marca` = `m`.`id_marca`))) join `tb_categoria` `c` on((`p`.`id_categoria` = `c`.`id_categoria`))) */;
@@ -432,7 +430,6 @@ DELIMITER ;
 /*!50001 SET @saved_col_connection     = @@collation_connection */;
 /*!50001 SET character_set_client      = utf8mb4 */;
 /*!50001 SET character_set_results     = utf8mb4 */;
-/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `vista_usuario` AS select `u`.`rut` AS `rut`,`u`.`digito_verificador` AS `digito_verificador`,`u`.`nombre` AS `nombre`,`u`.`clave` AS `clave`,`u`.`estado` AS `estado`,`eu`.`descripcion_estado` AS `descripcion_estado`,`u`.`tipo_usuario` AS `tipo_usuario`,`tu`.`descripcion_tipo_usuario` AS `descripcion_tipo_usuario`,`u`.`correo` AS `correo` from ((`tb_usuarios` `u` join `tb_estado_usuario` `eu` on((`u`.`estado` = `eu`.`id_estado`))) join `tb_tipo_usuario` `tu` on((`u`.`tipo_usuario` = `tu`.`id_tipo_usuario`))) */;
