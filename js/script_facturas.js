@@ -80,7 +80,7 @@ function guardarDetalleFactura(){
 					 if(respuesta==1){
 						 swal("Guardado","Los datos se han guardado correctamente.","success");
              //actualizar tabla detalle factura
-
+						 listarDetalleFacturas();
 					 }else if(respuesta==2){
 						 swal("Ocurrió un error","Recargue la página e intente nuevamente.","error");
 
@@ -119,28 +119,24 @@ function cargarDatosProducto(id_producto){
 
 }
 
+function cargarInformacionModificarDetalleFactura(id){
 
+	 var txt_codigo_producto = $("#columna_codigo_"+id).html();
+	 var txt_descripcion_producto = $("#columna_descripcion_"+id).html();
+	 var select_marca = $("#columna_marca_"+id).html();
+	 var txt_cantidad = $("#columna_cantidad_"+id).html();
+	 var txt_valor_unitario = $("#columna_valor_"+id).html();
 
-function modificarProveedor(){
-
-			$.ajax({
-				url:"./metodos_ajax/subvencion/modificar_subvencion.php",
-				method:"POST",
-				data: $("#formulario_modal_subvencion").serialize(),
-				success:function(respuesta){
-					 // alert(respuesta);
-
-					 if(respuesta==1){
-						 swal("Guardado","Los datos se han guardado correctamente.","success");
-						 $("#modal_subvencion").modal('hide');
-						 listarProveedor();
-					 }else if(respuesta==2){
-						 swal("Ocurrió un error","Recargue la página e intente nuevamente.","error");
-				   }
-				}
-			});
-
-}
+	 $("#codigo").val(txt_codigo_producto);
+	 $("#txt_descripcion_producto").val(txt_descripcion_producto);
+	 $("#select_marca").val(select_marca);
+	 $("#txt_cantidad").val(txt_cantidad);
+	 $("#valor").val(txt_valor_unitario);
+	//
+	 $('html,body').animate({
+		 scrollTop: $("#formulario_detalle_factura_producto").offset().top
+	}, 1200);
+	 }
 
 function eliminarProveedor(id){
 

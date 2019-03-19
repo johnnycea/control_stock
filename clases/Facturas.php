@@ -66,7 +66,7 @@ class Facturas{
     $Conexion = new Conexion();
     $Conexion = $Conexion->conectar();
 
-    $resultado_consulta = $Conexion->query("select * from tb_detalle_factura where id_producto=".$this->id_producto );
+    $resultado_consulta = $Conexion->query("select * from tb_detalle_factura where id_producto=".$this->id_producto." and id_factura=".$this->id_factura );
     return $resultado_consulta;
  }
 
@@ -96,7 +96,7 @@ class Facturas{
     $Conexion = $Conexion->conectar();
 
     $resultado_consulta = $Conexion->query("select * from vista_factura where id_factura=".$this->id_factura);
-     echo "select * from vista_factura where id_factura=".$this->id_factura;
+
     return $resultado_consulta;
  }
 

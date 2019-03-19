@@ -124,10 +124,10 @@ echo '<script> var id_factura = '.$id_factura.'; </script>';
 
            <div class="form-group card border-info col-12">
              <div class="row">
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-4">
 
                        <label for="title" class="control-label">Codigo Producto:</label>
-                       <input type="text" onBlur="cargarDatosProducto(this.value);" required class="form-control" name="txt_codigo_producto" id="txt_codigo_producto" value="">
+                       <input type="text" onkeyup="cargarDatosProducto(this.value);" required class="form-control" name="txt_codigo_producto" id="txt_codigo_producto" value="">
                 </div>
 
                 <div class="form-group col-md-4">
@@ -193,17 +193,17 @@ echo '<script> var id_factura = '.$id_factura.'; </script>';
 
       </div>
 
-      <div style="" class=" card col-12">
+
            <div class="container">
-         <br>
-         <br>
-            <!-- <input onkeyup="listarDetalleFacturas(this.value)" class="form-control col-9" type="text" name="txt_id_factura" id="txt_id_factura" value=""> -->
+                       <div class="form-group card border-info col-12">
+                   <br>
+                            <div id='contenedor_listado_detalle_facturas' class="container"></div>
 
-          <div id='contenedor_listado_detalle_facturas'></div>
 
-        </div>
+                       </div>
+           </div>
 
-      </div>
+
 
 
 <script type="text/javascript" src="./js/script_facturas.js"></script>

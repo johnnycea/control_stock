@@ -25,23 +25,23 @@ require_once '../../clases/Producto.php';
 
        $Facturas = new Facturas();
        $Facturas->setIdFactura($id_factura);
-       $listadoFacturas = $Facturas->vistaDetalleFactura(); //$texto_buscar," where id_estado=1 or id_estado=2 "
+       $listadoDetalleFacturas = $Facturas->vistaDetalleFactura(); //$texto_buscar," where id_estado=1 or id_estado=2 "
 
-         while($filas = $listadoFacturas->fetch_array()){
+         while($filas = $listadoDetalleFacturas->fetch_array()){
 
                echo '<tr>
 
 
-                       <td><span id="columna_id_factura_'.$filas['id_producto'].'" >'.$filas['id_producto'].'</span></td>
-                       <td><span id="columna_rut_proveedor_'.$filas['descripcion'].'" >'.$filas['descripcion'].'</span></td>
-                       <td><span id="columna_numero_factura_'.$filas['nombre_marca'].'" >'.$filas['nombre_marca'].'</span></td>
-                       <td><span id="columna_fecha_factura_'.$filas['cantidad'].'" >'.$filas['cantidad'].'</span></td>
-                       <td><span id="columna_fecha_factura_'.$filas['valor'].'" >'.$filas['valor'].'</span></td>
+                       <td><span id="columna_codigo_'.$filas['codigo'].'" >'.$filas['codigo'].'</span></td>
+                       <td><span id="columna_descripcion_'.$filas['descripcion'].'" >'.$filas['descripcion'].'</span></td>
+                       <td><span id="columna_marca_'.$filas['marca'].'" >'.$filas['marca'].'</span></td>
+                       <td><span id="columna_cantidad_'.$filas['cantidad'].'" >'.$filas['cantidad'].'</span></td>
+                       <td><span id="columna_valor_'.$filas['valor'].'" >'.$filas['valor'].'</span></td>
                        <td>
-                          <a href="./detalle_facturas.php?id_factura='.$filas['id_factura'].'" class="col-12 btn btn-warning ">Editar</a>
+                       <button onclick="cargarInformacionModificarDetalleFactura('.$filas['id_factura'].')" class="col-12 btn btn-warning "> <i class="fa fa-edit"></i> </button>
                        </td>
                        <td>
-                          <button onclick="eliminarFactura('.$filas['id_factura'].')"  class="col-12 btn btn-danger "> <i class="fa fa-trash-alt"></i> </button>
+                          <button onclick="eliminarFactura('.$filas['id_factura'].')" class="col-12 btn btn-danger "> <i class="fa fa-trash-alt"></i> </button>
                        </td>
                     </tr>';
          }
