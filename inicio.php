@@ -8,7 +8,7 @@
        $usuario= $usuario->obtenerUsuarioActual();
 
 
-         header("location: registro_movimientos.php");
+         // header("location: registro_movimientos.php");
 
 ?>
 
@@ -22,12 +22,15 @@
 </head>
 <body>
 
-<?php cargarMenuPrincipal();
-?>
 
 
+<div class="row">
 
-<div class="container">
+  <?php cargarMenuPrincipal();?>
+
+  <div class="col-10">
+
+  </div>
 
 </div>
 

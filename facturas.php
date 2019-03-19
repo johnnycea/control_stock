@@ -24,32 +24,22 @@ $usuario= $usuario->obtenerUsuarioActual();
 </head>
 <body>
 
-<?php cargarMenuPrincipal(); ?>
-
-<br>
 
 
 
-<div class="container-fluid">
-  <div class="">
+<div class="row">
 
-      <!-- <div class="col-12 col-md-3">
+  <?php cargarMenuPrincipal(); ?>
 
-          <div class="card text-dark">
-            <div class="card-header ">
-                OPCIONES
-            </div>
-            <div class="card-body">
-                 <?php //cargarMenuProveedor(); ?>
-            </div>
-          </div>
 
-      </div> -->
+
+  <div class="col-10">
+
        <div class="col-12">
 
-          <div  style="" class=" card col-12">
+          <div  style="" class="  col-12">
             <div class="container">
-                 <button type="button" onclick="limpiarFormularioFactura();" class="btn btn-success" data-target="#modal_factura" data-toggle="modal" name="button">Crear nueva factura</button>
+                 <button type="button" onclick="limpiarFormularioFactura();" class="btn boton-morado" data-target="#modal_factura" data-toggle="modal" name="button">Crear nueva factura</button>
             </div>
             <div class="container">
 
