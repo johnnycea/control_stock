@@ -17,6 +17,7 @@ require_once '../../clases/Producto.php';
         <th>Valor</th>
         <th width=170>Ver</th>
         <th></th>
+        <th></th>
      </thead>
      <tbody>';
 
@@ -33,10 +34,18 @@ require_once '../../clases/Producto.php';
 
 
                        <td><span id="columna_codigo_'.$filas['codigo'].'" >'.$filas['codigo'].'</span></td>
-                       <td><span id="columna_descripcion_'.$filas['descripcion'].'" >'.$filas['descripcion'].'</span></td>
-                       <td><span id="columna_marca_'.$filas['marca'].'" >'.$filas['marca'].'</span></td>
-                       <td><span id="columna_cantidad_'.$filas['cantidad'].'" >'.$filas['cantidad'].'</span></td>
-                       <td><span id="columna_valor_'.$filas['valor'].'" >'.$filas['valor'].'</span></td>
+                       <td><span id="columna_descripcion_'.$filas['codigo'].'" >'.$filas['descripcion'].'</span></td>
+
+                       <span class="d-none" id="columna_txt_stock_minimo_'.$filas['codigo'].'" >'.$filas['stock_minimo'].'</span>
+
+                       <td><span id="columna_marca_'.$filas['codigo'].'" >'.$filas['marca'].'</span></td>
+                       <span class="d-none" id="columna_id_marca_'.$filas['codigo'].'" >'.$filas['id_marca'].'</span>
+
+                       <td><span id="columna_categoria_'.$filas['codigo'].'" >'.$filas['categoria'].'</span></td>
+                       <span class="d-none" id="columna_id_categoria_'.$filas['codigo'].'" >'.$filas['id_categoria'].'</span>
+
+                       <td><span id="columna_cantidad_'.$filas['codigo'].'" >'.$filas['cantidad'].'</span></td>
+                       <td><span id="columna_valor_'.$filas['codigo'].'" >'.$filas['valor'].'</span></td>
                        <td>
                        <button onclick="cargarInformacionModificarDetalleFactura('.$filas['id_factura'].')" class="col-12 btn btn-warning "> <i class="fa fa-edit"></i> </button>
                        </td>

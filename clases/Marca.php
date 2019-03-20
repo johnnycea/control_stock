@@ -61,11 +61,11 @@ class Marca{
        return $resultado;
    }
 
-   public function eliminarCuenta(){
+   public function eliminarMarca(){
      $Conexion = new Conexion();
      $Conexion = $Conexion->conectar();
 
-     $consulta = "delete from tb_marca where id_marca=".$this->nombre_marca;
+     $consulta = "delete from tb_marca where id_marca=".$this->id_marca;
 
      if($Conexion->query($consulta)){
          return true;

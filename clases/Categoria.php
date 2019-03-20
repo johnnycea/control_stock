@@ -40,11 +40,11 @@ class Categoria{
     return $resultado_consulta;
  }
 
- public function crearProveedor(){
+ public function crearCategoria(){
    $conexion = new Conexion();
    $conexion = $conexion->conectar();
 
-   $consulta = "insert INTO tb_proveedores (`rut_proveedor`,`dv`,`razon_social`,`direccion`,`telefono`,`giro`,`correo`) VALUES ('".$this->rut_proveedor."', '".$this->dv."', '".$this->razon_social."', '".$this->direccion."', '".$this->telefono."', '".$this->giro."', '".$this->correo."')";
+   $consulta = "insert INTO tb_categoria (`descripcion_categoria`) VALUES ('".$this->descripcion_categoria."')";
    $resultado= $conexion->query($consulta);
    return $resultado;
  }

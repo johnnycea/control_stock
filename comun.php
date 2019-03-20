@@ -143,19 +143,19 @@ function cargarMenuConfiguraciones(){
 
      echo'<hr>';
 
-  if($url=="cuenta_presupuesto.php"){
-      echo '<a href="./cuenta_presupuesto.php" class="active btn btn-info col-12">Cuentas </a>';
+  if($url=="categoria.php"){
+      echo '<a href="./categoria.php" class="active btn btn-info col-12">Categoria </a>';
   }else{
-      echo '<a href="./cuenta_presupuesto.php" class="btn btn-info col-12">Cuentas </a>';
+      echo '<a href="./categoria.php" class="btn btn-info col-12">Categoria </a>';
   }
 
-     echo'<hr>';
-
-  if($url=="subvenciones.php"){
-      echo '<a href="./subvenciones.php" class="active btn btn-info col-12">Subvenciones </a>';
-  }else{
-      echo '<a href="./subvenciones.php" class="btn btn-info col-12">Subvenciones </a>';
-  }
+  //    echo'<hr>';
+  //
+  // if($url=="subvenciones.php"){
+  //     echo '<a href="./subvenciones.php" class="active btn btn-info col-12">Subvenciones </a>';
+  // }else{
+  //     echo '<a href="./subvenciones.php" class="btn btn-info col-12">Subvenciones </a>';
+  // }
 
   ?>
 

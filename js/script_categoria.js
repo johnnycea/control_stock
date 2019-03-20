@@ -1,31 +1,31 @@
-listarMarca("");
+listarCategoria("");
 
-function listarMarca(texto_buscar){
+function listarCategoria(texto_buscar){
 
 
 		$.ajax({
-			url:"./metodos_ajax/marcas/mostrar_listado_marca.php?texto_buscar="+texto_buscar,
+			url:"./metodos_ajax/categoria/mostrar_listado_categoria.php?texto_buscar="+texto_buscar,
 			method:"POST",
 			success:function(respuesta){
 				// alert(respuesta);
-				 $("#contenedor_listado_marca").html(respuesta);
+				 $("#contenedor_listado_categoria").html(respuesta);
 			}
 		});
 }
 
-function guardarMarca(){
+function guardarCategoria(){
 
 			$.ajax({
-				url:"./metodos_ajax/marcas/ingresar_modificar_marca.php",
+				url:"./metodos_ajax/categoria/ingresar_modificar_categoria.php",
 				method:"POST",
-				data: $("#formulario_modal_marca").serialize(),
+				data: $("#formulario_modal_categoria").serialize(),
 				success:function(respuesta){
 					  alert(respuesta);
 
 					 if(respuesta==1){
 						 swal("Guardado","Los datos se han guardado correctamente.","success");
-						 $("#modal_marca").modal('hide');
-						 listarMarca("");
+						 $("#modal_categoria").modal('hide');
+						 listarCategoria("");
 					 }else if(respuesta==2){
 						 swal("Ocurrió un error","Recargue la página e intente nuevamente.","error");
 					 }
@@ -34,10 +34,10 @@ function guardarMarca(){
 	}
 
 
-function limpiarFormularioMarca(){
-   $("#formulario_modal_marca")[0].reset();
-	 $('#txt_id_marca').attr("readonly",false);
-	 $("#formulario_modal_marca").attr("action","javascript:guardarMarca()");
+function limpiarFormularioCategoria(){
+   $("#formulario_modal_categoria")[0].reset();
+	 $('#txt_id_categoria').attr("readonly",false);
+	 $("#formulario_modal_categoria").attr("action","javascript:guardarCategoria()");
 
 }
 

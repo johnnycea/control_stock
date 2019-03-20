@@ -13,17 +13,6 @@ function listarProveedor(texto_buscar){
 		});
 }
 
-// function listarProveedor(texto_buscar){
-//
-// 		$.ajax({
-// 			url:"./metodos_ajax/proveedores/mostrar_listado_proveedores.php?texto_buscar="+texto_buscar,
-// 			method:"POST",
-// 			success:function(respuesta){
-// 				 $("#contenedor_listado_proveedores").html(respuesta);
-// 			}
-// 		});
-// }
-
 function guardarProveedor(){
 
 			$.ajax({

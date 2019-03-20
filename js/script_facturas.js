@@ -122,20 +122,31 @@ function cargarDatosProducto(id_producto){
 function cargarInformacionModificarDetalleFactura(id){
 
 	 var txt_codigo_producto = $("#columna_codigo_"+id).html();
-	 var txt_descripcion_producto = $("#columna_descripcion_"+id).html();
+	 var descripcion_producto = $("#columna_descripcion_"+id).html();
+
+	 var select_id_marca = $("#columna_id_marca_"+id).html();
 	 var select_marca = $("#columna_marca_"+id).html();
+
+	 var select_id_categoria = $("#columna_id_categoria_"+id).html();
+	 var select_categoria = $("#columna_categoria_"+id).html();
+
+	 var txt_stock_minimo = $("#columna_txt_stock_minimo_"+id).html();
+
 	 var txt_cantidad = $("#columna_cantidad_"+id).html();
+
 	 var txt_valor_unitario = $("#columna_valor_"+id).html();
 
-	 $("#codigo").val(txt_codigo_producto);
-	 $("#txt_descripcion_producto").val(txt_descripcion_producto);
-	 $("#select_marca").val(select_marca);
+	 $("#txt_codigo_producto").val(txt_codigo_producto);
+	 $("#txt_descripcion_producto").val(descripcion_producto);
+	 $("#select_marca").val(select_id_marca);
+	 $("#select_categoria").val(select_id_categoria);
+	 $("#txt_stock_minimo").val(txt_stock_minimo);
 	 $("#txt_cantidad").val(txt_cantidad);
-	 $("#valor").val(txt_valor_unitario);
-	//
-	 $('html,body').animate({
-		 scrollTop: $("#formulario_detalle_factura_producto").offset().top
-	}, 1200);
+	 $("#txt_valor_unitario").val(txt_valor_unitario);
+
+			//  $('html,body').animate({
+			// 	 scrollTop: $("#formulario_detalle_factura_producto").offset().top
+			// }, 1200);
 	 }
 
 function eliminarProveedor(id){

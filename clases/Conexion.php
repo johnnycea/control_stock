@@ -10,17 +10,11 @@
     private $bd;
 
     function __construct(){
-      // ini_set("session.cookie_lifetime","7200");
-      // ini_set("session.gc_maxlifetime","7200");
-
-      // $this->servidor= "146.66.99.89";
-      // $this->usuario= "daemmulc_gastos";
-      // $this->clave= "gastos_daem";
-      // $this->bd= "daemmulc_gastos";
 
       $this->servidor= "localhost";
       $this->usuario= "root";
-      $this->clave= "";
+      $this->clave= "johnnyjohnny";
+      // $this->clave= "";
       $this->bd= "control_stock";
 
 
