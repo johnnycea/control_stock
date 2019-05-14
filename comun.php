@@ -210,7 +210,7 @@ function cargarMenuPrincipal(){
 
 <style>
    .menu{
-     background: rgb(59, 159, 194);
+     background: #10424f;
      padding: 5px;
      margin-left: 10px;
    }
@@ -233,25 +233,26 @@ function cargarMenuPrincipal(){
      margin-bottom: 5px;
      padding:0px;
      height: 70px;
-     background: #ffffff;
-     color: black;
+     background: ;
+     color: #ffffff;
+     background: #000000;
    }
    .lista_iconos{
      font-size: 40px;
    }
 </style>
 
-<div class="col-1 menu bg-dark">
+<div class="col-1 menu">
 
   <div class="card" id="icono_menu" >
-    <img class="card-img" src="./img/logo_cochento.jpg" alt="Card image">
+    <img class="card-img" src="./img/logo_cochento.jpg" >
   </div>
 
 <a href="">
-    <div class="card botones_menu">
+    <div class="card botones_menu ">
       <center>
         <!-- <i class="fa fa-list-ul lista_iconos"></i> -->
-        <img class="card-img" src="./img/iconos/maquina.png" style="width:50%;" alt="Card image">
+        <img class="card-img " src="" style="width:50%;" >
 
         <label for="">Ventas</label>
       </center>
@@ -262,9 +263,20 @@ function cargarMenuPrincipal(){
     <div class="card botones_menu">
       <center>
         <!-- <i class="fa fa-list-ul lista_iconos"></i> -->
-        <img class="card-img" src="./img/iconos/maquina.png" style="width:50%;" alt="Card image">
+        <img class="card-img" src="" style="width:50%;" >
 
         <label for="">Facturas</label>
+      </center>
+    </div>
+</a>
+
+<a href="./productos_elaborados.php">
+    <div class="card botones_menu">
+      <center>
+        <!-- <i class="fa fa-list-ul lista_iconos"></i> -->
+        <img class="card-img" src="" style="width:50%;" >
+
+        <label for="">Productos Elab.</label>
       </center>
     </div>
 </a>
@@ -273,7 +285,7 @@ function cargarMenuPrincipal(){
     <div class="card botones_menu">
       <center>
         <!-- <i class="fa fa-list-ul lista_iconos"></i> -->
-        <img class="card-img" src="./img/iconos/maquina.png" style="width:50%;" alt="Card image">
+        <img class="card-img" src="" style="width:50%;" >
 
         <label for="">Stock</label>
       </center>
@@ -284,7 +296,7 @@ function cargarMenuPrincipal(){
     <div class="card botones_menu">
       <center>
         <!-- <i class="fa fa-list-ul lista_iconos"></i> -->
-        <img class="card-img" src="./img/iconos/maquina.png" style="width:50%;" alt="Card image">
+        <img class="card-img" src="" style="width:50%;" >
 
         <label for="">Proveedor</label>
       </center>
@@ -295,7 +307,7 @@ function cargarMenuPrincipal(){
     <div class="card botones_menu">
       <center>
         <!-- <i class="fa fa-list-ul lista_iconos"></i> -->
-        <img class="card-img" src="./img/iconos/maquina.png" style="width:50%;" alt="Card image">
+        <img class="card-img" src="" style="width:50%;" >
 
         <label for="">Informes</label>
       </center>
@@ -306,7 +318,7 @@ function cargarMenuPrincipal(){
     <div class="card botones_menu">
       <center>
         <!-- <i class="fa fa-list-ul lista_iconos"></i> -->
-        <img class="card-img" src="./img/iconos/maquina.png" style="width:50%;" alt="Card image">
+        <img class="card-img" src="" style="width:50%;" >
 
         <label for="">Configurar</label>
       </center>

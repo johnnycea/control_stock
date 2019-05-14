@@ -13,7 +13,7 @@
 
       $this->servidor= "localhost";
       $this->usuario= "root";
-      $this->clave= "johnnyjohnny";
+      $this->clave= "";
       // $this->clave= "";
       $this->bd= "control_stock";
 
