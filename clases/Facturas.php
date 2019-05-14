@@ -100,15 +100,14 @@ class Facturas{
     return $resultado_consulta;
  }
 
-   public function modificarFactura(){
+   public function modificarDetalleFactura(){
        $conexion = new Conexion();
        $conexion = $conexion->conectar();
 
-       $consulta="update tb_facturas SET
-       rut_proveedor = '".$this->rut_proveedor."',
-       numero_factura = '".$this->numero_factura."',
-       fecha = '".$this->fecha."'
-        WHERE (id_factura = '".$this->id_factura."');";
+       $consulta="update tb_detalle_factura SET
+       cantidad = '".$this->cantidad."',
+       valor = '".$this->valor."'
+        WHERE (id_factura = '".$this->id_factura."' and id_producto=".$this->id_producto.");";
 
 // echo $consulta;
        $resultado= $conexion->query($consulta);

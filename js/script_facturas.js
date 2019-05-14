@@ -149,6 +149,23 @@ function cargarInformacionModificarDetalleFactura(id){
 			// }, 1200);
 	 }
 
+function modificarDetalleFactura(id){
+
+			$.ajax({
+				url:"./metodos_ajax/facturas/ingresar_modificar_detalle_facturas.php?id="+id,
+				method:"POST",
+				success:function(respuesta){
+					 alert(respuesta);
+					 if(respuesta==1){
+						 swal("Eliminado correctamente","Los datos se han guardado correctamente.","success");
+						 listarProveedor();
+					 }else if(respuesta==2){
+						 swal("Ocurrió un error","Recargue la página e intente nuevamente.","error");
+					 }
+				}
+			});
+}
+
 function eliminarProveedor(id){
 
 			$.ajax({

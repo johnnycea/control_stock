@@ -247,7 +247,7 @@ function cargarMenuPrincipal(){
     <img class="card-img" src="./img/logo_cochento.jpg" alt="Card image">
   </div>
 
-<a href="">
+<a href="./ventas.php">
     <div class="card botones_menu">
       <center>
         <!-- <i class="fa fa-list-ul lista_iconos"></i> -->
@@ -264,7 +264,7 @@ function cargarMenuPrincipal(){
         <!-- <i class="fa fa-list-ul lista_iconos"></i> -->
         <img class="card-img" src="./img/iconos/maquina.png" style="width:50%;" alt="Card image">
 
-        <label for="">Facturas</label>
+        <label for="">Ingresos</label>
       </center>
     </div>
 </a>

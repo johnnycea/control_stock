@@ -23,19 +23,15 @@ $consultaExisteProductoEnDetalleFactura = $Facturas->obtenerProductoDetallefactu
 
 //CONSULTA SI EL PRODCUTO QUE SE VA A INGRESAR YA ESTA REGISTRADO EN EL DETALLE DE FACTURA
 if($consultaExisteProductoEnDetalleFactura->num_rows==0){
-  //SI NO ESTABA LO INGRESA
+  //SI ENTRA AQUI, NO ESTABA INGRESADO EL PRODUCTO EN EL DETALLE, POR LO TANTO SE PUEDE AGREGAR
    if($Facturas->crearDetalleFactura()){
       echo "1";
    }else{
       echo "2";
    }
 }else{
-//SI YA ESTABA, LO MODIFICA
-    if($Facturas->modificarDetalleFactura()){
-       echo "1";
-    }else{
-       echo "2";
-    }
+//ENTRA AQUI SI EL PRODUCTO YA EXISTE, POR LO TANTO NO SE PUEDE AGREGAR OTRA VEZ
+ echo "3";
 }
 
 
