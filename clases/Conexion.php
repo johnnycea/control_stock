@@ -11,11 +11,10 @@
 
     function __construct(){
 
-      $this->servidor= "localhost";
-      $this->usuario= "root";
-      $this->clave= "";
-      // $this->clave= "";
-      $this->bd= "control_stock";
+      $this->servidor= "146.66.99.89";
+      $this->usuario= "daemmulc_stock";
+      $this->clave= "stock123";
+      $this->bd= "daemmulc_stock";
 
 
     }
