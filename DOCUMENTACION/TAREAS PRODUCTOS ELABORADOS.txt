@@ -1,0 +1,12 @@
+
+1.- lISTAR pRODUCTOS ELABORADOS DESDE BASE DE DATOS;
+
+2. 
+-Que funcione Insert a tabla tb_productos_elaborados.
+
+
+3. Que al presionar buscar, liste los ingredientes de la tabla tb_productos.
+
+
+4.
+  Programar que al presionar el boton agregar se guarde el ingrediente seleccionado en tabla tb_ingredientes_productos_elaborados

@@ -60,7 +60,7 @@ $usuario= $usuario->obtenerUsuarioActual();
 
 
 
-  <!-- MODAL Proveedor-->
+  <!-- MODAL Producto-->
   <div class="modal fade" id="modal_proveedor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog modal-md" role="document">
     <div class="modal-content">
