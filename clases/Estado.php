@@ -34,14 +34,14 @@ class Estado{
 
  }
 
- // public function obtenerEstados(){
- //    $Conexion = new Conexion();
- //    $Conexion = $Conexion->conectar();
- //
- //    $resultado_consulta = $Conexion->query("select * from tb_estado_movimiento");
- //    return $resultado_consulta;
- //
- // }
+ public function obtenerEstadosProductosElaborados(){
+    $Conexion = new Conexion();
+    $Conexion = $Conexion->conectar();
+
+    $resultado_consulta = $Conexion->query("select * from tb_estado_producto");
+    return $resultado_consulta;
+
+ }
 
 
 

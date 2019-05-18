@@ -17,8 +17,6 @@ function cargarHead(){
   <link rel="stylesheet" href="./css/estilos.css">
   <link rel="stylesheet" href="./sweetalert/sweet-alert.css">
   <link rel="stylesheet" href='./css/bootstrap-datepicker.min.css' />
-  <link rel="stylesheet" href='./css/fullcalendar.min.css' />
-  <link rel="stylesheet" href='./css/fullcalendar.print.min.css' media='print' />
   <link rel="stylesheet" href='./fonts/css/fontawesome.min.css' />
 
   <script src='./js/jquery-3.1.0.min.js'></script>
@@ -26,33 +24,11 @@ function cargarHead(){
   <script src="./js/validaciones.js"></script>
   <script src="./sweetalert/sweet-alert.min.js"></script>
   <script src='./js/moment.min.js'></script>
-  <script src='./js/fullcalendar.min.js'></script>
   <script src="./js/bootstrap-datepicker.min.js"></script>
-
-  <!-- <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script> -->
   <script src="./js/fontawesome-all.min.js"></script>
-
   <script src="./js/validaciones.js"></script>
 
-  <!-- CONFIGURA CALENDARIO DATEPICKER -->
-  <script>
-  $(document).ready(function(){
 
-    $.fn.datepicker.dates['es'] = {
-        days: ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"],
-        daysShort: ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"],
-        daysMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
-        months: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
-        monthsShort: ["En", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
-        today: "Today",
-        clear: "Clear",
-        format: "mm/dd/yyyy",
-        titleFormat: "MM yyyy", /* Leverages same syntax as 'format' */
-        weekStart: 1
-    };
-
-  })
-  </script>
   <?php
 }
 

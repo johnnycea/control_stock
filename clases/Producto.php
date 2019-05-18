@@ -9,6 +9,9 @@ class Producto{
  private $id_categoria;
  private $id_marca;
  private $id_estado;
+ private $id_producto_elaborado;
+ private $id_producto_ingrediente;
+ private $cantidad;
 
  public function setIdProducto($id_producto){
    $this->id_producto = $id_producto;
@@ -27,6 +30,12 @@ class Producto{
  }
  public function setIdEstado($id_estado){
    $this->id_estado = $id_estado;
+ }
+ public function setIdProductoElaborado($id_producto_elaborado){
+   $this->id_producto_elaborado = $id_producto_elaborado;
+ }
+ public function setCantidad($cantidad){
+   $this->cantidad = $cantidad;
  }
 
 
@@ -61,6 +70,18 @@ class Producto{
     return $resultado_consulta;
  }
 
+ public function obtenerProductosParaIngredientes($texto_buscar){
+    $Conexion = new Conexion();
+    $Conexion = $Conexion->conectar();
+
+    $resultado_consulta = $Conexion->query("select p.id_producto, p.descripcion, um.descripcion as unidad_medida
+                                          FROM tb_productos p
+                                          inner join tb_unidades_medida um on p.unidad_medida=um.id_unidad_medida
+                                          where p.id_producto like '%".$texto_buscar."%' or p.descripcion like '%".$texto_buscar."%' ");
+
+    return $resultado_consulta;
+ }
+
  public function crearProducto(){
    $conexion = new Conexion();
    $conexion = $conexion->conectar();
@@ -69,6 +90,10 @@ class Producto{
    $resultado= $conexion->query($consulta);
    return $resultado;
  }
+
+
+
+ 
 
    public function modificarProducto(){
        $conexion = new Conexion();
