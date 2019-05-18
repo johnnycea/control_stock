@@ -73,7 +73,7 @@ class ProductoElaborado{
     $Conexion = new Conexion();
     $Conexion = $Conexion->conectar();
 
-    $consulta = "insert INTO tb_productos_elaborados (`descripcion`, `valor`, `estado_producto`) VALUES ('".$this->descripcion."', '".$this->valor."', '".$this->estado."')";
+    $consulta = "insert INTO tb_productos_elaborados (`descripcion`, `valor`, `estado_producto`,imagen) VALUES ('".$this->descripcion."', '".$this->valor."', '".$this->estado."','pizza1.jpg')";
 
     if($resultado = $Conexion->query($consulta)){
 

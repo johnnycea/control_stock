@@ -3,19 +3,6 @@ require_once '../../clases/Conexion.php';
 require_once '../../clases/Funciones.php';
 require_once '../../clases/ProductoElaborado.php';
 
-// DESPUES
-// Muestra los ingredientes seleccionados al producto final
-
-              echo '<table class="table table-bordered table-info">
-                <thead>
-                  <th>Codigo</th>
-                  <th>Descripcion</th>
-                  <th>Valor</th>
-                  <th>Estado</th>
-                  <th></th>
-                  <th></th>
-                </thead>
-                <tbody>';
 
                   $Funciones = new Funciones();
                   $texto_buscar = $Funciones->limpiarTexto($_REQUEST['texto_buscar']);
@@ -25,25 +12,20 @@ require_once '../../clases/ProductoElaborado.php';
 
                     while($filas = $listadoProductoElaborado->fetch_array()){
 
-                          echo '<tr>
-                                  <td><span id="columna_id_producto_elaborado_'.$filas['id_producto_elaborado'].'" >'.$filas['id_producto_elaborado'].'</span></td>
-                                  <td><span id="columna_descripcion_'.$filas['id_producto_elaborado'].'" >'.$filas['descripcion'].'</span></td>
-                                  <td><span id="columna_valor_'.$filas['id_producto_elaborado'].'" >'.$filas['valor'].'</span></td>
-                                  <td><span id="columna_estado_'.$filas['id_producto_elaborado'].'" >'.$filas['estado_producto'].'</span></td>
-                                  <td>
-                                        <button onclick="cargarModificarProductoElaborado('.$filas['id_producto_elaborado'].')" data-target="#modal_producto_elaborado" data-toggle="modal" class="col-12 btn btn-warning "> <i class="fa fa-edit"></i> </button>
-                                  </td>
-                                  <td>
-                                        <button onclick="eliminarProductoElaborado('.$filas['id_producto_elaborado'].')"  class="col-12 btn btn-danger "> <i class="fa fa-trash-alt"></i> </button>
-                                  </td>
-                               </tr>';
+                        echo '
+                        <div class="card border-primary mb-3 " style="max-width: 18rem;" >
+                          <img class="card-img-top" src="./imagenes/productos_elaborados/'.$filas['imagen'].'" alt="Card image cap">
+                          <div class="card-body">
+                            <h5 class="card-title">'.$filas['descripcion'].'</h5>
+
+                            <button class="btn btn-warning " onclick="cargarModificarProductoElaborado('.$filas['id_producto_elaborado'].')" >Editar</button>
+                            <button class="btn btn-danger "  onclick="eliminarProductoElaborado('.$filas['id_producto_elaborado'].')" >Eliminar</button>
+
+                          </div>
+                        </div>
+                        ';
+
                     }
-
-                    echo '
-                     </tbody>
-                  </table>';
-
-  // <a href="./modificar_empresa.php?id_empresa='.$filas['id_empresa'].'" class="btn btn-outline-primary">Editar</a>
 
 
  ?>
