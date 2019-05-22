@@ -47,10 +47,13 @@ $usuario= $usuario->obtenerUsuarioActual();
             <h3>Listado Productos Elaborados</h3>
           </div>
 
-          <div id="contenedor_listado_productos_elaborados">
+          <div class="row" id="contenedor_listado_productos_elaborados">
 
 
           </div>
+
+
+
 
        </div>
 
@@ -81,8 +84,27 @@ $usuario= $usuario->obtenerUsuarioActual();
                    <input required type="text" class="form-control" value="<?php echo $filas['valor']; ?>" name="txt_valor" id="txt_valor">
                  </div>
 
-                 <div class="form-group col-md-6" >
-                     <label for="title" class="col-12 control-label">Estado:</label>
+
+
+          <div class="row">
+
+            <div class="form-group col-md-6" >
+              <label for="title" class="col-12 control-label">Descripción:</label>
+              <input required type="text" class="form-control" name="txt_descripcion" id="txt_descripcion">
+            </div>
+
+            <div class="form-group col-md-6" >
+              <label for="title" class="col-12 control-label">Valor:</label>
+              <input required type="text" class="form-control" name="txt_valor" id="txt_valor">
+            </div>
+
+            <div class="form-group col-md-6" >
+              <label for="title" class="col-12 control-label">Imagen:</label>
+              <input required type="file" class="form-control" name="select_imagen" id="select_imagen">
+            </div>
+
+            <div class="form-group col-md-6" >
+                <label for="title" class="col-12 control-label">Estado:</label>
                      <select required class="form-control" value="<?php echo $filas['estado_producto']; ?>" name="select_estado" id="select_estado">
                        <option value="" selected >Seleccione:</option>
                        <?php
@@ -94,10 +116,6 @@ $usuario= $usuario->obtenerUsuarioActual();
                            }
                         ?>
                      </select>
-                 </div>
-
-               </div>
-
 
 
                <div class="form-group col-md-12" >
@@ -164,6 +182,7 @@ $usuario= $usuario->obtenerUsuarioActual();
 
 
 
+                      <h5 class="card-title">Ingredientes agregados</h5>
 
        <div id="contenedor_buscador_ingredientes"  class="d-none">
 
