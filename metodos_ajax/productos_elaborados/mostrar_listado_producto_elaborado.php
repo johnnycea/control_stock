@@ -31,7 +31,7 @@ require_once '../../clases/ProductoElaborado.php';
                                   <td><span id="columna_valor_'.$filas['id_producto_elaborado'].'" >'.$filas['valor'].'</span></td>
                                   <td><span id="columna_estado_'.$filas['id_producto_elaborado'].'" >'.$filas['estado_producto'].'</span></td>
                                   <td>
-                                        <button onclick="cargarModificarProductoElaborado('.$filas['id_producto_elaborado'].')" data-target="#modal_producto_elaborado" data-toggle="modal" class="col-12 btn btn-warning "> <i class="fa fa-edit"></i> </button>
+                                        <button onclick="cargarModificarProductoElaborado('.$filas['id_producto_elaborado'].')" data-target="#modal_modificar_producto_elaborado" data-toggle="modal" class="col-12 btn btn-warning "> <i class="fa fa-edit"></i> </button>
                                   </td>
                                   <td>
                                         <button onclick="eliminarProductoElaborado('.$filas['id_producto_elaborado'].')"  class="col-12 btn btn-danger "> <i class="fa fa-trash-alt"></i> </button>

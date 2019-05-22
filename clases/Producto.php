@@ -92,9 +92,6 @@ class Producto{
  }
 
 
-
- 
-
    public function modificarProducto(){
        $conexion = new Conexion();
        $conexion = $conexion->conectar();
@@ -111,30 +108,8 @@ class Producto{
        return $resultado;
    }
 
-   public function eliminarProveedor(){
-     $Conexion = new Conexion();
-     $Conexion = $Conexion->conectar();
 
-     //CONSULTA SI EL PROVEEDOR TIENE FACTURAS EN EL SISTEMA
-     $consultaFacturasProveedor = $Conexion->query("select * from tb_facturas where id_proveedor=".$this->rut_proveedor);
-     if($consultaFacturasProveedor->num_rows==0){
-       //entra si el proveedor no tiene facturas, por lo tanto se elimina
-           if($Conexion->query("DELETE FROM tb_proveedores where rut_proveedor=".$this->rut_proveedor)){
-               return true;
-           }else{
-               return false;
-           }
-     }else{
-       //entra si el proveedor SI TIENE facturas, SE CAMBIA ESTADO A "ELIMINADO"
-           if($Conexion->query("Update tb_proveedores set estado_proveedor=3 where rut_proveedor=".$this->rut_proveedor)){
-               return true;
-           }else{
-               return false;
-           }
-     }
-
-   }
-
+  
 
 }
  ?>

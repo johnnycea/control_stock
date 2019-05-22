@@ -19,23 +19,26 @@ require_once '../../clases/ProductoElaborado.php';
 
                   $ProductoIngrediente = new ProductoElaborado();
                   $ProductoIngrediente->setIdProductoElaborado($id_producto_elaborado);
-                  $listadoIngredientes = $ProductoIngrediente->obtener_ingredientes_producto(); //$texto_buscar," where id_estado=1 or id_estado=2 "
+                  $listadoIngredientes = $ProductoIngrediente->obtener_ingredientes_producto();
 
                     while($filas = $listadoIngredientes->fetch_array()){
 
                           echo '<tr>
-                                  <td>'.$filas['id_producto'].'</td>
+                                  <td><span id="id_producto_'.$filas['id_producto'].'" >'.$filas['id_producto'].'</span></td>
                                   <td>'.$filas['descripcion'].'</td>
                                   <td>'.$filas['unidad_medida'].'</td>
                                   <td>'.$filas['cantidad'].'</td>
                                   <td></td>
+                                  <td><button onclick="eliminarIngrediente('.$filas['id_producto'].','.$id_producto_elaborado.')"  class="col-12 btn btn-danger "> <i class="fa fa-trash-alt"></i> </button>
+
+                                  </td>
                                </tr>';
-                    }
+                            }
+                            // DELETE FROM `daemmulc_stock`.`tb_ingredientes_producto_elaborado` WHERE (`id_producto_elaborado` = '64') and (`id_producto_ingrediente` = '3');
+
 
                     echo '
                      </tbody>
                   </table>';
-
-
-
  ?>
+ <!-- <td><button onclick="agregarIngredienteProducto('.$filas['id_producto'].','.$id_creado.')" class="btn btn-warning btn-block">Agregar</button></td> -->

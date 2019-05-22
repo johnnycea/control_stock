@@ -29,7 +29,6 @@ class ProductoElaborado{
     $this->estado = $estado;
   }
 
-
   public function obtener_ingredientes_producto(){
     $conexion = new Conexion();
     $conexion = $conexion->conectar();
@@ -93,11 +92,29 @@ class ProductoElaborado{
     $conexion = new Conexion();
     $conexion = $conexion->conectar();
 
-    $consulta = "insert INTO tb_ingredientes_producto_elaborado (`id_producto_elaborado`, `id_producto_ingrediente`, `cantidad`) VALUES ('".$this->id_producto_elaborado."', '".$this->id_ingrediente."', '".$this->cantidad_ingrediente."')";
+    $consulta = "insert INTO tb_ingredientes_producto_elaborado (`id_producto_elaborado`, `id_producto_ingrediente`, `cantidad`) VALUES (".$this->id_producto_elaborado.", ".$this->id_ingrediente.", ".$this->cantidad_ingrediente.")";
     $resultado= $conexion->query($consulta);
     return $resultado;
   }
 
+  function modificarProductoElaborado(){
+    $conexion = new Conexion();
+    $conexion = $conexion->conectar();
+
+        $consulta = "update tb_productos_elaborados
+                         SET
+                         `descripcion` = '".$this->descripcion."',
+                         `valor` = '".$this->valor."',
+                         `estado_producto` = '".$this->estado."'
+                          WHERE (`id_producto_elaborado` = '".$this->id_producto_elaborado."')";
+
+    if($conexion->query($consulta)){
+      return true;
+    }else{
+      echo $consulta;
+      return false;
+    }
+  }
 
   public function eliminarProductoElaborado(){
     $Conexion = new Conexion();
@@ -114,7 +131,20 @@ class ProductoElaborado{
 
   }
 
+  public function eliminarIngrediente(){
+    $Conexion = new Conexion();
+    $Conexion = $Conexion->conectar();
 
+    $consulta = "delete from tb_ingredientes_producto_elaborado where (`id_producto_elaborado` = ".$this->id_producto_elaborado.") and (`id_producto_ingrediente` = ".$this->id_ingrediente.")";
+    // echo $consulta;
+    if($Conexion->query($consulta)){
+        return true;
+    }else{
+        echo $consulta;
+        // return false;
+    }
+
+  }
 
 
 }
