@@ -40,7 +40,7 @@ $usuario= $usuario->obtenerUsuarioActual();
        <div class="col-12">
 
           <div>
-            <button class="btn btn-success btn-block"  data-toggle="modal" data-target="#modal_nuevo_producto_elaborado" >NUEVO PRODUCTO</button>
+            <button class="btn btn-success btn-block"  onclick="limpiarModalProductosElaborados();" data-toggle="modal" data-target="#modal_nuevo_producto_elaborado" >NUEVO PRODUCTO</button>
           </div>
 
           <div>
@@ -57,83 +57,12 @@ $usuario= $usuario->obtenerUsuarioActual();
 
        </div>
 
-       <!-- MODAL Producto Elaborado MODIFICAR-->
-       <div class="modal fade" id="modal_modificar_producto_elaborado" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-         <div class="modal-dialog modal-lg" role="document">
-         <div class="modal-content">
-
-           <div class="modal-header">
-             <h5 class="modal-title" id="myModalLabel">Modificar Elaborados</h5>
-             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-           </div>
-           <div class="modal-body">
-
-             <form id="formulario_modal_modificar_producto_elaborado" class="" action="javascript:modificarProductoElaborado()" method="post">
-
-               <input type="hidden" name="txt_id_producto_elaborado" id="txt_id_producto_elaborado" value="">
-
-                 <div class="form-group col-md-12" >
-                   <label for="title" class="col-12 control-label">Descripción:</label>
-                   <input required type="text" value="<?php echo $filas['descripcion']; ?>" class="form-control" name="txt_descripcion" id="txt_descripcion">
-                 </div>
-
-               <div class="row">
-
-                 <div class="form-group col-md-6" >
-                   <label for="title" class="col-12 control-label">Valor:</label>
-                   <input required type="text" class="form-control" value="<?php echo $filas['valor']; ?>" name="txt_valor" id="txt_valor">
-                 </div>
-
-
-
-          <div class="row">
-
-            <div class="form-group col-md-6" >
-              <label for="title" class="col-12 control-label">Descripción:</label>
-              <input required type="text" class="form-control" name="txt_descripcion" id="txt_descripcion">
-            </div>
-
-            <div class="form-group col-md-6" >
-              <label for="title" class="col-12 control-label">Valor:</label>
-              <input required type="text" class="form-control" name="txt_valor" id="txt_valor">
-            </div>
-
-            <div class="form-group col-md-6" >
-              <label for="title" class="col-12 control-label">Imagen:</label>
-              <input required type="file" class="form-control" name="select_imagen" id="select_imagen">
-            </div>
-
-            <div class="form-group col-md-6" >
-                <label for="title" class="col-12 control-label">Estado:</label>
-                     <select required class="form-control" value="<?php echo $filas['estado_producto']; ?>" name="select_estado" id="select_estado">
-                       <option value="" selected >Seleccione:</option>
-                       <?php
-                           $Estado = new Estado();
-                           $listarEstado = $Estado->obtenerEstadosProductosElaborados();
-
-                           while($filas = $listarEstado->fetch_array()){
-                              echo '<option value="'.$filas['id_estado'].'">'.$filas['descripcion_estado'].'</option>';
-                           }
-                        ?>
-                     </select>
-
-
-               <div class="form-group col-md-12" >
-                 <br>
-                 <input type="submit" id="btn_boton_guardar" name="btn_boton_guardar" class="btn btn-info btn-block" value="Guardar">
-               </div>
-
-           </form>
-         </div>
-     </div>
-     </div>
-     </div>
-
 
      <!-- MODAL Producto CREAR-->
-     <div class="modal fade" id="modal_nuevo_producto_elaborado" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+     <div class="modal fade" id="modal_nuevo_producto_elaborado" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
        <div class="modal-dialog modal-lg" role="document">
        <div class="modal-content">
+
 
          <div class="modal-header">
            <h5 class="modal-title" id="myModalLabel">Productos Elaborados</h5>
@@ -141,8 +70,9 @@ $usuario= $usuario->obtenerUsuarioActual();
          </div>
          <div class="modal-body">
 
-           <form id="formulario_modal_producto_elaborado" class="" action="javascript:guardarProductoElaborado()" method="post">
+           <form id="formulario_modal_producto_elaborado" class="" action="javascript:guardarModificarProductoElaborado()" method="post" enctype="multipart/form-data">
 
+             <input type="hidden" id="txt_id_producto_elaborado_modificar" name="txt_id_producto_elaborado_modificar" value="">
 
                <div class="form-group col-md-12" >
                  <label for="title" class="col-12 control-label">Descripción:</label>
@@ -173,6 +103,13 @@ $usuario= $usuario->obtenerUsuarioActual();
 
              </div>
 
+             <div id="row">
+               <div class="form-group col-12">
+             <label for="">IMAGEN</label>
+             <input class="form-control"  type="file" name="select_imagen" id="select_imagen" value="">
+           </div>
+             </div>
+
              <div class="form-group col-md-12" >
                <br>
                <input type="submit" id="btn_boton_guardar" name="btn_boton_guardar" class="btn btn-info btn-block" value="Guardar">
@@ -181,8 +118,6 @@ $usuario= $usuario->obtenerUsuarioActual();
          </form>
 
 
-
-                      <h5 class="card-title">Ingredientes agregados</h5>
 
        <div id="contenedor_buscador_ingredientes"  class="d-none">
 
@@ -236,10 +171,6 @@ $usuario= $usuario->obtenerUsuarioActual();
     </div>
     </div>
   </div>
-
-
-
-
 
 
 

@@ -57,7 +57,17 @@ var id_producto_creado = $("#txt_id_producto_elaborado_creado").val();
 		});
 }
 
-function guardarProductoElaborado(){
+function limpiarModalProductosElaborados(){
+	$("#btn_boton_guardar").val("Guardar");
+	$("#btn_boton_guardar").removeClass("btn-success");
+	$("#btn_boton_guardar").addClass("btn-info");
+	$("#btn_boton_guardar").attr("disabled",false);
+	$("#contenedor_buscador_ingredientes").addClass("d-none");
+
+	$("#formulario_modal_producto_elaborado")[0].reset();
+}
+
+function guardarModificarProductoElaborado(){
 
 
 	$("#btn_boton_guardar").val("Guardando . . .");
@@ -65,28 +75,52 @@ function guardarProductoElaborado(){
 	$("#btn_boton_guardar").addClass("btn-success");
 	$("#btn_boton_guardar").attr("disabled",true);
 
-
+	var formData = new FormData(document.getElementById("formulario_modal_producto_elaborado"));
 			$.ajax({
-				url:"./metodos_ajax/productos_elaborados/ingresar_productos_elaborados.php",
-				method:"POST",
-				data: $("#formulario_modal_producto_elaborado").serialize(),
+				url:"./metodos_ajax/productos_elaborados/ingresar_modificar_productos_elaborados.php",
+				dataType: "html",
+				type:'post',
+				data: formData,
+				cache: false,
+				contentType: false,
+				processData:false,
 				success:function(respuesta){
 					  alert(respuesta);
 
 					 if(isNaN(respuesta)){
+
+						 if(respuesta=="error3"){
+								swal("Debe seleccionar imagen","","info");
+
+								$("#btn_boton_guardar").val("Guardar");
+								$("#btn_boton_guardar").removeClass("btn-success");
+								$("#btn_boton_guardar").addClass("btn-info");
+								$("#btn_boton_guardar").attr("disabled",false);
+
+						 }else if(respuesta=="error4"){
+						  swal("Error al subir la imagen","Recargue la página e intente nuevamente.","error");
+							//ceerrar modal
+							
+
+						 }else{
 						  swal("Ocurrió un error","Recargue la página e intente nuevamente.","error");
+						}
+
 					 }else{
 						 // $("#modal_producto_elaborado").modal('close');
 						 // swal("Guardado","Seleccione los ingredientes del producto creado.","success");
 
 						 $("#contenedor_buscador_ingredientes").removeClass("d-none");
 						 $("#txt_id_producto_elaborado_creado").val(respuesta);
-						 $("#btn_boton_guardar").val("PRODUCTO CREADO");
+						 $("#btn_boton_guardar").val("PRODUCTO GUARDADO");
+						 listarIngredientesSeleccionados(respuesta);
 						 listarProductosElaborados("");
 					 }
 				}
 			});
 	}
+
+
 
 
 function agregarIngredienteProducto(id_ingrediente,id_producto_creado){
@@ -100,17 +134,21 @@ function agregarIngredienteProducto(id_ingrediente,id_producto_creado){
 			url:"./metodos_ajax/productos_elaborados/ingresar_ingredientes.php?cantidad_ingrediente="+cantidad_ingrediente+"&id_producto_creado="+id_producto_creado+"&id_ingrediente="+id_ingrediente,
 			method:"POST",
 			success:function(respuesta){
-				 alert(respuesta);
+				 // alert(respuesta);
 						 if(respuesta=="1"){
+							 listarIngredientesSeleccionados(id_producto_creado);
 							  swal("Guardado","Guardado correctamente.","success");
-								listarIngredientesSeleccionados(id_producto_creado);
 						 }else{
 							 swal("Ocurrió un error","Recargue la página e intente nuevamente.","error");
 						 }
 			}
 		});
-	
+
+	}else{
+		swal("Ingrese cantidad","Ingrese cantidad del ingrediente","info");
+
 	}
+
 	}
 
 
@@ -123,14 +161,16 @@ function agregarIngredienteProducto(id_ingrediente,id_producto_creado){
 
 function cargarModificarProductoElaborado(id){
 
-  var txt_id_producto_elaborado = $("#columna_id_producto_elaborado_"+id).html();
+	limpiarModalProductosElaborados();
+
+  var txt_id_producto_elaborado = id;
 	var txt_descripcion = $("#columna_descripcion_"+id).html();
   var txt_valor = $("#columna_valor_"+id).html();
 	var select_estado = $("#columna_estado_"+id).html();
 
 	// alert("id "+txt_id_producto_elaborado);
 	//carga la informacion recibida en el modal
-	$("#txt_id_producto_elaborado").val(txt_id_producto_elaborado);
+	$("#txt_id_producto_elaborado_modificar").val(txt_id_producto_elaborado);
 	$("#txt_descripcion").val(txt_descripcion);
 	$("#txt_valor").val(txt_valor);
 	$("#select_estado").val(select_estado);
@@ -211,10 +251,10 @@ function eliminarIngrediente(id_ingrediente,id_producto_elaborado){
 				url:"./metodos_ajax/productos_elaborados/eliminar_ingrediente.php?id_ingrediente="+id_ingrediente+"&id_producto_elaborado="+id_producto_elaborado,
 				method:"POST",
 				success:function(respuesta){
-					 //alert(respuesta);
+					 // alert(respuesta);
 					 if(respuesta==1){
 						 swal("Eliminado correctamente","Los datos se han guardado correctamente.","success");
-						 listarIngredientesSeleccionados("");
+						 listarIngredientesSeleccionados(id_producto_elaborado);
 					 }else if(respuesta==2){
 						 swal("Ocurrió un error","Recargue la página e intente nuevamente.","error");
 					 }

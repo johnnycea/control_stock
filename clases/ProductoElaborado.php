@@ -9,6 +9,8 @@ class ProductoElaborado{
   private $estado_producto;
   private $id_ingrediente;
   private $cantidad_ingrediente;
+  private $imagen;
+
 
   public function setIdProductoElaborado($id_producto_elaborado){
     $this->id_producto_elaborado = $id_producto_elaborado;
@@ -27,6 +29,12 @@ class ProductoElaborado{
   }
   public function setEstado($estado){
     $this->estado = $estado;
+  }
+  public function setIdImagen ($id_imagen){
+    $this->id_imagen=$id_imagen;
+  }
+  function setImagen($imagen){
+    $this->imagen = $imagen;
   }
 
   public function obtener_ingredientes_producto(){
@@ -72,7 +80,7 @@ class ProductoElaborado{
     $Conexion = new Conexion();
     $Conexion = $Conexion->conectar();
 
-    $consulta = "insert INTO tb_productos_elaborados (`descripcion`, `valor`, `estado_producto`,imagen) VALUES ('".$this->descripcion."', '".$this->valor."', '".$this->estado."','pizza1.jpg')";
+    $consulta = "insert INTO tb_productos_elaborados (`descripcion`, `valor`, `estado_producto`,imagen) VALUES ('".$this->descripcion."', '".$this->valor."', '".$this->estado."','".$this->imagen."')";
 
     if($resultado = $Conexion->query($consulta)){
 
@@ -80,7 +88,7 @@ class ProductoElaborado{
           $resultadoNuevoId = $resultadoNuevoId->fetch_array();
 
           return $resultadoNuevoId['id_creado'];
-
+echo $consulta;
     }
     else{
       return false;
@@ -97,23 +105,39 @@ class ProductoElaborado{
     return $resultado;
   }
 
+
   function modificarProductoElaborado(){
-    $conexion = new Conexion();
-    $conexion = $conexion->conectar();
+      $Conexion = new Conexion();
+      $Conexion = $Conexion->conectar();
+
+      $consulta="";
+
+     if($this->imagen == ""){
 
         $consulta = "update tb_productos_elaborados
-                         SET
-                         `descripcion` = '".$this->descripcion."',
-                         `valor` = '".$this->valor."',
-                         `estado_producto` = '".$this->estado."'
-                          WHERE (`id_producto_elaborado` = '".$this->id_producto_elaborado."')";
+                  set
+                  descripcion = '".$this->descripcion."',
+                  valor = '".$this->valor."',
+                  estado_producto = '".$this->estado."'
+                  WHERE (id_producto_elaborado = '".$this->id_producto_elaborado."')";
 
-    if($conexion->query($consulta)){
-      return true;
-    }else{
-      echo $consulta;
-      return false;
-    }
+     }else{
+
+      $consulta = "update tb_productos_elaborados
+                set
+
+                descripcion = '".$this->descripcion."',
+                valor = '".$this->valor."',
+                estado_producto = '".$this->estado."',
+                imagen = '".$this->imagen."'
+                 WHERE (id_producto_elaborado = '".$this->id_producto_elaborado."')";
+
+     }
+
+    // echo $consulta;
+
+      $resultado= $Conexion->query($consulta);
+      return $resultado;
   }
 
   public function eliminarProductoElaborado(){

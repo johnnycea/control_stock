@@ -17,9 +17,11 @@ require_once '../../clases/ProductoElaborado.php';
                         <div class="card border-primary mb-3 " style="max-width: 18rem;" >
                           <img class="card-img-top" src="./imagenes/productos_elaborados/'.$filas['imagen'].'" alt="Card image cap">
                           <div class="card-body">
-                            <h5 class="card-title">'.$filas['descripcion'].'</h5>
+                            <h5 id="columna_descripcion_'.$filas['id_producto_elaborado'].'" class="card-title">'.$filas['descripcion'].'</h5>
+                            <h5 id="columna_valor_'.$filas['id_producto_elaborado'].'" class="card-title">$'.number_format($filas['valor'],0,",",".").'</h5>
+                            <h5 class="d-none" id="columna_estado_'.$filas['id_producto_elaborado'].'" class="card-title">'.$filas['estado_producto'].'</h5>
 
-                            <button class="btn btn-warning " onclick="cargarModificarProductoElaborado('.$filas['id_producto_elaborado'].')" data-target="#modal_modificar_producto_elaborado" data-toggle="modal">Editar</button>
+                            <button class="btn btn-warning " onclick="cargarModificarProductoElaborado('.$filas['id_producto_elaborado'].')" data-target="#modal_nuevo_producto_elaborado" data-toggle="modal">Editar</button>
                             <button class="btn btn-danger "  onclick="eliminarProductoElaborado('.$filas['id_producto_elaborado'].')" >Eliminar</button>
 
                           </div>

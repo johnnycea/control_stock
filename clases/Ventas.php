@@ -47,15 +47,24 @@ class Ventas{
  }
 
 
- public function crearVenta(){
-   $conexion = new Conexion();
-   $conexion = $conexion->conectar();
+ function crearVenta(){
+   $Conexion = new Conexion();
+   $Conexion = $Conexion->conectar();
 
    $consulta = "insert INTO tb_ventas (`total`,`fecha`) VALUES ('".$this->total."', '".$this->fecha."')";
-   // echo $consulta;
 
-   $resultado= $conexion->query($consulta);
-   return $resultado;
+   if($resultado = $Conexion->query($consulta)){
+
+         $resultadoNuevoId = $Conexion->query("SELECT LAST_INSERT_ID() as id_creado");
+         $resultadoNuevoId = $resultadoNuevoId->fetch_array();
+
+         return $resultadoNuevoId['id_creado'];
+echo $consulta;
+   }
+   else{
+     return false;
+   }
+
  }
 
  public function vistaDetalleFactura(){

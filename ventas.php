@@ -38,17 +38,12 @@ $usuario= $usuario->obtenerUsuarioActual();
 <body>
   <?php
 
-   //echo "hola el id es: ".$_REQUEST['rut_proveedor'];
-
-  $id_venta = $_REQUEST['id_venta'];
-  echo '<script> var id_venta = '.$id_venta.'; </script>';
 
 
-   $venta_creada = new Ventas();
-   $venta_creada->setIdVenta($id_venta);
-   $respuesta = $venta_creada->obtenerVenta();
+     $venta= new Ventas();
+     $numero_venta = $venta->crearVenta();
 
-    $filas = $respuesta->fetch_array();
+
 
    ?>
 
@@ -62,48 +57,42 @@ $usuario= $usuario->obtenerUsuarioActual();
   <div class="col-10">
 
 
-    <div class="form-group col-12">
+    <!-- <div class="form-group col-12">
       <label for="title" class="control-label">Fecha de ingreso</label>
-      <input value="<?php echo $filas['fecha']; ?>" class="form-control" type="text" id="txt_fecha" name="txt_fecha" readonly placeholder="Dia/Mes/Año" >
-    </div>
+      <input value="<?php //echo $filas['fecha']; ?>" class="form-control" type="text" id="txt_fecha" name="txt_fecha" readonly placeholder="Dia/Mes/Año" >
+    </div> -->
 
     <form id="formulario_ingreso_producto" action="javascript:guardarProductoVenta();" method="post">
 
       <div class="card ">
         <div class="row ">
             <div class="form-group col-md-2">
-              <label for="">Codigo Producto:</label>
+              <label for="">Buscar Producto:</label>
               <input type="text" class="form-control" id="txt_codigo_agregar_producto" value="">
             </div>
 
-            <div class="form-group col-md-2">
-              <label for="">Descripción:</label>
-              <input type="number" class="form-control" id="txt_cantidad_agregar_producto" value="1">
-            </div>
-
-            <div class="form-group col-md-2">
-              <label for="">Cantidad:</label>
-              <input type="number" class="form-control" id="txt_cantidad_agregar_producto" value="1">
-            </div>
-
-            <div class="form-group col-md-2">
-              <label for="">Valor:</label>
-              <input type="number" class="form-control" id="txt_cantidad_agregar_producto" value="1">
-            </div>
-
-            <div class="form-group col-md-2">
-              <label for="">Total:</label>
-              <input type="number" class="form-control" id="txt_cantidad_agregar_producto" value="1">
-            </div>
 
             <div class="form-group col-md-2">
               <label for="">&nbsp;</label>
-              <button type="submit" class="btn btn-success btn-block" name="button">AGREGAR</button>
+              <button type="submit" class="btn btn-success btn-block" name="button">BUSCAR</button>
             </div>
         </div>
       </div>
 
     </form>
+
+
+
+    <div class="container">
+
+        <table>
+          <caption>LISTA PRODUCTOS VENTA</caption>
+          <thead>
+             <th>Codigo</th>
+             <th>Descriipcion</th>
+          </thead>
+        </table>
+    </div>
 
 
   </div>
