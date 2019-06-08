@@ -12,7 +12,7 @@ var texto_buscar = $("#txt_texto_buscar_ingredientes").val();
 		});
 }
 
-function guardarProductoVenta(){
+function guardarDetalleVenta(){
 
 
 }

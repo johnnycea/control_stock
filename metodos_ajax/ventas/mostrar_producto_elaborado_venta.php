@@ -20,10 +20,8 @@ require_once '../../clases/ProductoElaborado.php';
                           <div class="card-body">
                             <h5 id="columna_descripcion_'.$filas['id_producto_elaborado'].'" class="card-title">'.$filas['descripcion'].'</h5>
                             <h5 id="columna_valor_'.$filas['id_producto_elaborado'].'" class="card-title">$'.number_format($filas['valor'],0,",",".").'</h5>
-                            <td>Cantidad<input type="number" id="txt_cantidad_" class="form-control" value="0"></td>
-                            <td>Total<input type="number" id="txt_total_" class="form-control" value="0"  ></td>
                             <br>
-                            <button class="btn btn-success" onclick="agregarProductoElaborado('.$filas['id_producto_elaborado'].')">Agregar</button>
+                            <button class="btn btn-success" onclick="guardarDetalleVenta('.$filas['id_producto_elaborado'].')">Agregar</button>
                           </div>
                         </div>
                         </div>
@@ -33,3 +31,4 @@ require_once '../../clases/ProductoElaborado.php';
 
 
  ?>
+ <!-- <td>Cantidad<input type="number" id="txt_cantidad_'.$filas['id_producto_elaborado'].'" class="form-control" value="0">'.$filas['cantidad'].'</td> -->
