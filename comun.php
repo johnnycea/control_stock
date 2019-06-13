@@ -125,13 +125,6 @@ function cargarMenuConfiguraciones(){
       echo '<a href="./categoria.php" class="btn btn-info col-12">Categoria </a>';
   }
 
-  //    echo'<hr>';
-  //
-  // if($url=="subvenciones.php"){
-  //     echo '<a href="./subvenciones.php" class="active btn btn-info col-12">Subvenciones </a>';
-  // }else{
-  //     echo '<a href="./subvenciones.php" class="btn btn-info col-12">Subvenciones </a>';
-  // }
 
   ?>
 
@@ -184,185 +177,136 @@ function cargarMenuProveedor(){
 function cargarMenuPrincipal(){
 ?>
 
-<style>
-   .menu{
-     background: #10424f;
-     padding: 5px;
-     margin-left: 10px;
-   }
-   .menu a{
-     text-decoration: none;
-     color: black;
-   }
 
-   #icono_menu{
-     width: 80%;
-     margin-left: 10%;
-     margin-top: 10px;
-     margin-bottom: 5px;
-     padding:0px;
-   }
-   .botones_menu{
-     width: 80%;
-     margin-left: 10%;
-     margin-top: 10px;
-     margin-bottom: 5px;
-     padding:0px;
-     height: 70px;
-     background: ;
-     color: #ffffff;
-     background: #000000;
-   }
-   .lista_iconos{
-     font-size: 40px;
-   }
+<style>
+
+#contenedor_logo_menu{
+  height:70px;
+  width: 70px;
+  background:white;
+  margin-top: -5px;
+  margin-bottom: -5px;
+  margin-left: -5px;
+  border-radius: 5px;
+
+}
+#logo_menu{
+  background-image: url("./img/logo_cochento.jpg");
+  height: 100%;
+  width:100%;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+}
+
+.estilo_opciones_menu{
+ font-style: italic;
+}
+
+.nav-link{
+  /* background-color: rgb(28, 196, 201); */
+  margin-right: 5px;
+}
+.nav-link:hover{
+ color:white;
+ background-color: #0d7073;
+ border-radius: 5px;
+
+}
 </style>
 
-<div class="col-1 menu">
-
-  <div class="card" id="icono_menu" >
-    <img class="card-img" src="./img/logo_cochento.jpg" >
-  </div>
-
-<a href="./ventas.php">
-    <div class="card botones_menu">
-    	 <center>
-        <!-- <i class="fa fa-list-ul lista_iconos"></i> -->
-        <img class="card-img " src="" style="width:50%;" >
-
-        <label for="">Ventas</label>
-      </center>
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark " style="background-image: url('img/madera1.jpg');">
+  <a class="navbar-brand" href="#">
+    <div id="contenedor_logo_menu">
+      <div id="logo_menu"></div>
     </div>
-</a>
+    <!-- <img src="./img/logo.png" width="80" height="50" class="d-inline-block align-top" alt=""> -->
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
 
-<a href="./facturas.php">
-    <div class="card botones_menu">
-      <center>
-        <!-- <i class="fa fa-list-ul lista_iconos"></i> -->
-        <img class="card-img" src="" style="width:50%;" >
+     <?php
 
-        <label for="">Ingresos</label>
-      </center>
-    </div>
-</a>
-
-<a href="./productos_elaborados.php">
-    <div class="card botones_menu">
-      <center>
-        <!-- <i class="fa fa-list-ul lista_iconos"></i> -->
-        <img class="card-img" src="" style="width:50%;" >
-
-        <label for="">Productos Elab.</label>
-      </center>
-    </div>
-</a>
-
-<a href="">
-    <div class="card botones_menu">
-      <center>
-        <!-- <i class="fa fa-list-ul lista_iconos"></i> -->
-        <img class="card-img" src="" style="width:50%;" >
-
-        <label for="">Stock</label>
-      </center>
-    </div>
-</a>
-
-<a href="./proveedores.php">
-    <div class="card botones_menu">
-      <center>
-        <!-- <i class="fa fa-list-ul lista_iconos"></i> -->
-        <img class="card-img" src="" style="width:50%;" >
-
-        <label for="">Proveedor</label>
-      </center>
-    </div>
-</a>
-
-<a href="./informes.php">
-    <div class="card botones_menu">
-      <center>
-        <!-- <i class="fa fa-list-ul lista_iconos"></i> -->
-        <img class="card-img" src="" style="width:50%;" >
-
-        <label for="">Informes</label>
-      </center>
-    </div>
-</a>
-
-<a href="./configuraciones.php">
-    <div class="card botones_menu">
-      <center>
-        <!-- <i class="fa fa-list-ul lista_iconos"></i> -->
-        <img class="card-img" src="" style="width:50%;" >
-
-        <label for="">Configurar</label>
-      </center>
-    </div>
-</a>
+     $url= basename($_SERVER['PHP_SELF']);
+            //UN LINK
+            echo '<li class="nav-item">';
+                  if($url=="ventas.php"){
+                    echo '<a class="nav-link estilo_opciones_menu active" href="./ventas.php">Ventas</span></a>';
+                  }else{
+                    echo '<a class="nav-link estilo_opciones_menu active " href="./ventas.php">Ventas</span></a>';
+                  }
+            echo '</li>';
 
 
+            //UN LINK
+            echo '<li class="nav-item">';
+                  if($url=="facturas.php"){
+                    echo '<a class="nav-link estilo_opciones_menu active" href="./facturas.php">Ingresos</span></a>';
+                  }else{
+                    echo '<a class="nav-link estilo_opciones_menu active " href="./facturas.php">Ingresos</span></a>';
+                  }
+            echo '</li>';
+
+            //UN LINK
+            echo '<li class="nav-item">';
+                  if($url=="productos_elaborados.php"){
+                    echo '<a class="nav-link estilo_opciones_menu active" href="./productos_elaborados.php">Productos</span></a>';
+                  }else{
+                    echo '<a class="nav-link estilo_opciones_menu active " href="./productos_elaborados.php">Productos</span></a>';
+                  }
+            echo '</li>';
 
 
-</div>
+            //UN LINK
+            echo '<li class="nav-item">';
+                  if($url=="stock.php"){
+                    echo '<a class="nav-link estilo_opciones_menu active" href="./stock.php">Stock</span></a>';
+                  }else{
+                    echo '<a class="nav-link estilo_opciones_menu active " href="./stock.php">Stock</span></a>';
+                  }
+            echo '</li>';
 
-<?php
-// $url= basename($_SERVER['PHP_SELF']);
-//
-// require_once './clases/Usuario.php';
-// $usuario= new Usuario();
-// $usuario= $usuario->obtenerUsuarioActual();
-//
-//
-//
-//
-//       if($usuario['tipo_usuario']==1){
-//
-//              //UN LINK
-//              echo '<li class="nav-item">';
-//                    if($url=="configuraciones.php" ){
-//                      echo '<a class="nav-link active" href="./configuraciones.php">Configuraciones</span></a>';
-//                    }else{
-//                      echo '<a class="nav-link" href="./configuraciones.php">Configuraciones</span></a>';
-//                    }
-//              echo '</li>';
-//        }
-//
-//        if($usuario['tipo_usuario']==1){
-//
-//               //UN LINK
-//               echo '<li class="nav-item">';
-//                     if($url=="proveedores.php" ){
-//                       echo '<a class="nav-link active" href="./proveedores.php">Proveedores</span></a>';
-//                     }else{
-//                       echo '<a class="nav-link" href="./proveedores.php">Proveedores</span></a>';
-//                     }
-//               echo '</li>';
-//         }
-//        if($usuario['tipo_usuario']==1){
-//
-//               //UN LINK
-//               echo '<li class="nav-item">';
-//                     if($url=="facturas.php"){
-//                       echo '<a class="nav-link active" href="./facturas.php">Facturas</span></a>';
-//                     }else{
-//                       echo '<a class="nav-link" href="./facturas.php">Facturas</span></a>';
-//                     }
-//               echo '</li>';
-//         }
-//
-//
+            //UN LINK
+            echo '<li class="nav-item">';
+                  if($url=="proveedores.php"){
+                    echo '<a class="nav-link estilo_opciones_menu active" href="./proveedores.php">Proveedores</span></a>';
+                  }else{
+                    echo '<a class="nav-link estilo_opciones_menu active " href="./proveedores.php">Proveedores</span></a>';
+                  }
+            echo '</li>';
+
+            //UN LINK
+            echo '<li class="nav-item">';
+                  if($url=="informes.php"){
+                    echo '<a class="nav-link estilo_opciones_menu active" href="./informes.php">Informes</span></a>';
+                  }else{
+                    echo '<a class="nav-link estilo_opciones_menu active " href="./informes.php">Informes</span></a>';
+                  }
+            echo '</li>';
+
+            //UN LINK
+            echo '<li class="nav-item">';
+                  if($url=="configuraciones.php"){
+                    echo '<a class="nav-link estilo_opciones_menu active" href="./configuraciones.php">Configuraciones</span></a>';
+                  }else{
+                    echo '<a class="nav-link estilo_opciones_menu active  laed" href="./configuraciones.php">Configuraciones</span></a>';
+                  }
+            echo '</li>';
+
      ?>
 
 
+    </ul>
 
-     <!-- <label class="text-white"><?php //echo $usuario['nombre'].' &nbsp;'; ?></label>
+     <!-- <label class="text-white"><?php echo $usuario['nombre'].', área de &nbsp;'.$usuario['nombre_departamento'].' &nbsp;'; ?></label> -->
      <a href="./cerrarSesion.php" class="btn btn-danger my-2 my-sm-0" >Salir</a>
-
-
-  </div> -->
-
-<!-- <div>Icons made by <a href="https://www.flaticon.es/autores/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.es/" 		    title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 		    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div> -->
+  </div>
+</nav>
+<div><hr></div>
+<div><hr></div>
 
 <?php
 }

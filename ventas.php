@@ -46,8 +46,9 @@ $usuario= $usuario->obtenerUsuarioActual();
   <?php cargarMenuPrincipal(); ?>
 
 
+ <div><hr></div>
 
-  <div class="col-10">
+  <div class="container contenedor-principal" >
 
 
     <!-- <div class="form-group col-12">

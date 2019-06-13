@@ -1,11 +1,18 @@
 
 body{
-  /* background-image: url("../img/fondo.jpg"); */
+  background-image: url("../img/fondo.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
   margin:0;
   background-color: #ffffff;
+}
+
+.contenedor-principal{
+  background-color:white;
+  border-radius: 5px;
+  margin-top: 100px;
+  padding:10px;
 }
 
 .card{
