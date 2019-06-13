@@ -19,14 +19,40 @@ echo '<div class="row">';
 
                         echo '
 
-                        <div class="card border-primary mb-3" style="max-width:12rem;" >
-                          <img class="card-img-top" src="./imagenes/productos_elaborados/'.$filas['imagen'].'" alt="Card image cap">
-                          <div class="card-body">
-                            <h5 id="columna_descripcion_'.$filas['id_producto_elaborado'].'" class="card-title">'.$filas['descripcion'].'</h5>
-                            <h5  class="card-title"> <span id="columna_valor_'.$filas['id_producto_elaborado'].'"> '.$filas['valor'].'</span></h5>
-                          <td>Cantidad<input type="number" id="txt_cantidad_'.$filas['id_producto_elaborado'].'" class="form-control" value="0"></td>
-                            <br>
-                            <button type="button" class="btn btn-success" onclick="guardarDetalleVenta('.$filas['id_producto_elaborado'].','.$filas['valor'].')">Agregar</button>
+                        <style>
+
+                           #imagen_producto_'.$filas['id_producto_elaborado'].'{
+                           width: 100%;
+                           height: 150px;
+                           background-image: url("./imagenes/productos_elaborados/'.$filas['imagen'].'");
+                           background-repeat: no-repeat;
+                           background-size: cover;
+                           }
+
+                        </style>
+
+                        <div class="card border-primary col-2" style="padding:0px; margin-left:5px;" >
+                      <!--    <img class="" id="imagen_producto_'.$filas['id_producto_elaborado'].'" src="./imagenes/productos_elaborados/'.$filas['imagen'].'" alt="Card image cap"> -->
+
+<div  id="imagen_producto_'.$filas['id_producto_elaborado'].'">
+
+    <div  style="align:bottom; background-color: rgba(0, 0, 0, 0.79); >
+        <h5 id="columna_descripcion_'.$filas['id_producto_elaborado'].'" class="card-title text-white">'.$filas['descripcion'].'</h5>
+        <h5  class="card-title text-white"> <span id="columna_valor_'.$filas['id_producto_elaborado'].'"> '.$filas['valor'].'</span></h5>
+    </div>
+
+</div>
+
+                          <div class="card-body" >
+
+                          <td>
+                             Cantidad
+                             <div class="row">
+                                <input type="number" min="1" id="txt_cantidad_'.$filas['id_producto_elaborado'].'" class="form-control col-6" value="1">
+                                <button style="background-color:rgb(122, 77, 51); color:white;" type="button" class="btn btn-warning col-6" onclick="guardarDetalleVenta('.$filas['id_producto_elaborado'].','.$filas['valor'].')">Agregar</button>
+                              </div>
+                          </td>
+
                           </div>
                         </div>
 
