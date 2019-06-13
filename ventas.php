@@ -64,12 +64,18 @@ $usuario= $usuario->obtenerUsuarioActual();
 
        ?>
      <label for="title" class="control-label">Numero de Venta:</label>
-      <input readonly value="<?php echo $numero_venta; ?>" class="form-control col-6" type="text" id="txt_fecha"  >
+      <input readonly value="<?php echo $numero_venta; ?>" class="form-control col-6" type="text" id="txt_id_venta" name="txt_id_venta">
 
     </div>
 
 
-      <div class="table-responsive">
+                  <div id="contenedor_listado_venta" class="">
+
+
+
+                  </div>
+
+      <!-- <div class="table-responsive">
 
           <table class="table table-stripped table-bordered">
             <thead>
@@ -93,7 +99,7 @@ $usuario= $usuario->obtenerUsuarioActual();
                </tr>
             </tbody>
           </table>
-      </div>
+      </div> -->
 
 <br>
 <br>
@@ -102,6 +108,7 @@ $usuario= $usuario->obtenerUsuarioActual();
 
 <!-- ****************** -->
 <div id="contenedor_buscador_ingredientes"  class="">
+
 
            <div class="card border-info">
 
@@ -115,58 +122,20 @@ $usuario= $usuario->obtenerUsuarioActual();
                </div>
              </div>
 
-            <div class="" id="contenedor_listado_productos_elaborados">
+            <div class="container" id="contenedor_listado_productos_elaborados">
 
             </div>
 
            </div>
-
 </div>
-<!-- ****************** -->
-
-
-    <!-- <form id="formulario_ingreso_producto" action="javascript:guardarProductoVenta();" method="post">
-
-      <div class="card ">
-        <div class="row ">
-            <div class="form-group col-md-2">
-              <label for="">Buscar Producto:</label>
-              <input type="text" class="form-control" id="txt_codigo_agregar_producto" name="txt_codigo_agregar_producto" value="">
-            </div>
-
-
-            <div class="form-group col-md-2">
-              <label for="">&nbsp;</label>
-              <button type="submit" class="btn btn-success btn-block" name="button">BUSCAR</button>
-            </div>
-        </div>
-      </div>
-
-    </form>
-
-
-    <div class="container">
-
-        <table>
-          <caption>LISTA PRODUCTOS VENTA</caption>
-          <thead>
-             <th>Codigo</th>
-             <th>Descripcion</th>
-          </thead>
-        </table>
-    </div> -->
 
 
   </div>
 
 </div>
 
-
-
-
-
 <script type="text/javascript">
-    // listarFacturas("");
+    // listaVenta("");
 </script>
 
 </body>

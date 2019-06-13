@@ -5,9 +5,9 @@ require_once '../../clases/ProductoElaborado.php';
 // echo "llega eliminarIngrediente";
 $Funciones = new Funciones();
 
-$id_ingrediente = $Funciones->limpiarTexto($_REQUEST['id_ingrediente']);
-$id_producto_elaborado = $Funciones->limpiarTexto($_REQUEST['id_producto_elaborado']);
-// 
+$id_ingrediente = $Funciones->limpiarNumeroEntero($_REQUEST['id_ingrediente']);
+$id_producto_elaborado = $Funciones->limpiarNumeroEntero($_REQUEST['id_producto_elaborado']);
+//
 // echo "Producto Elaborado: " . $id_producto_elaborado;
 // echo "Ingrediente: " . $id_ingrediente;
 
