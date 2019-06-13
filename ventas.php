@@ -81,28 +81,22 @@ $usuario= $usuario->obtenerUsuarioActual();
 
 </div>
 <!-- ****************** -->
+
+
+<div><hr></div>
 <div id="contenedor_buscador_ingredientes"  class="">
-
-
-           <div class="">
-
-
 
             <div class="container" id="contenedor_listado_productos_elaborados">
 
             </div>
 
-           </div>
 </div>
 
 
 
 
-                  <div id="contenedor_listado_venta" class="">
-
-
-
-                  </div>
+    <div><hr></div>
+    <div id="contenedor_listado_venta" class=""></div>
 
 
 <br>
@@ -118,7 +112,8 @@ $usuario= $usuario->obtenerUsuarioActual();
 </div>
 
 <script type="text/javascript">
-    // listaVenta("");
+    // listarProductosElaborados();
+    listaVenta("");
 </script>
 
 </body>
