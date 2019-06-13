@@ -59,8 +59,19 @@ class Ventas{
     return $resultado_consulta;
  }
 
+ public function vistaDetalleVenta(){
+    $Conexion = new Conexion();
+    $Conexion = $Conexion->conectar();
 
- function crearVenta(){
+    $resultado_consulta = $Conexion->query("select * from vista_detalle_venta where id_venta=".$this->id_venta);
+    // $resultado_consulta = $Conexion->query("select * from vista_detalle_venta");
+
+    // echo $resultado_consulta;
+    return $resultado_consulta;
+ }
+
+
+public function crearVenta(){
    $Conexion = new Conexion();
    $Conexion = $Conexion->conectar();
 
@@ -72,7 +83,7 @@ class Ventas{
          $resultadoNuevoId = $resultadoNuevoId->fetch_array();
 
          return $resultadoNuevoId['id_creado'];
-echo $consulta;
+// echo $consulta;
    }
    else{
      return false;
@@ -80,23 +91,24 @@ echo $consulta;
 
  }
 
- function guardarDetalleVenta(){
+ public function guardarDetalleVenta(){
    $Conexion = new Conexion();
    $Conexion = $Conexion->conectar();
 
+  //PREGUNTAR SI EL EL PRODUCTO QUE SE QUIERE INGRESAR SE ECUENTRA EN LA VENTA A LA QUE SE QUIERE INGRESAR EL Producto
+
+  //SI EL PRODUCTO YA SE INGRESO SE DEBE: CONSULTAR LA CANTIDAD QE ESTABA INGRESADA Y SUMARLE LA CANTIDAD QUE SE QUIERE ingresar y actualizar 
+
+
+  //SI EL PRODCUTO NO ESTABA INGRESADO, SIMPLEMENTE SE INGRESA
+
    $consulta = "insert into detalle_venta (`id_producto`, `id_venta`, `valor_unitario`, `cantidad`, `valor_total`) VALUES ('".$this->id_producto_elaborado."', '".$this->id_venta."', '".$this->valor_unitario."', '".$this->cantidad ."', '".$this->total."')";
-   $resultado= $conexion->query($consulta);
+   // echo $consulta;
+
+
+   $resultado= $Conexion->query($consulta);
    return $resultado;
 
- }
-
- public function vistaDetalleFactura(){
-    $Conexion = new Conexion();
-    $Conexion = $Conexion->conectar();
-
-    $resultado_consulta = $Conexion->query("select * from vista_factura where id_factura=".$this->id_factura);
-
-    return $resultado_consulta;
  }
 
    public function modificarFactura(){
@@ -115,29 +127,21 @@ echo $consulta;
    }
 
 
-   // public function eliminarProveedor(){
-   //   $Conexion = new Conexion();
-   //   $Conexion = $Conexion->conectar();
-   //
-   //   //CONSULTA SI EL PROVEEDOR TIENE FACTURAS EN EL SISTEMA
-   //   $consultaFacturasProveedor = $Conexion->query("select * from tb_facturas where id_proveedor=".$this->rut_proveedor);
-   //   if($consultaFacturasProveedor->num_rows==0){
-   //     //entra si el proveedor no tiene facturas, por lo tanto se elimina
-   //         if($Conexion->query("DELETE FROM tb_proveedores where rut_proveedor=".$this->rut_proveedor)){
-   //             return true;
-   //         }else{
-   //             return false;
-   //         }
-   //   }else{
-   //     //entra si el proveedor SI TIENE facturas, SE CAMBIA ESTADO A "ELIMINADO"
-   //         if($Conexion->query("Update tb_proveedores set estado_proveedor=3 where rut_proveedor=".$this->rut_proveedor)){
-   //             return true;
-   //         }else{
-   //             return false;
-   //         }
-   //   }
-   //
-   // }
+   public function eliminarProductoVenta(){
+     $Conexion = new Conexion();
+     $Conexion = $Conexion->conectar();
+
+     $consulta = "delete from detalle_venta where (`id_producto` = ".$this->id_producto_elaborado.") and (`id_venta` = ".$this->id_venta.")";
+                  // DELETE FROM detalle_venta WHERE (`id_producto` = '') and (`id_venta` = '');
+      // echo $consulta;
+     if($Conexion->query($consulta)){
+         return true;
+     }else{
+         echo $consulta;
+         // return false;
+     }
+
+   }
 
 
 }
