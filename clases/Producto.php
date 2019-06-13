@@ -6,8 +6,8 @@ class Producto{
  private $id_producto;
  private $descripcion;
  private $stock_minimo;
- private $id_categoria;
- private $id_marca;
+ private $id_unidad_medida;
+ private $marca;
  private $id_estado;
  private $id_producto_elaborado;
  private $id_producto_ingrediente;
@@ -22,11 +22,11 @@ class Producto{
  public function setStockMinimo($stock_minimo){
    $this->stock_minimo = $stock_minimo;
  }
- public function setIdCategoria($id_categoria){
-   $this->id_categoria = $id_categoria;
+ public function setIdUnidadMedida($parametro){
+   $this->id_unidad_medida = $parametro;
  }
- public function setIdMarca($id_marca){
-   $this->id_marca = $id_marca;
+ public function setMarca($parametro){
+   $this->marca = $parametro;
  }
  public function setIdEstado($id_estado){
    $this->id_estado = $id_estado;
@@ -50,8 +50,7 @@ class Producto{
                    where id_producto like '%".$texto_buscar."%'
                    or descripcion like '%".$texto_buscar."%'
                    or stock_minimo like '%".$texto_buscar."%'
-                   or id_categoria like '%".$texto_buscar."%'
-                   or id_marca like '%".$texto_buscar."%'
+                   or marca like '%".$texto_buscar."%'
                    or id_estado like '%".$texto_buscar."%'";
      }
      $resultado= $conexion->query($consulta);
@@ -86,7 +85,7 @@ class Producto{
    $conexion = new Conexion();
    $conexion = $conexion->conectar();
 
-   $consulta = "insert INTO tb_productos (`id_producto`,`descripcion`,`stock_minimo`,`id_categoria`,`id_marca`,`id_estado`) VALUES ('".$this->id_producto."', '".$this->descripcion."', '".$this->stock_minimo."', '".$this->id_categoria."', '".$this->id_marca."', '".$this->id_estado."')";
+   $consulta = "insert INTO tb_productos (`id_producto`,`descripcion`,`stock_minimo`,`marca`,`id_estado`) VALUES ('".$this->id_producto."', '".$this->descripcion."', '".$this->stock_minimo."',  '".$this->marca."', '".$this->id_estado."')";
    $resultado= $conexion->query($consulta);
    return $resultado;
  }
@@ -99,8 +98,7 @@ class Producto{
        $consulta="update tb_productos SET
        descripcion = '".$this->descripcion."',
        stock_minimo = '".$this->stock_minimo."',
-       id_categoria = '".$this->id_categoria."',
-       id_marca = '".$this->id_marca."',
+       marca = '".$this->marca."',
        id_estado = '".$this->id_estado."'
         WHERE (id_producto = '".$this->id_producto."');";
 
@@ -109,7 +107,7 @@ class Producto{
    }
 
 
-  
+
 
 }
  ?>

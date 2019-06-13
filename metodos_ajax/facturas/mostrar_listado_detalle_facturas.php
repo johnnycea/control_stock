@@ -6,13 +6,13 @@ require_once '../../clases/Producto.php';
 
 
   echo '
-  <table class="table table-responsive table-sm table-striped table-hover">
+  <table class="table  table-sm table-striped table-hover">
      <thead class="thead-dark" align=center>
 
         <th>Codigo Producto</th>
         <th>Descripción</th>
         <th>Marca</th>
-        <th>Categoria</th>
+        <th>Unidad medida</th>
         <th>Cantidad</th>
         <th>Valor</th>
         <th width=170>Ver</th>
@@ -37,20 +37,17 @@ require_once '../../clases/Producto.php';
                        <td><span id="columna_descripcion_'.$filas['codigo'].'" >'.$filas['descripcion'].'</span></td>
 
                        <span class="d-none" id="columna_txt_stock_minimo_'.$filas['codigo'].'" >'.$filas['stock_minimo'].'</span>
+                       <span class="d-none" id="columna_unidad_medida_'.$filas['codigo'].'" >'.$filas['id_unidad_medida'].'</span>
 
                        <td><span id="columna_marca_'.$filas['codigo'].'" >'.$filas['marca'].'</span></td>
-                       <span class="d-none" id="columna_id_marca_'.$filas['codigo'].'" >'.$filas['id_marca'].'</span>
-
-                       <td><span id="columna_categoria_'.$filas['codigo'].'" >'.$filas['categoria'].'</span></td>
-                       <span class="d-none" id="columna_id_categoria_'.$filas['codigo'].'" >'.$filas['id_categoria'].'</span>
 
                        <td><span id="columna_cantidad_'.$filas['codigo'].'" >'.$filas['cantidad'].'</span></td>
                        <td><span id="columna_valor_'.$filas['codigo'].'" >'.$filas['valor'].'</span></td>
                        <td>
-                       <button onclick="cargarInformacionModificarDetalleFactura('.$filas['id_factura'].')" class="col-12 btn btn-warning "> <i class="fa fa-edit"></i> </button>
+                       <button onclick="cargarInformacionModificarDetalleFactura('.$filas['codigo'].')" class="col-12 btn btn-warning "> <i class="fa fa-edit"></i> </button>
                        </td>
                        <td>
-                          <button onclick="eliminarFactura('.$filas['id_factura'].')" class="col-12 btn btn-danger "> <i class="fa fa-trash-alt"></i> </button>
+                          <button type="button" onclick="eliminarFactura('.$filas['id_factura'].')" class="col-12 btn btn-danger "> <i class="fa fa-trash-alt"></i> </button>
                        </td>
                     </tr>';
          }

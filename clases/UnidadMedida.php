@@ -1,29 +1,24 @@
 <?php
 require_once 'Conexion.php';
 
-class Categoria{
+class UnidadMedida{
 
- private $id_categoria;
- private $descripcion_categoria;
+ private $id_unidad_medida;
+ private $descripcion_unidad_medida;
 
- public function setIdCategoria($id_categoria){
-   $this->id_categoria = $id_categoria;
+ public function setIdUnidadMedida($parametro){
+   $this->id_unidad_medida = $parametro;
  }
- public function setDescripcionCategoria($descripcion_categoria){
-   $this->descripcion_categoria = $descripcion_categoria;
+ public function setDescripcionUnidadMedida($parametro){
+   $this->descripcion_unidad_medida = $parametro;
  }
 
- function obtenerCategorias($texto_buscar,$condiciones){
+ function obtenerUnidadesMedida(){
      $conexion = new Conexion();
      $conexion = $conexion->conectar();
 
-     if($texto_buscar=="" || $texto_buscar==" "){
-       $consulta= "select * from tb_categoria ".$condiciones."";
-     }else{
-       $consulta= "select * from tb_categoria
-                   where id_categoria like '%".$texto_buscar."%'
-                   or descripcion_categoria like '%".$texto_buscar."%'";
-     }
+       $consulta= "select * from tb_unidades_medida";
+
      $resultado= $conexion->query($consulta);
      if($resultado){
         return $resultado;
