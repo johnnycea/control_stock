@@ -1,11 +1,13 @@
 
 body{
-  background-image: url("../img/fondo.jpg");
+  /* background-image: url("../img/fondo1.jpg"); */
+  /* background: #93ceff; */
+  background: #81c7b4;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
   margin:0;
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
 }
 
 .contenedor-principal{

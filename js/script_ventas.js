@@ -42,7 +42,7 @@ function guardarDetalleVenta(id_producto,valor){
 				url:"./metodos_ajax/ventas/ingresar_productos_ventas.php?id_producto="+id_producto+"&id_venta="+id_venta+"&valor_unitario="+valor_unitario+"&txt_cantidad="+txt_cantidad+"&valor_total="+valor_total,
 				method:"POST",
 				success:function(respuesta){
-					 alert(respuesta);
+					 // alert(respuesta);
 
 					 if(respuesta==1){
 						 swal("Guardado","Los datos se han guardado correctamente.","success");
