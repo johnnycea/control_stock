@@ -33,7 +33,8 @@ $usuario= $usuario->obtenerUsuarioActual();
 
 
 
-  <div class="col-10">
+  <div class="container contenedor-principal" >
+
 
        <div class="col-12">
 

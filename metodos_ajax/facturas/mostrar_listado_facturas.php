@@ -5,7 +5,7 @@ require_once '../../clases/Facturas.php';
 
 
   echo '
-  <table class="table table-responsive table-sm table-striped table-hover">
+  <table class="table bg-white table-sm table-striped table-hover">
      <thead class="thead-dark" align=center>
 
         <th>N Factura</th>
@@ -33,7 +33,7 @@ require_once '../../clases/Facturas.php';
                        <td><span id="columna_numero_factura_'.$filas['id_factura'].'" >'.$filas['numero_factura'].'</span></td>
                        <td><span id="columna_fecha_factura_'.$filas['id_factura'].'" >'.$filas['fecha_factura'].'</span></td>
                        <td>
-                          <a href="./detalle_facturas.php?id_factura='.$filas['id_factura'].'" class="col-12 btn btn-warning ">Editar</a>
+                          <a href="./detalle_facturas.php?id_factura='.$filas['id_factura'].'" class="col-12 btn btn-warning "><i class="far fa-edit"></i></a>
                        </td>
                        <td>
                           <button onclick="eliminarFactura('.$filas['id_factura'].')"  class="col-12 btn btn-danger "> <i class="fa fa-trash-alt"></i> </button>

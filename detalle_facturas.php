@@ -5,7 +5,7 @@ require_once './clases/Usuario.php';
 require_once './clases/Proveedor.php';
 require_once './clases/Facturas.php';
 require_once './clases/Marca.php';
-require_once './clases/Categoria.php';
+require_once './clases/UnidadMedida.php';
 require_once './clases/Producto.php';
 // require_once './clases/DetalleFacturas.php';
 comprobarSession();
@@ -65,7 +65,7 @@ echo '<script> var id_factura = '.$id_factura.'; </script>';
 
       <?php cargarMenuPrincipal(); ?>
 
-      <div class="col-10">
+      <div class="container contenedor-principal" >
 
 
        <div class="container row">
@@ -77,7 +77,7 @@ echo '<script> var id_factura = '.$id_factura.'; </script>';
                  <div class="form-group col-12">
 
                    <label for="title" class="control-label">Número factura:</label>
-                   <input type="text" required class="form-control" name="txt_numero_factura" id="txt_numero_factura" value="<?php echo $filas['numero_factura']; ?>">
+                   <input type="text" required readonly class="form-control" name="txt_numero_factura" id="txt_numero_factura" value="<?php echo $filas['numero_factura']; ?>">
                  </div>
 
                  <div class="form-group col-12">
@@ -121,34 +121,24 @@ echo '<script> var id_factura = '.$id_factura.'; </script>';
                    <div class="form-group col-md-4">
 
                      <label for="title" class="control-label">Codigo Producto:</label>
-                     <input type="text" onkeyup="cargarDatosProducto(this.value);" required class="form-control" name="txt_codigo_producto" id="txt_codigo_producto" value="">
+                     <input type="number" onkeyup="cargarDatosProducto(this.value);" required class="form-control" name="txt_codigo_producto" id="txt_codigo_producto" value="">
                    </div>
 
                    <div class="form-group col-md-4">
                      <label for="title" class="control-label">Marca:</label>
-                     <select required class="form-control" name="select_marca" id="select_marca" value="">
-                       <option value="" selected disabled>Seleccione:</option>
-                       <?php
-                       $Marca = new Marca();
-                       $listaMarca = $Marca->obtenerMarcas();
+                     <input type="text"  required class="form-control" name="txt_marca" id="txt_marca" value="">
 
-                       while($filas = $listaMarca->fetch_array()){
-                         echo '<option value="'.$filas['id_marca'].'">'.$filas['nombre_marca'].'</option>';
-                       }
-                       ?>
-                     </select>
                    </div>
 
                    <div class="form-group col-md-4">
-                     <label for="title" class="control-label">Categoria:</label>
-                     <select required class="form-control" name="select_categoria" id="select_categoria" value="">
-                       <option value="" selected disabled>Seleccione:</option>
+                     <label for="title" class="control-label">Unidad medida:</label>
+                     <select required class="form-control" name="select_unidad_medida" id="select_unidad_medida" value="">
                        <?php
-                       $Categoria = new Categoria();
-                       $listaCategoria = $Categoria->obtenerCategoria();
+                       $UnidadMedida = new UnidadMedida();
+                       $listaUnidadMedida = $UnidadMedida->obtenerUnidadesMedida();
 
-                       while($filas = $listaCategoria->fetch_array()){
-                         echo '<option value="'.$filas['id_categoria'].'">'.$filas['descripcion_categoria'].'</option>';
+                       while($filas = $listaUnidadMedida->fetch_array()){
+                         echo '<option value="'.$filas['id_unidad_medida'].'">'.$filas['descripcion'].'</option>';
                        }
                        ?>
                      </select>
@@ -163,15 +153,15 @@ echo '<script> var id_factura = '.$id_factura.'; </script>';
                    <div class="form-group col-md-3">
 
                      <label for="title" class="control-label">Stock Minimo:</label>
-                     <input type="text" required class="form-control" name="txt_stock_minimo" id="txt_stock_minimo" value="">
+                     <input type="number" required class="form-control" name="txt_stock_minimo" id="txt_stock_minimo" value="">
                    </div>
                    <div class="form-group col-md-3">
                      <label for="title" class="control-label">Cantidad:</label>
-                     <input value="" class="form-control" type="text" id="txt_cantidad" name="txt_cantidad">
+                     <input value="" class="form-control" type="number" id="txt_cantidad" name="txt_cantidad">
                    </div>
                    <div class="form-group col-md-3">
                      <label for="title" class="control-label">Valor Unitario:</label>
-                     <input type="text" class="form-control" name="txt_valor_unitario" id="txt_valor_unitario" value="">
+                     <input type="number" class="form-control" name="txt_valor_unitario" id="txt_valor_unitario" value="">
                    </div>
 
 

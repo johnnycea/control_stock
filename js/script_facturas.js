@@ -54,7 +54,7 @@ function guardarProductoFactura(){
 				method:"POST",
 				data: $("#formulario_detalle_factura_producto").serialize(),
 				success:function(respuesta){
-					  // alert(respuesta);
+					  alert(respuesta);
 
 					 if(respuesta==1){
                guardarDetalleFactura();
@@ -75,7 +75,7 @@ function guardarDetalleFactura(){
 				method:"POST",
 				data: $("#formulario_detalle_factura_producto").serialize(),
 				success:function(respuesta){
-					  // alert(respuesta);
+					  alert(respuesta);
 
 					 if(respuesta==1){
 						 swal("Guardado","Los datos se han guardado correctamente.","success");
@@ -124,11 +124,8 @@ function cargarInformacionModificarDetalleFactura(id){
 	 var txt_codigo_producto = $("#columna_codigo_"+id).html();
 	 var descripcion_producto = $("#columna_descripcion_"+id).html();
 
-	 var select_id_marca = $("#columna_id_marca_"+id).html();
-	 var select_marca = $("#columna_marca_"+id).html();
-
-	 var select_id_categoria = $("#columna_id_categoria_"+id).html();
-	 var select_categoria = $("#columna_categoria_"+id).html();
+	 var marca = $("#columna_marca_"+id).html();
+	 var unidad_medida = $("#columna_unidad_medida_"+id).html();
 
 	 var txt_stock_minimo = $("#columna_txt_stock_minimo_"+id).html();
 
@@ -138,15 +135,16 @@ function cargarInformacionModificarDetalleFactura(id){
 
 	 $("#txt_codigo_producto").val(txt_codigo_producto);
 	 $("#txt_descripcion_producto").val(descripcion_producto);
-	 $("#select_marca").val(select_id_marca);
-	 $("#select_categoria").val(select_id_categoria);
+	 $("#txt_marca").val(marca);
 	 $("#txt_stock_minimo").val(txt_stock_minimo);
 	 $("#txt_cantidad").val(txt_cantidad);
 	 $("#txt_valor_unitario").val(txt_valor_unitario);
 
-			//  $('html,body').animate({
-			// 	 scrollTop: $("#formulario_detalle_factura_producto").offset().top
-			// }, 1200);
+	 $("#select_unidad_medida").val(unidad_medida);
+
+			 $('html,body').animate({
+				 scrollTop: $("#formulario_detalle_factura_producto").offset().top
+			}, 1200);
 	 }
 
 function modificarDetalleFactura(id){
