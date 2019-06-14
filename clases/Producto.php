@@ -73,7 +73,7 @@ class Producto{
     $Conexion = new Conexion();
     $Conexion = $Conexion->conectar();
 
-    $resultado_consulta = $Conexion->query("select p.id_producto, p.descripcion, um.descripcion as unidad_medida
+    $resultado_consulta = $Conexion->query("select p.id_producto, p.marca, p.descripcion, um.descripcion as unidad_medida
                                           FROM tb_productos p
                                           inner join tb_unidades_medida um on p.unidad_medida=um.id_unidad_medida
                                           where p.id_producto like '%".$texto_buscar."%' or p.descripcion like '%".$texto_buscar."%' ");

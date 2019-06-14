@@ -4,11 +4,11 @@ require_once '../../clases/Funciones.php';
 require_once '../../clases/ProductoElaborado.php';
 
 
-              echo '<table class="table table-bordered table-info">
-                <thead>
-                  <th>Codigo</th>
-                  <th>Descripcion</th>
-                  <th>U. medida</th>
+              echo '<table class="table table-bordered  table-sm">
+                <thead class="thead-dark">
+
+                  <th>Nombre</th>
+                  <th>U. Med</th>
                   <th>Cantidad</th>
                   <th></th>
                 </thead>
@@ -24,11 +24,11 @@ require_once '../../clases/ProductoElaborado.php';
                     while($filas = $listadoIngredientes->fetch_array()){
 
                           echo '<tr>
-                                  <td><span id="id_producto_'.$filas['id_producto'].'" >'.$filas['id_producto'].'</span></td>
-                                  <td>'.$filas['descripcion'].'</td>
+                                  <span class="d-none" id="id_producto_'.$filas['id_producto'].'" >'.$filas['id_producto'].'</span>
+
+                                  <td>'.$filas['descripcion'].' '.$filas['marca'].'</td>
                                   <td>'.$filas['unidad_medida'].'</td>
                                   <td>'.$filas['cantidad'].'</td>
-                                  <td></td>
                                   <td><button onclick="eliminarIngrediente('.$filas['id_producto'].','.$id_producto_elaborado.')"  class="col-12 btn btn-danger "> <i class="fa fa-trash-alt"></i> </button>
 
                                   </td>
