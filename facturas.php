@@ -38,19 +38,28 @@ $usuario= $usuario->obtenerUsuarioActual();
 
        <div class="col-12">
 
-          <div  style="" class="  col-12">
-            <div class="container">
-                 <button type="button" onclick="limpiarFormularioFactura();" class="btn boton-morado" data-target="#modal_factura" data-toggle="modal" name="button">Crear nueva factura</button>
-            </div>
-            <div class="container">
+          <div  class="col-12">
 
-             <br>
-              <div id="contenedorBuscador" class="form-group col-12" >
 
-                     <input onkeyup="listarFacturas(this.value)" class="form-control col-9" type="text" name="txt_buscar_facturas" id="txt_buscar_facturas" value="">
+
+
+              <div>
+                <h4>Ingreso Facturas</h4>
+              </div>
+              <div><hr></div>
+
+              <div>
+                <button type="button" onclick="limpiarFormularioFactura();" class="btn boton-morado" data-target="#modal_factura" data-toggle="modal" name="button">Crear nueva factura</button>
+
+              </div>
+              <div><hr></div>
+
+              <div id="contenedorBuscador" class="form-group col-4" >
+
+                     Buscar: <input onkeyup="listarFacturas(this.value)" class="form-control col-9" type="text" name="txt_buscar_facturas" id="txt_buscar_facturas" value="">
                      <!-- <button type="button" class="btn btn-info col-3" name="button">Buscar</button> -->
               </div>
-              <br>
+
 
               <div id='contenedor_listado_facturas'></div>
 

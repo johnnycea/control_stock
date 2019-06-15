@@ -24,13 +24,14 @@ $usuario= $usuario->obtenerUsuarioActual();
 </head>
 <body>
 
+  <div class="row">
+
 <?php cargarMenuPrincipal(); ?>
 
-<br>
 
 
-
-<div class="container-fluid">
+<div class="container contenedor-principal">
+  
   <div class="row">
 
       <div class="col-12 col-md-3">
@@ -67,7 +68,7 @@ $usuario= $usuario->obtenerUsuarioActual();
 </div>
 
 
-
+</div>
 
   <!-- MODAL USUARIO-->
   <div class="modal fade" id="modal_usuario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -171,6 +172,9 @@ $usuario= $usuario->obtenerUsuarioActual();
 
     </div>
     </div>
+
+
+
   </div>
 
 
