@@ -66,6 +66,7 @@ class Producto{
     $Conexion = $Conexion->conectar();
 
     $resultado_consulta = $Conexion->query("select * from tb_productos where id_producto=".$this->id_producto);
+
     return $resultado_consulta;
  }
 

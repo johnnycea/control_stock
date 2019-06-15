@@ -8,7 +8,7 @@ $listado_usuarios = $Usuario->listarUsuariosActivosInactivos();
 
 
     echo '
-    <table class="table table-responsive table-sm table-striped table-bordered table-hover">
+    <table class="table table-dark table-sm table-striped table-bordered table-hover">
        <thead>
            <!-- <th>Run</th> -->
            <th>Nombre</th>

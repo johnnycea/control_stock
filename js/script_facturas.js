@@ -55,7 +55,7 @@ function guardarFactura(){
 				method:"POST",
 				data: $("#formulario_modal_factura").serialize(),
 				success:function(respuesta){
-					  alert(respuesta);
+					  // alert(respuesta);
 
 					 if(respuesta==1){
 						 swal("Guardado","Los datos se han guardado correctamente.","success");
@@ -75,7 +75,7 @@ function guardarProductoFactura(){
 				method:"POST",
 				data: $("#formulario_detalle_factura_producto").serialize(),
 				success:function(respuesta){
-					  alert(respuesta);
+					  // alert(respuesta);
 
 					 if(respuesta==1){
                guardarDetalleFactura();
@@ -96,7 +96,7 @@ function guardarDetalleFactura(){
 				method:"POST",
 				data: $("#formulario_detalle_factura_producto").serialize(),
 				success:function(respuesta){
-					  alert(respuesta);
+					  // alert(respuesta);
 
 					 if(respuesta==1){
 						 swal("Guardado","Los datos se han guardado correctamente.","success");
@@ -122,21 +122,26 @@ function limpiarFormularioFactura(){
 
 function cargarDatosProducto(id_producto){
 
-	$.ajax({
-		url:"./metodos_ajax/productos/cargarDatosProducto.php?id_producto="+id_producto,
-		method:"POST",
-		dataType:"JSON",
-		success:function(producto){
+if(id_producto!=0 || id_producto!=""){
 
-       // alert(producto.descripcion);
+				$.ajax({
+					url:"./metodos_ajax/productos/cargarDatosProducto.php?id_producto="+id_producto,
+					method:"POST",
+					dataType:"JSON",
+					success:function(producto){
+		    	// alert(producto);
 
-			 $("#txt_descripcion_producto").val(producto.descripcion);
-			 $("#select_marca").val(producto.marca);
-			 $("#select_categoria").val(producto.categoria);
-			 $("#txt_stock_minimo").val(producto.stock_minimo);
+						 $("#txt_descripcion_producto").val(producto.descripcion);
+						 $("#txt_marca").val(producto.marca);
+						 $("#select_unidad_medida").val(producto.unidad_medida);
+						 $("#txt_stock_minimo").val(producto.stock_minimo);
 
-		}
-	});
+
+					}
+				});
+}else{
+	// alert("no");
+}
 
 }
 
@@ -185,16 +190,34 @@ function modificarDetalleFactura(id){
 			});
 }
 
-function eliminarFacturar(id_factura){
+function eliminarDetalleFactura(id_producto,id_factura){
 
 			$.ajax({
-				url:"./metodos_ajax/facturas/eliminar_facturas.php?id_factura="+id_factura,
+				url:"./metodos_ajax/facturas/eliminar_detalle_facturas.php?id_producto="+id_producto+"&id_factura="+id_factura,
 				method:"POST",
 				success:function(respuesta){
 					 alert(respuesta);
 					 if(respuesta==1){
 						 swal("Eliminado correctamente","Los datos se han guardado correctamente.","success");
-						 listarFacturas();
+						 listarDetalleFacturas("");
+					 }else if(respuesta==2){
+						 swal("Ocurrió un error","Recargue la página e intente nuevamente.","error");
+					 }
+				}
+			});
+
+}
+
+function eliminarFactura(id_factura){
+
+			$.ajax({
+				url:"./metodos_ajax/facturas/eliminar_facturas.php?id_factura="+id_factura,
+				method:"POST",
+				success:function(respuesta){
+					 // alert(respuesta);
+					 if(respuesta==1){
+						 swal("Eliminado correctamente","Los datos se han guardado correctamente.","success");
+						 listarFacturas("");
 					 }else if(respuesta==2){
 						 swal("Ocurrió un error","Recargue la página e intente nuevamente.","error");
 					 }

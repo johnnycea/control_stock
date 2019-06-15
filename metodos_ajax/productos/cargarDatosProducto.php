@@ -11,15 +11,29 @@ $id_producto = $Funciones->limpiarTexto($_REQUEST['id_producto']);
        $Producto->setIdProducto($id_producto);
        $resultadoProducto = $Producto->obtenerProducto(); //$texto_buscar," where id_estado=1 or id_estado=2 "
 
-      $filas = $resultadoProducto->fetch_array();
 
-     $resultado = '
-     {   "descripcion" : "'.$filas['descripcion'].'",
-         "marca"       : "'.$filas['id_marca'].'",
-         "categoria"  : "'.$filas['id_categoria'].'",
-         "stock_minimo"  : "'.$filas['stock_minimo'].'"}
+if($resultadoProducto->num_rows>0){
 
-     ';
+    $filas = $resultadoProducto->fetch_array();
+
+   $resultado = '
+   {   "descripcion" : "'.$filas['descripcion'].'",
+       "marca"       : "'.$filas['marca'].'",
+       "unidad_medida"  : "'.$filas['unidad_medida'].'",
+       "stock_minimo"  : "'.$filas['stock_minimo'].'" }
+
+   ';
+
+}else{
+  $resultado = '
+  {   "descripcion" : "",
+      "marca"       : "",
+      "unidad_medida"  : "",
+      "stock_minimo"  : "" }
+
+  ';
+}
+
 
      echo $resultado;
 

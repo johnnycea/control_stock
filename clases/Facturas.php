@@ -63,6 +63,8 @@ class Facturas{
     $resultado_consulta = $Conexion->query("select * from tb_facturas where id_factura=".$this->id_factura );
     return $resultado_consulta;
  }
+
+
  public function obtenerProductoDetallefactura(){
     $Conexion = new Conexion();
     $Conexion = $Conexion->conectar();
@@ -115,6 +117,22 @@ class Facturas{
        return $resultado;
    }
 
+   public function eliminarDetalleFactura(){
+     $Conexion = new Conexion();
+     $Conexion = $Conexion->conectar();
+
+     $consulta = "delete from tb_detalle_factura where id_factura=".$this->id_factura." and id_producto=".$this->id_producto;
+
+// echo $consulta;
+     if($Conexion->query($consulta)){
+         return true;
+     }else{
+         // echo $consulta;
+          return false;
+     }
+
+   }
+
    public function eliminarFactura(){
      $Conexion = new Conexion();
      $Conexion = $Conexion->conectar();
@@ -124,12 +142,19 @@ class Facturas{
      if($Conexion->query($consulta)){
          return true;
      }else{
-         echo $consulta;
-         // return false;
+         // echo $consulta;
+          return false;
      }
 
    }
 
+   public function mostrarStockIngresos(){
+     $Conexion = new Conexion();
+     $Conexion = $Conexion->conectar();
+
+     $resultado_consulta = $Conexion->query("select * from vista_stock_ingresos order by stock asc" );
+     return $resultado_consulta;
+   }
 
 }
  ?>

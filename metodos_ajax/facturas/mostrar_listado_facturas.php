@@ -5,8 +5,8 @@ require_once '../../clases/Facturas.php';
 
 
   echo '
-  <table class="table bg-white table-sm table-striped table-hover">
-     <thead class="thead-dark" align=center>
+  <table class="table table-dark table-sm table-striped table-hover">
+     <thead class="" align=center>
 
 
         <th>Número factura</th>
@@ -15,6 +15,7 @@ require_once '../../clases/Facturas.php';
         <th>Razon social</th>
         <th>Direccion</th>
         <th>Telefono</th>
+        <th></th>
         <th></th>
         <th></th>
      </thead>
@@ -40,8 +41,13 @@ require_once '../../clases/Facturas.php';
                        <td><span id="columna_direccion_'.$filas['id_factura'].'" >'.$filas['direccion'].'</span></td>
                        <td><span id="columna_telefono_'.$filas['id_factura'].'" >'.$filas['telefono'].'</span></td>
                        <td>
-                          <a href="./detalle_facturas.php?id_factura='.$filas['id_factura'].'" class="col-12 btn btn-warning "><i class="far fa-edit"></i></a>
+                          <button onclick="cargarInformacionFactura('.$filas['id_factura'].')"  class="col-12 btn btn-warning "> <i class="far fa-edit"></i> </button>
                        </td>
+
+                       <td>
+                       <a href="./detalle_facturas.php?id_factura='.$filas['id_factura'].'" class="col-12 btn btn-info "><i class="fas fa-list"></i></a>
+                       </td>
+
                        <td>
                           <button onclick="eliminarFactura('.$filas['id_factura'].')"  class="col-12 btn btn-danger "> <i class="fa fa-trash-alt"></i> </button>
                        </td>
@@ -51,10 +57,6 @@ require_once '../../clases/Facturas.php';
     echo '
      </tbody>
   </table>';
-//  <button onclick="cargarInformacionDetalleFactura('.$filas['id_factura'].')" class="col-12 btn btn-warning "> <i class="fa fa-edit"></i> </button>
-
-
-  // <a href="./modificar_empresa.php?id_empresa='.$filas['id_empresa'].'" class="btn btn-outline-primary">Editar</a>
 
 
  ?>
