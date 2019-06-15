@@ -100,7 +100,7 @@ function guardarModificarProductoElaborado(){
 						 }else if(respuesta=="error4"){
 						  swal("Error al subir la imagen","Recargue la página e intente nuevamente.","error");
 							//ceerrar modal
-							
+
 
 						 }else{
 						  swal("Ocurrió un error","Recargue la página e intente nuevamente.","error");
@@ -135,9 +135,15 @@ function agregarIngredienteProducto(id_ingrediente,id_producto_creado){
 			method:"POST",
 			success:function(respuesta){
 				 // alert(respuesta);
+
 						 if(respuesta=="1"){
-							 listarIngredientesSeleccionados(id_producto_creado);
+
+							  listarIngredientesSeleccionados(id_producto_creado);
 							  swal("Guardado","Guardado correctamente.","success");
+
+						 }else if(respuesta=="2"){//SE DEBE AGREGAR UNA FUNCION MAS EFECTIVA PARA ESTE MENSAJE
+							 swal("El ingrediente ya fue agregado.","","error");
+
 						 }else{
 							 swal("Ocurrió un error","Recargue la página e intente nuevamente.","error");
 						 }
@@ -164,17 +170,24 @@ function cargarModificarProductoElaborado(id){
 	limpiarModalProductosElaborados();
 
   var txt_id_producto_elaborado = id;
-	var txt_descripcion = $("#columna_descripcion_"+id).html();
+	var txt_descripcion = $("#columna_nombre_"+id).html();
   var txt_valor = $("#columna_valor_"+id).html();
 	var select_estado = $("#columna_estado_"+id).html();
 
+
+   // alert("id: "+id+" descripcion: "+txt_descripcion+" valor: "+txt_valor+" estado: "+select_estado);
 	// alert("id "+txt_id_producto_elaborado);
 	//carga la informacion recibida en el modal
 	$("#txt_id_producto_elaborado_modificar").val(txt_id_producto_elaborado);
+	$("#txt_id_producto_elaborado_creado").val(txt_id_producto_elaborado);
 	$("#txt_descripcion").val(txt_descripcion);
 	$("#txt_valor").val(txt_valor);
 	$("#select_estado").val(select_estado);
-	// alert("llegaaaaaaaaaaaaaaaaaaaaaaaaaaaaa modal"+txt_descripcion);
+
+
+
+   listarIngredientesSeleccionados(txt_id_producto_elaborado);
+	  $("#contenedor_buscador_ingredientes").removeClass("d-none");
 }
 
 
@@ -221,6 +234,9 @@ function eliminarProductoElaborado(id){
 						 swal("Eliminado correctamente","Los datos se han guardado correctamente.","success");
 						 listarProductosElaborados("");
 					 }else if(respuesta==2){
+						 swal("Ocurrió un error","Recargue la página e intente nuevamente.","error");
+
+					 }else{
 						 swal("Ocurrió un error","Recargue la página e intente nuevamente.","error");
 					 }
 					}

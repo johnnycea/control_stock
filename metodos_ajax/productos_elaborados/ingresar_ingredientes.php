@@ -9,6 +9,7 @@ $id_ingrediente = $Funciones->limpiarTexto($_REQUEST['id_ingrediente']);
 $id_producto_creado = $Funciones->limpiarTexto($_REQUEST['id_producto_creado']);
 $cantidad_ingrediente = $Funciones->limpiarTexto($_REQUEST['cantidad_ingrediente']);
 
+// echo "pe: ".$id_producto_creado;
 
 $ProductoElaborado = new ProductoElaborado();
 $ProductoElaborado->setIdProductoElaborado($id_producto_creado);

@@ -39,13 +39,14 @@ class Facturas{
      $conexion = $conexion->conectar();
 
      if($texto_buscar=="" || $texto_buscar==" "){
-       $consulta= "select * from tb_facturas ".$condiciones."";
+       $consulta= "select * from tb_facturas ".$condiciones." order by fecha_factura desc";
      }else{
        $consulta= "select * from tb_facturas
                    where id_factura like '%".$texto_buscar."%'
                    or rut_proveedor like '%".$texto_buscar."%'
                    or numero_factura like '%".$texto_buscar."%'
-                   or fecha_factura like '%".$texto_buscar."%'";
+                   or fecha_factura like '%".$texto_buscar."%' 
+                   order by fecha_factura desc";
      }
      $resultado= $conexion->query($consulta);
      if($resultado){

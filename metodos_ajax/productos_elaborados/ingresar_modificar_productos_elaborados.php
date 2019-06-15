@@ -19,7 +19,7 @@ $ProductoElaborado->setValor($txt_valor);
 $ProductoElaborado->setEstado($select_estado);
 
 
-if ($_REQUEST['txt_id_producto_elaborado_modificar']=="") {
+if ($_REQUEST['txt_id_producto_elaborado_modificar']=="") {//debe crear nuevo producto
 
 
   if($select_imagen['name']==""){
@@ -42,7 +42,7 @@ if ($_REQUEST['txt_id_producto_elaborado_modificar']=="") {
 
   }
 
-}else{
+}else{//modificar producto
 
   $id_producto_elaborado = $Funciones->limpiarNumeroEntero($_REQUEST['txt_id_producto_elaborado_modificar']);
   $ProductoElaborado->setIdProductoElaborado($id_producto_elaborado);
@@ -69,8 +69,8 @@ if ($_REQUEST['txt_id_producto_elaborado_modificar']=="") {
 
 if($imagen_correcta==true){
 
-  if($id_modificado = $ProductoElaborado->modificarProductoElaborado()){
-     echo $id_modificado;
+  if($ProductoElaborado->modificarProductoElaborado()){
+     echo $_REQUEST['txt_id_producto_elaborado_modificar'];
   }else{
      echo "error2";
   }

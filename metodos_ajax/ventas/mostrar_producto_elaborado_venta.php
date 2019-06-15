@@ -31,7 +31,7 @@ echo '<div class="row">';
 
                         </style>
 
-                        <div class="card border-primary col-2" style="padding:0px; margin-left:5px;" >
+                        <div class="card border-primary col-3" style="padding:0px; margin-left:5px; margin-top:5px;" >
 
                               <div  id="imagen_producto_'.$filas['id_producto_elaborado'].'">
                                   <div  style="align:bottom; background-color: rgba(0, 0, 0, 0.79); >

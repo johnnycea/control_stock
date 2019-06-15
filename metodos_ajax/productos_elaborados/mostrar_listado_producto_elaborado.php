@@ -13,19 +13,60 @@ require_once '../../clases/ProductoElaborado.php';
                     while($filas = $listadoProductoElaborado->fetch_array()){
 
 
+                        // echo '
+                        // <div class="card border-primary mb-3 " style="max-width: 18rem;" >
+                        //   <img class="card-img-top" src="./imagenes/productos_elaborados/'.$filas['imagen'].'" alt="Card image cap">
+                        //   <div class="card-body">
+                        //     <h5 id="columna_descripcion_'.$filas['id_producto_elaborado'].'" class="card-title">'.$filas['descripcion'].'</h5>
+                        //     <h5 id="columna_valor_'.$filas['id_producto_elaborado'].'" class="card-title">$'.number_format($filas['valor'],0,",",".").'</h5>
+                        //     <h5 class="d-none" id="columna_estado_'.$filas['id_producto_elaborado'].'" class="card-title">'.$filas['estado_producto'].'</h5>
+                        //
+                        //     <button class="btn btn-warning " onclick="cargarModificarProductoElaborado('.$filas['id_producto_elaborado'].')" data-target="#modal_nuevo_producto_elaborado" data-toggle="modal">Editar</button>
+                        //     <button class="btn btn-danger "  onclick="eliminarProductoElaborado('.$filas['id_producto_elaborado'].')" >Eliminar</button>
+                        //
+                        //   </div>
+                        // </div>
+                        // ';
+
                         echo '
-                        <div class="card border-primary mb-3 " style="max-width: 18rem;" >
-                          <img class="card-img-top" src="./imagenes/productos_elaborados/'.$filas['imagen'].'" alt="Card image cap">
-                          <div class="card-body">
-                            <h5 id="columna_descripcion_'.$filas['id_producto_elaborado'].'" class="card-title">'.$filas['descripcion'].'</h5>
-                            <h5 id="columna_valor_'.$filas['id_producto_elaborado'].'" class="card-title">$'.number_format($filas['valor'],0,",",".").'</h5>
-                            <h5 class="d-none" id="columna_estado_'.$filas['id_producto_elaborado'].'" class="card-title">'.$filas['estado_producto'].'</h5>
 
-                            <button class="btn btn-warning " onclick="cargarModificarProductoElaborado('.$filas['id_producto_elaborado'].')" data-target="#modal_nuevo_producto_elaborado" data-toggle="modal">Editar</button>
-                            <button class="btn btn-danger "  onclick="eliminarProductoElaborado('.$filas['id_producto_elaborado'].')" >Eliminar</button>
+                        <style>
 
-                          </div>
+                           #imagen_producto_'.$filas['id_producto_elaborado'].'{
+                           width: 100%;
+                           height: 150px;
+                           background-image: url("./imagenes/productos_elaborados/'.$filas['imagen'].'");
+                           background-repeat: no-repeat;
+                           background-size: cover;
+                           }
+
+                        </style>
+
+                        <div class="card border-primary col-2" style="padding:0px; margin-left:5px; margin-top:5px;" >
+
+                              <div  id="imagen_producto_'.$filas['id_producto_elaborado'].'">
+                                  <div  style="align:bottom; background-color: rgba(0, 0, 0, 0.79); >
+
+                                      <h5 id="columna_descripcion_'.$filas['id_producto_elaborado'].'" class="card-title text-white">'.$filas['descripcion'].'</h5>
+                                      <span id="columna_nombre_'.$filas['id_producto_elaborado'].'" class="d-none">'.$filas['descripcion'].'</span>
+                                      <h5  class="card-title text-white"> <span >$'.number_format($filas['valor'],0,",",".").'</span></h5>
+
+
+                                        <span class="d-none" id="columna_valor_'.$filas['id_producto_elaborado'].'">'.$filas['valor'].'</span></h5>
+                                        <h5 class="d-none" id="columna_estado_'.$filas['id_producto_elaborado'].'" class="card-title">'.$filas['estado_producto'].'</h5>
+                                  </div>
+                              </div>
+
+                              <div class="card-body" >
+                                     <div class="row">
+                                     <button class="btn btn-warning col-6" onclick="cargarModificarProductoElaborado('.$filas['id_producto_elaborado'].')" data-target="#modal_nuevo_producto_elaborado" data-toggle="modal" style="font-size:15px; background-color:rgb(139, 95, 69); color:white;" ><i class="far fa-edit"></i></button>
+                                     <button class="btn btn-danger col-6"  style="font-size:15px; " onclick="eliminarProductoElaborado('.$filas['id_producto_elaborado'].')" ><i class="fa fa-trash-alt"></i></button>
+
+                                      </div>
+                              </div>
+
                         </div>
+
                         ';
 
                     }

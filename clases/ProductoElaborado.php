@@ -102,6 +102,7 @@ echo $consulta;
 
     $consulta = "insert INTO tb_ingredientes_producto_elaborado (`id_producto_elaborado`, `id_producto_ingrediente`, `cantidad`) VALUES (".$this->id_producto_elaborado.", ".$this->id_ingrediente.", ".$this->cantidad_ingrediente.")";
     $resultado= $conexion->query($consulta);
+    // echo $consulta;
     return $resultado;
   }
 
@@ -136,8 +137,11 @@ echo $consulta;
 
     // echo $consulta;
 
-      $resultado= $Conexion->query($consulta);
-      return $resultado;
+      if($Conexion->query($consulta)){
+          return true;
+      }else{
+          return false;
+      }
   }
 
   public function eliminarProductoElaborado(){
@@ -145,6 +149,9 @@ echo $consulta;
     $Conexion = $Conexion->conectar();
 
     $consulta = "delete from tb_productos_elaborados WHERE (id_producto_elaborado = ".$this->id_producto_elaborado.")";
+
+
+    //IMPORTANTE: REALIZAR COMPROBACION SI EXISTE EL PRODUCT_ELABORADO EN TABLA DETALLE_VENTA
 
     if($Conexion->query($consulta)){
         return true;
