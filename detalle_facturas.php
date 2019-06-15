@@ -167,11 +167,11 @@ echo '<script> var id_factura = '.$id_factura.'; </script>';
                        </div>
                        <div class="form-group col-md-3">
                          <label for="title" class="control-label">Cantidad:</label>
-                         <input value="" class="form-control" type="number" id="txt_cantidad" name="txt_cantidad">
+                         <input value="" required class="form-control" type="number" id="txt_cantidad" name="txt_cantidad">
                        </div>
                        <div class="form-group col-md-3">
                          <label for="title" class="control-label">Valor Unitario:</label>
-                         <input type="number" class="form-control" name="txt_valor_unitario" id="txt_valor_unitario" value="">
+                         <input type="number" required class="form-control" name="txt_valor_unitario" id="txt_valor_unitario" value="">
                        </div>
 
 

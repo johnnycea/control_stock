@@ -9,14 +9,13 @@ require_once '../../clases/Producto.php';
   <table class="table  table-sm table-striped table-hover">
      <thead class="thead-dark" align=center>
 
-        <th>Codigo Producto</th>
+        <th>Codigo</th>
         <th>Descripción</th>
         <th>Marca</th>
-        <th>Unidad medida</th>
         <th>Cantidad</th>
+        <th>Unidad medida</th>
         <th>Valor</th>
-        <th width=170>Ver</th>
-        <th></th>
+        <th ></th>
         <th></th>
      </thead>
      <tbody>';
@@ -42,12 +41,13 @@ require_once '../../clases/Producto.php';
                        <td><span id="columna_marca_'.$filas['codigo'].'" >'.$filas['marca'].'</span></td>
 
                        <td><span id="columna_cantidad_'.$filas['codigo'].'" >'.$filas['cantidad'].'</span></td>
+                       <td><span id="columna_unidad_medida_'.$filas['codigo'].'" >'.$filas['unidad_medida'].'</span></td>
                        <td><span id="columna_valor_'.$filas['codigo'].'" >'.$filas['valor'].'</span></td>
                        <td>
                        <button onclick="cargarInformacionModificarDetalleFactura('.$filas['codigo'].')" class="col-12 btn btn-warning "> <i class="fa fa-edit"></i> </button>
                        </td>
                        <td>
-                          <button type="button" onclick="eliminarFactura('.$filas['id_factura'].')" class="col-12 btn btn-danger "> <i class="fa fa-trash-alt"></i> </button>
+                          <button type="button" onclick="eliminarDetalleFactura('.$filas['codigo'].','.$id_factura.')" class="col-12 btn btn-danger "> <i class="fa fa-trash-alt"></i> </button>
                        </td>
                     </tr>';
          }
