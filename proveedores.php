@@ -31,13 +31,8 @@ $usuario= $usuario->obtenerUsuarioActual();
 
         <?php cargarMenuPrincipal(); ?>
 
-       <div class="col-10">
-         <br>
-         <br>
-         <br>
-         <br>
-         <br>
-         <br>
+        <div class="container contenedor-principal" >
+
           <div  style="" class=" col-12">
             <div class="container">
                  <button type="button" onclick="limpiarFormularioProveedor();" class="btn btn-success" data-target="#modal_proveedor" data-toggle="modal" name="button">Crear nuevo proveedor</button>
