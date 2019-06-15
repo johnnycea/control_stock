@@ -6,7 +6,7 @@ require_once '../../clases/Producto.php';
 
 
   echo '
-  <table class="table  table-dark table-sm table-striped table-hover">
+  <table class="table  table-sm table-striped table-hover">
      <thead class="thead-dark" align=center>
 
         <th>Codigo</th>

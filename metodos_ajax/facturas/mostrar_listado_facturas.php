@@ -5,8 +5,8 @@ require_once '../../clases/Facturas.php';
 
 
   echo '
-  <table class="table bg-white table-sm table-striped table-hover">
-     <thead class="thead-dark" align=center>
+  <table class="table table-dark table-sm table-striped table-hover">
+     <thead class="" align=center>
 
 
         <th>Número factura</th>
@@ -57,10 +57,6 @@ require_once '../../clases/Facturas.php';
     echo '
      </tbody>
   </table>';
-//  <button onclick="cargarInformacionDetalleFactura('.$filas['id_factura'].')" class="col-12 btn btn-warning "> <i class="fa fa-edit"></i> </button>
-
-
-  // <a href="./modificar_empresa.php?id_empresa='.$filas['id_empresa'].'" class="btn btn-outline-primary">Editar</a>
 
 
  ?>

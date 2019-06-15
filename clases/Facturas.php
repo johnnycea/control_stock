@@ -63,6 +63,8 @@ class Facturas{
     $resultado_consulta = $Conexion->query("select * from tb_facturas where id_factura=".$this->id_factura );
     return $resultado_consulta;
  }
+
+
  public function obtenerProductoDetallefactura(){
     $Conexion = new Conexion();
     $Conexion = $Conexion->conectar();
@@ -146,6 +148,13 @@ class Facturas{
 
    }
 
+   public function mostrarStockIngresos(){
+     $Conexion = new Conexion();
+     $Conexion = $Conexion->conectar();
+
+     $resultado_consulta = $Conexion->query("select * from vista_stock_ingresos order by stock asc" );
+     return $resultado_consulta;
+   }
 
 }
  ?>

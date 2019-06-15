@@ -20,22 +20,8 @@ $usuario= $usuario->obtenerUsuarioActual();
    <title>Ventas</title>
    <?php cargarHead(); ?>
 
-  <script src="./js/script_ventas.js"></script>
-  <!-- <script src="./js/script_productosElaborados.js"></script> -->
-  <script>
-      $(document).ready(function(){
+  <script src="./js/script_stock.js"></script>
 
-        var date_input=$('input[name="txt_fecha"]'); //our date input has the name "date"
-        var options={
-          format: 'dd-mm-yyyy',
-          todayHighlight: true,
-          autoclose: true,
-          language: 'es',
-        };
-        date_input.datepicker(options);
-
-      })
-    </script>
 </head>
 <body>
 
@@ -51,15 +37,7 @@ $usuario= $usuario->obtenerUsuarioActual();
   <div class="container contenedor-principal" >
 
 
-       <!-- 1-. RECORRERO POR WHILE TODOS LOS INGREDIENTES
-
-         WHILE(INGREDIENTES){
-
-                 CONSULTAR LA SUMA DE TODOS LOS INGRESOS DEL INGREDIENTE (TABLA DETALLE_FACTURA)
-
-       }
-
-     -->
+   <div id="contenedor_stock_ingresos"></div>
 
 
   </div>
