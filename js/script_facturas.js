@@ -1,5 +1,26 @@
 
 
+
+function cargarInformacionProveedor(texto_buscar){
+
+
+		$.ajax({
+			url:"./metodos_ajax/proveedores/buscar_proveedores_factura.php?texto_buscar="+texto_buscar,
+			method:"POST",
+			dataType:"json",
+			success:function(respuesta){
+
+				 $("#txt_razon_social_proveedor").val(respuesta.razon_social);
+				 $("#txt_direccion_proveedor").val(respuesta.direccion);
+				 $("#txt_telefono_proveedor").val(respuesta.telefono);
+				 $("#txt_giro_proveedor").val(respuesta.giro);
+				 $("#txt_correo_proveedor").val(respuesta.correo);
+			}
+		});
+}
+
+
+
 function listarFacturas(texto_buscar){
 
 
