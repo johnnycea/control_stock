@@ -93,14 +93,14 @@ $usuario= $usuario->obtenerUsuarioActual();
                 <div class="form-group col-12" >
 
                        <label for="title" class="col-12 control-label">Stock minimo:</label>
-                       <input type="text" onkeypress="return soloLetras(event);" required class="form-control" name="txt_stock_minimo" id="txt_stock_minimo" value="">
+                       <input type="text" onkeypress="return soloLetrasNumeros(event);" required class="form-control" name="txt_stock_minimo" id="txt_stock_minimo" value="">
 
                 </div>
 
                 <div class="form-group col-12" >
 
                        <label for="title" class="col-12 control-label">Marca:</label>
-                       <input type="text" onkeypress="return soloLetras(event);" required class="form-control" name="txt_marca" id="txt_marca" value="">
+                       <input type="text" required class="form-control" name="txt_marca" id="txt_marca" value="">
 
                 </div>
 
