@@ -10,8 +10,11 @@ require_once '../../clases/Facturas.php';
 
 
         <th>Número factura</th>
-        <th>Rut proveedor</th>
         <th>Fecha</th>
+        <th>Rut proveedor</th>
+        <th>Razon social</th>
+        <th>Direccion</th>
+        <th>Telefono</th>
         <th></th>
         <th></th>
      </thead>
@@ -31,8 +34,11 @@ require_once '../../clases/Facturas.php';
                        <span class="d-none" id="columna_id_factura_'.$filas['id_factura'].'" >'.$filas['id_factura'].'</span>
 
                        <td><span id="columna_numero_factura_'.$filas['id_factura'].'" >'.$filas['numero_factura'].'</span></td>
-                       <td><span id="columna_rut_proveedor_'.$filas['id_factura'].'" >'.$filas['rut_proveedor'].'</span></td>
                        <td><span id="columna_fecha_factura_'.$filas['id_factura'].'" >'.$filas['fecha_factura'].'</span></td>
+                       <td><span id="columna_rut_proveedor_'.$filas['id_factura'].'" >'.$filas['rut_proveedor'].'-'.$filas['dv'].'</span></td>
+                       <td><span id="columna_razon_social_'.$filas['id_factura'].'" >'.$filas['razon_social'].'</span></td>
+                       <td><span id="columna_direccion_'.$filas['id_factura'].'" >'.$filas['direccion'].'</span></td>
+                       <td><span id="columna_telefono_'.$filas['id_factura'].'" >'.$filas['telefono'].'</span></td>
                        <td>
                           <a href="./detalle_facturas.php?id_factura='.$filas['id_factura'].'" class="col-12 btn btn-warning "><i class="far fa-edit"></i></a>
                        </td>

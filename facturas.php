@@ -82,22 +82,46 @@ $usuario= $usuario->obtenerUsuarioActual();
 
            <input type="hidden" name="txt_id_factura" id="txt_id_factura" value="">
 
-           <div class="form-group card border-info" >
+           <div class=" " >
 
-             <div class="form-group col-md-6" >
-                 <label for="title" class="col-12 control-label">Proveedor:</label>
-                 <select required class="form-control" name="select_proveedor" id="select_proveedor">
-                   <option value="" selected >Seleccione:</option>
-                   <?php
-                       $Proveedor = new Proveedor();
-                       $listaProveedor = $Proveedor->obtener_cmb_Proveedor();
 
-                       while($filas = $listaProveedor->fetch_array()){
-                          echo '<option value="'.$filas['rut_proveedor'].'">'.$filas['razon_social'].'</option>';
-                       }
-                    ?>
-                 </select>
-             </div>
+            <div class="row">
+
+                       <div class="col-md-4" >
+                           <label for="title" class="col-12 control-label">Rut proveedor:</label>
+                          <input type="text" placeholder="Ej: 11222333-0" max="10" onkeyup="cargarInformacionProveedor(this.value)" class="form-control" id="txt_rut_proveedor" name="txt_rut_proveedor">
+                       </div>
+
+                       <div class="col-md-4" >
+                           <label for="title" class="col-12 control-label">Razon social:</label>
+                          <input type="text" class="form-control" id="txt_razon_social_proveedor" name="txt_razon_social_proveedor">
+                       </div>
+
+
+                       <div class="col-md-4" >
+                           <label for="title" class="col-12 control-label">Giro:</label>
+                          <input type="text" placeholder="opcional" class="form-control" id="txt_giro_proveedor" name="txt_giro_proveedor">
+                       </div>
+
+                       <div class="col-md-4" >
+                         <label for="title" class="col-12 control-label">Direccion:</label>
+                         <input type="text" class="form-control" id="txt_direccion_proveedor" name="txt_direccion_proveedor">
+                       </div>
+
+                       <div class="col-md-4" >
+                         <label for="title" class="col-12 control-label">Telefono:</label>
+                         <input type="text" class="form-control" id="txt_telefono_proveedor" name="txt_telefono_proveedor">
+                       </div>
+
+                       <div class="col-md-4" >
+                           <label for="title" class="col-12 control-label">Correo:</label>
+                          <input type="text" class="form-control" id="txt_correo_proveedor" name="txt_correo_proveedor">
+                       </div>
+
+           </div>
+
+
+<div><hr></div>
 
              <div class="form-group col-12" >
 
