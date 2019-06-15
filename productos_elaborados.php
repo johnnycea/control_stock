@@ -34,9 +34,15 @@ $usuario= $usuario->obtenerUsuarioActual();
   <?php cargarMenuPrincipal(); ?>
 
 
-
   <div class="col-10">
 
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
        <div class="col-12">
 
           <div>

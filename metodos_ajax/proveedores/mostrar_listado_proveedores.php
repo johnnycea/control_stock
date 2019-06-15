@@ -5,7 +5,9 @@ require_once '../../clases/Proveedor.php';
 
 
   echo '
-  <table class="table table-responsive table-sm table-striped table-hover">
+  <br>
+  <br>
+  <table class="table table-responsive table-sm table-bordered table-info table-hover">
      <thead class="thead-dark">
         <th></th>
         <th></th>

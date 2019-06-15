@@ -259,6 +259,15 @@ function cargarMenuPrincipal(){
                   }
             echo '</li>';
 
+            //UN LINK
+            echo '<li class="nav-item">';
+                  if($url=="ingredientes.php"){
+                    echo '<a class="nav-link estilo_opciones_menu active" href="./ingredientes.php">Ingredientes</span></a>';
+                  }else{
+                    echo '<a class="nav-link estilo_opciones_menu active " href="./ingredientes.php">Ingredientes</span></a>';
+                  }
+            echo '</li>';
+
 
             //UN LINK
             echo '<li class="nav-item">';

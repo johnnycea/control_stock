@@ -164,16 +164,16 @@ function modificarDetalleFactura(id){
 			});
 }
 
-function eliminarProveedor(id){
+function eliminarFacturar(id_factura){
 
 			$.ajax({
-				url:"./metodos_ajax/proveedores/eliminar_proveedor.php?id="+id,
+				url:"./metodos_ajax/facturas/eliminar_facturas.php?id_factura="+id_factura,
 				method:"POST",
 				success:function(respuesta){
 					 alert(respuesta);
 					 if(respuesta==1){
 						 swal("Eliminado correctamente","Los datos se han guardado correctamente.","success");
-						 listarProveedor();
+						 listarFacturas();
 					 }else if(respuesta==2){
 						 swal("Ocurrió un error","Recargue la página e intente nuevamente.","error");
 					 }

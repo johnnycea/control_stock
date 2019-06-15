@@ -1,16 +1,16 @@
 <?php
 
 require_once '../../clases/Funciones.php';
-require_once '../../clases/Proveedor.php';
+require_once '../../clases/Facturas.php';
 
 $Funciones = new Funciones();
 
-$rut_proveedor = $Funciones->limpiarTexto($_REQUEST['id']);
+$id_factura = $Funciones->limpiarTexto($_REQUEST['id_factura']);
 
-$Proveedor = new Proveedor();
-$Proveedor->setRutProveedor($rut_proveedor);
+$Facturas = new Facturas();
+$Facturas->setRutProveedor($id_factura);
 
-  if($Proveedor->eliminarProveedor()){
+  if($Facturas->eliminarFactura()){
      echo "1";
   }else{
      echo "2";
