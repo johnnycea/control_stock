@@ -21,7 +21,7 @@ $usuario= $usuario->obtenerUsuarioActual();
    <?php cargarHead(); ?>
 
   <script src="./js/script_ingredientes.js"></script>
-  <script>listarIngrediente();</script>
+  <!-- <script>listarIngrediente();</script> -->
 </head>
 <body>
 
@@ -34,7 +34,7 @@ $usuario= $usuario->obtenerUsuarioActual();
 
         <div class="container contenedor-principal" >
 
-  
+
           <div  style="" class=" col-12">
             <div class="container">
                  <button type="button" onclick="limpiarFormularioIngrediente();" class="btn btn-success" data-target="#modal_ingrediente" data-toggle="modal" name="button">Crear nuevo ingrediente</button>
@@ -74,50 +74,72 @@ $usuario= $usuario->obtenerUsuarioActual();
 
         <form id="formulario_modal_ingrediente" class="" action="javascript:guardarIngrediente()" method="post">
 
-           <!-- <input type="hidden" name="txt_id_proveedor" id="txt_id_proveedor" value=""> -->
+           <!-- <input type="hidden" name="txt_codigo_producto" id="txt_codigo_producto" value=""> -->
 
            <div class="form-group card border-info" >
 
                 <div class="form-group col-12" >
 
-                       <label for="title" class="col-12 control-label">Rut Proveedor:</label>
-                       <input type="text"  required class="form-control" name="txt_rut_proveedor" id="txt_rut_proveedor" value="">
+                       <label for="title" class="col-12 control-label">Codigo:</label>
+                       <input type="text"  required class="form-control" name="txt_codigo_producto" id="txt_codigo_producto" value="">
                 </div>
 
                 <div class="form-group col-12" >
 
-                       <label for="title" class="col-12 control-label">Razón Social:</label>
-                       <input type="text" onkeypress="return soloLetras(event);" required class="form-control" name="txt_razon_social" id="txt_razon_social" value="">
-
+                       <label for="title" class="col-12 control-label">Descripción:</label>
+                       <input type="text"  required class="form-control" name="txt_descripcion" id="txt_descripcion" value="">
                 </div>
+
                 <div class="form-group col-12" >
 
-                       <label for="title" class="col-12 control-label">Dirección:</label>
-                       <input type="text" onkeypress="return soloLetras(event);" required class="form-control" name="txt_direccion" id="txt_direccion" value="">
+                       <label for="title" class="col-12 control-label">Stock minimo:</label>
+                       <input type="text" onkeypress="return soloLetras(event);" required class="form-control" name="txt_stock_minimo" id="txt_stock_minimo" value="">
 
                 </div>
+
                 <div class="form-group col-12" >
 
-                       <label for="title" class="col-12 control-label">Teléfono:</label>
-                       <input type="text" onkeypress="return soloNumeros(event);" required class="form-control" name="txt_telefono" id="txt_telefono" value="">
-
-                </div>
-                <div class="form-group col-12" >
-
-                       <label for="title" class="col-12 control-label">Giro:</label>
-                       <input type="text" onkeypress="return soloLetras(event);" required class="form-control" name="txt_giro" id="txt_giro" value="">
-
-                </div>
-                <div class="form-group col-12" >
-
-                       <label for="title" class="col-12 control-label">Correo:</label>
-                       <input type="text" onkeypress="return soloLetras(event);" required class="form-control" name="txt_correo" id="txt_correo" value="">
+                       <label for="title" class="col-12 control-label">Marca:</label>
+                       <input type="text" onkeypress="return soloLetras(event);" required class="form-control" name="txt_marca" id="txt_marca" value="">
 
                 </div>
 
-          </div>
+                <div class="form-group col-6">
+
+                    <label for="estado">Estado:</label>
+                         <select  class="form-control" required name="cmb_estado" id="cmb_estado">
+                           <option value="" selected disabled>Seleccione:</option>
+                            <?php
+                                require_once './clases/Estado.php';
+                                $TipoE= new Estado();
+                                $filasTipoC= $TipoE->obtenerEstadosProductosElaborados();
+
+                                foreach($filasTipoC as $tipo){
+                                    echo '<option value="'.$tipo['id_estado'].'" >'.$tipo['descripcion_estado'].'</option>';
+                                }
+                             ?>
+                        </select>
+                </div>
+
+                <div class="form-group col-6">
+
+                    <label for="estado">Unidad Medida:</label>
+                         <select  class="form-control" required name="cmb_unidad_medida" id="cmb_unidad_medida">
+                           <option value="" selected disabled>Seleccione:</option>
+                            <?php
+                                require_once './clases/UnidadMedida.php';
+                                $TipoUnidad= new UnidadMedida();
+                                $filasTipoUnidad= $TipoUnidad->obtenerUnidadesMedida();
+
+                                foreach($filasTipoUnidad as $tipo){
+                                    echo '<option value="'.$tipo['id_unidad_medida'].'" >'.$tipo['descripcion'].'</option>';
+                                }
+                             ?>
+                        </select>
+                </div>
 
 
+            </div>
 
                 <div class="form-group" >
                   <div class="col-12">

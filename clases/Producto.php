@@ -87,6 +87,17 @@ class Producto{
    $conexion = $conexion->conectar();
 
    $consulta = "insert INTO tb_productos (`id_producto`,`descripcion`,`stock_minimo`,`marca`,`id_estado`) VALUES ('".$this->id_producto."', '".$this->descripcion."', '".$this->stock_minimo."',  '".$this->marca."', '".$this->id_estado."')";
+   echo $consulta;
+   $resultado= $conexion->query($consulta);
+   return $resultado;
+ }
+
+ public function crearIngrediente(){
+   $conexion = new Conexion();
+   $conexion = $conexion->conectar();
+
+   $consulta = "insert INTO tb_productos (`id_producto`,`descripcion`,`stock_minimo`,`marca`,`id_estado`,`unidad_medida`) VALUES ('".$this->id_producto."', '".$this->descripcion."', '".$this->stock_minimo."',  '".$this->marca."', '".$this->id_estado."', '".$this->id_unidad_medida."')";
+   // echo $consulta;
    $resultado= $conexion->query($consulta);
    return $resultado;
  }

@@ -29,7 +29,8 @@ require_once '../../clases/Producto.php';
                                   <td>'.$filas['marca'].'</span></td>
                                   <td>'.$filas['unidad_medida'].'</td>
                                   <td><span id="_'.$filas['id_producto'].'" >'.$filas['stock_minimo'].'</span></td>
-                                  <td><button onclick="agregarIngredienteProducto('.$filas['id_producto'].')" class="btn btn-warning btn-block">Agregar</button></td>
+                                  <td><button class="btn btn-warning col-6" onclick="cargarModificarProductoElaborado('.$filas['id_producto'].')" data-target="#modal_nuevo_producto_elaborado" data-toggle="modal" style="font-size:15px; background-color:rgb(139, 95, 69); color:white;" ><i class="far fa-edit"></i></button></td>
+                                  <td><button class="btn btn-danger col-6"  style="font-size:15px; " onclick="eliminarProductoElaborado('.$filas['id_producto'].')" ><i class="fa fa-trash-alt"></i></button></td>
                                </tr>';
                     }
 
