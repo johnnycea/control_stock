@@ -3,6 +3,11 @@
 
 function cargarInformacionProveedor(texto_buscar){
 
+	$("#txt_razon_social_proveedor").val('Cargando...');
+	$("#txt_direccion_proveedor").val('Cargando...');
+	$("#txt_telefono_proveedor").val('Cargando...');
+	$("#txt_giro_proveedor").val('Cargando...');
+	$("#txt_correo_proveedor").val('Cargando...');
 
 		$.ajax({
 			url:"./metodos_ajax/proveedores/buscar_proveedores_factura.php?texto_buscar="+texto_buscar,
@@ -55,7 +60,7 @@ function guardarFactura(){
 				method:"POST",
 				data: $("#formulario_modal_factura").serialize(),
 				success:function(respuesta){
-					  // alert(respuesta);
+					  alert(respuesta);
 
 					 if(respuesta==1){
 						 swal("Guardado","Los datos se han guardado correctamente.","success");
@@ -144,6 +149,32 @@ if(id_producto!=0 || id_producto!=""){
 }
 
 }
+
+function cargarInformacionFactura(id){
+
+	var txt_id_factura = id;
+	var txt_rut_proveedor = $("#columna_rut_proveedor_"+id).html();
+	// var txt_razon_social_proveedor = $("#columna_razon_social_"+id).html();
+	// var txt_giro_proveedor = $("#columna_giro_proveedor_"+id).html();
+	// var txt_direccion_proveedor = $("#columna_direccion_"+id).html();
+	// var txt_telefono_proveedor = $("#columna_telefono_"+id).html();
+	// var txt_correo_proveedor = $("#columna_correo_"+id).html();
+	 var txt_numero_factura = $("#columna_numero_factura_"+id).html();
+	 var txt_fecha_factura = $("#columna_fecha_factura_"+id).html();
+
+	 $("#txt_id_factura").val(txt_id_factura);
+	 $("#txt_rut_proveedor").val(txt_rut_proveedor);
+	 // $("#txt_dv_proveedor").val(txt_dv_proveedor);
+	 // $("#txt_razon_social_proveedor").val(txt_razon_social_proveedor);
+	 // $("#txt_giro_proveedor").val(txt_giro_proveedor);
+	 // $("#txt_direccion_proveedor").val(txt_direccion_proveedor);
+	 // $("#txt_telefono_proveedor").val(txt_telefono_proveedor);
+	 // $("#txt_correo_proveedor").val(txt_correo_proveedor);
+	 $("#txt_numero_factura").val(txt_numero_factura);
+	 $("#txt_fecha_factura").val(txt_fecha_factura);
+
+	 cargarInformacionProveedor(txt_rut_proveedor);
+	 }
 
 function cargarInformacionModificarDetalleFactura(id){
 
