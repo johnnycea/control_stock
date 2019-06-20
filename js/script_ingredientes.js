@@ -1,4 +1,5 @@
-// listarIngrediente();
+listarIngrediente();
+
 function listarIngrediente(){
 	var texto_buscar = $("#txt_texto_buscar_ingredientes").val();
 
