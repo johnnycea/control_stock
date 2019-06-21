@@ -109,21 +109,29 @@ function cargarMenuConfiguraciones(){
       echo '<a href="./usuarios.php" class="btn btn-info col-12">Usuarios </a>';
   }
 
-     echo'<hr>';
-
-  if($url=="marca.php"){
-      echo '<a href="./marca.php" class="active btn btn-info col-12">Marca </a>';
+  echo'<hr>';
+  
+  if($url=="unidadMedidad.php"){
+      echo '<a href="./unidadMedidad.php" class="active btn btn-info col-12">Unidad de medida </a>';
   }else{
-      echo '<a href="./marca.php" class="btn btn-info col-12">Marca </a>';
+      echo '<a href="./unidadMedidad.php" class="btn btn-info col-12">Unidad de medida </a>';
   }
 
-     echo'<hr>';
+  //    echo'<hr>';
+  //
+  // if($url=="marca.php"){
+  //     echo '<a href="./marca.php" class="active btn btn-info col-12">Marca </a>';
+  // }else{
+  //     echo '<a href="./marca.php" class="btn btn-info col-12">Marca </a>';
+  // }
 
-  if($url=="categoria.php"){
-      echo '<a href="./categoria.php" class="active btn btn-info col-12">Categoria </a>';
-  }else{
-      echo '<a href="./categoria.php" class="btn btn-info col-12">Categoria </a>';
-  }
+  //    echo'<hr>';
+  //
+  // if($url=="categoria.php"){
+  //     echo '<a href="./categoria.php" class="active btn btn-info col-12">Categoria </a>';
+  // }else{
+  //     echo '<a href="./categoria.php" class="btn btn-info col-12">Categoria </a>';
+  // }
 
 
   ?>

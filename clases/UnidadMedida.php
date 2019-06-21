@@ -27,40 +27,32 @@ class UnidadMedida{
      }
  }
 
- public function obtenerCategoria(){
-    $Conexion = new Conexion();
-    $Conexion = $Conexion->conectar();
-
-    $resultado_consulta = $Conexion->query("select * from tb_categoria");
-    return $resultado_consulta;
- }
-
- public function crearCategoria(){
+ public function crearUnidad(){
    $conexion = new Conexion();
    $conexion = $conexion->conectar();
 
-   $consulta = "insert INTO tb_categoria (`descripcion_categoria`) VALUES ('".$this->descripcion_categoria."')";
+   $consulta = "insert into tb_unidades_medida (`descripcion`) VALUES ('".$this->descripcion_unidad_medida."')";
    $resultado= $conexion->query($consulta);
    return $resultado;
  }
 
-   public function modificarCategoria(){
+   public function modificarUnidad(){
        $conexion = new Conexion();
        $conexion = $conexion->conectar();
 
-       $consulta="update tb_categoria SET
-       descripcion_categoria = '".$this->descripcion_categoria."'
-        WHERE (id_categoria = '".$this->id_categoria."')";
+       $consulta="update tb_unidades_medida SET
+       descripcion = '".$this->descripcion_unidad_medida."'
+        WHERE (id_unidad_medida = '".$this->id_unidad_medida."')";
 
        $resultado= $conexion->query($consulta);
        return $resultado;
    }
 
-   public function eliminarCategoria(){
+   public function eliminarUnidad_medida(){
      $Conexion = new Conexion();
      $Conexion = $Conexion->conectar();
 
-     $consulta = "delete from tb_categoria where id_categoria=".$this->id_categoria;
+     $consulta = "delete from tb_unidades_medida where id_unidad_medida=".$this->id_unidad_medida;
 
      if($Conexion->query($consulta)){
          return true;

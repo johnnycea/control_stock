@@ -29,6 +29,9 @@ class Ventas{
  public function setFecha($fecha){
    $this->fecha = $fecha;
  }
+ public function setEstadoVenta($estado_venta){
+   $this->estado_venta = $estado_venta;
+ }
 
 
  function obtenerVentas($texto_buscar,$condiciones){

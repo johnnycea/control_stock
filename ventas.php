@@ -61,9 +61,10 @@ $usuario= $usuario->obtenerUsuarioActual();
 
       <div class="form-group col-2">
         <?php
+
            $venta= new Ventas();
            $numero_venta = $venta->crearVenta();
-
+      
          ?>
        <label for="title" class="control-label">N° Venta:</label>
         <input readonly value="<?php echo $numero_venta; ?>" class="form-control col-6" type="text" id="txt_id_venta" name="txt_id_venta">
