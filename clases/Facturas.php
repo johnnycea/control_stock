@@ -83,6 +83,20 @@ class Facturas{
    $resultado= $conexion->query($consulta);
    return $resultado;
  }
+
+ public function modificarFactura(){
+     $conexion = new Conexion();
+     $conexion = $conexion->conectar();
+
+     $consulta="update tb_facturas set
+      rut_proveedor = '".$this->rut_proveedor."',
+      numero_factura = '".$this->numero_factura."',
+      fecha_factura = '".$this->fecha."'
+        WHERE (id_factura = '".$this->id_factura."')";
+
+        $resultado= $conexion->query($consulta);
+        return $resultado;
+}
  public function crearDetalleFactura(){
    $conexion = new Conexion();
    $conexion = $conexion->conectar();
