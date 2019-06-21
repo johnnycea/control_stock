@@ -12,6 +12,19 @@ var texto_buscar = $("#txt_texto_buscar_ingredientes").val();
 		});
 }
 
+
+function confirmarVenta(id_venta){
+
+		$.ajax({
+			url:"./metodos_ajax/ventas/confirmar_venta.php?id_venta="+id_venta,
+			method:"POST",
+			success:function(respuesta){
+				 alert(respuesta);
+			}
+		});
+}
+
+
 function listaVenta(){
 	var id_venta = $("#txt_id_venta").val();
 

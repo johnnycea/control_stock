@@ -2,6 +2,7 @@
 require_once '../../clases/Conexion.php';
 require_once '../../clases/Funciones.php';
 require_once '../../clases/Facturas.php';
+require_once '../../clases/Ventas.php';
 
 
   echo '
@@ -37,7 +38,17 @@ require_once '../../clases/Facturas.php';
 
                       }
 
-                        echo '<td class="'.$clase_stock.'">'.$filas['stock'].'</td>';
+                        $cantidad_ingresos = $filas['stock'];
+                        $cantidad_salidas;
+
+                        $Venta = new Ventas();
+                        $cantidad_salidas = $Venta->obtenerCantidadIngredienteVenta($filas['id_producto']);
+
+
+                        // echo 'cantidad entradas: '.$cantidad_ingresos;
+                        // echo 'cantidad salidas: '.$cantidad_salidas;
+
+                        echo '<td class="'.$clase_stock.'">'.($cantidad_ingresos-$cantidad_salidas).'</td>';
 
               echo '</tr>';
 

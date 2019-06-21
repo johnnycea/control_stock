@@ -9,6 +9,7 @@ class Ventas{
  private $cantidad;
  private $total;
  private $fecha;
+ private $id_estado;
 
 
  public function setIdProductoElaborado($id_producto_elaborado){
@@ -28,6 +29,9 @@ class Ventas{
  }
  public function setFecha($fecha){
    $this->fecha = $fecha;
+ }
+ public function setIdEstado($parametro){
+   $this->id_estado = $parametro;
  }
 
 
@@ -49,6 +53,31 @@ class Ventas{
      }else{
        return false;
      }
+ }
+
+ public function obtenerCantidadIngredienteVenta($ingrediente){
+    $Conexion = new Conexion();
+    $Conexion = $Conexion->conectar();
+
+    $consulta ="select sum(cantidad) as cantidad from tb_ingredientes_venta  where id_ingrediente = ".$ingrediente." group by id_ingrediente";
+    $resultado_consulta = $Conexion->query($consulta);
+
+    if($resultado_consulta->num_rows > 0){
+        $resultado_consulta = $resultado_consulta->fetch_array();
+        $resultado_consulta = $resultado_consulta['cantidad'];
+    }else{
+        $resultado_consulta = 0;
+    }
+
+    return $resultado_consulta;
+ }
+
+ public function registrarIngredienteVenta($ingrediente,$cantidad_ingrediente){
+    $Conexion = new Conexion();
+    $Conexion = $Conexion->conectar();
+
+    $resultado_consulta = $Conexion->query("insert into tb_ingredientes_venta values(".$this->id_venta.",".$this->id_producto_elaborado.",".$ingrediente.",".$cantidad_ingrediente.");");
+    return $resultado_consulta;
  }
 
  public function obtenerVenta(){
@@ -142,6 +171,22 @@ public function crearVenta(){
 
 
  }
+
+
+
+   public function cambiarEstadoVenta(){
+     $Conexion = new Conexion();
+     $Conexion = $Conexion->conectar();
+
+     $consulta = "update tb_ventas set id_estado=".$this->id_estado;
+
+     if($Conexion->query($consulta)){
+         return true;
+     }else{
+         echo $consulta;
+     }
+
+   }
 
 
    public function eliminarProductoVenta(){
