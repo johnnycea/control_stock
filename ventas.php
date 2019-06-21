@@ -63,10 +63,21 @@ $usuario= $usuario->obtenerUsuarioActual();
 
       <div class="form-group col-2">
         <?php
-           $venta= new Ventas();
-           $numero_venta = $venta->crearVenta();
+           $Venta = new Ventas();
+           $numero_venta;
 
-         ?>
+           $consultaVenta = $Venta->consultarUltimaVentaPendiente();
+
+            if($consultaVenta->num_rows>0){
+                //recibe el id de esa venta
+                $consultaVenta = $consultaVenta->fetch_array();
+                $numero_venta = $consultaVenta['id_venta'];
+            }
+            else{
+             $numero_venta = $Venta->crearVenta();
+            }
+
+           ?>
        <label for="title" class="control-label">N° Venta:</label>
         <input readonly value="<?php echo $numero_venta; ?>" class="form-control col-6" type="text" id="txt_id_venta" name="txt_id_venta">
 

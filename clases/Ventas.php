@@ -88,6 +88,14 @@ class Ventas{
     return $resultado_consulta;
  }
 
+ public function consultarUltimaVentaPendiente(){
+    $Conexion = new Conexion();
+    $Conexion = $Conexion->conectar();
+
+    $resultado_consulta = $Conexion->query("select * from tb_ventas where id_estado = 1 order by fecha desc limit 1");
+    return $resultado_consulta;
+ }
+
  public function obtenerVenta(){
     $Conexion = new Conexion();
     $Conexion = $Conexion->conectar();
@@ -188,7 +196,7 @@ public function crearVenta(){
      $Conexion = new Conexion();
      $Conexion = $Conexion->conectar();
 
-     $consulta = "update tb_ventas set id_estado=".$this->id_estado.", fecha=now(), tipo_venta=".$this->tipo_venta.", medio_pago=".$this->medio_pago."
+     $consulta = "update tb_ventas set id_estado=".$this->id_estado.", fecha=NULL, tipo_venta=".$this->tipo_venta.", medio_pago=".$this->medio_pago."
                   where id_venta=".$this->id_venta;
 
      if($Conexion->query($consulta)){
