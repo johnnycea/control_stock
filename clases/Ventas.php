@@ -10,6 +10,8 @@ class Ventas{
  private $total;
  private $fecha;
  private $id_estado;
+ private $tipo_venta;
+ private $medio_pago;
 
 
  public function setIdProductoElaborado($id_producto_elaborado){
@@ -32,6 +34,12 @@ class Ventas{
  }
  public function setIdEstado($parametro){
    $this->id_estado = $parametro;
+ }
+ public function setTipoVenta($parametro){
+   $this->tipo_venta = $parametro;
+ }
+ public function setMedioPago($parametro){
+   $this->medio_pago = $parametro;
  }
 
 
@@ -176,11 +184,12 @@ public function crearVenta(){
 
 
 
-   public function cambiarEstadoVenta(){
+   public function finalizarVenta(){
      $Conexion = new Conexion();
      $Conexion = $Conexion->conectar();
 
-     $consulta = "update tb_ventas set id_estado=".$this->id_estado;
+     $consulta = "update tb_ventas set id_estado=".$this->id_estado.", fecha=now(), tipo_venta=".$this->tipo_venta.", medio_pago=".$this->medio_pago."
+                  where id_venta=".$this->id_venta;
 
      if($Conexion->query($consulta)){
          return true;

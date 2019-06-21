@@ -7,8 +7,8 @@ require_once '../../clases/Conexion.php';
 $Funciones = new Funciones();
 
 $id_venta = $Funciones->limpiarNumeroEntero($_REQUEST['id_venta']);
-
-// echo "id venta es: ".$id_venta;
+$tipo_venta = $Funciones->limpiarNumeroEntero($_REQUEST['tipo_venta']);
+$medio_pago = $Funciones->limpiarNumeroEntero($_REQUEST['medio_pago']);
 
 //buscar los productos de la venta
 $Venta = new Ventas();
@@ -45,8 +45,11 @@ while($filas_productos = $productos_venta->fetch_array()){
 
    if($comprueba_agrega_correctamente){
 
-        $Venta->setIdEstado(2);
-      if($Venta->cambiarEstadoVenta()){
+      $Venta->setIdEstado(2);
+      $Venta->setTipoVenta($tipo_venta);
+      $Venta->setMedioPago($medio_pago);
+      
+      if($Venta->finalizarVenta()){
          echo '1';
       }else{
         echo '3';//error al cambiar estado de venta

@@ -16,19 +16,21 @@ var texto_buscar = $("#txt_texto_buscar_ingredientes").val();
 function confirmarVenta(){
 
 		var id_venta = $("#txt_id_venta").val();
+		var tipo_venta = $("#select_tipo_venta").val();
+		var medio_pago = $("#select_medio_pago").val();
 
 		$.ajax({
-			url:"./metodos_ajax/ventas/confirmar_venta.php?id_venta="+id_venta,
+			url:"./metodos_ajax/ventas/confirmar_venta.php?id_venta="+id_venta+"&tipo_venta="+tipo_venta+"&medio_pago="+medio_pago,
 			method:"POST",
 			success:function(respuesta){
 				 alert(respuesta);
 				 if(respuesta=="1"){
 					 swal("Venta Finalizada","Los datos se han guardado correctamente.","success");
-				 }else{
-					 swal("Ocurrió un error","Recargue la página e intente nuevamente.","error");
-					 $("#modal_finalizar_venta").modal("hide");
+					 $("#modal_finalizar_venta").modal('hide');
 					 //funcion que cree nueva ventas
 					 //limpiar contenido de la pagina
+				 }else{
+					 swal("Ocurrió un error","Recargue la página e intente nuevamente.","error");
 				 }
 
 			}
