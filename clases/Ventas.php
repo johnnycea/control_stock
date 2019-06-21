@@ -92,7 +92,9 @@ class Ventas{
     $Conexion = new Conexion();
     $Conexion = $Conexion->conectar();
 
-    $resultado_consulta = $Conexion->query("select * from vista_detalle_venta where id_venta=".$this->id_venta);
+    $consulta ="select * from vista_detalle_venta where id_venta=".$this->id_venta;
+    // echo $consulta;
+    $resultado_consulta = $Conexion->query($consulta);
     // $resultado_consulta = $Conexion->query("select * from vista_detalle_venta");
 
     // echo $resultado_consulta;

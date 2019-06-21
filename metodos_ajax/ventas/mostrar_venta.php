@@ -63,7 +63,7 @@ echo '
 
  <div class="container clearfix">';
     if($total!=0){
-      echo '<button type="button" onclick="confirmarVenta('.$id_venta.')" class="btn btn-success float-left">CONFIRMAR COMPRA</button>';
+      echo '<button type="button" data-toggle="modal" data-target="#modal_finalizar_venta" class="btn btn-success float-left">CONFIRMAR COMPRA</button>';
     }
 
  echo '</div>

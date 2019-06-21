@@ -13,13 +13,24 @@ var texto_buscar = $("#txt_texto_buscar_ingredientes").val();
 }
 
 
-function confirmarVenta(id_venta){
+function confirmarVenta(){
+
+		var id_venta = $("#txt_id_venta").val();
 
 		$.ajax({
 			url:"./metodos_ajax/ventas/confirmar_venta.php?id_venta="+id_venta,
 			method:"POST",
 			success:function(respuesta){
 				 alert(respuesta);
+				 if(respuesta=="1"){
+					 swal("Venta Finalizada","Los datos se han guardado correctamente.","success");
+				 }else{
+					 swal("Ocurrió un error","Recargue la página e intente nuevamente.","error");
+					 $("#modal_finalizar_venta").modal("hide");
+					 //funcion que cree nueva ventas
+					 //limpiar contenido de la pagina
+				 }
+
 			}
 		});
 }
