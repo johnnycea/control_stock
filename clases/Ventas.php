@@ -9,6 +9,9 @@ class Ventas{
  private $cantidad;
  private $total;
  private $fecha;
+ private $id_estado;
+ private $tipo_venta;
+ private $medio_pago;
 
 
  public function setIdProductoElaborado($id_producto_elaborado){
@@ -29,8 +32,18 @@ class Ventas{
  public function setFecha($fecha){
    $this->fecha = $fecha;
  }
+
  public function setEstadoVenta($estado_venta){
    $this->estado_venta = $estado_venta;
+
+ public function setIdEstado($parametro){
+   $this->id_estado = $parametro;
+ }
+ public function setTipoVenta($parametro){
+   $this->tipo_venta = $parametro;
+ }
+ public function setMedioPago($parametro){
+   $this->medio_pago = $parametro;
  }
 
 
@@ -54,6 +67,39 @@ class Ventas{
      }
  }
 
+ public function obtenerCantidadIngredienteVenta($ingrediente){
+    $Conexion = new Conexion();
+    $Conexion = $Conexion->conectar();
+
+    $consulta ="select sum(cantidad) as cantidad from tb_ingredientes_venta  where id_ingrediente = ".$ingrediente." group by id_ingrediente";
+    $resultado_consulta = $Conexion->query($consulta);
+
+    if($resultado_consulta->num_rows > 0){
+        $resultado_consulta = $resultado_consulta->fetch_array();
+        $resultado_consulta = $resultado_consulta['cantidad'];
+    }else{
+        $resultado_consulta = 0;
+    }
+
+    return $resultado_consulta;
+ }
+
+ public function registrarIngredienteVenta($ingrediente,$cantidad_ingrediente){
+    $Conexion = new Conexion();
+    $Conexion = $Conexion->conectar();
+
+    $resultado_consulta = $Conexion->query("insert into tb_ingredientes_venta values(".$this->id_venta.",".$this->id_producto_elaborado.",".$ingrediente.",".$cantidad_ingrediente.");");
+    return $resultado_consulta;
+ }
+
+ public function consultarUltimaVentaPendiente(){
+    $Conexion = new Conexion();
+    $Conexion = $Conexion->conectar();
+
+    $resultado_consulta = $Conexion->query("select * from tb_ventas where id_estado = 1 order by fecha desc limit 1");
+    return $resultado_consulta;
+ }
+
  public function obtenerVenta(){
     $Conexion = new Conexion();
     $Conexion = $Conexion->conectar();
@@ -66,7 +112,9 @@ class Ventas{
     $Conexion = new Conexion();
     $Conexion = $Conexion->conectar();
 
-    $resultado_consulta = $Conexion->query("select * from vista_detalle_venta where id_venta=".$this->id_venta);
+    $consulta ="select * from vista_detalle_venta where id_venta=".$this->id_venta;
+    // echo $consulta;
+    $resultado_consulta = $Conexion->query($consulta);
     // $resultado_consulta = $Conexion->query("select * from vista_detalle_venta");
 
     // echo $resultado_consulta;
@@ -145,6 +193,23 @@ public function crearVenta(){
 
 
  }
+
+
+
+   public function finalizarVenta(){
+     $Conexion = new Conexion();
+     $Conexion = $Conexion->conectar();
+
+     $consulta = "update tb_ventas set id_estado=".$this->id_estado.", fecha=NULL, tipo_venta=".$this->tipo_venta.", medio_pago=".$this->medio_pago."
+                  where id_venta=".$this->id_venta;
+
+     if($Conexion->query($consulta)){
+         return true;
+     }else{
+         echo $consulta;
+     }
+
+   }
 
 
    public function eliminarProductoVenta(){

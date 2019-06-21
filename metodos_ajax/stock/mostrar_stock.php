@@ -2,6 +2,7 @@
 require_once '../../clases/Conexion.php';
 require_once '../../clases/Funciones.php';
 require_once '../../clases/Facturas.php';
+require_once '../../clases/Ventas.php';
 
 
   echo '
@@ -29,15 +30,28 @@ require_once '../../clases/Facturas.php';
                         <td>'.$filas['unidad_medida'].'</td>
                         <td>'.$filas['stock_minimo'].'</td>';
 
-                      $clase_stock = "bg-info";
-                      if($filas['stock'] < $filas['stock_minimo']){
-                        $clase_stock = "bg-danger text-white";
-                      }else{
-                        $clase_stock = "bg-success text-white";
 
-                      }
 
-                        echo '<td class="'.$clase_stock.'">'.$filas['stock'].'</td>';
+                        $cantidad_ingresos = $filas['stock'];
+                        $cantidad_salidas;
+
+                        $Venta = new Ventas();
+                        $cantidad_salidas = $Venta->obtenerCantidadIngredienteVenta($filas['id_producto']);
+
+
+                        $stock_total = ($cantidad_ingresos-$cantidad_salidas);
+
+                        // echo 'cantidad entradas: '.$cantidad_ingresos;
+                        // echo 'cantidad salidas: '.$cantidad_salidas;
+
+                        $clase_stock = "bg-info";
+                        if($stock_total < $filas['stock_minimo']){
+                          $clase_stock = "bg-danger text-white";
+                        }else{
+                          $clase_stock = "bg-success text-white";
+                        }
+
+                        echo '<td class="'.$clase_stock.'">'.$stock_total.'</td>';
 
               echo '</tr>';
 

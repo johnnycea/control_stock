@@ -2,8 +2,8 @@
 @session_start();
 require_once 'comun.php';
 require_once './clases/Usuario.php';
-require_once './clases/Subvencion.php';
-require_once './clases/Colegio.php';
+require_once './clases/Ventas.php';
+require_once './clases/ProductoElaborado.php';
 comprobarSession();
 $usuario= new Usuario();
 $usuario= $usuario->obtenerUsuarioActual();
@@ -17,115 +17,115 @@ $usuario= $usuario->obtenerUsuarioActual();
 
 
 </style>
-   <title>Control Gastos</title>
+   <title>Informes</title>
    <?php cargarHead(); ?>
 
-  <script src="./js/scripts_informes.js"></script>
-    <!-- <script src="./js/scripts_informes_resumen.js"></script> -->
-      <script src="./js/script_movimientos.js"></script>
+  <script src="./js/script_informes.js"></script>
+
+  <script>
+      // $(document).ready(function(){
+      //
+      //   var date_input=$('input[name="txt_fecha_inicio"]'); //our date input has the name "date"
+      //   var options={
+      //     format: 'dd-mm-yyyy',
+      //     todayHighlight: true,
+      //     autoclose: true,
+      //     language: 'es',
+      //   };
+      //   date_input.datepicker(options);
+      //
+      // });
+      // $(document).ready(function(){
+      //
+      //   var date_input=$('input[name="txt_fecha_fin"]'); //our date input has the name "date"
+      //   var options={
+      //     format: 'dd-mm-yyyy',
+      //     todayHighlight: true,
+      //     autoclose: true,
+      //     language: 'es',
+      //   };
+      //   date_input.datepicker(options);
+      //
+      // });
+    </script>
+
+
 </head>
 <body>
 
-<?php cargarMenuPrincipal(); ?>
-
-<br>
 
 
+<div class="row">
 
-<div class="container-fluid">
-  <div class="row">
-
-
-       <div class="col-12 col-md-12">
-
-              <div id='contenedor_informe_subvencion' style="" class=" card col-12 ">
-
-                <div class="card-header ">
-                    INFORMES POR SUBVENCIÓN
-                </div>
-
-                   <form action="javascript:generarInformeSubvencion()" id="formulario_informe_subvencion" >
-
-                       <div class="row">
-
-                         <div class="form-group col-md-2" >
-                             <label for="title" class="col-12 control-label">Año</label>
-                             <?php
-                                  $fecha_actual = getdate();
-                                  echo '<input type="number" value="'.$fecha_actual['year'].'" class="form-control" name="txt_anio" placeholder="Año">';
-                              ?>
-                         </div>
-
-                         <div class="form-group col-md-3" >
-
-                             <label for="title" class="col-12 control-label">Subvencion</label>
-                             <select required onChange="cambiaSubvencion(this.value)" class="form-control" name="select_subvencion" id="select_subvencion">
-                               <option value="" selected disabled>Seleccione:</option>
-                               <?php
-                                   $Subvencion = new Subvencion();
-                                   $listaSubvenciones = $Subvencion->obtenerSubvencion();
-
-                                   while($filas = $listaSubvenciones->fetch_array()){
-                                       echo '<option value="'.$filas['id_subvencion'].'">'.$filas['subvencion'].'</option>';
-                                   }
-                                 ?>
-                             </select>
-
-                         </div>
-
-                         <div class="form-group col-md-3" >
-
-                             <label for="title" class="col-12 control-label">Tipo de informe</label>
-                             <select required onChange="cambiarTipoInforme(this.value)" class="form-control" name="select_tipo_informe" id="select_tipo_informe">
-                               <option value="" selected disabled>Seleccione:</option>
-                               <option value="1">Resumen</option>
-                               <option value="2">Por Establecimiento</option>
-                             </select>
-
-                         </div>
-
-                         <div id="contenedor_campo_colegio" class="form-group col-md-3 d-none" >
-
-                             <label for="title" class="col-12 control-label">Colegio</label>
-                             <select class="form-control" name="select_colegio" id="select_colegio">
-                               <!-- <option value="" selected disabled>Seleccione:</option> -->
-                               <?php
-                                   $Colegio = new Colegio();
-                                   $listaColegios = $Colegio->obtenerColegios();
-
-                                   while($filas = $listaColegios->fetch_array()){
-                                       echo '<option value="'.$filas['rbd_colegio'].'">'.$filas['rbd_colegio'].': '.$filas['nombre_colegio'].'</option>';
-                                   }
-                                 ?>
-                             </select>
-
-                         </div>
-
-                       </div>
-
-                       <div class="form-group">
-                            <button class="btn btn-primary btn-block">GENERAR INFORME</button>
-                       </div>
-
-                   </form>
-
-              </div>
+  <?php cargarMenuPrincipal(); ?>
 
 
-              <div id='' style="" class=" card col-12">
-                <div id="contenedor_resultado_informe"></div>
-              </div>
+ <div><hr></div>
 
-            </div>
+  <div class="container contenedor-principal" >
 
 
-       </div>
+    <div class="card ">
+      <div class="card-header bg-dark text-white">
+          <label class="card-title bold">Informe de ingresos y gastos</label>
+      </div>
+      <div class="card-body">
+        <form class="" id="formulario_informe" action="javascript:generarInforme()">
 
-  </div>
+          <div class="row">
+
+               <div class="form-group col-3">
+                  <label for="title" class="col-12 control-label">Tipo de informe:</label>
+                  <select class="form-control" name="select_tipo_informe" id="select_tipo_informe">
+                    <option value="1">Resumen</option>
+                    <option value="1">Detallado</option>
+                  </select>
+               </div>
+
+               <div class="form-group col-3">
+                  <label for="title" class="col-12 control-label">Fecha Inicio:</label>
+                  <input type="date" required class="form-control"  placeholder="Seleccionar fecha" name="txt_fecha_inicio">
+               </div>
+               <div class="form-group col-3">
+                  <label for="title" class="col-12 control-label">Fecha Fin:</label>
+                  <input type="date" required class="form-control"  placeholder="Seleccionar fecha" name="txt_fecha_fin">
+
+               </div>
+               <div class="form-group col-3">
+                  <label for="title" class="col-12 control-label">&nbsp;</label>
+                  <input type="submit"  class="btn btn-success btn-block" value="Generar">
+
+               </div>
+
+           </div>
+
+        </form>
+      </div>
+
+    </div>
+
+</br>
+</br>
+
+    <div class="card ">
+      <div class="card-header bg-dark text-white">
+          <label class="card-title bold">Resultado informe</label>
+      </div>
+      <div class="card-body">
+
+        <div id="contenedor_informe"></div>
+
+      </div>
+    </div>
+
 
 </div>
 
 
+
+  </div>
+
+</div>
 
 
 </body>
