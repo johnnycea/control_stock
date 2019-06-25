@@ -35,7 +35,7 @@ class Ventas{
 
  public function setEstadoVenta($estado_venta){
    $this->estado_venta = $estado_venta;
-
+}
  public function setIdEstado($parametro){
    $this->id_estado = $parametro;
  }
