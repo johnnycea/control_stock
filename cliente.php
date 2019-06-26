@@ -111,7 +111,7 @@ $usuario= $usuario->obtenerUsuarioActual();
 
                 <div class="form-group col-12" >
 
-                       <label for="title" class="col-12 control-label">Numero:</label>
+                       <label for="title" class="col-12 control-label">Número:</label>
                        <input type="text" required class="form-control" name="txt_numero" id="txt_numero" value="">
 
                 </div>

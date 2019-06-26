@@ -1,4 +1,30 @@
 // localStorage.productos_venta="";
+
+function cargarInformacionCliente(texto_buscar){
+
+	$("#txt_nombre").val('Cargando...');
+	$("#txt_apellidos").val('Cargando...');
+	$("#txt_calle").val('Cargando...');
+	$("#txt_numero").val('Cargando...');
+	$("#txt_observacion").val('Cargando...');
+	$("#txt_telefono").val('Cargando...');
+
+		$.ajax({
+			url:"./metodos_ajax/clientes/buscar_cliente_ventas.php?texto_buscar="+texto_buscar,
+			method:"POST",
+			dataType:"json",
+			success:function(respuesta){
+
+				 $("#txt_nombre").val(respuesta.nombre);
+				 $("#txt_apellidos").val(respuesta.apellidos);
+				 $("#txt_calle").val(respuesta.calle);
+				 $("#txt_numero").val(respuesta.numero_calle);
+				 $("#txt_observacion").val(respuesta.observacion_direccion);
+				 $("#txt_telefono").val(respuesta.telefono);
+			}
+		});
+}
+
 function listarProductosElaborados(){
 var texto_buscar = $("#txt_texto_buscar_ingredientes").val();
 
@@ -16,12 +42,12 @@ var texto_buscar = $("#txt_texto_buscar_ingredientes").val();
 function confirmarVenta(){
 
 		var id_venta = $("#txt_id_venta").val();
-		var tipo_venta = $("#select_tipo_venta").val();
-		var medio_pago = $("#select_medio_pago").val();
+
 
 		$.ajax({
-			url:"./metodos_ajax/ventas/confirmar_venta.php?id_venta="+id_venta+"&tipo_venta="+tipo_venta+"&medio_pago="+medio_pago,
+			url:"./metodos_ajax/ventas/confirmar_venta.php?id_venta="+id_venta,
 			method:"POST",
+			data: $("#formulario_finalizar_venta").serialize(),
 			success:function(respuesta){
 				 alert(respuesta);
 				 if(respuesta=="1"){
@@ -35,6 +61,20 @@ function confirmarVenta(){
 
 			}
 		});
+}
+
+function mostrarOcultarInformacionCliente(select_tipo_entrega){
+
+// alert(select_tipo_entrega);
+
+	if(select_tipo_entrega==2){
+		$("#contenedor_informacion_cliente").removeClass("d-none");
+		// alert("entra a domic");
+	}else{
+		$("#contenedor_informacion_cliente").addClass("d-none");
+		// alert("entra a local");
+	}
+
 }
 
 

@@ -2,8 +2,8 @@
 @session_start();
 require_once 'comun.php';
 require_once './clases/Usuario.php';
-// require_once './clases/Estado.php';
-require_once './clases/Pedido.php';
+require_once './clases/Facturas.php';
+require_once './clases/Proveedor.php';
 comprobarSession();
 $usuario= new Usuario();
 $usuario= $usuario->obtenerUsuarioActual();
@@ -17,38 +17,51 @@ $usuario= $usuario->obtenerUsuarioActual();
 
 
 </style>
-   <title>Ingredientes</title>
+   <title>Pedidos</title>
    <?php cargarHead(); ?>
 
-  <script src="./js/script_pedido.js"></script>
-  <!-- <script>listarIngrediente();</script> -->
+  <script src="./js/script_facturas.js"></script>
 </head>
 <body>
 
 
 
+
 <div class="row">
 
-
-        <?php cargarMenuPrincipal(); ?>
-
-        <div class="container contenedor-principal" >
+  <?php cargarMenuPrincipal(); ?>
 
 
-          <div  style="" class=" col-12">
-            <div class="container">
-                 <button type="button" onclick="limpiarFormularioIngrediente();" class="btn btn-success" data-target="#modal_pedido" data-toggle="modal" name="button">Crear nuevo pedido</button>
-            </div>
-            <div class="container">
 
-             <br>
-              <div id="contenedorBuscador" class="form-group col-12" >
+  <div class="container contenedor-principal" >
 
-                     <input onkeyup="listarPedido(this.value)" class="form-control col-9" type="text" name="txt_texto_buscar_pedido" id="txt_texto_buscar_pedido" value="">
+
+       <div class="col-12">
+
+          <div  class="col-12">
+
+
+
+
+              <div>
+                <h4>Ingreso Facturas</h4>
               </div>
-              <br>
+              <div><hr></div>
 
-              <div id="contenedor_listado_pedido"></div>
+              <div>
+                <button type="button" onclick="limpiarFormularioFactura();" class="btn boton-morado" data-target="#modal_factura" data-toggle="modal" name="button">Crear nueva factura</button>
+
+              </div>
+              <div><hr></div>
+
+              <div id="contenedorBuscador" class="form-group col-4" >
+
+                     Buscar: <input onkeyup="listarFacturas(this.value)" class="form-control col-9" type="text" name="txt_buscar_facturas" id="txt_buscar_facturas" value="">
+                     <!-- <button type="button" class="btn btn-info col-3" name="button">Buscar</button> -->
+              </div>
+
+
+              <div id='contenedor_listado_facturas'></div>
 
             </div>
 
@@ -56,91 +69,83 @@ $usuario= $usuario->obtenerUsuarioActual();
 
        </div>
 
+  </div>
+
 </div>
 
 
 
 
-  <!-- MODAL Producto-->
-  <div class="modal fade" id="modal_pedido" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <!-- MODAL Proveedor-->
+  <div class="modal fade" id="modal_factura" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog modal-md" role="document">
     <div class="modal-content">
 
       <div class="modal-header">
-        <h5 class="modal-title" id="myModalLabel">Pedidos</h5>
+        <h5 class="modal-title" id="myModalLabel">Facturas</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
 
-        <form id="formulario_modal_pedido" class="" action="javascript:guardarPedido()" method="post">
+        <form id="formulario_modal_factura" class="" action="javascript:guardarFactura()" method="post">
 
-           <input type="hidden" name="txt_codigo_pedido" id="txt_codigo_pedido" value="">
+           <input type="hidden" name="txt_id_factura" id="txt_id_factura" value="">
 
-           <div class="form-group card border-info" >
-
-                <div class="form-group col-12" >
-
-                       <label for="title" class="col-12 control-label">Codigo:</label>
-                       <input type="text"  required class="form-control" name="txt_codigo_producto" id="txt_codigo_producto" value="">
-                </div>
-
-                <div class="form-group col-12" >
-
-                       <label for="title" class="col-12 control-label">Descripción:</label>
-                       <input type="text"  required class="form-control" name="txt_descripcion" id="txt_descripcion" value="">
-                </div>
-
-                <div class="form-group col-12" >
-
-                       <label for="title" class="col-12 control-label">Stock minimo:</label>
-                       <input type="text" onkeypress="return soloLetrasNumeros(event);" required class="form-control" name="txt_stock_minimo" id="txt_stock_minimo" value="">
-
-                </div>
-
-                <div class="form-group col-12" >
-
-                       <label for="title" class="col-12 control-label">Marca:</label>
-                       <input type="text" required class="form-control" name="txt_marca" id="txt_marca" value="">
-
-                </div>
-
-                <div class="form-group col-6">
-
-                    <label for="estado">Estado:</label>
-                         <select  class="form-control" required name="cmb_estado" id="cmb_estado">
-                           <option value="" selected disabled>Seleccione:</option>
-                            <?php
-                                require_once './clases/Estado.php';
-                                $TipoE= new Estado();
-                                $filasTipoC= $TipoE->obtenerEstadosProductosElaborados();
-
-                                foreach($filasTipoC as $tipo){
-                                    echo '<option value="'.$tipo['id_estado'].'" >'.$tipo['descripcion_estado'].'</option>';
-                                }
-                             ?>
-                        </select>
-                </div>
-
-                <div class="form-group col-6">
-
-                    <label for="estado">Unidad Medida:</label>
-                         <select  class="form-control" required name="cmb_unidad_medida" id="cmb_unidad_medida">
-                           <option value="" selected disabled>Seleccione:</option>
-                            <?php
-                                require_once './clases/UnidadMedida.php';
-                                $TipoUnidad= new UnidadMedida();
-                                $filasTipoUnidad= $TipoUnidad->obtenerUnidadesMedida();
-
-                                foreach($filasTipoUnidad as $tipo){
-                                    echo '<option value="'.$tipo['id_unidad_medida'].'" >'.$tipo['descripcion'].'</option>';
-                                }
-                             ?>
-                        </select>
-                </div>
+           <div class=" " >
 
 
-            </div>
+            <div class="row">
 
+                       <div class="col-md-4" >
+                           <label for="title" class="col-12 control-label">Rut proveedor:</label>
+                          <input type="text" placeholder="Ej: 11222333-0" max="10" onkeyup="cargarInformacionProveedor(this.value)" class="form-control" id="txt_rut_proveedor" name="txt_rut_proveedor">
+                       </div>
+
+                       <div class="col-md-4" >
+                           <label for="title" class="col-12 control-label">Razon social:</label>
+                          <input type="text" class="form-control" id="txt_razon_social_proveedor" name="txt_razon_social_proveedor">
+                       </div>
+
+
+                       <div class="col-md-4" >
+                           <label for="title" class="col-12 control-label">Giro:</label>
+                          <input type="text" placeholder="opcional" class="form-control" id="txt_giro_proveedor" name="txt_giro_proveedor">
+                       </div>
+
+                       <div class="col-md-4" >
+                         <label for="title" class="col-12 control-label">Direccion:</label>
+                         <input type="text" class="form-control" id="txt_direccion_proveedor" name="txt_direccion_proveedor">
+                       </div>
+
+                       <div class="col-md-4" >
+                         <label for="title" class="col-12 control-label">Telefono:</label>
+                         <input type="text" class="form-control" id="txt_telefono_proveedor" name="txt_telefono_proveedor">
+                       </div>
+
+                       <div class="col-md-4" >
+                           <label for="title" class="col-12 control-label">Correo:</label>
+                          <input type="text" class="form-control" id="txt_correo_proveedor" name="txt_correo_proveedor">
+                       </div>
+
+           </div>
+
+
+<div><hr></div>
+
+             <div class="form-group col-12" >
+
+                    <label for="title" class="col-12 control-label">Numero Factura:</label>
+                    <input type="text"  required class="form-control" name="txt_numero_factura" id="txt_numero_factura" value="">
+             </div>
+
+                          <div class="form-group col-12" >
+
+                                 <label for="title" class="col-12 control-label">Fecha:</label>
+                                 <input type="date" required class="form-control" name="txt_fecha_factura" id="txt_fecha_factura" value="">
+
+                          </div>
+
+          </div>
                 <div class="form-group" >
                   <div class="col-12">
                     <button class="btn btn-success btn-block" type="submit" name="button">Guardar</button>
@@ -157,6 +162,9 @@ $usuario= $usuario->obtenerUsuarioActual();
     </div>
   </div>
 
+<script type="text/javascript">
+    listarFacturas("");
+</script>
 
 </body>
 </html>

@@ -6,6 +6,7 @@ require_once './clases/Ventas.php';
 require_once './clases/ProductoElaborado.php';
 require_once './clases/TipoVenta.php';
 require_once './clases/MedioPago.php';
+require_once './clases/Cliente.php';
 comprobarSession();
 $usuario= new Usuario();
 $usuario= $usuario->obtenerUsuarioActual();
@@ -129,7 +130,7 @@ $usuario= $usuario->obtenerUsuarioActual();
 
 
 
-<!-- MODAL Producto CREAR-->
+<!-- MODAL -->
 <div class="modal fade" id="modal_finalizar_venta" name="modal_finalizar_venta" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
   <div class="modal-dialog modal-sm" role="document">
   <div class="modal-content">
@@ -141,6 +142,8 @@ $usuario= $usuario->obtenerUsuarioActual();
     <div class="modal-body">
 
       <form id="formulario_finalizar_venta" class="" action="javascript:confirmarVenta()" method="post" enctype="multipart/form-data">
+
+
 
          <div class="row">
 
@@ -174,8 +177,63 @@ $usuario= $usuario->obtenerUsuarioActual();
                 </select>
               </div>
 
+              <div class="form-group col-md-12" >
+                <label for="title" class="col-12 control-label">Entrega:</label>
+                <select onchange="mostrarOcultarInformacionCliente(this.value)" class="form-control" name="select_tipo_entrega" id="select_tipo_entrega">
+                  <option value="1">RETIRA EN LOCAL</option>
+                  <option value="2">REPARTO A DOMICILIO</option>
+                </select>
+              </div>
+
+
+              <div id="contenedor_informacion_cliente" class="d-none">
+
+                    <div class="form-group">
+
+                               <div class="col-md-12" >
+                                   <label for="title" class="col-12 control-label">Rut:</label>
+                                  <input type="text" placeholder="Ej: 11222333-0" max="10" onkeyup="cargarInformacionCliente(this.value)" class="form-control" name="txt_rut_cliente" id="txt_rut_cliente">
+                               </div>
+
+                               <div class="col-md-12" >
+                                   <label for="title" class="col-12 control-label">Nombre:</label>
+                                  <input type="text" class="form-control" name="txt_nombre" id="txt_nombre">
+                               </div>
+
+
+                               <div class="col-md-12" >
+                                   <label for="title" class="col-12 control-label">Apellido:</label>
+                                  <input type="text" placeholder="opcional" class="form-control" name="txt_apellidos" id="txt_apellidos">
+                               </div>
+
+                               <div class="col-md-12" >
+                                 <label for="title" class="col-12 control-label">Calle:</label>
+                                 <input type="text" class="form-control" name="txt_calle" id="txt_calle">
+                               </div>
+
+                               <div class="col-md-12" >
+                                 <label for="title" class="col-12 control-label">Número:</label>
+                                 <input type="text" class="form-control" name="txt_numero" id="txt_numero">
+                               </div>
+
+                               <div class="col-md-12" >
+                                   <label for="title" class="col-12 control-label">Observación:</label>
+                                  <input type="text" class="form-control" name="txt_observacion" id="txt_observacion">
+                               </div>
+
+                               <div class="col-md-12" >
+                                   <label for="title" class="col-12 control-label">Teléfono:</label>
+                                  <input type="text" class="form-control" name="txt_telefono" id="txt_telefono">
+                               </div>
+
+                   </div>
+
+              </div>
+
 
          </div>
+
+
 
         <div class="form-group col-md-12" >
           <br>
