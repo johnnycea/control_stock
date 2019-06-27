@@ -4,6 +4,7 @@ require_once '../../clases/Ventas.php';
 require_once '../../clases/ProductoElaborado.php';
 require_once '../../clases/Conexion.php';
 require_once '../../clases/Cliente.php';
+require_once '../../clases/Pedido.php';
 
 $Funciones = new Funciones();
 
@@ -89,7 +90,39 @@ if($ingresa_cliente==true){
           $Venta->setRutCliente($soloRut);
 
           if($Venta->finalizarVenta()){
-             echo '1';
+             // echo '1';
+                   //preguntar si la entrega es a domicilio: hay quehacer el insert a la tabla tb_pedidos, una vez agragado devuelve echo 1
+                    $select_tipo_entrega $_REQUEST['select_tipo_entrega'];
+                    echo $select_tipo_entrega;
+                    // $txt_rut_cliente = $Funciones->limpiarTexto($_REQUEST['txt_rut_cliente']);
+                    // $txt_nombre = $Funciones->limpiarTexto($_REQUEST['txt_nombre']);
+                    // $txt_apellidos = $Funciones->limpiarTexto($_REQUEST['txt_apellidos']);
+                    // $txt_calle = $Funciones->limpiarTexto($_REQUEST['txt_calle']);
+
+                    // $Pedido->setIdPedido();
+                    // $Pedido->setIdVenta($tipo_venta);
+                    // $Pedido->setEstadoPedido($medio_pago);
+                    // $Pedido->setIdRepartidor($soloRut);
+                    if(){
+
+
+
+                          //instancia clase pedido y setea sus parametrso
+
+                          if($Venta->crearPedido()){
+                             // echo '1';
+                                   //preguntar si la entrega es a domicilio: hay quehacer el insert a la tabla tb_pedidos, una vez agragado devuelve echo 1
+                             echo "1";
+
+                          }else{
+                            echo '5';//error al crear pedido
+                          }
+
+                    }else{
+                        echo "1";
+                    }
+                   //si es en local se devuelve echo 1
+
           }else{
             echo '4';//error al cambiar estado de venta
           }
