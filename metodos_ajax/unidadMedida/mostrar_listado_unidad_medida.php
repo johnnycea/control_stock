@@ -14,7 +14,7 @@ require_once '../../clases/UnidadMedida.php';
 
            <th>Id</th>
            <th>Descripción</th>
-           <th>Opciones</th>
+           <th width="100"></th>
 
        </thead>
        <tbody>';
@@ -34,9 +34,16 @@ require_once '../../clases/UnidadMedida.php';
 
                        <td><span id="columna_descripcion_'.$filas['id_unidad_medida'].'" >'.$filas['descripcion'].'</span></td>
                        <td>
-                        <button onclick="cargarInformacionModificarUnidad('.$filas['id_unidad_medida'].')" data-target="#modal_unidad" data-toggle="modal" class="col-12 btn btn-warning "> <i class="fa fa-edit"></i> </button>
-                        <button onclick="eliminarUnidad_medida('.$filas['id_unidad_medida'].')"  class="col-12 btn btn-danger "> <i class="fa fa-trash-alt"></i> </button>
+                          <div class="container">
+                          <div class="row">
+                            <button onclick="cargarInformacionModificarUnidad('.$filas['id_unidad_medida'].')" data-target="#modal_unidad" data-toggle="modal" class=" col-6 btn btn-warning "> <i class="fa fa-edit"></i> </button>
+
+                            <button onclick="eliminarUnidad_medida('.$filas['id_unidad_medida'].')"  class="col-6 btn btn-danger "> <i class="fa fa-trash-alt"></i> </button>
+                          </div>
+                          </div>
+
                        </td>
+
                     </tr>';
          }
 

@@ -110,7 +110,7 @@ function cargarMenuConfiguraciones(){
   }
 
   echo'<hr>';
-  
+
   if($url=="unidadMedidad.php"){
       echo '<a href="./unidadMedidad.php" class="active btn btn-info col-12">Unidad de medida </a>';
   }else{
@@ -247,7 +247,15 @@ function cargarMenuPrincipal(){
                     echo '<a class="nav-link estilo_opciones_menu active " href="./ventas.php">Ventas</span></a>';
                   }
             echo '</li>';
+            //UN LINK
 
+            echo '<li class="nav-item">';
+                  if($url=="pedidos.php"){
+                    echo '<a class="nav-link estilo_opciones_menu active" href="./pedidos.php">Pedidos</span></a>';
+                  }else{
+                    echo '<a class="nav-link estilo_opciones_menu active " href="./pedidos.php">Pedidos</span></a>';
+                  }
+            echo '</li>';
 
             //UN LINK
             echo '<li class="nav-item">';
@@ -283,6 +291,15 @@ function cargarMenuPrincipal(){
                     echo '<a class="nav-link estilo_opciones_menu active" href="./stock.php">Stock</span></a>';
                   }else{
                     echo '<a class="nav-link estilo_opciones_menu active " href="./stock.php">Stock</span></a>';
+                  }
+            echo '</li>';
+
+            //UN LINK
+            echo '<li class="nav-item">';
+                  if($url=="cliente.php"){
+                    echo '<a class="nav-link estilo_opciones_menu active" href="./cliente.php">Clientes</span></a>';
+                  }else{
+                    echo '<a class="nav-link estilo_opciones_menu active " href="./cliente.php">Clientes</span></a>';
                   }
             echo '</li>';
 
