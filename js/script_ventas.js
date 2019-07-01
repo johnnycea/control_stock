@@ -1,13 +1,67 @@
 // localStorage.productos_venta="";
 
+
+function cambiarTipoEntrega(select_tipo_entrega){
+		if(select_tipo_entrega==1){
+			// mostrarOcultarInformacionCliente(false);
+			$("#chb_cliente").attr("disabled",false);
+			$("#chb_cliente").prop('checked',false)
+			mostrarOcultarInformacionCliente(false);
+		}else if(select_tipo_entrega==2){
+			mostrarOcultarInformacionCliente(true);
+			$("#chb_cliente").prop('checked',true)
+			$("#chb_cliente").attr("disabled",true);
+		}
+}
+
+function activarCheckboxCliente(){
+		if($("#chb_cliente").prop('checked')){
+			mostrarOcultarInformacionCliente(true);
+		}else{
+			mostrarOcultarInformacionCliente(false);
+		}
+}
+
+function mostrarOcultarInformacionCliente(opcion){
+
+	if(opcion==true){
+		$("#contenedor_informacion_cliente").removeClass("d-none");
+	}else if(opcion==false){
+		$("#contenedor_informacion_cliente").addClass("d-none");
+		textoCamposCliente('limpiar');
+	}
+
+}
+
+function textoCamposCliente(opcion){
+	if(opcion=="limpiar"){
+		$("#txt_rut_cliente").val('');
+		$("#txt_nombre").val('');
+		$("#txt_apellidos").val('');
+		$("#txt_calle").val('');
+		$("#txt_numero").val('');
+		$("#txt_observacion").val('');
+		$("#txt_telefono").val('');
+
+	}else if("cargando"){
+
+		$("#txt_nombre").val('Cargando...');
+		$("#txt_apellidos").val('Cargando...');
+		$("#txt_calle").val('Cargando...');
+		$("#txt_numero").val('Cargando...');
+		$("#txt_observacion").val('Cargando...');
+		$("#txt_telefono").val('Cargando...');
+	}
+
+}
+
 function cargarInformacionCliente(texto_buscar){
 
-	$("#txt_nombre").val('Cargando...');
-	$("#txt_apellidos").val('Cargando...');
-	$("#txt_calle").val('Cargando...');
-	$("#txt_numero").val('Cargando...');
-	$("#txt_observacion").val('Cargando...');
-	$("#txt_telefono").val('Cargando...');
+if(texto_buscar!=""){
+	textoCamposCliente('cargando');
+}else{
+	textoCamposCliente('limpiar');
+}
 
 		$.ajax({
 			url:"./metodos_ajax/clientes/buscar_cliente_ventas.php?texto_buscar="+texto_buscar,
@@ -49,7 +103,7 @@ function confirmarVenta(){
 			method:"POST",
 			data: $("#formulario_finalizar_venta").serialize(),
 			success:function(respuesta){
-				 alert(respuesta);
+				 // alert(respuesta);
 				 if(respuesta=="1"){
 					 swal("Venta Finalizada","Los datos se han guardado correctamente.","success");
 					 $("#modal_finalizar_venta").modal('hide');
@@ -63,19 +117,6 @@ function confirmarVenta(){
 		});
 }
 
-function mostrarOcultarInformacionCliente(select_tipo_entrega){
-
-// alert(select_tipo_entrega);
-
-	if(select_tipo_entrega==2){
-		$("#contenedor_informacion_cliente").removeClass("d-none");
-		// alert("entra a domic");
-	}else{
-		$("#contenedor_informacion_cliente").addClass("d-none");
-		// alert("entra a local");
-	}
-
-}
 
 
 function listaVenta(){

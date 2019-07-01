@@ -47,90 +47,90 @@ while($filas_productos = $productos_venta->fetch_array()){
 
    if($comprueba_agrega_correctamente){
 
-     $txt_rut_cliente = $Funciones->limpiarTexto($_REQUEST['txt_rut_cliente']);
-     $txt_nombre = $Funciones->limpiarTexto($_REQUEST['txt_nombre']);
-     $txt_apellidos = $Funciones->limpiarTexto($_REQUEST['txt_apellidos']);
-     $txt_calle = $Funciones->limpiarTexto($_REQUEST['txt_calle']);
-     $txt_numero = $Funciones->limpiarTexto($_REQUEST['txt_numero']);
-     $txt_observacion= $Funciones->limpiarTexto($_REQUEST['txt_observacion']);
-     $txt_telefono = $Funciones->limpiarTexto($_REQUEST['txt_telefono']);
-     $posicionGuion = strpos($txt_rut_cliente,'-');
-     $soloRut = substr($txt_rut_cliente,0,$posicionGuion);
-     $txt_dv = substr($txt_rut_cliente,$posicionGuion+1,$posicionGuion+2);
-
-     $Cliente = new Cliente();
-     $Cliente->setRutCliente($soloRut);
-     $Cliente->setDv($txt_dv);
-     $Cliente->setNombre($txt_nombre);
-     $Cliente->setApellidos($txt_apellidos);
-     $Cliente->setCalle($txt_calle);
-     $Cliente->setNumeroCalle($txt_numero);
-     $Cliente->setObservacion($txt_observacion);
-     $Cliente->setTelefono($txt_telefono);
-
-    $ingresa_cliente = false;
-    $comprueba_cliente_existe = $Cliente->obtenerClienteRegistrados();
-    if($comprueba_cliente_existe->num_rows>0){
-      //SE DEBE ACTUALIZAR EL CLIENTE
-      if($Cliente->modificarCliente()){
-        $ingresa_cliente = true;
-      }
-    }else{
-      //SE DEBE CREAR EL CLIENTE
-      if($Cliente->crearCliente()){
-        $ingresa_cliente = true;
-      }
-    }
 
 
-if($ingresa_cliente==true){
-          $Venta->setIdEstado(2);
-          $Venta->setTipoVenta($tipo_venta);
-          $Venta->setMedioPago($medio_pago);
-          $Venta->setRutCliente($soloRut);
+     $ingresa_cliente = false;
 
-          if($Venta->finalizarVenta()){
-             // echo '1';
-                   //preguntar si la entrega es a domicilio: hay quehacer el insert a la tabla tb_pedidos, una vez agragado devuelve echo 1
-                    $select_tipo_entrega $_REQUEST['select_tipo_entrega'];
-                    $medio_pago = $Funciones->limpiarNumeroEntero($_REQUEST['select_medio_pago']);
+     //PREGUNTA SI AGREGA CLIENTE O NO
+     if(isset($_REQUEST['chb_cliente'])){//ENTRA AQUI SI AGREGA CLIENTE
+       // echo 'si agrega cliente';
 
-                    echo $select_tipo_entrega;
-                    // $txt_rut_cliente = $Funciones->limpiarTexto($_REQUEST['txt_rut_cliente']);
-                    // $txt_nombre = $Funciones->limpiarTexto($_REQUEST['txt_nombre']);
-                    // $txt_apellidos = $Funciones->limpiarTexto($_REQUEST['txt_apellidos']);
-                    // $txt_calle = $Funciones->limpiarTexto($_REQUEST['txt_calle']);
+           $txt_rut_cliente = $Funciones->limpiarTexto($_REQUEST['txt_rut_cliente']);
+           $txt_nombre = $Funciones->limpiarTexto($_REQUEST['txt_nombre']);
+           $txt_apellidos = $Funciones->limpiarTexto($_REQUEST['txt_apellidos']);
+           $txt_calle = $Funciones->limpiarTexto($_REQUEST['txt_calle']);
+           $txt_numero = $Funciones->limpiarTexto($_REQUEST['txt_numero']);
+           $txt_observacion= $Funciones->limpiarTexto($_REQUEST['txt_observacion']);
+           $txt_telefono = $Funciones->limpiarTexto($_REQUEST['txt_telefono']);
+           $posicionGuion = strpos($txt_rut_cliente,'-');
+           $soloRut = substr($txt_rut_cliente,0,$posicionGuion);
+           $txt_dv = substr($txt_rut_cliente,$posicionGuion+1,$posicionGuion+2);
 
-                    // $Pedido->setIdPedido();
-                    // $Pedido->setIdVenta($tipo_venta);
-                    // $Pedido->setEstadoPedido($medio_pago);
-                    // $Pedido->setIdRepartidor($soloRut);
-                    if(){
+           $Cliente = new Cliente();
+           $Cliente->setRutCliente($soloRut);
+           $Cliente->setDv($txt_dv);
+           $Cliente->setNombre($txt_nombre);
+           $Cliente->setApellidos($txt_apellidos);
+           $Cliente->setCalle($txt_calle);
+           $Cliente->setNumeroCalle($txt_numero);
+           $Cliente->setObservacion($txt_observacion);
+           $Cliente->setTelefono($txt_telefono);
 
-
-
-                          //instancia clase pedido y setea sus parametrso
-
-                          if($Venta->crearPedido()){
-                             // echo '1';
-                                   //preguntar si la entrega es a domicilio: hay quehacer el insert a la tabla tb_pedidos, una vez agragado devuelve echo 1
-                             echo "1";
-
-                          }else{
-                            echo '5';//error al crear pedido
-                          }
-
-                    }else{
-                        echo "1";
-                    }
-                   //si es en local se devuelve echo 1
-
-          }else{
-            echo '4';//error al cambiar estado de venta
-          }
-}else{
-  echo '3'; //error al agregar cliente
+          $comprueba_cliente_existe = $Cliente->obtenerClienteRegistrados();
+          if($comprueba_cliente_existe->num_rows>0){
+            //SE DEBE ACTUALIZAR EL CLIENTE
+            if($Cliente->modificarCliente()){
+              $ingresa_cliente = true;
             }
+          }else{
+            //SE DEBE CREAR EL CLIENTE
+            if($Cliente->crearCliente()){
+              $ingresa_cliente = true;
+            }
+          }
+
+     }else{//ENTRA AQUI CUANDO NO AGREGA CLIENTE
+       $ingresa_cliente = true;
+       $soloRut = "NULL";
+       // echo 'no agrega cliente';
+     }
+
+
+        if($ingresa_cliente==true){
+                  $Venta->setIdEstado(2);
+                  $Venta->setTipoVenta($tipo_venta);
+                  $Venta->setMedioPago($medio_pago);
+                  $Venta->setRutCliente($soloRut);
+
+                  if($Venta->finalizarVenta()){
+                     // echo '1';
+                           //preguntar si la entrega es a domicilio: hay quehacer el insert a la tabla tb_pedidos, una vez agragado devuelve echo 1
+                            $select_tipo_entrega = $_REQUEST['select_tipo_entrega'];
+
+                            if($select_tipo_entrega=="2"){
+                              //instancia clase pedido y setea sus parametrso
+
+                              $Pedido = new Pedido();
+                              $Pedido->setIdVenta($id_venta);
+                              $Pedido->setIdRepartidor("NULL");
+
+                                  if($Pedido->crearPedido()){
+                                     echo "1";
+
+                                  }else{
+                                    echo '5';//error al crear pedido
+                                  }
+
+                            }else{
+                                echo "1";
+                            }//si es en local se devuelve echo 1
+
+                  }else{
+                    echo '4';//error al cambiar estado de venta
+                  }
+          }else{
+            echo '3'; //error al agregar cliente
+          }
 
    }else{//else no agrega productos correctamente
       echo '2';
