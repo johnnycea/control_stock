@@ -132,11 +132,11 @@ $usuario= $usuario->obtenerUsuarioActual();
 
 <!-- MODAL -->
 <div class="modal fade" id="modal_finalizar_venta" name="modal_finalizar_venta" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
-  <div class="modal-dialog modal-sm" role="document">
+  <div class="modal-dialog modal-md" role="document">
   <div class="modal-content">
 
-    <div class="modal-header">
-      <h5 class="modal-title" id="myModalLabel">Finalizar Venta</h5>
+    <div class="modal-header bg-modal">
+      <center><h5 class="modal-title" id="myModalLabel">Finalizar Venta</h5></center>
       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     </div>
     <div class="modal-body">
@@ -147,7 +147,7 @@ $usuario= $usuario->obtenerUsuarioActual();
 
          <div class="row">
 
-              <div class="form-group col-md-12" >
+              <div class="form-group col-md-6" >
                 <label for="title" class="col-12 control-label">Tipo de Venta:</label>
                 <select class="form-control" name="select_tipo_venta" id="select_tipo_venta">
                   <?php
@@ -162,7 +162,7 @@ $usuario= $usuario->obtenerUsuarioActual();
                 </select>
               </div>
 
-              <div class="form-group col-md-12" >
+              <div class="form-group col-md-6" >
                 <label for="title" class="col-12 control-label">Medio de Pago:</label>
                 <select class="form-control" name="select_medio_pago" id="select_medio_pago">
                   <?php
@@ -177,55 +177,72 @@ $usuario= $usuario->obtenerUsuarioActual();
                 </select>
               </div>
 
-              <div class="form-group col-md-12" >
+              <div class="form-group col-md-6" >
                 <label for="title" class="col-12 control-label">Entrega:</label>
-                <select onchange="mostrarOcultarInformacionCliente(this.value)" class="form-control" name="select_tipo_entrega" id="select_tipo_entrega">
+                <select onchange="cambiarTipoEntrega(this.value)" class="form-control" name="select_tipo_entrega" id="select_tipo_entrega">
                   <option value="1">RETIRA EN LOCAL</option>
                   <option value="2">REPARTO A DOMICILIO</option>
                 </select>
               </div>
 
+              <div class="form-group col-md-6" >
+
+                  <div class="form-check">
+                    <label for="title" class="col-12 control-label">&nbsp;</label>
+                    <input type="checkbox" onclick="activarCheckboxCliente()" class="form-check-input" id="chb_cliente" name="chb_cliente">
+                    <label class="form-check-label" for="chb_cliente">Registrar Cliente</label>
+                  </div>
+
+              </div>
+
 
               <div id="contenedor_informacion_cliente" class="d-none">
 
-                    <div class="form-group">
+                    <div><hr></div>
+                    <center><h5 class="modal-title" id="myModalLabel">Datos del cliente</h5></center>
+                    <div><hr></div>
+                    <div class="container">
+                      <div class="row">
 
-                               <div class="col-md-12" >
+
+
+                               <div class="col-md-6" >
                                    <label for="title" class="col-12 control-label">Rut:</label>
                                   <input type="text" placeholder="Ej: 11222333-0" max="10" onkeyup="cargarInformacionCliente(this.value)" class="form-control" name="txt_rut_cliente" id="txt_rut_cliente">
                                </div>
 
-                               <div class="col-md-12" >
+                               <div class="col-md-6" >
                                    <label for="title" class="col-12 control-label">Nombre:</label>
-                                  <input type="text" class="form-control" name="txt_nombre" id="txt_nombre">
+                                  <input type="text" placeholder="Nombres" class="form-control" name="txt_nombre" id="txt_nombre">
                                </div>
 
 
-                               <div class="col-md-12" >
+                               <div class="col-md-6" >
                                    <label for="title" class="col-12 control-label">Apellido:</label>
-                                  <input type="text" placeholder="opcional" class="form-control" name="txt_apellidos" id="txt_apellidos">
+                                  <input type="text" placeholder="Apellidos" class="form-control" name="txt_apellidos" id="txt_apellidos">
                                </div>
 
-                               <div class="col-md-12" >
+                               <div class="col-md-6" >
                                  <label for="title" class="col-12 control-label">Calle:</label>
-                                 <input type="text" class="form-control" name="txt_calle" id="txt_calle">
+                                 <input type="text" placeholder="Nombre calle" class="form-control" name="txt_calle" id="txt_calle">
                                </div>
 
-                               <div class="col-md-12" >
+                               <div class="col-md-6" >
                                  <label for="title" class="col-12 control-label">Número:</label>
-                                 <input type="text" class="form-control" name="txt_numero" id="txt_numero">
+                                 <input type="text" placeholder="Numero casa" class="form-control" name="txt_numero" id="txt_numero">
                                </div>
 
-                               <div class="col-md-12" >
-                                   <label for="title" class="col-12 control-label">Observación:</label>
-                                  <input type="text" class="form-control" name="txt_observacion" id="txt_observacion">
+                               <div class="col-md-6" >
+                                   <label for="title" class="col-12 control-label">Observación direccion:</label>
+                                  <input type="text" placeholder="Opcional" class="form-control" name="txt_observacion" id="txt_observacion">
                                </div>
 
-                               <div class="col-md-12" >
+                               <div class="col-md-6" >
                                    <label for="title" class="col-12 control-label">Teléfono:</label>
-                                  <input type="text" class="form-control" name="txt_telefono" id="txt_telefono">
+                                  <input type="text" placeholder="Telefono" class="form-control" name="txt_telefono" id="txt_telefono">
                                </div>
 
+                      </div>
                    </div>
 
               </div>

@@ -48,6 +48,13 @@ class Pedido{
      }
  }
 
+ public function crearPedido(){
+    $Conexion = new Conexion();
+    $Conexion = $Conexion->conectar();
+
+    $resultado_consulta = $Conexion->query("insert into tb_pedidos(id_venta,id_usuario_repartidor) values(".$this->id_venta.",".$this->repartidor.");");
+    return $resultado_consulta;
+ }
  public function obtenerPedidos(){
     $Conexion = new Conexion();
     $Conexion = $Conexion->conectar();
