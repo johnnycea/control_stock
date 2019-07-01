@@ -7,7 +7,7 @@ function listarPedido(texto_buscar){
 			url:"./metodos_ajax/pedidos/mostrar_listado_pedido.php?texto_buscar="+texto_buscar,
 			method:"POST",
 			success:function(respuesta){
-				// alert(respuesta);
+				 alert(respuesta);
 				 $("#contenedor_listado_pedido").html(respuesta);
 			}
 		});

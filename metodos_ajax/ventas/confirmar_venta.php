@@ -93,6 +93,8 @@ if($ingresa_cliente==true){
              // echo '1';
                    //preguntar si la entrega es a domicilio: hay quehacer el insert a la tabla tb_pedidos, una vez agragado devuelve echo 1
                     $select_tipo_entrega $_REQUEST['select_tipo_entrega'];
+                    $medio_pago = $Funciones->limpiarNumeroEntero($_REQUEST['select_medio_pago']);
+
                     echo $select_tipo_entrega;
                     // $txt_rut_cliente = $Funciones->limpiarTexto($_REQUEST['txt_rut_cliente']);
                     // $txt_nombre = $Funciones->limpiarTexto($_REQUEST['txt_nombre']);

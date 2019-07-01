@@ -52,7 +52,8 @@ class Pedido{
     $Conexion = new Conexion();
     $Conexion = $Conexion->conectar();
 
-    $resultado_consulta = $Conexion->query("select * from tb_pedidos where id_pedido=".$this->id_pedido."and id_venta=".$this->id_venta);
+    $resultado_consulta = $Conexion->query("select * from vista_pedidos");
+    // echo $resultado_consulta;
     return $resultado_consulta;
  }
 

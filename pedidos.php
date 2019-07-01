@@ -2,8 +2,7 @@
 @session_start();
 require_once 'comun.php';
 require_once './clases/Usuario.php';
-require_once './clases/Facturas.php';
-require_once './clases/Proveedor.php';
+require_once './clases/Pedido.php';
 comprobarSession();
 $usuario= new Usuario();
 $usuario= $usuario->obtenerUsuarioActual();
@@ -20,7 +19,7 @@ $usuario= $usuario->obtenerUsuarioActual();
    <title>Pedidos</title>
    <?php cargarHead(); ?>
 
-  <script src="./js/script_facturas.js"></script>
+  <script src="./js/script_pedido.js"></script>
 </head>
 <body>
 
@@ -56,12 +55,12 @@ $usuario= $usuario->obtenerUsuarioActual();
 
               <div id="contenedorBuscador" class="form-group col-4" >
 
-                     Buscar: <input onkeyup="listarFacturas(this.value)" class="form-control col-9" type="text" name="txt_buscar_facturas" id="txt_buscar_facturas" value="">
+                     Buscar: <input onkeyup="listarPedido(this.value)" class="form-control col-9" type="text" name="txt_buscar_pedido" id="txt_buscar_pedido" value="">
                      <!-- <button type="button" class="btn btn-info col-3" name="button">Buscar</button> -->
               </div>
 
 
-              <div id='contenedor_listado_facturas'></div>
+              <div id='contenedor_listado_pedido'></div>
 
             </div>
 
