@@ -207,6 +207,7 @@ public function crearVenta(){
      $consulta = "update tb_ventas set id_estado=".$this->id_estado.", fecha=NULL, tipo_venta=".$this->tipo_venta.", medio_pago=".$this->medio_pago.", rut_cliente=".$this->rut_cliente."
                   where id_venta=".$this->id_venta;
 
+// echo $consulta;
      if($Conexion->query($consulta)){
          return true;
      }else{

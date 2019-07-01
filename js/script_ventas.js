@@ -5,12 +5,16 @@ function cambiarTipoEntrega(select_tipo_entrega){
 		if(select_tipo_entrega==1){
 			// mostrarOcultarInformacionCliente(false);
 			$("#chb_cliente").attr("disabled",false);
-			$("#chb_cliente").prop('checked',false)
+			$("#chb_cliente").prop('checked',false);
 			mostrarOcultarInformacionCliente(false);
+			$("#contenedor_checkbox_cliente").removeClass('d-none');
+
 		}else if(select_tipo_entrega==2){
 			mostrarOcultarInformacionCliente(true);
-			$("#chb_cliente").prop('checked',true)
-			$("#chb_cliente").attr("disabled",true);
+			$("#chb_cliente").prop('checked',true);
+			$("#contenedor_checkbox_cliente").addClass('d-none');
+
+			// $("#chb_cliente").attr("disabled",true);
 		}
 }
 
@@ -103,7 +107,7 @@ function confirmarVenta(){
 			method:"POST",
 			data: $("#formulario_finalizar_venta").serialize(),
 			success:function(respuesta){
-				 // alert(respuesta);
+				 alert(respuesta);
 				 if(respuesta=="1"){
 					 swal("Venta Finalizada","Los datos se han guardado correctamente.","success");
 					 $("#modal_finalizar_venta").modal('hide');

@@ -90,8 +90,8 @@ while($filas_productos = $productos_venta->fetch_array()){
           }
 
      }else{//ENTRA AQUI CUANDO NO AGREGA CLIENTE
-       $ingresa_cliente = true;
        $soloRut = "NULL";
+       $ingresa_cliente = true;
        // echo 'no agrega cliente';
      }
 
