@@ -20,6 +20,7 @@ $usuario= $usuario->obtenerUsuarioActual();
    <?php cargarHead(); ?>
 
   <script src="./js/script_pedido.js"></script>
+  <!-- <script src="./js/script_ventas.js"></script> -->
 </head>
 <body>
 
@@ -43,11 +44,11 @@ $usuario= $usuario->obtenerUsuarioActual();
 
 
               <div>
-                <h4>Ingreso Facturas</h4>
+                <h4>Pedidos</h4>
               </div>
               <div><hr></div>
 
-              <div>
+              <!-- <div>
                 <button type="button" onclick="limpiarFormularioFactura();" class="btn boton-morado" data-target="#modal_factura" data-toggle="modal" name="button">Crear nueva factura</button>
 
               </div>
@@ -56,8 +57,8 @@ $usuario= $usuario->obtenerUsuarioActual();
               <div id="contenedorBuscador" class="form-group col-4" >
 
                      Buscar: <input onkeyup="listarPedido(this.value)" class="form-control col-9" type="text" name="txt_buscar_pedido" id="txt_buscar_pedido" value="">
-                     <!-- <button type="button" class="btn btn-info col-3" name="button">Buscar</button> -->
-              </div>
+
+              </div> -->
 
 
               <div id='contenedor_listado_pedido'></div>
@@ -76,80 +77,71 @@ $usuario= $usuario->obtenerUsuarioActual();
 
 
   <!-- MODAL Proveedor-->
-  <div class="modal fade" id="modal_factura" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog modal-md" role="document">
+  <div class="modal fade" id="modal_pedido" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
 
       <div class="modal-header">
-        <h5 class="modal-title" id="myModalLabel">Facturas</h5>
+        <h5 class="modal-title" id="myModalLabel">Pedidos</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
 
-        <form id="formulario_modal_factura" class="" action="javascript:guardarFactura()" method="post">
+        <form id="formulario_modal_factura" class="" action="javascript:guardar()" method="post">
 
            <input type="hidden" name="txt_id_factura" id="txt_id_factura" value="">
 
-           <div class=" " >
+              <div id="contenedor_informacion_cliente" class="">
+
+                    <div><hr></div>
+                    <center><h5 class="modal-title" id="myModalLabel">Datos del cliente</h5></center>
+                    <div><hr></div>
+                    <div class="container">
+                      <div class="row">
+
+                               <div class="col-md-4" >
+                                   <label for="title" class="col-12 control-label">Rut:</label>
+                                  <input type="text" placeholder="Ej: 11222333-0" max="10" onkeyup="cargarInformacionCliente(this.value)" class="form-control" name="txt_rut_cliente" id="txt_rut_cliente">
+                               </div>
+
+                               <div class="col-md-4" >
+                                   <label for="title" class="col-12 control-label">Nombre:</label>
+                                  <input type="text" placeholder="Nombres" class="form-control" name="txt_nombre" id="txt_nombre">
+                               </div>
 
 
-            <div class="row">
+                               <div class="col-md-4" >
+                                   <label for="title" class="col-12 control-label">Apellido:</label>
+                                  <input type="text" placeholder="Apellidos" class="form-control" name="txt_apellidos" id="txt_apellidos">
+                               </div>
 
-                       <div class="col-md-4" >
-                           <label for="title" class="col-12 control-label">Rut proveedor:</label>
-                          <input type="text" placeholder="Ej: 11222333-0" max="10" onkeyup="cargarInformacionProveedor(this.value)" class="form-control" id="txt_rut_proveedor" name="txt_rut_proveedor">
-                       </div>
+                               <div class="col-md-4" >
+                                 <label for="title" class="col-12 control-label">Calle:</label>
+                                 <input type="text" placeholder="Nombre calle" class="form-control" name="txt_calle" id="txt_calle">
+                               </div>
 
-                       <div class="col-md-4" >
-                           <label for="title" class="col-12 control-label">Razon social:</label>
-                          <input type="text" class="form-control" id="txt_razon_social_proveedor" name="txt_razon_social_proveedor">
-                       </div>
+                               <div class="col-md-2" >
+                                 <label for="title" class="col-12 control-label">Número:</label>
+                                 <input type="text" placeholder="Numero casa" class="form-control" name="txt_numero" id="txt_numero">
+                               </div>
 
+                               <div class="col-md-4" >
+                                   <label for="title" class="col-12 control-label">Observación direccion:</label>
+                                  <input type="text" placeholder="Opcional" class="form-control" name="txt_observacion" id="txt_observacion">
+                               </div>
 
-                       <div class="col-md-4" >
-                           <label for="title" class="col-12 control-label">Giro:</label>
-                          <input type="text" placeholder="opcional" class="form-control" id="txt_giro_proveedor" name="txt_giro_proveedor">
-                       </div>
+                               <div class="col-md-2" >
+                                   <label for="title" class="col-12 control-label">Teléfono:</label>
+                                  <input type="text" placeholder="Telefono" class="form-control" name="txt_telefono" id="txt_telefono">
+                               </div>
 
-                       <div class="col-md-4" >
-                         <label for="title" class="col-12 control-label">Direccion:</label>
-                         <input type="text" class="form-control" id="txt_direccion_proveedor" name="txt_direccion_proveedor">
-                       </div>
+                      </div>
+                   </div>
 
-                       <div class="col-md-4" >
-                         <label for="title" class="col-12 control-label">Telefono:</label>
-                         <input type="text" class="form-control" id="txt_telefono_proveedor" name="txt_telefono_proveedor">
-                       </div>
-
-                       <div class="col-md-4" >
-                           <label for="title" class="col-12 control-label">Correo:</label>
-                          <input type="text" class="form-control" id="txt_correo_proveedor" name="txt_correo_proveedor">
-                       </div>
-
-           </div>
+              </div>
 
 
-<div><hr></div>
-
-             <div class="form-group col-12" >
-
-                    <label for="title" class="col-12 control-label">Numero Factura:</label>
-                    <input type="text"  required class="form-control" name="txt_numero_factura" id="txt_numero_factura" value="">
-             </div>
-
-                          <div class="form-group col-12" >
-
-                                 <label for="title" class="col-12 control-label">Fecha:</label>
-                                 <input type="date" required class="form-control" name="txt_fecha_factura" id="txt_fecha_factura" value="">
-
-                          </div>
-
-          </div>
-                <div class="form-group" >
-                  <div class="col-12">
-                    <button class="btn btn-success btn-block" type="submit" name="button">Guardar</button>
-                  </div>
-                </div>
+    <div class=""><hr></div>
 
 
         </form>

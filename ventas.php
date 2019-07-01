@@ -187,7 +187,7 @@ $usuario= $usuario->obtenerUsuarioActual();
 
               <div class="form-group col-md-6" >
 
-                  <div class="form-check">
+                  <div id="contenedor_checkbox_cliente" class="form-check">
                     <label for="title" class="col-12 control-label">&nbsp;</label>
                     <input type="checkbox" onclick="activarCheckboxCliente()" class="form-check-input" id="chb_cliente" name="chb_cliente">
                     <label class="form-check-label" for="chb_cliente">Registrar Cliente</label>

@@ -7,30 +7,38 @@ function listarPedido(texto_buscar){
 			url:"./metodos_ajax/pedidos/mostrar_listado_pedido.php?texto_buscar="+texto_buscar,
 			method:"POST",
 			success:function(respuesta){
-				 alert(respuesta);
+				 // alert(respuesta);
 				 $("#contenedor_listado_pedido").html(respuesta);
 			}
 		});
 }
 
-function guardarUnidadMedida(){
+function cargarInformacion(id){
 
-			$.ajax({
-				url:"./metodos_ajax/unidadMedida/ingresar_modificar_unidad_medida.php",
-				method:"POST",
-				data: $("#formulario_modal_unidad_medida").serialize(),
-				success:function(respuesta){
-					  // alert(respuesta);
-					 if(respuesta==1){
-						 swal("Guardado","Los datos se han guardado correctamente.","success");
-						 $("#modal_unidad").modal('hide');
-						 listarUnidadMedida("");
-					 }else if(respuesta==2){
-						 swal("Ocurrió un error","Recargue la página e intente nuevamente.","error");
-					 }
-				}
-			});
-	}
+  var txt_rut_cliente = $("#columna_rut_"+id).html();
+
+	//carga la informacion recibida en el modal
+ $('#txt_rut_cliente').val(txt_rut_cliente);
+ cargarInformacionCliente(txt_rut_cliente);
+}
+
+function cargarInformacionCliente(texto_buscar){
+
+		$.ajax({
+			url:"./metodos_ajax/clientes/buscar_cliente_ventas.php?texto_buscar="+texto_buscar,
+			method:"POST",
+			dataType:"json",
+			success:function(respuesta){
+
+				 $("#txt_nombre").val(respuesta.nombre);
+				 $("#txt_apellidos").val(respuesta.apellidos);
+				 $("#txt_calle").val(respuesta.calle);
+				 $("#txt_numero").val(respuesta.numero_calle);
+				 $("#txt_observacion").val(respuesta.observacion_direccion);
+				 $("#txt_telefono").val(respuesta.telefono);
+			}
+		});
+}
 
 
 function limpiarFormularioUnidadMedida(){
@@ -40,15 +48,6 @@ function limpiarFormularioUnidadMedida(){
 
 }
 
-function cargarInformacionModificarUnidad(id){
-
-  var txt_id_unidad_medida = $("#columna_id_unidad_"+id).html();
-	var txt_descripcion = $("#columna_descripcion_"+id).html();
-
-	//carga la informacion recibida en el modal
- $('#txt_id_unidad_medida').val(txt_id_unidad_medida);
-	$('#txt_descripcion').val(txt_descripcion);
-}
 
 function eliminarUnidad_medida(id){
 

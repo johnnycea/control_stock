@@ -9,14 +9,13 @@ require_once '../../clases/Pedido.php';
      <thead class="" align=center>
 
         <th>Número pedido</th>
-        <th>Número venta</th>
         <th>Fecha</th>
         <th>Nombre cliente</th>
         <th>Dirección</th>
         <th>Observación</th>
         <th>Descripción estado</th>
-        <th></th>
-        <th></th>
+        <th>Ver</th>
+        <th>Eliminar</th>
      </thead>
      <tbody>';
 
@@ -31,17 +30,18 @@ require_once '../../clases/Pedido.php';
                echo '<tr>
 
 
-                       <td><span class="d-none" id="columna_id_pedido_'.$filas['pedido'].'" >'.$filas['pedido'].'</span></td>
+                       <td><span class="" id="columna_id_pedido_'.$filas['pedido'].'" >'.$filas['pedido'].'</span></td>
                        <td><span id="columna_id_venta_'.$filas['pedido'].'" >'.$filas['venta'].'</span></td>
                        <td><span id="columna_fecha_'.$filas['pedido'].'" >'.$filas['fecha'].'</span></td>
+                       <td><span id="columna_rut_'.$filas['pedido'].'" >'.$filas['rut'].'</span></td>
                        <td><span id="columna_nombre_'.$filas['pedido'].'" >'.$filas['nombre_cliente'].'</span></td>
-                       <td><span id="columna_rut_direccion_'.$filas['pedido'].'" >'.$filas['direccion_cliente'].'</span></td>
+                       <td><span id="columna_direccion_'.$filas['pedido'].'" >'.$filas['direccion_cliente'].'</span></td>
                        <td><span id="columna_observacion_'.$filas['pedido'].'" >'.$filas['observacion_direccion'].'</span></td>
                        <span class="d-none" id="columna_id_estado_'.$filas['pedido'].'" >'.$filas['estado'].'</span>
                        <td><span id="columna_descripcion_'.$filas['pedido'].'" >'.$filas['descripcion_estado'].'</span></td>
 
                        <td>
-                          <button onclick="cargarInformacionFactura('.$filas['pedido'].')" data-target="#modal_factura" data-toggle="modal"  class="col-12 btn btn-warning "> <i class="far fa-edit"></i> </button>
+                          <button onclick="cargarInformacion('.$filas['pedido'].')" data-target="#modal_pedido" data-toggle="modal"  class="col-12 btn btn-warning "> <i class="far fa-edit"></i> </button>
                        </td>
 
 
