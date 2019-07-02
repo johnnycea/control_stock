@@ -52,4 +52,17 @@ require_once '../../clases/Ventas.php';
                   </table>';
 
 
+                  echo '
+
+                   <div class="container clearfix">';
+                      if($total!=0){
+                        echo '<button type="button" data-toggle="modal" data-target="#modal_finalizar_venta" class="btn btn-success float-left">CONFIRMAR COMPRA</button>';
+                      }
+
+                   echo '</div>
+
+
+                  ';
+
+
  ?>

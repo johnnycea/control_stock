@@ -11,6 +11,7 @@ class Ventas{
  private $fecha;
  private $id_estado;
  private $tipo_venta;
+ private $tipo_entrega;
  private $medio_pago;
  private $rut_cliente;
 
@@ -42,6 +43,9 @@ class Ventas{
  }
  public function setTipoVenta($parametro){
    $this->tipo_venta = $parametro;
+ }
+ public function setTipoEntrega($parametro){
+   $this->tipo_entrega = $parametro;
  }
  public function setMedioPago($parametro){
    $this->medio_pago = $parametro;
@@ -215,7 +219,12 @@ public function crearVenta(){
      $Conexion = new Conexion();
      $Conexion = $Conexion->conectar();
 
-     $consulta = "update tb_ventas set id_estado=".$this->id_estado.", fecha=NULL, tipo_venta=".$this->tipo_venta.", medio_pago=".$this->medio_pago.", rut_cliente=".$this->rut_cliente."
+     $consulta = "update tb_ventas set id_estado=".$this->id_estado.",
+                  fecha=NULL,
+                  tipo_venta=".$this->tipo_venta.",
+                  medio_pago=".$this->medio_pago.",
+                  tipo_entrega=".$this->tipo_entrega.",
+                  rut_cliente=".$this->rut_cliente."
                   where id_venta=".$this->id_venta;
 
 // echo $consulta;
