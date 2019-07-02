@@ -58,5 +58,13 @@ require_once '../../clases/Ventas.php';
                   </table>';
 
 
+echo '
+   <div class="container">
+       <div class="row">
+          <button type="submit" class="btn btn-success btn-lg btn-block ">LISTO PARA LA ENTREGA</button>
+       </div>
+   </div>
+';
+
 
  ?>

@@ -1,15 +1,38 @@
-listarPedido("");
+// listarPedido("");
+var estado_listado_actual;
 
+function listarPedido(estado_venta){
 
-function listarPedido(texto_buscar){
-
+   estado_listado_actual = estado_venta;
 
 		$.ajax({
-			url:"./metodos_ajax/pedidos/mostrar_listado_pedido.php?texto_buscar="+texto_buscar,
+			url:"./metodos_ajax/pedidos/mostrar_listado_pedido.php?estado_venta="+estado_venta,
 			method:"POST",
 			success:function(respuesta){
 				 // alert(respuesta);
 				 $("#contenedor_listado_pedido").html(respuesta);
+			}
+		});
+}
+
+function cambiarEstadoPedido(){
+
+ var id_venta = $("#txt_id_venta").val();
+ var tipo_entrega = $("#txt_tipo_entrega").val();
+
+		$.ajax({
+			url:"./metodos_ajax/pedidos/cambiar_estado_pedido.php?tipo_entrega="+tipo_entrega+"&id_venta="+id_venta,
+			method:"POST",
+			success:function(respuesta){
+				alert(respuesta);
+
+				if(respuesta==1){
+					swal("Guardado","Los datos se han guardado correctamente.","success");
+					listarPedido(estado_listado_actual);
+				}else if(respuesta==2){
+					swal("Ocurrió un error","Recargue la página e intente nuevamente.","error");
+				}
+
 			}
 		});
 }
@@ -26,11 +49,14 @@ function listaVenta(venta){
 		});
 }
 
-function cargarInformacion(venta){
+function cargarInformacion(venta, tipo_entrega){
 
   var txt_rut_cliente = $("#columna_rut_"+venta).html();
 
 	//carga la informacion recibida en el modal
+ $('#txt_tipo_entrega').val(tipo_entrega);
+ $('#txt_id_venta').val(venta);
+
  $('#txt_rut_cliente').val(txt_rut_cliente);
  cargarInformacionCliente(txt_rut_cliente);
 

@@ -13,6 +13,7 @@ class Ventas{
  private $tipo_venta;
  private $medio_pago;
  private $rut_cliente;
+ private $tipo_entrega;
 
 
  public function setIdProductoElaborado($id_producto_elaborado){
@@ -34,9 +35,6 @@ class Ventas{
    $this->fecha = $fecha;
  }
 
- public function setEstadoVenta($estado_venta){
-   $this->estado_venta = $estado_venta;
-}
  public function setIdEstado($parametro){
    $this->id_estado = $parametro;
  }
@@ -48,6 +46,9 @@ class Ventas{
  }
  public function setRutCliente($parametro){
    $this->rut_cliente = $parametro;
+ }
+ public function setTipoEntrega($parametro){
+   $this->tipo_entrega = $parametro;
  }
 
 
@@ -114,11 +115,19 @@ class Ventas{
     return $resultado_consulta;
  }
 
+ public function cambiarEstadoPedido(){
+    $Conexion = new Conexion();
+    $Conexion = $Conexion->conectar();
+
+    $resultado_consulta = $Conexion->query("update tb_ventas set id_estado=".$this->id_estado." where id_venta = ".$this->id_venta);
+    return $resultado_consulta;
+ }
+
  public function listadoPedidos(){
     $Conexion = new Conexion();
     $Conexion = $Conexion->conectar();
 
-    $resultado_consulta = $Conexion->query("select * from vista_ventas");
+    $resultado_consulta = $Conexion->query("select * from vista_ventas where estado=".$this->id_estado);
     // echo $resultado_consulta;
     return $resultado_consulta;
  }

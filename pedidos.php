@@ -49,6 +49,27 @@ $usuario= $usuario->obtenerUsuarioActual();
               </div>
               <div><hr></div>
 
+
+                  <div class="container">
+                      <div class="row">
+
+                         <div class="col-4">
+                            <button onclick="listarPedido(2)" class="btn btn-block btn-warning btn-lg" type="button" name="">POR PREPARAR</button>
+                         </div>
+
+                         <div class="col-4">
+                            <button onclick="listarPedido(3)" class="btn btn-block btn-info btn-lg" type="button" name="">POR REPARTIR</button>
+                         </div>
+
+                         <div class="col-4">
+                            <button onclick="listarPedido(4)" class="btn btn-block btn-success btn-lg" type="button" name="">ENTREGADOS</button>
+                         </div>
+
+                      </div>
+                  </div>
+
+              <div><hr></div>
+
               <!-- <div>
                 <button type="button" onclick="limpiarFormularioFactura();" class="btn boton-morado" data-target="#modal_factura" data-toggle="modal" name="button">Crear nueva factura</button>
 
@@ -88,9 +109,10 @@ $usuario= $usuario->obtenerUsuarioActual();
       </div>
       <div class="modal-body">
 
-        <form id="formulario_modal_factura" class="" action="javascript:guardar()" method="post">
+        <form id="formulario_modal_pedido" class="" action="javascript:cambiarEstadoPedido()" method="post">
 
-           <input type="hidden" name="txt_id_factura" id="txt_id_factura" value="">
+           <input type="hidden" name="txt_id_venta" id="txt_id_venta" value="">
+           <input type="hidden" name="txt_tipo_entrega" id="txt_tipo_entrega" value="">
 
               <div id="contenedor_informacion_cliente" class="">
 
