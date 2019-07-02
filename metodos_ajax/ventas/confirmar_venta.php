@@ -4,13 +4,13 @@ require_once '../../clases/Ventas.php';
 require_once '../../clases/ProductoElaborado.php';
 require_once '../../clases/Conexion.php';
 require_once '../../clases/Cliente.php';
-require_once '../../clases/Pedido.php';
 
 $Funciones = new Funciones();
 
 $id_venta = $Funciones->limpiarNumeroEntero($_REQUEST['id_venta']);
 $tipo_venta = $Funciones->limpiarNumeroEntero($_REQUEST['select_tipo_venta']);
 $medio_pago = $Funciones->limpiarNumeroEntero($_REQUEST['select_medio_pago']);
+$tipo_entrega = $Funciones->limpiarNumeroEntero($_REQUEST['select_tipo_entrega']);
 
 //buscar los productos de la venta
 $Venta = new Ventas();
@@ -100,30 +100,11 @@ while($filas_productos = $productos_venta->fetch_array()){
                   $Venta->setIdEstado(2);
                   $Venta->setTipoVenta($tipo_venta);
                   $Venta->setMedioPago($medio_pago);
+                  $Venta->setTipoEntrega($tipo_entrega);
                   $Venta->setRutCliente($soloRut);
 
                   if($Venta->finalizarVenta()){
-                     // echo '1';
-                           //preguntar si la entrega es a domicilio: hay quehacer el insert a la tabla tb_pedidos, una vez agragado devuelve echo 1
-                            $select_tipo_entrega = $_REQUEST['select_tipo_entrega'];
-
-                            if($select_tipo_entrega=="2"){
-                              //instancia clase pedido y setea sus parametrso
-
-                              $Pedido = new Pedido();
-                              $Pedido->setIdVenta($id_venta);
-                              $Pedido->setIdRepartidor("NULL");
-
-                                  if($Pedido->crearPedido()){
-                                     echo "1";
-
-                                  }else{
-                                    echo '5';//error al crear pedido
-                                  }
-
-                            }else{
                                 echo "1";
-                            }//si es en local se devuelve echo 1
 
                   }else{
                     echo '4';//error al cambiar estado de venta

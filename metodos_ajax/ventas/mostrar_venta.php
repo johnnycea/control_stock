@@ -52,7 +52,6 @@ require_once '../../clases/Ventas.php';
                   </table>';
 
 
-
                   echo '
 
                    <div class="container clearfix">';
@@ -64,7 +63,5 @@ require_once '../../clases/Ventas.php';
 
 
                   ';
-
-
 
  ?>

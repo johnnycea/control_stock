@@ -80,7 +80,7 @@ function guardarProductoFactura(){
 				method:"POST",
 				data: $("#formulario_detalle_factura_producto").serialize(),
 				success:function(respuesta){
-					  // alert(respuesta);
+					  alert(respuesta);
 
 					 if(respuesta==1){
                guardarDetalleFactura();
@@ -94,14 +94,14 @@ function guardarProductoFactura(){
 function guardarDetalleFactura(){
 
 
-// var id_factura = $("#txt_id_factura").val();
+var total_factura = $("#txt_total_factura").val();
 
 			$.ajax({
-				url:"./metodos_ajax/facturas/guardarDetalleProductoFactura.php",
+				url:"./metodos_ajax/facturas/guardarDetalleProductoFactura.php?total_factura="+total_factura,
 				method:"POST",
 				data: $("#formulario_detalle_factura_producto").serialize(),
 				success:function(respuesta){
-					  // alert(respuesta);
+					  alert(respuesta);
 
 					 if(respuesta==1){
 						 swal("Guardado","Los datos se han guardado correctamente.","success");
@@ -223,8 +223,11 @@ function modificarDetalleFactura(id){
 
 function eliminarDetalleFactura(id_producto,id_factura){
 
+	var total_factura = $("#txt_total_factura").val();
+
+
 			$.ajax({
-				url:"./metodos_ajax/facturas/eliminar_detalle_facturas.php?id_producto="+id_producto+"&id_factura="+id_factura,
+				url:"./metodos_ajax/facturas/eliminar_detalle_facturas.php?id_producto="+id_producto+"&id_factura="+id_factura+"&total_factura="+total_factura,
 				method:"POST",
 				success:function(respuesta){
 					 alert(respuesta);
