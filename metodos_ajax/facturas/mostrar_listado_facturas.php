@@ -15,6 +15,7 @@ require_once '../../clases/Facturas.php';
         <th>Razon social</th>
         <th>Direccion</th>
         <th>Telefono</th>
+        <th>Total</th>
         <th></th>
         <th></th>
         <th></th>
@@ -37,6 +38,10 @@ require_once '../../clases/Facturas.php';
                        <td><span id="columna_numero_factura_'.$filas['id_factura'].'" >'.$filas['numero_factura'].'</span></td>
                        <td><span id="columna_fecha_factura_'.$filas['id_factura'].'" >'.$filas['fecha_factura'].'</span></td>
                        <td><span id="columna_rut_proveedor_'.$filas['id_factura'].'" >'.$filas['rut_proveedor'].'-'.$filas['dv'].'</span></td>
+                       <td><span id="columna_razon_social_'.$filas['id_factura'].'" >'.$filas['razon_social'].'</span></td>
+                       <td><span id="columna_direccion_'.$filas['id_factura'].'" >'.$filas['direccion'].'</span></td>
+                       <td><span id="columna_telefono_'.$filas['id_factura'].'" >'.$filas['telefono'].'</span></td>
+                       <td><span id="columna_total_factura_'.$filas['id_factura'].'" >$'.$filas['total_factura'].'</span></td>
 
                        <td>
                           <button onclick="cargarInformacionFactura('.$filas['id_factura'].')" data-target="#modal_factura" data-toggle="modal"  class="col-12 btn btn-warning "> <i class="far fa-edit"></i> </button>

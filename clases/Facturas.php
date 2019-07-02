@@ -10,6 +10,7 @@ class Facturas{
  private $fecha;
  private $cantidad;
  private $valor;
+ private $total_factura;
 
  public function setIdFactura($id_factura){
    $this->id_factura = $id_factura;
@@ -31,6 +32,9 @@ class Facturas{
  }
  public function setIdProducto($id_producto){
    $this->id_producto = $id_producto;
+ }
+ public function setTotalFactura($parametro){
+   $this->total_factura = $parametro;
  }
 
 
@@ -83,6 +87,7 @@ class Facturas{
    $resultado= $conexion->query($consulta);
    return $resultado;
  }
+
 
  public function modificarFactura(){
      $conexion = new Conexion();
