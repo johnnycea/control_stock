@@ -1,5 +1,6 @@
 listarPedido("");
 
+
 function listarPedido(texto_buscar){
 
 
@@ -13,13 +14,27 @@ function listarPedido(texto_buscar){
 		});
 }
 
-function cargarInformacion(id){
+function listaVenta(venta){
+// alert(venta);
+		$.ajax({
+			url:"./metodos_ajax/pedidos/mostrar_venta_pedido.php?id_venta="+venta,
+			method:"POST",
+			success:function(respuesta){
+				// alert(respuesta);
+				 $("#contenedor_listado_venta").html(respuesta);
+			}
+		});
+}
 
-  var txt_rut_cliente = $("#columna_rut_"+id).html();
+function cargarInformacion(venta){
+
+  var txt_rut_cliente = $("#columna_rut_"+venta).html();
 
 	//carga la informacion recibida en el modal
  $('#txt_rut_cliente').val(txt_rut_cliente);
  cargarInformacionCliente(txt_rut_cliente);
+
+ listaVenta(venta);
 }
 
 function cargarInformacionCliente(texto_buscar){
@@ -36,6 +51,22 @@ function cargarInformacionCliente(texto_buscar){
 				 $("#txt_numero").val(respuesta.numero_calle);
 				 $("#txt_observacion").val(respuesta.observacion_direccion);
 				 $("#txt_telefono").val(respuesta.telefono);
+			}
+		});
+}
+
+function cargarInformacionVentaPedido(texto_buscar){
+
+		$.ajax({
+			url:"./metodos_ajax/pedidos/buscar_pedido_ventas.php?texto_buscar="+texto_buscar,
+			method:"POST",
+			dataType:"json",
+			success:function(respuesta){
+
+				 $("#id_producto").val(respuesta.id_producto);
+				 $("#valor_unitario").val(respuesta.valor_unitario);
+				 $("#cantidad").val(respuesta.cantidad);
+				 $("#valor_total").val(respuesta.valor_total);
 			}
 		});
 }
