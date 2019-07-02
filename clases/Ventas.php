@@ -88,6 +88,8 @@ class Ventas{
     return $resultado_consulta;
  }
 
+
+
  public function registrarIngredienteVenta($ingrediente,$cantidad_ingrediente){
     $Conexion = new Conexion();
     $Conexion = $Conexion->conectar();
@@ -109,6 +111,15 @@ class Ventas{
     $Conexion = $Conexion->conectar();
 
     $resultado_consulta = $Conexion->query("select * from tb_ventas");
+    return $resultado_consulta;
+ }
+
+ public function listadoPedidos(){
+    $Conexion = new Conexion();
+    $Conexion = $Conexion->conectar();
+
+    $resultado_consulta = $Conexion->query("select * from vista_ventas");
+    // echo $resultado_consulta;
     return $resultado_consulta;
  }
 

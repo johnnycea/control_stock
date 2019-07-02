@@ -3,6 +3,7 @@
 require_once 'comun.php';
 require_once './clases/Usuario.php';
 require_once './clases/Pedido.php';
+require_once './clases/Ventas.php';
 comprobarSession();
 $usuario= new Usuario();
 $usuario= $usuario->obtenerUsuarioActual();
@@ -99,41 +100,43 @@ $usuario= $usuario->obtenerUsuarioActual();
                     <div class="container">
                       <div class="row">
 
-                               <div class="col-md-4" >
+                               <div class="col-md-3" >
                                    <label for="title" class="col-12 control-label">Rut:</label>
-                                  <input type="text" placeholder="Ej: 11222333-0" max="10" onkeyup="cargarInformacionCliente(this.value)" class="form-control" name="txt_rut_cliente" id="txt_rut_cliente">
+                                  <input type="text" readonly placeholder="Ej: 11222333-0" max="10" onkeyup="cargarInformacionCliente(this.value)" class="form-control" name="txt_rut_cliente" id="txt_rut_cliente">
                                </div>
 
-                               <div class="col-md-4" >
+                               <div class="col-md-3" >
                                    <label for="title" class="col-12 control-label">Nombre:</label>
-                                  <input type="text" placeholder="Nombres" class="form-control" name="txt_nombre" id="txt_nombre">
+                                  <input type="text" readonly placeholder="Nombres" class="form-control" name="txt_nombre" id="txt_nombre">
                                </div>
 
 
-                               <div class="col-md-4" >
+                               <div class="col-md-3" >
                                    <label for="title" class="col-12 control-label">Apellido:</label>
-                                  <input type="text" placeholder="Apellidos" class="form-control" name="txt_apellidos" id="txt_apellidos">
+                                  <input type="text"  readonly placeholder="Apellidos" class="form-control" name="txt_apellidos" id="txt_apellidos">
+                               </div>
+
+                               <div class="col-md-3" >
+                                   <label for="title" class="col-12 control-label">Teléfono:</label>
+                                  <input type="text" readonly placeholder="Telefono" class="form-control" name="txt_telefono" id="txt_telefono">
                                </div>
 
                                <div class="col-md-4" >
                                  <label for="title" class="col-12 control-label">Calle:</label>
-                                 <input type="text" placeholder="Nombre calle" class="form-control" name="txt_calle" id="txt_calle">
+                                 <input type="text" readonly placeholder="Nombre calle" class="form-control" name="txt_calle" id="txt_calle">
                                </div>
 
                                <div class="col-md-2" >
                                  <label for="title" class="col-12 control-label">Número:</label>
-                                 <input type="text" placeholder="Numero casa" class="form-control" name="txt_numero" id="txt_numero">
+                                 <input type="text" readonly placeholder="Numero casa" class="form-control" name="txt_numero" id="txt_numero">
                                </div>
 
-                               <div class="col-md-4" >
+                               <div class="col-md-6" >
                                    <label for="title" class="col-12 control-label">Observación direccion:</label>
-                                  <input type="text" placeholder="Opcional" class="form-control" name="txt_observacion" id="txt_observacion">
+                                  <input type="text" readonly placeholder="Opcional" class="form-control" name="txt_observacion" id="txt_observacion">
                                </div>
 
-                               <div class="col-md-2" >
-                                   <label for="title" class="col-12 control-label">Teléfono:</label>
-                                  <input type="text" placeholder="Telefono" class="form-control" name="txt_telefono" id="txt_telefono">
-                               </div>
+
 
                       </div>
                    </div>
@@ -142,7 +145,9 @@ $usuario= $usuario->obtenerUsuarioActual();
 
 
     <div class=""><hr></div>
-
+    <center><h5 class="modal-title" id="myModalLabel">Datos de la venta</h5></center>
+    <div><hr></div>
+            <div id='contenedor_listado_venta'></div>
 
         </form>
 
@@ -153,9 +158,40 @@ $usuario= $usuario->obtenerUsuarioActual();
     </div>
   </div>
 
-<script type="text/javascript">
-    listarFacturas("");
-</script>
+
 
 </body>
 </html>
+
+
+  <!-- <div class="container">
+      <div class="row">
+
+              <div class="col-md-4" >
+                <label for="title" class="col-2 control-label">Id Venta:</label>
+                <input type="text" class="form-control" onkeyup="cargarInformacionVentaPedido(this.value)" name="id_venta" id="id_venta">
+              </div>
+
+               <div class="col-md-4" >
+                   <label for="title" class="col-2 control-label">Id Producto:</label>
+                  <input type="text" class="form-control" name="id_producto" id="id_producto">
+               </div>
+
+               <div class="col-md-4" >
+                   <label for="title" class="col-3 control-label">Valor Unitario:</label>
+                  <input type="text" placeholder="Nombres" class="form-control" name="valor_unitario" id="valor_unitario">
+               </div>
+
+
+               <div class="col-md-4" >
+                   <label for="title" class="col-3 control-label">Cantidad:</label>
+                  <input type="text" placeholder="Apellidos" class="form-control" name="cantidad" id="cantidad">
+               </div>
+
+               <div class="col-md-4" >
+                   <label for="title" class="col-3 control-label">Valor Total:</label>
+                  <input type="text" placeholder="Apellidos" class="form-control" name="valor_total" id="valor_total">
+               </div>
+
+        </div>
+    </div> -->
