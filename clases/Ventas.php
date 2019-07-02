@@ -14,7 +14,6 @@ class Ventas{
  private $tipo_entrega;
  private $medio_pago;
  private $rut_cliente;
- private $tipo_entrega;
 
 
  public function setIdProductoElaborado($id_producto_elaborado){
@@ -41,9 +40,6 @@ class Ventas{
  }
  public function setTipoVenta($parametro){
    $this->tipo_venta = $parametro;
- }
- public function setTipoEntrega($parametro){
-   $this->tipo_entrega = $parametro;
  }
  public function setMedioPago($parametro){
    $this->medio_pago = $parametro;
