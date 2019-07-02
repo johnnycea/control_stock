@@ -11,6 +11,7 @@ require_once '../../clases/Ventas.php';
         <th>Venta</th>
         <th>Tipo entrega</th>
         <th>Fecha</th>
+        <th>Rut</th>
         <th>Nombre cliente</th>
         <th>Dirección</th>
         <th>Observación</th>
@@ -31,6 +32,7 @@ require_once '../../clases/Ventas.php';
                echo '<tr>
 
 
+                      <td><span id="columna_id_venta_'.$filas['venta'].'" >'.$filas['venta'].'</span></td>
 
                        <td>
                        <span id="columna_tipo_entrega_'.$filas['venta'].'" >';
@@ -40,7 +42,6 @@ require_once '../../clases/Ventas.php';
                                  echo "A domicilio";
                                }
                        echo'</span></td>
-                       <td><span id="columna_id_venta_'.$filas['venta'].'" >'.$filas['venta'].'</span></td>
                        <td><span id="columna_fecha_'.$filas['venta'].'" >'.$filas['fecha'].'</span></td>
                        <td><span id="columna_rut_'.$filas['venta'].'" >'.$filas['rut'].'</span></td>
                        <td><span id="columna_nombre_'.$filas['venta'].'" >'.$filas['nombre_cliente'].'</span></td>
