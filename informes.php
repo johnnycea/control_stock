@@ -81,7 +81,7 @@ $usuario= $usuario->obtenerUsuarioActual();
 
                      <div class="form-group col-12">
                         <label for="title" class="col-12 control-label">Tipo de informe:</label>
-                        <select class="form-control" name="select_tipo_informe" id="select_tipo_informe">
+                        <select class="form-control" onchange="mostrarOcultarOpciones(this.value)" name="select_tipo_informe" id="select_tipo_informe">
                           <option value="1">Resumen</option>
                           <option value="2">Detallado</option>
                         </select>
@@ -102,35 +102,40 @@ $usuario= $usuario->obtenerUsuarioActual();
 
                      </div>
 
-                     <div class="form-group col-12">
-                        <label for="title" class="col-12 control-label">Tipo de venta:</label>
-                        <select class="form-control" name="select_tipo_venta" id="select_tipo_venta">
-                          <option value="">Todas</option>
-                            <?php
-                                $TipoVenta = new TipoVenta();
-                                $listadoTiposVenta = $TipoVenta->obtenerTiposVenta();
 
-                                while($filas_tipo_venta = $listadoTiposVenta->fetch_array()){
-                                   echo '<option value="'.$filas_tipo_venta['id_tipo_venta'].'">'.$filas_tipo_venta['descripcion_tipo_venta'].'</option>';
-                                }
-                             ?>
-                        </select>
-                     </div>
+                     <div id="contenedor_opciones_informe_detallado" class="d-none">
 
-                     <div class="form-group col-12">
-                        <label for="title" class="col-12 control-label">Medio de Pago:</label>
-                        <select class="form-control" name="select_medio_pago" id="select_medio_pago">
-                          <option value="">Todos</option>
-                            <?php
-                                $MedioPago = new MedioPago();
-                                $listadoMediosPago = $MedioPago->obtenerMediosPago();
+                             <div class="form-group col-12">
+                                <label for="title" class="col-12 control-label">Tipo de venta:</label>
+                                <select class="form-control" name="select_tipo_venta" id="select_tipo_venta">
+                                  <option value="">TODO</option>
+                                    <?php
+                                        $TipoVenta = new TipoVenta();
+                                        $listadoTiposVenta = $TipoVenta->obtenerTiposVenta();
 
-                                while($filas_medio_pago = $listadoMediosPago->fetch_array()){
-                                   echo '<option value="'.$filas_medio_pago['id_medio_pago'].'">'.$filas_medio_pago['descripcion_medio_pago'].'</option>';
-                                }
-                             ?>
-                        </select>
-                     </div>
+                                        while($filas_tipo_venta = $listadoTiposVenta->fetch_array()){
+                                           echo '<option value="'.$filas_tipo_venta['id_tipo_venta'].'">'.$filas_tipo_venta['descripcion_tipo_venta'].'</option>';
+                                        }
+                                     ?>
+                                </select>
+                             </div>
+
+                             <div class="form-group col-12">
+                                <label for="title" class="col-12 control-label">Medio de Pago:</label>
+                                <select class="form-control" name="select_medio_pago" id="select_medio_pago">
+                                  <option value="">TODO</option>
+                                    <?php
+                                        $MedioPago = new MedioPago();
+                                        $listadoMediosPago = $MedioPago->obtenerMediosPago();
+
+                                        while($filas_medio_pago = $listadoMediosPago->fetch_array()){
+                                           echo '<option value="'.$filas_medio_pago['id_medio_pago'].'">'.$filas_medio_pago['descripcion_medio_pago'].'</option>';
+                                        }
+                                     ?>
+                                </select>
+                             </div>
+
+                    </div>
 
                      <div class="form-group col-12">
                         <label for="title" class="col-12 control-label">&nbsp;</label>
