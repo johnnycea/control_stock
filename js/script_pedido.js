@@ -9,7 +9,6 @@ function listarPedido(estado_venta){
 			url:"./metodos_ajax/pedidos/mostrar_listado_pedido.php?estado_venta="+estado_venta,
 			method:"POST",
 			success:function(respuesta){
-				  alert(respuesta);
 				 $("#contenedor_listado_pedido").html(respuesta);
 			}
 		});
@@ -21,7 +20,7 @@ function cambiarEstadoPedido(){
  var tipo_entrega = $("#txt_tipo_entrega").val();
 
 		$.ajax({
-			url:"./metodos_ajax/pedidos/cambiar_estado_pedido.php?tipo_entrega="+tipo_entrega+"&id_venta="+id_venta,
+			url:"./metodos_ajax/pedidos/cambiar_estado_pedido.php?tipo_entrega="+tipo_entrega+"&id_venta="+id_venta+"&estado_actual="+estado_listado_actual,
 			method:"POST",
 			success:function(respuesta){
 				alert(respuesta);

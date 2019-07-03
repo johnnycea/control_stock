@@ -96,7 +96,8 @@ $total_ventas = 0;
 
             $consulta_ventas = "select id_venta,
                                        fecha,
-                                       total_venta(id_venta) as total_venta
+                                       total_venta(id_venta) as total_venta,
+                                       tipo_venta
                                         from tb_ventas
                                        where date(fecha) between '".$fecha_inicio."' and '".$fecha_fin."' ;";
 
@@ -104,13 +105,15 @@ $total_ventas = 0;
 
             while($filas = $resultado_consulta_ventas->fetch_array()){
 
-              $total_ventas += $filas['total_venta'];
+               if($filas['tipo_venta']==1 or $filas['tipo_venta']==2){//SOLO SUMA AL TOTAL LAS VENTAS QUE NO SEAN POR CORTESIA
+                  $total_ventas += $filas['total_venta'];
+               }
 
               echo '
                     <tr>
                       <td>'.$filas['id_venta'].'</td>
                       <td>'.$filas['fecha'].'</td>
-                      <td>'.$filas['total_venta'].'</td>
+                      <td>$'.number_format($filas['total_venta'],0,",",".").'</td>
                     </tr>';
               }
 
@@ -165,7 +168,7 @@ $total_facturas=0;
                     <tr>
                       <td>'.$filas_facturas['id_factura'].'</td>
                       <td>'.$filas_facturas['fecha_factura'].'</td>
-                      <td>'.$filas_facturas['total_factura'].'</td>
+                      <td>$'.number_format($filas['total_factura'],0,",",".").'</td>
                     </tr>';
               }
 
