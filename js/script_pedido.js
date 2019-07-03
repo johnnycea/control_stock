@@ -49,6 +49,7 @@ function listaVenta(venta){
 		});
 }
 
+
 function cargarInformacion(venta, tipo_entrega){
 
   var txt_rut_cliente = $("#columna_rut_"+venta).html();

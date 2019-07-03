@@ -46,8 +46,17 @@ require_once '../../clases/Ventas.php';
                        <td><span id="columna_rut_'.$filas['venta'].'" >'.$filas['rut'].'</span></td>
                        <td><span id="columna_nombre_'.$filas['venta'].'" >'.$filas['nombre_cliente'].'</span></td>
                        <td><span id="columna_direccion_'.$filas['venta'].'" >'.$filas['direccion_cliente'].'</span></td>
-                       <td><span id="columna_observacion_'.$filas['venta'].'" >'.$filas['observacion_direccion'].'</span></td>
-                       <span class="d-none" id="columna_id_estado_'.$filas['venta'].'" >'.$filas['estado'].'</span>
+                       <td><span id="columna_observacion_'.$filas['venta'].'" >'.$filas['observacion_direccion'].'</span></td>';
+                       echo'<span class="d-none" id="columna_id_estado_'.$filas['venta'].'" >';
+
+                                    if($filas['estado']==3{
+                                      echo "Por repartir";
+                                    }else if($filas['estado']==4){
+                                      echo "Finalizado";
+                                    }
+
+
+                       echo'</span>
                        <td><span id="columna_descripcion_'.$filas['venta'].'" >'.$filas['descripcion_estado'].'</span></td>
 
                        <td>
