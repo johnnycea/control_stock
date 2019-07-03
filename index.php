@@ -29,6 +29,7 @@
           background-attachment: fixed;
           background-size: cover;
          	margin:0;
+          background-color: #000000;
         }
 
         .card{

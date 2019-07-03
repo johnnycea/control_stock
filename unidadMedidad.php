@@ -47,22 +47,24 @@ $usuario= $usuario->obtenerUsuarioActual();
        <div class="col-12 col-md-9">
 
           <div  style="" class=" card col-12">
+            <br>
+
             <div class="container">
-                 <button type="button" onclick="limpiarFormularioUnidadMedida();" class="btn btn-success" data-target="#modal_unidad" data-toggle="modal" name="button">Crear nueva Unidad de medida</button>
-            </div>
-            <div class="container">
+                  <div class="row">
+                       <button type="button" onclick="limpiarFormularioUnidadMedida();" class="btn btn-info col-12 col-md-4" data-target="#modal_unidad" data-toggle="modal" name="button">Crear nueva Unidad de medida</button>
+                       <input onkeyup="listarUnidadMedida(this.value)" class="form-control col-12 col-md-4" type="text" name="txt_buscar_unidad" id="txt_buscar_unidad" value="">
+                  </div>
 
-             <br>
-              <div id="contenedorBuscador" class="form-group col-12" >
+                   <br>
+                    <div id="contenedorBuscador" class="form-group col-12" >
 
-                     <input onkeyup="listarUnidadMedida(this.value)" class="form-control col-9" type="text" name="txt_buscar_unidad" id="txt_buscar_unidad" value="">
-                     <!-- <button type="button" class="btn btn-info col-3" name="button">Buscar</button> -->
-              </div>
-              <br>
+                           <!-- <button type="button" class="btn btn-info col-3" name="button">Buscar</button> -->
+                    </div>
+                    <br>
 
-              <div id='contenedor_listado_unidad_medida'></div>
+                    <div id='contenedor_listado_unidad_medida'></div>
 
-            </div>
+          </div>
 
           </div>
 

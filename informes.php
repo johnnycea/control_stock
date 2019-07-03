@@ -139,7 +139,7 @@ $usuario= $usuario->obtenerUsuarioActual();
 
                      <div class="form-group col-12">
                         <label for="title" class="col-12 control-label">&nbsp;</label>
-                        <input type="submit"  class="btn btn-success btn-block" value="Generar">
+                        <input type="submit"  class="btn btn-info btn-block" value="Generar">
 
                      </div>
 

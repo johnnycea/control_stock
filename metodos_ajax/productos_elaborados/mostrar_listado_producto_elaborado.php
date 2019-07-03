@@ -59,7 +59,7 @@ require_once '../../clases/ProductoElaborado.php';
 
                               <div class="card-body" >
                                      <div class="row">
-                                     <button class="btn btn-warning col-6" onclick="cargarModificarProductoElaborado('.$filas['id_producto_elaborado'].')" data-target="#modal_nuevo_producto_elaborado" data-toggle="modal" style="font-size:15px; background-color:rgb(139, 95, 69); color:white;" ><i class="far fa-edit"></i></button>
+                                     <button class="btn btn-warning col-6" onclick="cargarModificarProductoElaborado('.$filas['id_producto_elaborado'].')" data-target="#modal_nuevo_producto_elaborado" data-toggle="modal"  color:white;" ><i class="far fa-edit"></i></button>
                                      <button class="btn btn-danger col-6"  style="font-size:15px; " onclick="eliminarProductoElaborado('.$filas['id_producto_elaborado'].')" ><i class="fa fa-trash-alt"></i></button>
 
                                       </div>

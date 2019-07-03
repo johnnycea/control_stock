@@ -36,21 +36,26 @@ $usuario= $usuario->obtenerUsuarioActual();
 
 
           <div  style="" class=" col-12">
-            <div class="container">
-                 <button type="button" onclick="limpiarFormularioIngrediente();" class="btn btn-success" data-target="#modal_ingrediente" data-toggle="modal" name="button">Crear nuevo ingrediente</button>
-            </div>
-            <div class="container">
 
-             <br>
-              <div id="contenedorBuscador" class="form-group col-12" >
+                <div>
+                  <h4>Ingredientes</h4>
+                </div>
+                <div><hr></div>
 
-                     <input onkeyup="listarIngrediente(this.value)" class="form-control col-9" type="text" name="txt_texto_buscar_ingredientes" id="txt_texto_buscar_ingredientes" value="">
-              </div>
-              <br>
+                <div class="row">
+                  <button type="button" onclick="limpiarFormularioIngrediente();" class="btn btn-info col-12 col-md-4" data-target="#modal_ingrediente" data-toggle="modal" name="button">Crear nuevo ingrediente</button>
+                  <input onkeyup="listarIngrediente(this.value)" placeholder="Buscar ingredientes" class="form-control col-12 col-md-4" type="text" name="txt_texto_buscar_ingredientes" id="txt_texto_buscar_ingredientes" value="">
 
-              <div id="contenedor_ingredientes"></div>
+                </div>
 
-            </div>
+                <div><hr></div>
+
+
+                <div class="container">
+
+                  <div id="contenedor_ingredientes"></div>
+
+                </div>
 
           </div>
 

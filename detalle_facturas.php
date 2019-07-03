@@ -179,7 +179,7 @@ echo '<script> var id_factura = '.$id_factura.'; </script>';
 
                      <div class="form-group" >
                        <div class="col-12">
-                         <button class="btn btn-success btn-block" type="submit" name="button">Guardar</button>
+                         <button class="btn btn-info btn-block" type="submit" name="button">Guardar</button>
                        </div>
 
                      </div>

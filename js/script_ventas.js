@@ -137,7 +137,7 @@ function listaVenta(){
 		});
 }
 
-function guardarDetalleVenta(id_producto,valor){
+function guardarDetalleVenta(id_producto,valor,boton){
 	var id_producto = id_producto;
 	var id_venta = $("#txt_id_venta").val();
 	var valor_unitario = valor;
@@ -149,6 +149,10 @@ function guardarDetalleVenta(id_producto,valor){
 	// alert(txt_cantidad);
 	// alert(valor_total);
 
+    var boton = $("#btn_agregar_"+id_producto);
+	  boton.html("Cargando...");
+	  boton.attr("disabled",true);
+
 			$.ajax({
 				url:"./metodos_ajax/ventas/ingresar_productos_ventas.php?id_producto="+id_producto+"&id_venta="+id_venta+"&valor_unitario="+valor_unitario+"&txt_cantidad="+txt_cantidad+"&valor_total="+valor_total,
 				method:"POST",
@@ -156,8 +160,16 @@ function guardarDetalleVenta(id_producto,valor){
 					 // alert(respuesta);
 
 					 if(respuesta==1){
-						 swal("Guardado","Los datos se han guardado correctamente.","success");
+						 // swal("Guardado","Los datos se han guardado correctamente.","success");
 						 listaVenta();
+						 $("#btn_agregar_"+id_producto).html('<i class="fas fa-plus"></i> Agregar');
+						 boton.attr("disabled",false);
+						 $('html,body').animate({
+							    scrollTop: $("#contenedor_listado_productos_elaborados").offset().top
+							}, 2000);
+
+
+
 					 }else if(respuesta==2){
 						 swal("Ocurrió un error","Recargue la página e intente nuevamente.","error");
 					 }else{

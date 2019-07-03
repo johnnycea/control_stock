@@ -37,8 +37,8 @@ require_once '../../clases/Cliente.php';
                                   <td><span id="txt_observacion_'.$filas['rut_cliente'].'" >'.$filas['observacion_direccion'].'</span></td>
                                   <td><span id="txt_telefono_'.$filas['rut_cliente'].'" >'.$filas['telefono'].'</span></td>
 
-                                  <td><button class="btn btn-warning col-6" onclick="cargarInformacionClientes('.$filas['rut_cliente'].')" data-target="#modal_cliente" data-toggle="modal" style="font-size:15px; background-color:rgb(139, 95, 69); color:white;" ><i class="far fa-edit"></i></button></td>
-                                  <td><button class="btn btn-danger col-6"  style="font-size:15px; " onclick="eliminarCliente('.$filas['rut_cliente'].')" ><i class="fa fa-trash-alt"></i></button></td>
+                                  <td><button class="btn btn-warning btn-block" onclick="cargarInformacionClientes('.$filas['rut_cliente'].')" data-target="#modal_cliente" data-toggle="modal"  ><i class="far fa-edit"></i></button></td>
+                                  <td><button class="btn btn-danger btn-block" onclick="eliminarCliente('.$filas['rut_cliente'].')" ><i class="fa fa-trash-alt"></i></button></td>
                                </tr>';
                     }
 

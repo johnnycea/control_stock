@@ -114,7 +114,11 @@ $cantidad_ventas = 0;
             if($medio_pago!=""){
                $condicion_medio_pago = $condicion_medio_pago." (id_medio_pago = ".$medio_pago.") and ";
             }else{
+
+              if($tipo_venta!=""){
                 $condicion_tipo_venta = $condicion_tipo_venta." and ";
+              }
+
             }
 
             $consulta_ventas = "select * from vista_listado_ventas

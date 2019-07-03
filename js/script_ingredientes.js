@@ -1,10 +1,9 @@
-listarIngrediente();
+listarIngrediente("");
 
-function listarIngrediente(){
-	var texto_buscar = $("#txt_texto_buscar_ingredientes").val();
+function listarIngrediente(texto){
 
 		$.ajax({
-			url:"./metodos_ajax/ingredientes/mostrar_listado_ingredientes.php?texto_buscar="+texto_buscar,
+			url:"./metodos_ajax/ingredientes/mostrar_listado_ingredientes.php?texto_buscar="+texto,
 			method:"POST",
 			success:function(respuesta){
 				 // alert(respuesta);

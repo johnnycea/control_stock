@@ -48,17 +48,21 @@ $usuario= $usuario->obtenerUsuarioActual();
               </div>
               <div><hr></div>
 
-              <div>
-                <button type="button" onclick="limpiarFormularioFactura();" class="btn boton-morado" data-target="#modal_factura" data-toggle="modal" name="button">Crear nueva factura</button>
+              <div class="row">
+
+                <div id="contenedorBuscador" class="col-12 col-md-4 " >
+                  <button type="button" onclick="limpiarFormularioFactura();" class="btn btn-block btn-info" data-target="#modal_factura" data-toggle="modal" name="button">Crear nueva factura</button>
+                </div>
+
+                <div id="contenedorBuscador" class=" col-12 col-md-4" >
+                      <input placeholder="Buscar factura" onkeyup="listarFacturas(this.value)" class="form-control col-9" type="text" name="txt_buscar_facturas" id="txt_buscar_facturas" value="">
+                </div>
 
               </div>
+
               <div><hr></div>
 
-              <div id="contenedorBuscador" class="form-group col-4" >
 
-                     Buscar: <input onkeyup="listarFacturas(this.value)" class="form-control col-9" type="text" name="txt_buscar_facturas" id="txt_buscar_facturas" value="">
-                     <!-- <button type="button" class="btn btn-info col-3" name="button">Buscar</button> -->
-              </div>
 
 
               <div id='contenedor_listado_facturas'></div>

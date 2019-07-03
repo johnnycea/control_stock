@@ -34,18 +34,13 @@ $usuario= $usuario->obtenerUsuarioActual();
         <div class="container contenedor-principal" >
 
           <div  style="" class=" col-12">
-            <div class="container">
-                 <button type="button" onclick="limpiarFormularioProveedor();" class="btn btn-success" data-target="#modal_proveedor" data-toggle="modal" name="button">Crear nuevo proveedor</button>
+
+            <div class="row">
+                 <button type="button" onclick="limpiarFormularioProveedor();" class="btn btn-info col-12 col-md-4" data-target="#modal_proveedor" data-toggle="modal" name="button">Crear nuevo proveedor</button>
+                 <input onkeyup="listarProveedor(this.value)" class="form-control col-12 col-md-4" type="text" name="txt_buscar_proveedores" id="txt_buscar_proveedores" value="">
             </div>
+
             <div class="container">
-
-             <br>
-              <div id="contenedorBuscador" class="form-group col-12" >
-
-                     <input onkeyup="listarProveedor(this.value)" class="form-control col-9" type="text" name="txt_buscar_proveedores" id="txt_buscar_proveedores" value="">
-                     <!-- <button type="button" class="btn btn-info col-3" name="button">Buscar</button> -->
-              </div>
-              <br>
 
               <div id='contenedor_listado_proveedores'></div>
 

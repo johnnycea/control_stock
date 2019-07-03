@@ -7,7 +7,7 @@ require_once '../../clases/Proveedor.php';
   echo '
   <br>
   <br>
-  <table class="table  table-sm table-bordered table-info table-hover">
+  <table class="table  table-sm table-bordered table-dark table-hover">
      <thead class="thead-dark">
 
         <th>Rut</th>

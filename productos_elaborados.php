@@ -46,7 +46,7 @@ $usuario= $usuario->obtenerUsuarioActual();
           </div>
           <div><hr></div>
           <div>
-            <button class="btn btn-success"  onclick="limpiarModalProductosElaborados();" data-toggle="modal" data-target="#modal_nuevo_producto_elaborado" >Agregar producto</button>
+            <button class="btn btn-info col-12 col-md-4"  onclick="limpiarModalProductosElaborados();" data-toggle="modal" data-target="#modal_nuevo_producto_elaborado" >Agregar producto</button>
           </div>
           <div><hr></div>
 

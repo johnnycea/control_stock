@@ -36,15 +36,15 @@ $usuario= $usuario->obtenerUsuarioActual();
 
 
           <div  style="" class=" col-12">
-            <div class="container">
-                 <button type="button" onclick="limpiarFormularioIngrediente();" class="btn btn-success" data-target="#modal_cliente" data-toggle="modal" name="button">Crear nuevo cliente</button>
+            <div class="row">
+                 <button type="button" onclick="limpiarFormularioIngrediente();" class="btn btn-info col-12 col-md-4" data-target="#modal_cliente" data-toggle="modal" name="button">Crear nuevo cliente</button>
+                 <input onkeyup="listarCliente(this.value)" placeholder="Buscar Clientes" class="form-control col-12 col-md-4" type="text" name="txt_texto_buscar_cliente" id="txt_texto_buscar_cliente" value="">
             </div>
             <div class="container">
 
              <br>
               <div id="contenedorBuscador" class="form-group col-12" >
 
-                     <input onkeyup="listarCliente(this.value)" class="form-control col-9" type="text" name="txt_texto_buscar_cliente" id="txt_texto_buscar_cliente" value="">
               </div>
               <br>
 

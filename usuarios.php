@@ -31,7 +31,7 @@ $usuario= $usuario->obtenerUsuarioActual();
 
 
 <div class="container contenedor-principal">
-  
+
   <div class="row">
 
       <div class="col-12 col-md-3">
@@ -50,7 +50,8 @@ $usuario= $usuario->obtenerUsuarioActual();
 
           <div  style="" class=" card col-12">
             <div class="container">
-                 <button type="button" onclick="limpiarFormularioUsuario();" class="btn btn-success" data-target="#modal_usuario" data-toggle="modal" name="button">Crear nuevo usuario</button>
+              <br>
+                 <button type="button" onclick="limpiarFormularioUsuario();" class="btn btn-info col-12 col-md-4" data-target="#modal_usuario" data-toggle="modal" name="button">Crear nuevo usuario</button>
             </div>
             <div class="container">
               <br>

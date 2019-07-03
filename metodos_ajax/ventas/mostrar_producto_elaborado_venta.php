@@ -44,7 +44,7 @@ echo '<div class="row">';
                                      Cantidad
                                      <div class="row">
                                         <input type="number" min="1" id="txt_cantidad_'.$filas['id_producto_elaborado'].'" class="form-control col-4" value="1">
-                                        <button style="background-color:rgb(122, 77, 51); color:white;" type="button" class="btn btn-warning col-7" onclick="guardarDetalleVenta('.$filas['id_producto_elaborado'].','.$filas['valor'].')">Agregar</button>
+                                        <button id="btn_agregar_'.$filas['id_producto_elaborado'].'" style="background-color:#0d7073; color:white;" type="button" class="btn btn-warning col-7" onclick="guardarDetalleVenta('.$filas['id_producto_elaborado'].','.$filas['valor'].')"> Agregar</button>
                                       </div>
                               </div>
 

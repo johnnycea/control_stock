@@ -208,7 +208,7 @@ function cargarMenuPrincipal(){
 }
 
 .estilo_opciones_menu{
- font-style: italic;
+ /* font-style: italic; */
 }
 
 .nav-link{
@@ -223,7 +223,8 @@ function cargarMenuPrincipal(){
 }
 </style>
 
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark " style="background-image: url('img/madera1.jpg');">
+<!-- <nav class="navbar fixed-top navbar-expand-lg navbar-dark " style="background-image: url('img/madera1.jpg');"> -->
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark " style="background: black;">
   <a class="navbar-brand" href="#">
     <div id="contenedor_logo_menu">
       <div id="logo_menu"></div>
@@ -242,45 +243,45 @@ function cargarMenuPrincipal(){
             //UN LINK
             echo '<li class="nav-item">';
                   if($url=="ventas.php"){
-                    echo '<a class="nav-link estilo_opciones_menu active" href="./ventas.php">Ventas</span></a>';
+                    echo '<a class="nav-link estilo_opciones_menu active" href="./ventas.php"><i class="fas fa-shopping-cart"></i> Ventas</span></a>';
                   }else{
-                    echo '<a class="nav-link estilo_opciones_menu active " href="./ventas.php">Ventas</span></a>';
+                    echo '<a class="nav-link estilo_opciones_menu active " href="./ventas.php"><i class="fas fa-shopping-cart"></i> Ventas</span></a>';
                   }
             echo '</li>';
             //UN LINK
 
             echo '<li class="nav-item">';
                   if($url=="pedidos.php"){
-                    echo '<a class="nav-link estilo_opciones_menu active" href="./pedidos.php">Pedidos</span></a>';
+                    echo '<a class="nav-link estilo_opciones_menu active" href="./pedidos.php"><i class="fas fa-list"></i> Pedidos</span></a>';
                   }else{
-                    echo '<a class="nav-link estilo_opciones_menu active " href="./pedidos.php">Pedidos</span></a>';
+                    echo '<a class="nav-link estilo_opciones_menu active " href="./pedidos.php"><i class="fas fa-list"></i> Pedidos</span></a>';
                   }
             echo '</li>';
 
             //UN LINK
             echo '<li class="nav-item">';
                   if($url=="facturas.php"){
-                    echo '<a class="nav-link estilo_opciones_menu active" href="./facturas.php">Ingresos</span></a>';
+                    echo '<a class="nav-link estilo_opciones_menu active" href="./facturas.php"><i class="fas fa-clipboard-list"></i> Facturas</span></a>';
                   }else{
-                    echo '<a class="nav-link estilo_opciones_menu active " href="./facturas.php">Ingresos</span></a>';
+                    echo '<a class="nav-link estilo_opciones_menu active " href="./facturas.php"><i class="fas fa-clipboard-list"></i> Facturas</span></a>';
                   }
             echo '</li>';
 
             //UN LINK
             echo '<li class="nav-item">';
                   if($url=="productos_elaborados.php"){
-                    echo '<a class="nav-link estilo_opciones_menu active" href="./productos_elaborados.php">Productos</span></a>';
+                    echo '<a class="nav-link estilo_opciones_menu active" href="./productos_elaborados.php"><i class="fas fa-utensils"></i> Productos</span></a>';
                   }else{
-                    echo '<a class="nav-link estilo_opciones_menu active " href="./productos_elaborados.php">Productos</span></a>';
+                    echo '<a class="nav-link estilo_opciones_menu active " href="./productos_elaborados.php"><i class="fas fa-utensils"></i> Productos</span></a>';
                   }
             echo '</li>';
 
             //UN LINK
             echo '<li class="nav-item">';
                   if($url=="ingredientes.php"){
-                    echo '<a class="nav-link estilo_opciones_menu active" href="./ingredientes.php">Ingredientes</span></a>';
+                    echo '<a class="nav-link estilo_opciones_menu active" href="./ingredientes.php"><i class="fas fa-lemon"></i> Ingredientes</span></a>';
                   }else{
-                    echo '<a class="nav-link estilo_opciones_menu active " href="./ingredientes.php">Ingredientes</span></a>';
+                    echo '<a class="nav-link estilo_opciones_menu active " href="./ingredientes.php"><i class="fas fa-lemon"></i> Ingredientes</span></a>';
                   }
             echo '</li>';
 
@@ -288,45 +289,45 @@ function cargarMenuPrincipal(){
             //UN LINK
             echo '<li class="nav-item">';
                   if($url=="stock.php"){
-                    echo '<a class="nav-link estilo_opciones_menu active" href="./stock.php">Stock</span></a>';
+                    echo '<a class="nav-link estilo_opciones_menu active" href="./stock.php"><i class="fas fa-sort-amount-down"></i> Stock</span></a>';
                   }else{
-                    echo '<a class="nav-link estilo_opciones_menu active " href="./stock.php">Stock</span></a>';
+                    echo '<a class="nav-link estilo_opciones_menu active " href="./stock.php"><i class="fas fa-sort-amount-down"></i> Stock</span></a>';
                   }
             echo '</li>';
 
             //UN LINK
             echo '<li class="nav-item">';
                   if($url=="cliente.php"){
-                    echo '<a class="nav-link estilo_opciones_menu active" href="./cliente.php">Clientes</span></a>';
+                    echo '<a class="nav-link estilo_opciones_menu active" href="./cliente.php"><i class="fas fa-address-card"></i> Clientes</span></a>';
                   }else{
-                    echo '<a class="nav-link estilo_opciones_menu active " href="./cliente.php">Clientes</span></a>';
+                    echo '<a class="nav-link estilo_opciones_menu active " href="./cliente.php"><i class="fas fa-address-card"></i> Clientes</span></a>';
                   }
             echo '</li>';
 
             //UN LINK
             echo '<li class="nav-item">';
                   if($url=="proveedores.php"){
-                    echo '<a class="nav-link estilo_opciones_menu active" href="./proveedores.php">Proveedores</span></a>';
+                    echo '<a class="nav-link estilo_opciones_menu active" href="./proveedores.php"><i class="fas fa-users"></i> Proveedores</span></a>';
                   }else{
-                    echo '<a class="nav-link estilo_opciones_menu active " href="./proveedores.php">Proveedores</span></a>';
+                    echo '<a class="nav-link estilo_opciones_menu active " href="./proveedores.php"><i class="fas fa-users"></i> Proveedores</span></a>';
                   }
             echo '</li>';
 
             //UN LINK
             echo '<li class="nav-item">';
                   if($url=="informes.php"){
-                    echo '<a class="nav-link estilo_opciones_menu active" href="./informes.php">Informes</span></a>';
+                    echo '<a class="nav-link estilo_opciones_menu active" href="./informes.php"><i class="fas fa-chart-pie"></i> Informes</span></a>';
                   }else{
-                    echo '<a class="nav-link estilo_opciones_menu active " href="./informes.php">Informes</span></a>';
+                    echo '<a class="nav-link estilo_opciones_menu active " href="./informes.php"><i class="fas fa-chart-pie"></i> Informes</span></a>';
                   }
             echo '</li>';
 
             //UN LINK
             echo '<li class="nav-item">';
                   if($url=="configuraciones.php"){
-                    echo '<a class="nav-link estilo_opciones_menu active" href="./configuraciones.php">Configuraciones</span></a>';
+                    echo '<a class="nav-link estilo_opciones_menu active" href="./configuraciones.php"><i class="fas fa-cog"></i> Configuraciones</span></a>';
                   }else{
-                    echo '<a class="nav-link estilo_opciones_menu active  laed" href="./configuraciones.php">Configuraciones</span></a>';
+                    echo '<a class="nav-link estilo_opciones_menu active  laed" href="./configuraciones.php"><i class="fas fa-cog"></i> Configuraciones</span></a>';
                   }
             echo '</li>';
 

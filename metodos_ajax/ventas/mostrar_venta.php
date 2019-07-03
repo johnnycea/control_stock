@@ -4,7 +4,7 @@ require_once '../../clases/Funciones.php';
 require_once '../../clases/Ventas.php';
 
 
-              echo '<table class="table table-bordered table-sm bg-white">
+              echo '<table class="table table-bordered  table-dark table-sm">
                 <thead class="thead-dark">
                   <th>Producto</th>
                   <th>Descripcion</th>
@@ -43,7 +43,7 @@ require_once '../../clases/Ventas.php';
 
                     echo '
 
-                        <tr class="table-info">
+                        <tr class="table-info text-dark">
                             <td colspan="5"><strong>Total a pagar</strong></td>
                             <td><strong>$'.number_format($total,0,',','.').'</strong></td>
                         </tr>
@@ -56,7 +56,7 @@ require_once '../../clases/Ventas.php';
 
                    <div class="container clearfix">';
                       if($total!=0){
-                        echo '<button type="button" data-toggle="modal" data-target="#modal_finalizar_venta" class="btn btn-success float-left">CONFIRMAR COMPRA</button>';
+                        echo '<button type="button" data-toggle="modal" data-target="#modal_finalizar_venta" class="btn btn-success float-left"><i class="fas fa-check-circle"></i> CONFIRMAR COMPRA</button>';
                       }
 
                    echo '</div>

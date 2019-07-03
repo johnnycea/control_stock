@@ -4,7 +4,7 @@ require_once '../../clases/Funciones.php';
 require_once '../../clases/ProductoElaborado.php';
 
 
-              echo '<table class="table table-bordered  table-sm">
+              echo '<table class="table table-bordered  table-dark table-sm">
                 <thead class="thead-dark">
 
                   <th>Nombre</th>

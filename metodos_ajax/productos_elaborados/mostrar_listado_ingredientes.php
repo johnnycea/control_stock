@@ -5,7 +5,7 @@ require_once '../../clases/Producto.php';
         // ANTES
         // Muestra los ingredientes para ser seleccionados al producto final
 
-              echo '<table class="table table-bordered table-sm ">
+              echo '<table class="table table-bordered table-dark table-sm ">
                 <thead class="thead-dark">
 
                   <th>Nombre</th>
