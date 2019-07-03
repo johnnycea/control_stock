@@ -89,8 +89,6 @@ class Ventas{
     return $resultado_consulta;
  }
 
-
-
  public function registrarIngredienteVenta($ingrediente,$cantidad_ingrediente){
     $Conexion = new Conexion();
     $Conexion = $Conexion->conectar();

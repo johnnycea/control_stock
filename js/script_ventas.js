@@ -100,7 +100,15 @@ var texto_buscar = $("#txt_texto_buscar_ingredientes").val();
 function confirmarVenta(){
 
 		var id_venta = $("#txt_id_venta").val();
-
+		var rut_cliente = $("#txt_rut_cliente").val();
+		var nombre = $("#txt_nombre").val();
+		var apellidos = $("#txt_apellidos").val();
+		var calle = $("#txt_calle").val();
+		var numero = $("#txt_numero").val();
+		var observacion = $("#txt_observacion").val();
+		var telefono = $("#txt_telefono").val();
+// alert(nombre);
+// alert(apellidos);
 
 		$.ajax({
 			url:"./metodos_ajax/ventas/confirmar_venta.php?id_venta="+id_venta,
@@ -113,6 +121,7 @@ function confirmarVenta(){
 					 $("#modal_finalizar_venta").modal('hide');
 					 //funcion que cree nueva ventas
 					 //limpiar contenido de la pagina
+					 imprimeComprobante(id_venta,rut_cliente,nombre,apellidos,calle,numero,observacion,telefono);
 				 }else{
 					 swal("Ocurrió un error","Recargue la página e intente nuevamente.","error");
 				 }
@@ -120,6 +129,12 @@ function confirmarVenta(){
 			}
 		});
 }
+function imprimeComprobante(id_venta,rut_cliente,nombre,apellidos,calle,numero,observacion,telefono) {
+	// alert(nombre);
+	// alert(apellidos);
+		 window.open("./metodos_ajax/ventas/imprimir_comprobante_venta.php?id_venta="+id_venta+"&rut_cliente="+rut_cliente+"&nombre="+nombre+"&apellidos="+apellidos+"&calle="+calle+"&numero="+numero+"&observacion="+observacion+"&telefono="+telefono, "Impimir Boucher" , "width=400,height=600,scrollbars=YES");
+}
+
 
 
 
