@@ -123,6 +123,14 @@ class Ventas{
     return $resultado_consulta;
  }
 
+ public function pedidoFinalizado(){
+    $Conexion = new Conexion();
+    $Conexion = $Conexion->conectar();
+
+    $resultado_consulta = $Conexion->query("update tb_ventas set `id_estado` = '4' WHERE (`id_venta` = '".$this->id_venta."')");
+    return $resultado_consulta;
+ }
+
  public function listadoPedidos(){
     $Conexion = new Conexion();
     $Conexion = $Conexion->conectar();

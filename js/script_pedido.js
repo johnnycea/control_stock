@@ -9,7 +9,7 @@ function listarPedido(estado_venta){
 			url:"./metodos_ajax/pedidos/mostrar_listado_pedido.php?estado_venta="+estado_venta,
 			method:"POST",
 			success:function(respuesta){
-				 // alert(respuesta);
+				  alert(respuesta);
 				 $("#contenedor_listado_pedido").html(respuesta);
 			}
 		});
@@ -36,6 +36,7 @@ function cambiarEstadoPedido(){
 			}
 		});
 }
+
 
 function listaVenta(venta){
 // alert(venta);
@@ -107,16 +108,17 @@ function limpiarFormularioUnidadMedida(){
 }
 
 
-function eliminarUnidad_medida(id){
+function pedidoFinalizado(id){
+
 
 			$.ajax({
-				url:"./metodos_ajax/unidadMedida/eliminar_unidad_medida.php?id="+id,
+				url:"./metodos_ajax/pedidos/cambiar_estado_finalizado.php?id="+id,
 				method:"POST",
 				success:function(respuesta){
 					 alert(respuesta);
 					 if(respuesta==1){
-						 swal("Eliminado correctamente","Los datos se han guardado correctamente.","success");
-						 listarUnidadMedida("");
+						 swal("Venta concretada","Los datos se han guardado correctamente.","success");
+						 // listarUnidadMedida("");
 					 }else if(respuesta==2){
 						 swal("Ocurrió un error","Recargue la página e intente nuevamente.","error");
 					 }
