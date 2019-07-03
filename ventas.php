@@ -257,8 +257,8 @@ $usuario= $usuario->obtenerUsuarioActual();
           <input type="submit" id="btn_boton_guardar" name="btn_boton_guardar" class="btn btn-info btn-block" value="Guardar">
         </div>
 
-    </form>
 
+    </form>
 
 
 

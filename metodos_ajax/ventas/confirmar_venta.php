@@ -44,6 +44,7 @@ while($filas_productos = $productos_venta->fetch_array()){
 
    }
 
+}
 
    if($comprueba_agrega_correctamente){
 
@@ -117,7 +118,7 @@ while($filas_productos = $productos_venta->fetch_array()){
       echo '2';
    }
 
-}
+
 
 
 ?>
