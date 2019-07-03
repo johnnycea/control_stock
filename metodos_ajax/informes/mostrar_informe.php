@@ -89,17 +89,14 @@ $total_ventas = 0;
             <thead class="text-white bg-info ">
                <th>Cod. Venta</th>
                <th>Fecha</th>
+               <th>Tipo</th>
+               <th>Medio Pago</th>
                <th>Total</th>
             </thead>
             <tbody>';
 
 
-            $consulta_ventas = "select id_venta,
-                                       fecha,
-                                       total_venta(id_venta) as total_venta,
-                                       tipo_venta
-                                        from tb_ventas
-                                       where date(fecha) between '".$fecha_inicio."' and '".$fecha_fin."' ;";
+            $consulta_ventas = "select * from vista_listado_ventas where date(fecha) between '".$fecha_inicio."' and '".$fecha_fin."' ;";
 
             $resultado_consulta_ventas = $Conexion->query($consulta_ventas);
 
@@ -113,6 +110,8 @@ $total_ventas = 0;
                     <tr>
                       <td>'.$filas['id_venta'].'</td>
                       <td>'.$filas['fecha'].'</td>
+                      <td>'.$filas['descripcion_tipo_venta'].'</td>
+                      <td>'.$filas['descripcion_medio_pago'].'</td>
                       <td>$'.number_format($filas['total_venta'],0,",",".").'</td>
                     </tr>';
               }
@@ -120,7 +119,7 @@ $total_ventas = 0;
 
         echo '
               <tr>
-                 <td colspan="2">Total Ventas</td>
+                 <td colspan="4">Total Ventas</td>
                  <td>$'.number_format($total_ventas,0,",",".").'</td>
               </tr>
 
@@ -151,12 +150,7 @@ $total_facturas=0;
             <tbody>';
 
 
-            $consulta_facturas = "select id_factura,
-                                fecha_factura,
-                                total_factura(id_factura) as total_factura
-                                from tb_facturas
-                                where fecha_factura between '".$fecha_inicio."' and '".$fecha_fin."' ;";
-
+          $consulta_facturas = "select * from vista_listado_facturas where fecha_factura between '".$fecha_inicio."' and '".$fecha_fin."' ;";
 
             $resultado_consulta_facturas = $Conexion->query($consulta_facturas);
 
@@ -168,7 +162,7 @@ $total_facturas=0;
                     <tr>
                       <td>'.$filas_facturas['id_factura'].'</td>
                       <td>'.$filas_facturas['fecha_factura'].'</td>
-                      <td>$'.number_format($filas['total_factura'],0,",",".").'</td>
+                      <td>$'.number_format($filas_facturas['total_factura'],0,",",".").'</td>
                     </tr>';
               }
 

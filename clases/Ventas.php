@@ -158,7 +158,7 @@ public function crearVenta(){
    $Conexion = new Conexion();
    $Conexion = $Conexion->conectar();
 
-   $consulta = "insert INTO tb_ventas (`total`,`fecha`) VALUES ('".$this->total."', '".$this->fecha."')";
+   $consulta = "insert INTO tb_ventas () VALUES ()";
 
    if($resultado = $Conexion->query($consulta)){
 
@@ -170,6 +170,31 @@ public function crearVenta(){
    }
    else{
      return false;
+   }
+
+ }
+
+public function obtenerFechaPrimeraUltimaVenta(){
+   $Conexion = new Conexion();
+   $Conexion = $Conexion->conectar();
+
+   $consulta = "select min(date(fecha)) as fecha_primera_venta, max(date(fecha)) as fecha_ultima_venta from tb_ventas";
+   $resultado = $Conexion->query($consulta);
+
+   $fechas = array();
+
+   $fechas['fecha_primera_venta'] = '0000-00-00';
+   $fechas['fecha_ultima_venta'] = '0000-00-00';
+
+   if($resultado->num_rows>0){
+
+        $resultado = $resultado->fetch_array();
+        $fechas['fecha_primera_venta'] = $resultado['fecha_primera_venta'];
+        $fechas['fecha_ultima_venta'] = $resultado['fecha_ultima_venta'];
+        return $fechas;
+
+   }else{
+     return $fechas;
    }
 
  }
