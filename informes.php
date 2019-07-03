@@ -78,7 +78,7 @@ $usuario= $usuario->obtenerUsuarioActual();
                   <label for="title" class="col-12 control-label">Tipo de informe:</label>
                   <select class="form-control" name="select_tipo_informe" id="select_tipo_informe">
                     <option value="1">Resumen</option>
-                    <option value="1">Detallado</option>
+                    <option value="2">Detallado</option>
                   </select>
                </div>
 
@@ -114,6 +114,8 @@ $usuario= $usuario->obtenerUsuarioActual();
       <div class="card-body">
 
         <div id="contenedor_informe"></div>
+
+
 
       </div>
     </div>
