@@ -83,6 +83,34 @@ if(texto_buscar!=""){
 		});
 }
 
+
+
+function obtenerIngredientesProducto(id_producto_elaborado){
+
+		$.ajax({
+			url:"./metodos_ajax/ventas/mostrar_ingredientes_producto_venta.php?id_producto_elaborado="+id_producto_elaborado,
+			method:"POST",
+			success:function(respuesta){
+				 $("#contenedor_ingredientes_producto").html(respuesta);
+			}
+		});
+}
+
+function modificarCantidadIngrediente(accion,ingrediente,id_producto_elaborado){
+	//accion= 1:sumar / 2:restar
+
+		$.ajax({
+			url:"./metodos_ajax/ventas/cambiar_ingredientes_producto_venta.php?id_producto_elaborado="+id_producto_elaborado+"&id_ingrediente="+ingrediente+"&accion="+accion,
+			method:"POST",
+			success:function(respuesta){
+				 // alert(respuesta);
+				 obtenerIngredientesProducto(id_producto_elaborado);
+			}
+		});
+}
+
+
+
 function listarProductosElaborados(){
 var texto_buscar = $("#txt_texto_buscar_ingredientes").val();
 
@@ -181,7 +209,7 @@ function guardarDetalleVenta(id_producto,valor,boton){
 						 boton.attr("disabled",false);
 						 $('html,body').animate({
 							    scrollTop: $("#contenedor_listado_productos_elaborados").offset().top
-							}, 2000);
+							}, 1000);
 
 
 

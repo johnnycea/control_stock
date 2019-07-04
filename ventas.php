@@ -10,6 +10,11 @@ require_once './clases/Cliente.php';
 comprobarSession();
 $usuario= new Usuario();
 $usuario= $usuario->obtenerUsuarioActual();
+
+
+//limpia el array que sirve para modificar ingredientes de un $producto_elaborado
+$_SESSION['listado_ingredientes_productos'] = array();
+
 ?>
 
 <!DOCTYPE html>
@@ -24,27 +29,13 @@ $usuario= $usuario->obtenerUsuarioActual();
    <?php cargarHead(); ?>
 
   <script src="./js/script_ventas.js"></script>
-  <!-- <script src="./js/script_productosElaborados.js"></script> -->
-  <script>
-      $(document).ready(function(){
 
-        var date_input=$('input[name="txt_fecha"]'); //our date input has the name "date"
-        var options={
-          format: 'dd-mm-yyyy',
-          todayHighlight: true,
-          autoclose: true,
-          language: 'es',
-        };
-        date_input.datepicker(options);
-
-      })
-    </script>
 </head>
 <body>
 
 
 
-<div class="row">
+<!-- <div class="row"> -->
 
   <?php cargarMenuPrincipal(); ?>
 
@@ -62,7 +53,7 @@ $usuario= $usuario->obtenerUsuarioActual();
 
 <div class="row">
 
-      <div class="form-group col-2">
+      <div class="form-group col-4 col-md-2">
         <?php
 
            $Venta = new Ventas();
@@ -87,7 +78,7 @@ $usuario= $usuario->obtenerUsuarioActual();
       </div>
 
 
-      <div class="form-group col-10" >
+      <div class="form-group col-8 col-md-10" >
         <label for="title" class="col-12 control-label">Buscar Producto:</label>
         <div class="row">
           <input  type="text" onkeyup="listarProductosElaborados()" class="form-control col-9" name="txt_texto_buscar_ingredientes" id="txt_texto_buscar_ingredientes">
@@ -112,7 +103,10 @@ $usuario= $usuario->obtenerUsuarioActual();
 
 
     <div><hr></div>
-    <div id="contenedor_listado_venta" class=""></div>
+
+    <div class="table-responsive">
+        <div id="contenedor_listado_venta" ></div>
+    </div>
 
 
 <br>
@@ -125,7 +119,7 @@ $usuario= $usuario->obtenerUsuarioActual();
 
   </div>
 
-</div>
+<!-- </div> -->
 
 
 
@@ -256,6 +250,37 @@ $usuario= $usuario->obtenerUsuarioActual();
           <br>
           <input type="submit" id="btn_boton_guardar" name="btn_boton_guardar" class="btn btn-info btn-block" value="Guardar">
         </div>
+
+
+    </form>
+
+
+
+</div>
+</div>
+</div>
+</div>
+
+<!-- FINAL DEL MODAL -->
+
+
+
+
+
+<!-- MODAL EDITAR INGREDIENTES PRODUCTO ELABORADO -->
+<div class="modal fade" id="modal_modificar_ingredientes_producto" name="modal_modificar_ingredientes_producto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
+  <div class="modal-dialog modal-md" role="document">
+  <div class="modal-content">
+
+    <div class="modal-header bg-modal">
+      <center><h5 class="modal-title" id="myModalLabel">Modificar Ingredientes Producto</h5></center>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="modal-body">
+
+      <form id="formulario_moficar_ingredientes_producto" class="" action="" method="post" enctype="multipart/form-data">
+
+         <div id="contenedor_ingredientes_producto"></div>
 
 
     </form>
