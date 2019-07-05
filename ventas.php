@@ -54,26 +54,10 @@ $_SESSION['listado_ingredientes_productos'] = array();
 <div class="row">
 
       <div class="form-group col-4 col-md-2">
-        <?php
 
-           $Venta = new Ventas();
-           $numero_venta;
-
-           $consultaVenta = $Venta->consultarUltimaVentaPendiente();
-
-            if($consultaVenta->num_rows>0){
-                //recibe el id de esa venta
-                $consultaVenta = $consultaVenta->fetch_array();
-                $numero_venta = $consultaVenta['id_venta'];
-            }
-            else{
-             $numero_venta = $Venta->crearVenta();
-            }
-
-           ?>
 
        <label for="title" class="control-label">N° Venta:</label>
-        <input readonly value="<?php echo $numero_venta; ?>" class="form-control col-6" type="text" id="txt_id_venta" name="txt_id_venta">
+        <input readonly value="" class="form-control col-6" type="text" id="txt_id_venta" name="txt_id_venta">
 
       </div>
 
@@ -248,7 +232,7 @@ $_SESSION['listado_ingredientes_productos'] = array();
 
         <div class="form-group col-md-12" >
           <br>
-          <input type="submit" id="btn_boton_guardar" name="btn_boton_guardar" class="btn btn-info btn-block" value="Guardar">
+          <input type="submit" id="btn_boton_guardar" name="btn_boton_guardar" class="btn btn-success btn-block" value="CONFIRMAR">
         </div>
 
 
@@ -294,13 +278,6 @@ $_SESSION['listado_ingredientes_productos'] = array();
 
 <!-- FINAL DEL MODAL -->
 
-
-
-
-<script type="text/javascript">
-    // listarProductosElaborados();
-    listaVenta("");
-</script>
 
 
 

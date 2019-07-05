@@ -1,5 +1,19 @@
 // localStorage.productos_venta="";
+generarCodigoVenta();
 
+function generarCodigoVenta(){
+	$("#txt_id_venta").val("...");
+
+		$.ajax({
+			url:"./metodos_ajax/ventas/generarVenta.php",
+			success:function(respuesta){
+				 $("#txt_id_venta").val(respuesta);
+				 listaVenta("");
+			}
+		});
+
+
+}
 
 function cambiarTipoEntrega(select_tipo_entrega){
 		if(select_tipo_entrega==1){
@@ -139,6 +153,13 @@ function confirmarVenta(){
 		var telefono = $("#txt_telefono").val();
 
 
+   //Cargando
+	 $("#btn_boton_guardar").attr("disabled",true);
+	 $("#btn_boton_guardar").val("Cargando...");
+	 $("#btn_boton_guardar").removeClass("btn-success");
+	 $("#btn_boton_guardar").addClass("btn-danger");
+
+
 		$.ajax({
 			url:"./metodos_ajax/ventas/confirmar_venta.php?id_venta="+id_venta,
 			method:"POST",
@@ -146,11 +167,22 @@ function confirmarVenta(){
 			success:function(respuesta){
 				 // alert(respuesta);
 				 if(respuesta=="1"){
+					 generarCodigoVenta();
+					 $("#txt_texto_buscar_ingredientes").val("");
+           listarProductosElaborados();
+
 					 swal("Venta Finalizada","Los datos se han guardado correctamente.","success");
 					 $("#modal_finalizar_venta").modal('hide');
 					 //funcion que cree nueva ventas
 					 //limpiar contenido de la pagina
 					 imprimeComprobante(id_venta,rut_cliente,nombre,apellidos,calle,numero,observacion,telefono);
+
+					 //Cargando
+					$("#btn_boton_guardar").attr("disabled",false);
+					$("#btn_boton_guardar").val("CONFIRMAR");
+					$("#btn_boton_guardar").removeClass("btn-danger");
+					$("#btn_boton_guardar").addClass("btn-success");
+
 				 }else{
 					 swal("Ocurrió un error","Recargue la página e intente nuevamente.","error");
 				 }
@@ -201,7 +233,7 @@ function guardarDetalleVenta(id_producto,valor,boton){
 				url:"./metodos_ajax/ventas/ingresar_productos_ventas.php?id_producto="+id_producto+"&id_venta="+id_venta+"&valor_unitario="+valor_unitario+"&txt_cantidad="+txt_cantidad,
 				method:"POST",
 				success:function(respuesta){
-					 alert(respuesta);
+					 // alert(respuesta);
 
 					 if(respuesta==1){
 						 // swal("Guardado","Los datos se han guardado correctamente.","success");
@@ -242,7 +274,7 @@ function eliminarProductoVenta(id_detalle_venta){
 				url:"./metodos_ajax/ventas/eliminar_producto_venta.php?id_detalle_venta="+id_detalle_venta,
 				method:"POST",
 				success:function(respuesta){
-
+          // alert(respuesta);
 					 if(respuesta==1){
 						 swal("Eliminado correctamente","Los datos se han guardado correctamente.","success");
 						 listaVenta();

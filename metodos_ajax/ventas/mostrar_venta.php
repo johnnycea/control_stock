@@ -40,7 +40,7 @@ require_once '../../clases/Ventas.php';
                                     <button class="btn btn-warning btn-block" data-toggle="modal" data-target="#modal_modificar_ingredientes_producto" onclick="obtenerIngredientesProducto('.$filas['id_producto_elaborado'].','.$filas['id_detalle_venta'].')" ><i class="fas fa-lemon"></i></button>
                                   </td>
                                   <td>
-                                    <button class="btn btn-danger btn-block" onclick="eliminarProductoVenta('.$filas['id_detalle_venta'].', '.$filas['id_venta'].')" ><i class="fas fa-trash-alt"></i></button></td>
+                                    <button class="btn btn-danger btn-block" onclick="eliminarProductoVenta('.$filas['id_detalle_venta'].')" ><i class="fas fa-trash-alt"></i></button></td>
                                   </td>
                                      </div>
                                </tr>';
