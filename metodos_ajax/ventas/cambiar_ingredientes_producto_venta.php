@@ -10,6 +10,7 @@ $Funciones = new Funciones();
 $id_producto_elaborado = $Funciones->limpiarNumeroEntero($_REQUEST['id_producto_elaborado']);
 $id_ingrediente = $Funciones->limpiarNumeroEntero($_REQUEST['id_ingrediente']);
 $accion = $Funciones->limpiarNumeroEntero($_REQUEST['accion']);
+$id_detalle_venta = $Funciones->limpiarNumeroEntero($_REQUEST['id_detalle_venta']);
 
 $array_listado_ingredientes_producto = $_SESSION['listado_ingredientes_productos'];
 $cantidad_ingrediente;
@@ -17,7 +18,7 @@ $cantidad_ingrediente;
 
 
        foreach($array_listado_ingredientes_producto as $ingrediente => $valores){
-          if( ($id_producto_elaborado == $valores['id_producto_elaborado']) and ($id_ingrediente == $valores['id_producto']) ){
+          if( ($id_producto_elaborado == $valores['id_producto_elaborado']) and ($id_ingrediente == $valores['id_producto']) and ($id_detalle_venta == $valores['id_detalle_venta']) ){
 
 
                  $cantidad_ingrediente = $valores['cantidad'];

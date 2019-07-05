@@ -22,30 +22,86 @@ $ProductoElaborado = new ProductoElaborado();
 
 $comprueba_agrega_correctamente;
 
+@session_start();
+$array_listado_ingredientes_producto = $_SESSION['listado_ingredientes_productos'];
+
+
+//RECORRE LOS PRODUCTOS ELABORADOS DE LA VENTA, TOMADOS DESDE BASE DE DATOS
 while($filas_productos = $productos_venta->fetch_array()){
 
    //BUSCA INGREDIENTES DEL PRODUCTO ELABORADO
-   $ProductoElaborado->setIdProductoElaborado($filas_productos['id_producto_elaborado']);
-   $ingredientes_producto = $ProductoElaborado->obtener_ingredientes_producto();
 
-   // echo "el prdoucto ".$filas_productos['descripcion']." tiene los siguientes ingredientes </br>";
-   while($filas_ingredientes = $ingredientes_producto->fetch_array()){
+   //PREGUNTAR SI EL PRODUCTO ELABORADO Y EL ID DETALLE VENTA ESTA EN EL ARRAY, ENTONCES LOS INGREDIENTES SE TOMAN DEL ARRAY
+   //SI NO; LOS INGREDIENTES SE TOMAN DE BASE DE DATOS
 
-        $Venta->setIdProductoElaborado($filas_productos['id_producto_elaborado']);
-        // echo "ingrediente: ".$filas_ingredientes['descripcion']." cantidad: ".$filas_ingredientes['cantidad']." ".$filas_ingredientes['unidad_medida'];
 
-           for($i = 0; $i<$filas_productos['cantidad']; $i++){
-                if($Venta->registrarIngredienteVenta($filas_ingredientes['id_producto'],$filas_ingredientes['cantidad'])){
-                     $comprueba_agrega_correctamente = true;
-                }else{
-                     $comprueba_agrega_correctamente = false;
-                }
-           }
+
+   $producto_elaborado_encontrado_en_array =false;
+
+   foreach($array_listado_ingredientes_producto as $ingrediente_array){
+
+          if( ($ingrediente_array['id_producto_elaborado'] == $filas_productos['id_producto_elaborado']) and ( $ingrediente_array['id_detalle_venta']==$filas_productos['id_detalle_venta'] ) ){
+               // echo 'HAY MODIFICACION DE INGREDIENTES PARA EL PRODUCTO ELABORADO: '.$filas_productos['id_producto_elaborado']." EN EL DEATLLE VENTA: ".$filas_productos['id_detalle_venta'];
+                $producto_elaborado_encontrado_en_array=true;
+              break;
+          }
+   }
+
+
+
+   //RECIBE LOS INGREDIENTES DEL PRODUCTO ELABORADO
+   $ingredientes_producto = array();
+
+   if($producto_elaborado_encontrado_en_array){//si se ha encontrado el producto en el array; se tomaran los ingredientes del listado del array
+
+     $ingredientes_producto = $_SESSION['listado_ingredientes_productos'];
+
+     // echo "-------------------BUSCA INGREDIENTES EN EL ARRAY----------------------";
+     // echo json_encode($ingredientes_producto);
+
+   }else{//si no fuen encontrado en el array; se tomaran los ingredientes del producto desde base de datos
+
+     $ProductoElaborado->setIdProductoElaborado($filas_productos['id_producto_elaborado']);
+     $resultado_consulta = $ProductoElaborado->obtener_ingredientes_producto();
+     while($filas_ingredientes_bd = $resultado_consulta->fetch_assoc()){
+        $ingredientes_producto[] = $filas_ingredientes_bd;
+     }
+
+     // echo "-------------------BUSCA INGREDINETES EN BD-------------------";
+     // echo json_encode($ingredientes_producto);
 
    }
 
-}
 
+
+   foreach($ingredientes_producto as $ingrediente_producto_elaborado){
+
+       if( ($ingrediente_producto_elaborado['id_producto_elaborado']==$filas_productos['id_producto_elaborado'])  ){
+
+            $Venta->setIdProductoElaborado($filas_productos['id_producto_elaborado']);
+            $Venta->setIdDetalleVenta($filas_productos['id_detalle_venta']);
+
+                $id_ingrediente = $ingrediente_producto_elaborado['id_producto'];
+                $cantidad = $ingrediente_producto_elaborado['cantidad'];
+                if($cantidad!=0){
+
+                    if($Venta->registrarIngredienteVenta($id_ingrediente,$cantidad)){
+                      $comprueba_agrega_correctamente = true;
+
+                      // echo "AGREGA EL INGREDIENTE ".$id_ingrediente." CANTIDAD: ".$cantidad." en detalleventa: ".$filas_productos['id_detalle_venta'];
+                    }else{
+                      $comprueba_agrega_correctamente = false;
+                    }
+
+                }
+        }
+
+   }
+
+}//fin del while que recoore los productos de la venta (detalle venta)
+
+
+   
    if($comprueba_agrega_correctamente){
 
 

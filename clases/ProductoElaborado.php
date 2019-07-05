@@ -42,6 +42,7 @@ class ProductoElaborado{
     $conexion = $conexion->conectar();
 
     $consulta = "select * from vista_ingrediente_producto_elaborado where id_producto_elaborado=".$this->id_producto_elaborado;
+    // echo $consulta;
     $resultado= $conexion->query($consulta);
     return $resultado;
   }

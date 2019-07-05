@@ -5,15 +5,11 @@ require_once '../../clases/Ventas.php';
 // echo "llega";
 $Funciones = new Funciones();
 
-$id_producto_elaborado = $Funciones->limpiarNumeroEntero($_REQUEST['id_producto']);
-$id_venta = $Funciones->limpiarNumeroEntero($_REQUEST['id_venta']);
-//
-// echo "Producto Elaborado: " . $id_producto_elaborado;
- // echo "Venta: " . $id_venta;
+$id_detalle_venta = $Funciones->limpiarNumeroEntero($_REQUEST['id_detalle_venta']);
+
 
 $Ventas = new Ventas();
-$Ventas->setIdProductoElaborado($id_producto_elaborado);
-$Ventas->setIdVenta($id_venta);
+$Ventas->setIdDetalleVenta($id_detalle_venta);
 
   if($Ventas->eliminarProductoVenta()){
      echo "1";

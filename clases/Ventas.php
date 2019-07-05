@@ -14,6 +14,7 @@ class Ventas{
  private $tipo_entrega;
  private $medio_pago;
  private $rut_cliente;
+ private $id_detalle_venta;
 
 
  public function setIdProductoElaborado($id_producto_elaborado){
@@ -49,6 +50,9 @@ class Ventas{
  }
  public function setTipoEntrega($parametro){
    $this->tipo_entrega = $parametro;
+ }
+ public function setIdDetalleVenta($parametro){
+   $this->id_detalle_venta = $parametro;
  }
 
 
@@ -93,7 +97,7 @@ class Ventas{
     $Conexion = new Conexion();
     $Conexion = $Conexion->conectar();
 
-    $resultado_consulta = $Conexion->query("insert into tb_ingredientes_venta values(".$this->id_venta.",".$this->id_producto_elaborado.",".$ingrediente.",".$cantidad_ingrediente.");");
+    $resultado_consulta = $Conexion->query("insert into tb_ingredientes_venta values(".$this->id_detalle_venta.",".$this->id_venta.",".$this->id_producto_elaborado.",".$ingrediente.",".$cantidad_ingrediente.");");
     return $resultado_consulta;
  }
 
@@ -219,26 +223,26 @@ public function obtenerFechaPrimeraUltimaVenta(){
 
    $consulta ="";
 
-  // PREGUNTAR SI EL EL PRODUCTO QUE SE QUIERE INGRESAR SE ECUENTRA EN LA VENTA A LA QUE SE QUIERE INGRESAR EL Producto
-   $consultaVentaProducto = $Conexion->query("select cantidad,valor_unitario from detalle_venta where id_venta=".$this->id_venta." and id_producto=".$this->id_producto_elaborado);
-
-
-     if($consultaVentaProducto->num_rows>0){
-           // SI EL PRODUCTO YA SE INGRESO SE DEBE: CONSULTAR LA CANTIDAD QE ESTABA INGRESADA Y SUMARLE LA CANTIDAD QUE SE QUIERE ingresar y actualizar
-
-          $consultaVentaProducto = $consultaVentaProducto->fetch_array();
-          $cantidad = $consultaVentaProducto['cantidad'];  //DENTRO DE LOS PRIMEROS CORCHETES SE INGRESA A QUE FILA DE LA CONSULTA QUIERE ACCEDER
-
-// echo $cantidad;
-          $cantidad += $this->cantidad;
-          $valor_total = $cantidad*$consultaVentaProducto['valor_unitario'];
-
-          $consulta = "UPDATE detalle_venta SET `cantidad` = ".$cantidad .", valor_total=".$valor_total." WHERE (`id_producto` = '".$this->id_producto_elaborado."') and (`id_venta` = '".$this->id_venta."')";
-
-   }else{
+//   // PREGUNTAR SI EL EL PRODUCTO QUE SE QUIERE INGRESAR SE ECUENTRA EN LA VENTA A LA QUE SE QUIERE INGRESAR EL Producto
+//    $consultaVentaProducto = $Conexion->query("select cantidad,valor_unitario from detalle_venta where id_venta=".$this->id_venta." and id_producto=".$this->id_producto_elaborado);
+//
+//
+//      if($consultaVentaProducto->num_rows>0){
+//            // SI EL PRODUCTO YA SE INGRESO SE DEBE: CONSULTAR LA CANTIDAD QE ESTABA INGRESADA Y SUMARLE LA CANTIDAD QUE SE QUIERE ingresar y actualizar
+//
+//           $consultaVentaProducto = $consultaVentaProducto->fetch_array();
+//           $cantidad = $consultaVentaProducto['cantidad'];  //DENTRO DE LOS PRIMEROS CORCHETES SE INGRESA A QUE FILA DE LA CONSULTA QUIERE ACCEDER
+//
+// // echo $cantidad;
+//           $cantidad += $this->cantidad;
+//           $valor_total = $cantidad*$consultaVentaProducto['valor_unitario'];
+//
+//           $consulta = "UPDATE detalle_venta SET `cantidad` = ".$cantidad .", valor_total=".$valor_total." WHERE (`id_producto` = '".$this->id_producto_elaborado."') and (`id_venta` = '".$this->id_venta."')";
+//
+//    }else{
      //SI EL PRODCUTO NO ESTABA INGRESADO, SIMPLEMENTE SE INGRESA
-       $consulta = "insert into detalle_venta (`id_producto`, `id_venta`, `valor_unitario`, `cantidad`, `valor_total`) VALUES ('".$this->id_producto_elaborado."', '".$this->id_venta."', '".$this->valor_unitario."', '".$this->cantidad."', '".$this->total."')";
-   }
+       $consulta = "insert into detalle_venta (`id_producto`, `id_venta`, `valor_unitario`, `valor_total`) VALUES ('".$this->id_producto_elaborado."', '".$this->id_venta."', '".$this->valor_unitario."', '".$this->valor_unitario."')";
+   // }
 
    if($Conexion->query($consulta)){
      return true;
@@ -277,9 +281,8 @@ public function obtenerFechaPrimeraUltimaVenta(){
      $Conexion = new Conexion();
      $Conexion = $Conexion->conectar();
 
-     $consulta = "delete from detalle_venta where (`id_producto` = ".$this->id_producto_elaborado.") and (`id_venta` = ".$this->id_venta.")";
-                  // DELETE FROM detalle_venta WHERE (`id_producto` = '') and (`id_venta` = '');
-      // echo $consulta;
+     $consulta = "delete from detalle_venta where id_detalle_venta = ".$this->id_detalle_venta;
+
      if($Conexion->query($consulta)){
          return true;
      }else{

@@ -85,10 +85,13 @@ if(texto_buscar!=""){
 
 
 
-function obtenerIngredientesProducto(id_producto_elaborado){
+function obtenerIngredientesProducto(id_producto_elaborado,id_detalle_venta){
+
+	$("#contenedor_ingredientes_producto").html("<center>Cargando...</center>");
+
 
 		$.ajax({
-			url:"./metodos_ajax/ventas/mostrar_ingredientes_producto_venta.php?id_producto_elaborado="+id_producto_elaborado,
+			url:"./metodos_ajax/ventas/mostrar_ingredientes_producto_venta.php?id_producto_elaborado="+id_producto_elaborado+"&id_detalle_venta="+id_detalle_venta,
 			method:"POST",
 			success:function(respuesta){
 				 $("#contenedor_ingredientes_producto").html(respuesta);
@@ -96,15 +99,14 @@ function obtenerIngredientesProducto(id_producto_elaborado){
 		});
 }
 
-function modificarCantidadIngrediente(accion,ingrediente,id_producto_elaborado){
+function modificarCantidadIngrediente(accion,ingrediente,id_producto_elaborado,id_detalle_venta){
 	//accion= 1:sumar / 2:restar
 
 		$.ajax({
-			url:"./metodos_ajax/ventas/cambiar_ingredientes_producto_venta.php?id_producto_elaborado="+id_producto_elaborado+"&id_ingrediente="+ingrediente+"&accion="+accion,
+			url:"./metodos_ajax/ventas/cambiar_ingredientes_producto_venta.php?id_producto_elaborado="+id_producto_elaborado+"&id_ingrediente="+ingrediente+"&accion="+accion+"&id_detalle_venta="+id_detalle_venta,
 			method:"POST",
 			success:function(respuesta){
-				 // alert(respuesta);
-				 obtenerIngredientesProducto(id_producto_elaborado);
+				 obtenerIngredientesProducto(id_producto_elaborado,id_detalle_venta);
 			}
 		});
 }
@@ -185,7 +187,7 @@ function guardarDetalleVenta(id_producto,valor,boton){
 	var id_venta = $("#txt_id_venta").val();
 	var valor_unitario = valor;
 	var txt_cantidad = $("#txt_cantidad_"+id_producto).val();
-	var valor_total = valor_unitario*txt_cantidad;
+	// var valor_total = valor_unitario*txt_cantidad;
 	// alert(id_producto);
 	// alert(id_venta);
 	// alert(valor_unitario);
@@ -197,10 +199,10 @@ function guardarDetalleVenta(id_producto,valor,boton){
 	  boton.attr("disabled",true);
 
 			$.ajax({
-				url:"./metodos_ajax/ventas/ingresar_productos_ventas.php?id_producto="+id_producto+"&id_venta="+id_venta+"&valor_unitario="+valor_unitario+"&txt_cantidad="+txt_cantidad+"&valor_total="+valor_total,
+				url:"./metodos_ajax/ventas/ingresar_productos_ventas.php?id_producto="+id_producto+"&id_venta="+id_venta+"&valor_unitario="+valor_unitario+"&txt_cantidad="+txt_cantidad,
 				method:"POST",
 				success:function(respuesta){
-					 // alert(respuesta);
+					 alert(respuesta);
 
 					 if(respuesta==1){
 						 // swal("Guardado","Los datos se han guardado correctamente.","success");
@@ -222,26 +224,26 @@ function guardarDetalleVenta(id_producto,valor,boton){
 			});
 }
 
-function eliminarProductoVenta(id_producto,id_venta){
+function eliminarProductoVenta(id_detalle_venta){
 
  // alert("ProductoElaborado: "+id_producto+" Venta: "+id_venta);
-	swal({
-	title: "¿Eliminar producto de la venta?",
-	text: "",
-	type: "warning",
-	showCancelButton: true,
-	confirmButtonColor: "#DD6B55",
-	confirmButtonText: "Eliminar!",
-	cancelButtonText: "Cancelar!",
-	closeOnConfirm: false,
-	closeOnCancel: false },
-	function(isConfirm){
-			if (isConfirm) {
+	// swal({
+	// title: "Quitar producto de la venta?",
+	// text: "",
+	// type: "warning",
+	// showCancelButton: true,
+	// confirmButtonColor: "#DD6B55",
+	// confirmButtonText: "Eliminar!",
+	// cancelButtonText: "Cancelar!",
+	// closeOnConfirm: false,
+	// closeOnCancel: false },
+	// function(isConfirm){
+	// 		if (isConfirm) {
 			$.ajax({
-				url:"./metodos_ajax/ventas/eliminar_producto_venta.php?id_producto="+id_producto+"&id_venta="+id_venta,
+				url:"./metodos_ajax/ventas/eliminar_producto_venta.php?id_detalle_venta="+id_detalle_venta,
 				method:"POST",
 				success:function(respuesta){
-					 // alert(respuesta);
+
 					 if(respuesta==1){
 						 swal("Eliminado correctamente","Los datos se han guardado correctamente.","success");
 						 listaVenta();
@@ -250,8 +252,8 @@ function eliminarProductoVenta(id_producto,id_venta){
 					 }
 					}
 				});
-			} else {
-					swal("Cancelado", "", "error");
-			}
-			});
+			// } else {
+			// 		swal("Cancelado", "", "error");
+			// }
+			// });
 			}
