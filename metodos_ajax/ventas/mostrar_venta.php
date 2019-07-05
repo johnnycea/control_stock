@@ -6,7 +6,7 @@ require_once '../../clases/Ventas.php';
 
               echo '<table class="table table-bordered  table-dark table-sm">
                 <thead class="thead-dark">
-                  <th>Producto</th>
+                  <th>Cod.</th>
                   <th>Descripcion</th>
                   <th>Cantidad</th>
                   <th>Valor</th>
@@ -35,7 +35,11 @@ require_once '../../clases/Ventas.php';
                                   <td><span id="_" >'.$filas['cantidad'].'</span></td>
                                   <td><span id="_" >$'.number_format($filas['valor_unitario'],0,",",".").'</span></td>
                                   <td><span id="_" >$'.number_format($filas['valor_total'],0,",",".").'</span></td>
-                                  <td><button class="btn btn-danger" onclick="eliminarProductoVenta('.$filas['id_producto_elaborado'].', '.$filas['id_venta'].')" ><i class="fas fa-trash-alt"></i></button></td>
+                                  <td>
+                                     <div class="form-group">
+                                             <button class="btn btn-warning btn-block" data-toggle="modal" data-target="#modal_modificar_ingredientes_producto" onclick="obtenerIngredientesProducto('.$filas['id_producto_elaborado'].')" ><i class="fas fa-lemon"></i></button>
+                                             <button class="btn btn-danger btn-block" onclick="eliminarProductoVenta('.$filas['id_producto_elaborado'].', '.$filas['id_venta'].')" ><i class="fas fa-trash-alt"></i></button></td>
+                                     </div>
                                </tr>';
 
                                $total += $filas['valor_total'];
@@ -56,7 +60,7 @@ require_once '../../clases/Ventas.php';
 
                    <div class="container clearfix">';
                       if($total!=0){
-                        echo '<button type="button" data-toggle="modal" data-target="#modal_finalizar_venta" class="btn btn-success float-left"><i class="fas fa-check-circle"></i> CONFIRMAR COMPRA</button>';
+                        echo '<button type="button" data-toggle="modal" data-target="#modal_finalizar_venta" class="btn btn-success col-12 col-md-4 btn-block"><i class="fas fa-check-circle"></i> CONFIRMAR COMPRA</button>';
                       }
 
                    echo '</div>
