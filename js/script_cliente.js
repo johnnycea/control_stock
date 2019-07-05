@@ -20,7 +20,7 @@ function crearCliente(){
 				method:"POST",
 				data: $("#formulario_modal_cliente").serialize(),
 				success:function(respuesta){
-					  alert(respuesta);
+					  // alert(respuesta);
 					 if(respuesta==1){
 						 swal("Guardado","Los datos se han guardado correctamente.","success");
 						 $("#modal_cliente").modal('hide');
@@ -68,7 +68,7 @@ function eliminarCliente(id){
 				url:"./metodos_ajax/clientes/eliminar_cliente.php?id="+id,
 				method:"POST",
 				success:function(respuesta){
-					 alert(respuesta);
+					 // alert(respuesta);
 					 if(respuesta==1){
 						 swal("Eliminado correctamente","Los datos se han guardado correctamente.","success");
 						 listarCliente("");

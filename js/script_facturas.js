@@ -60,7 +60,7 @@ function guardarFactura(){
 				method:"POST",
 				data: $("#formulario_modal_factura").serialize(),
 				success:function(respuesta){
-					  alert(respuesta);
+					  // alert(respuesta);
 
 					 if(respuesta==1){
 						 swal("Guardado","Los datos se han guardado correctamente.","success");
@@ -80,7 +80,7 @@ function guardarProductoFactura(){
 				method:"POST",
 				data: $("#formulario_detalle_factura_producto").serialize(),
 				success:function(respuesta){
-					  alert(respuesta);
+					  // alert(respuesta);
 
 					 if(respuesta==1){
                guardarDetalleFactura();
@@ -101,7 +101,7 @@ var total_factura = $("#txt_total_factura").val();
 				method:"POST",
 				data: $("#formulario_detalle_factura_producto").serialize(),
 				success:function(respuesta){
-					  alert(respuesta);
+					  // alert(respuesta);
 
 					 if(respuesta==1){
 						 swal("Guardado","Los datos se han guardado correctamente.","success");
@@ -210,7 +210,7 @@ function modificarDetalleFactura(id){
 				url:"./metodos_ajax/facturas/ingresar_modificar_detalle_facturas.php?id="+id,
 				method:"POST",
 				success:function(respuesta){
-					 alert(respuesta);
+					 // alert(respuesta);
 					 if(respuesta==1){
 						 swal("Eliminado correctamente","Los datos se han guardado correctamente.","success");
 						 listarProveedor();
@@ -230,7 +230,7 @@ function eliminarDetalleFactura(id_producto,id_factura){
 				url:"./metodos_ajax/facturas/eliminar_detalle_facturas.php?id_producto="+id_producto+"&id_factura="+id_factura+"&total_factura="+total_factura,
 				method:"POST",
 				success:function(respuesta){
-					 alert(respuesta);
+					 // alert(respuesta);
 					 if(respuesta==1){
 						 swal("Eliminado correctamente","Los datos se han guardado correctamente.","success");
 						 listarDetalleFacturas("");

@@ -23,7 +23,7 @@ function guardarProveedor(){
 				method:"POST",
 				data: $("#formulario_modal_proveedor").serialize(),
 				success:function(respuesta){
-					  alert(respuesta);
+					  // alert(respuesta);
 
 					 if(respuesta==1){
 						 swal("Guardado","Los datos se han guardado correctamente.","success");
@@ -94,7 +94,7 @@ function eliminarProveedor(id){
 				url:"./metodos_ajax/proveedores/eliminar_proveedor.php?id="+id,
 				method:"POST",
 				success:function(respuesta){
-					 alert(respuesta);
+					 // alert(respuesta);
 					 if(respuesta==1){
 						 swal("Eliminado correctamente","Los datos se han guardado correctamente.","success");
 						 listarProveedor();

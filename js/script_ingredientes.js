@@ -19,20 +19,36 @@ function limpiarFormularioIngrediente(){
 
 }
 
+function cargarModificarIngrediente(id){
+
+  var txt_id_ingrediente = $("#columna_id_producto_"+id).html();
+	var txt_descripcion = $("#columna_descripcion_"+id).html();
+	var txt_marca = $("#columna_marca_"+id).html();
+	var txt_unidad = $("#columna_unidad_"+id).html();
+	var txt_stock_minimo = $("#columna_stock_minimo"+id).html();
+
+	//carga la informacion recibida en el modal
+  $('#txt_codigo_producto').val(txt_id_ingrediente);
+	$('#txt_descripcion').val(txt_descripcion);
+	$('#txt_marca').val(txt_marca);
+	$('#txt_unidad').val(txt_unidad);
+	$('#txt_stock_minimo').val(txt_stock_minimo);
+}
+
 function guardarIngrediente(){
-	alert("llega");
+	// alert("llega");
 
 			$.ajax({
 				url:"./metodos_ajax/ingredientes/ingresar_modificar_ingredientes.php",
 				method:"POST",
 				data: $("#formulario_modal_ingrediente").serialize(),
 				success:function(respuesta){
-					  alert(respuesta);
+					  // alert(respuesta);
 
 					 if(respuesta==1){
 						 swal("Guardado","Los datos se han guardado correctamente.","success");
 						 $("#modal_ingrediente").modal('hide');
-						 listarIngrediente();
+						 listarIngrediente("");
 					 }else if(respuesta==2){
 						 swal("Ocurrió un error","Recargue la página e intente nuevamente.","error");
 					 }
