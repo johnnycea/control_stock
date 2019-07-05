@@ -24,12 +24,12 @@ require_once '../../clases/Producto.php';
                     while($filas = $listadoIngredientes->fetch_array()){
 
                           echo '<tr>
-                                  <td><span id="_'.$filas['id_producto'].'" >'.$filas['id_producto'].'</span></td>
-                                  <td><span id="_'.$filas['id_producto'].'" >'.$filas['descripcion'].'</span></td>
-                                  <td>'.$filas['marca'].'</span></td>
-                                  <td>'.$filas['unidad_medida'].'</td>
-                                  <td><span id="_'.$filas['id_producto'].'" >'.$filas['stock_minimo'].'</span></td>
-                                  <td><button class="btn btn-warning col-6" onclick="cargarModificarProductoElaborado('.$filas['id_producto'].')" data-target="#modal_nuevo_producto_elaborado" data-toggle="modal" ><i class="far fa-edit"></i></button></td>
+                                  <td><span id="columna_id_producto_'.$filas['id_producto'].'" >'.$filas['id_producto'].'</span></td>
+                                  <td><span id="columna_descripcion_'.$filas['id_producto'].'" >'.$filas['descripcion'].'</span></td>
+                                  <td><span id="columna_marca_'.$filas['id_producto'].'" >'.$filas['marca'].'</span></td>
+                                  <td><span id="columna_unidad_'.$filas['id_producto'].'" >'.$filas['unidad_medida'].'</span></td>
+                                  <td><span id="columna_stock_minimo'.$filas['id_producto'].'" >'.$filas['stock_minimo'].'</span></td>
+                                  <td><button class="btn btn-warning col-6" onclick="cargarModificarIngrediente('.$filas['id_producto'].')" data-target="#modal_ingrediente" data-toggle="modal" ><i class="far fa-edit"></i></button></td>
                                   <td><button class="btn btn-danger col-6" " onclick="eliminarProductoElaborado('.$filas['id_producto'].')" ><i class="fa fa-trash-alt"></i></button></td>
                                </tr>';
                     }

@@ -70,6 +70,7 @@ class Producto{
     return $resultado_consulta;
  }
 
+
  public function obtenerProductosParaIngredientes($texto_buscar){
     $Conexion = new Conexion();
     $Conexion = $Conexion->conectar();
@@ -104,7 +105,7 @@ class Producto{
  }
 
 
-   public function modificarProducto(){
+   public function modificarIngrediente(){
        $conexion = new Conexion();
        $conexion = $conexion->conectar();
 
@@ -118,6 +119,8 @@ class Producto{
        $resultado= $conexion->query($consulta);
        return $resultado;
    }
+
+
 
 
 

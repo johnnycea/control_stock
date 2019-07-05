@@ -20,7 +20,7 @@ function guardarMarca(){
 				method:"POST",
 				data: $("#formulario_modal_marca").serialize(),
 				success:function(respuesta){
-					  alert(respuesta);
+					  // alert(respuesta);
 
 					 if(respuesta==1){
 						 swal("Guardado","Los datos se han guardado correctamente.","success");
@@ -43,11 +43,11 @@ function limpiarFormularioMarca(){
 
 function cargarInformacionModificarMarca(id){
 
-  // var txt_id_marca = $("#columna_id_marca_"+id).html();
+  var txt_id_marca = $("#columna_id_marca_"+id).html();
 	var txt_nombre_marca = $("#columna_nombre_marca_"+id).html();
 
 	//carga la informacion recibida en el modal
- // $('#txt_id_marca').val(txt_id_marca);
+ $('#txt_id_marca').val(txt_id_marca);
 	$('#txt_nombre_marca').val(txt_nombre_marca);
 }
 
@@ -78,7 +78,7 @@ function eliminarMarca(id){
 				url:"./metodos_ajax/marcas/eliminar_marca.php?id="+id,
 				method:"POST",
 				success:function(respuesta){
-					 alert(respuesta);
+					 // alert(respuesta);
 					 if(respuesta==1){
 						 swal("Eliminado correctamente","Los datos se han guardado correctamente.","success");
 						 listarMarca("");

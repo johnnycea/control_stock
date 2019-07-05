@@ -21,25 +21,25 @@ $Producto->setIdUnidadMedida($unidad_medida);
 $Producto->setMarca($id_marca);
 $Producto->setIdEstado(1);
 
-// $consultaExisteProductos = $Producto->obtenerProductosParaIngredientes();
+$consultaExisteProductos = $Producto->obtenerProducto();
 //
-// if($consultaExisteProductos->num_rows==0){
+if($consultaExisteProductos->num_rows==0){
 //Si no devuelve nada, se debe crear nuevo producto
    if($Producto->crearIngrediente()){
       echo "1";
    }else{
       echo "2";
    }
-// }
-// else{
-//si deveulve filas, el producto existe en bd, por lo tato se modifca
-  // if($Producto->modificarProducto()){
-  //   echo "1";
-  // }else{
-  //   echo "2";
-  // }
+}
+else{
+// si deveulve filas, el producto existe en bd, por lo tato se modifca
+  if($Producto->modificarIngrediente()){
+    echo "1";
+  }else{
+    echo "2";
+  }
 
-// }
+}
 
 
 ?>

@@ -56,7 +56,7 @@ function eliminarUnidad_medida(id){
 				url:"./metodos_ajax/unidadMedida/eliminar_unidad_medida.php?id="+id,
 				method:"POST",
 				success:function(respuesta){
-					 alert(respuesta);
+					 // alert(respuesta);
 					 if(respuesta==1){
 						 swal("Eliminado correctamente","Los datos se han guardado correctamente.","success");
 						 listarUnidadMedida("");

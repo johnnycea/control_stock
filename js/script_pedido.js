@@ -23,7 +23,7 @@ function cambiarEstadoPedido(){
 			url:"./metodos_ajax/pedidos/cambiar_estado_pedido.php?tipo_entrega="+tipo_entrega+"&id_venta="+id_venta+"&estado_actual="+estado_listado_actual,
 			method:"POST",
 			success:function(respuesta){
-				alert(respuesta);
+				// alert(respuesta);
 
 				if(respuesta==1){
 					swal("Guardado","Los datos se han guardado correctamente.","success");
@@ -114,7 +114,7 @@ function pedidoFinalizado(id){
 				url:"./metodos_ajax/pedidos/cambiar_estado_finalizado.php?id="+id,
 				method:"POST",
 				success:function(respuesta){
-					 alert(respuesta);
+					 // alert(respuesta);
 					 if(respuesta==1){
 						 swal("Venta concretada","Los datos se han guardado correctamente.","success");
 						 // listarUnidadMedida("");

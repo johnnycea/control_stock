@@ -4,6 +4,7 @@ require_once 'comun.php';
 require_once './clases/Usuario.php';
 // require_once './clases/Estado.php';
 require_once './clases/ProductoElaborado.php';
+require_once './clases/Producto.php';
 comprobarSession();
 $usuario= new Usuario();
 $usuario= $usuario->obtenerUsuarioActual();
@@ -86,7 +87,7 @@ $usuario= $usuario->obtenerUsuarioActual();
                 <div class="form-group col-12" >
 
                        <label for="title" class="col-12 control-label">Codigo:</label>
-                       <input type="text"  required class="form-control" name="txt_codigo_producto" id="txt_codigo_producto" value="">
+                       <input type="text" readonly  required class="form-control" name="txt_codigo_producto" id="txt_codigo_producto" value="">
                 </div>
 
                 <div class="form-group col-12" >

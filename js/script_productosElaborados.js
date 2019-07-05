@@ -85,7 +85,7 @@ function guardarModificarProductoElaborado(){
 				contentType: false,
 				processData:false,
 				success:function(respuesta){
-					  alert(respuesta);
+					  // alert(respuesta);
 
 					 if(isNaN(respuesta)){
 
