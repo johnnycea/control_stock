@@ -32,7 +32,7 @@ if($consultaExisteProductos->num_rows==0){
    }
 }else{
 //si deveulve filas, el producto existe en bd, por lo tato se modifca
-  if($Producto->modificarProducto()){
+  if($Producto->modificarIngrediente()){
     echo "1";
   }else{
     echo "2";

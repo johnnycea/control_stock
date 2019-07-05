@@ -70,6 +70,7 @@ function listaVentaComprobante(venta){
 			success:function(respuesta){
 				// alert(respuesta);
 				 $("#contenedor_listado_venta").html(respuesta);
+         printHTML();
 			}
 		});
 }
@@ -86,6 +87,17 @@ function listaVentaComprobante(venta){
 
 listaVentaComprobante(<?php echo $id_venta; ?>);
 // listarCliente(<?php //echo $rut_cliente; ?>);
+
+
+
+
+function printHTML() {
+  if (window.print) {
+    window.print();
+  }
+}
+
+
 
 </script>
 </html>
