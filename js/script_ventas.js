@@ -137,15 +137,14 @@ function confirmarVenta(){
 		var numero = $("#txt_numero").val();
 		var observacion = $("#txt_observacion").val();
 		var telefono = $("#txt_telefono").val();
-// alert(nombre);
-// alert(apellidos);
+
 
 		$.ajax({
 			url:"./metodos_ajax/ventas/confirmar_venta.php?id_venta="+id_venta,
 			method:"POST",
 			data: $("#formulario_finalizar_venta").serialize(),
 			success:function(respuesta){
-				 alert(respuesta);
+				 // alert(respuesta);
 				 if(respuesta=="1"){
 					 swal("Venta Finalizada","Los datos se han guardado correctamente.","success");
 					 $("#modal_finalizar_venta").modal('hide');
