@@ -101,7 +101,7 @@ $usuario= $usuario->obtenerUsuarioActual();
             <div class="row">
 
                        <div class="col-md-4" >
-                           <label for="title" class="col-12 control-label">Rut proveedor:</label>
+                           <label for="title" class="col-12 control-label">Rut:</label>
                           <input type="text" placeholder="Ej: 11222333-0" max="10" onkeyup="cargarInformacionProveedor(this.value)" class="form-control" id="txt_rut_proveedor" name="txt_rut_proveedor">
                        </div>
 

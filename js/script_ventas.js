@@ -193,7 +193,7 @@ function confirmarVenta(){
 function imprimeComprobante(id_venta,rut_cliente,nombre,apellidos,calle,numero,observacion,telefono) {
 	// alert(nombre);
 	// alert(apellidos);
-		 window.open("./metodos_ajax/ventas/imprimir_comprobante_venta.php?id_venta="+id_venta+"&rut_cliente="+rut_cliente+"&nombre="+nombre+"&apellidos="+apellidos+"&calle="+calle+"&numero="+numero+"&observacion="+observacion+"&telefono="+telefono, "Impimir Boucher" , "width=400,height=600,scrollbars=YES");
+		 window.open("./metodos_ajax/ventas/imprimir_comprobante_venta.php?id_venta="+id_venta+"&rut_cliente="+rut_cliente+"&nombre="+nombre+"&apellidos="+apellidos+"&calle="+calle+"&numero="+numero+"&observacion="+observacion+"&telefono="+telefono, "Impimir Boucher" , "width=800,height=600,scrollbars=YES");
 }
 
 
