@@ -8,15 +8,15 @@ require_once '../../clases/Ventas.php';
   <table class="table table-dark table-sm table-striped table-hover">
      <thead class="" align=center>
 
+        <th></th>
         <th>Venta</th>
-        <th>Tipo entrega</th>
+        <th>Entrega</th>
         <th>Fecha</th>
         <th>Rut</th>
-        <th>Nombre cliente</th>
+        <th>Nombre</th>
         <th>Dirección</th>
         <th>Observación</th>
-        <th>Descripción estado</th>
-        <th>Ver</th>
+        <th>Estado</th>
      </thead>
      <tbody>';
 
@@ -31,6 +31,10 @@ require_once '../../clases/Ventas.php';
 
                echo '<tr>
 
+                       <td>
+                          <button onclick="cargarInformacion('.$filas['venta'].','.$filas['tipo_entrega'].')" data-target="#modal_pedido" data-toggle="modal"  class="col-12 btn btn-warning "> <i class="fas fa-eye"></i> </button>
+                       </td>
+
 
                       <td><span id="columna_id_venta_'.$filas['venta'].'" >'.$filas['venta'].'</span></td>
 
@@ -39,7 +43,7 @@ require_once '../../clases/Ventas.php';
                                if($filas['tipo_entrega']==1){
                                      echo "Retiro en local";
                                }else if($filas['tipo_entrega']==2){
-                                 echo "A domicilio";
+                                 echo "Domicilio";
                                }
                        echo'</span></td>
                        <td><span id="columna_fecha_'.$filas['venta'].'" >'.$filas['fecha'].'</span></td>
@@ -58,11 +62,6 @@ require_once '../../clases/Ventas.php';
 
                        echo'</span>
                        <td><span id="columna_descripcion_'.$filas['venta'].'" >'.$filas['descripcion_estado'].'</span></td>
-
-                       <td>
-                          <button onclick="cargarInformacion('.$filas['venta'].','.$filas['tipo_entrega'].')" data-target="#modal_pedido" data-toggle="modal"  class="col-12 btn btn-warning "> <i class="far fa-edit"></i> </button>
-                       </td>
-
 
                     </tr>';
          }

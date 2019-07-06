@@ -13,52 +13,38 @@ $usuario= $usuario->obtenerUsuarioActual();
 <html lang="en">
 <head>
 
-<style>
-
-
-</style>
    <title>Cliente</title>
    <?php cargarHead(); ?>
+   <script src="./js/script_cliente.js"></script>
 
-  <script src="./js/script_cliente.js"></script>
-  <!-- <script>listarIngrediente();</script> -->
 </head>
 <body>
 
 
+  <?php cargarMenuPrincipal(); ?>
+  <div class="container contenedor-principal" >
 
-<div class="row">
+          <div class=" col-12">
 
-
-        <?php cargarMenuPrincipal(); ?>
-
-        <div class="container contenedor-principal" >
-
-
-          <div  style="" class=" col-12">
-            <div class="row">
-                 <button type="button" onclick="limpiarFormularioIngrediente();" class="btn btn-info col-12 col-md-4" data-target="#modal_cliente" data-toggle="modal" name="button">Crear nuevo cliente</button>
-                 <input onkeyup="listarCliente(this.value)" placeholder="Buscar Clientes" class="form-control col-12 col-md-4" type="text" name="txt_texto_buscar_cliente" id="txt_texto_buscar_cliente" value="">
-            </div>
-            <div class="container">
-
-             <br>
-              <div id="contenedorBuscador" class="form-group col-12" >
-
+              <div>
+                <h4>Clientes</h4>
               </div>
-              <br>
 
-              <div id="contenedor_listado_cliente"></div>
+              <div><hr></div>
 
-            </div>
+              <div class="row">
+                   <button type="button" onclick="limpiarFormularioIngrediente();" class="btn btn-info col-12 col-md-4" data-target="#modal_cliente" data-toggle="modal" name="button">Crear nuevo cliente</button>
+                   <input onkeyup="listarCliente(this.value)" placeholder="Buscar Clientes" class="form-control col-12 col-md-4" type="text" name="txt_texto_buscar_cliente" id="txt_texto_buscar_cliente" value="">
+              </div>
 
+              <div><hr></div>
+
+              <div class="container">
+                   <div id="contenedor_listado_cliente" class="table-responsive"></div>
+              </div>
           </div>
 
-       </div>
-
-</div>
-
-
+  </div>
 
 
   <!-- MODAL Producto-->
@@ -74,73 +60,65 @@ $usuario= $usuario->obtenerUsuarioActual();
 
         <form id="formulario_modal_cliente" class="" action="javascript:crearCliente()" method="post">
 
-           <!-- <input type="hidden" name="txt_codigo_cliente" id="txt_codigo_cliente" value=""> -->
+               <div class="form-group card border-info" >
 
-           <div class="form-group card border-info" >
+                    <div class="container">
+                      <div class="row">
+                          <div class="form-group col-8" >
+                                 <label for="title" class="col-12 control-label">Rut:</label>
+                                 <input type="text"  required class="form-control" name="txt_rut_cliente" id="txt_rut_cliente" value="">
+                          </div>
 
-                <div class="form-group col-8" >
+                          <div class="form-group col-4" >
+                                 <label for="title" class="col-12 control-label">Dv:</label>
+                                 <input type="text"  required class="form-control" name="txt_dv" id="txt_dv" value="">
+                          </div>
 
-                       <label for="title" class="col-12 control-label">Rut:</label>
-                       <input type="text"  required class="form-control" name="txt_rut_cliente" id="txt_rut_cliente" value="">
-                </div>
-                <div class="form-group col-4" >
+                          <div class="form-group col-12 col-md-6" >
+                            <label for="title" class="col-12 control-label">Nombre:</label>
+                            <input type="text"  required class="form-control" name="txt_nombre" id="txt_nombre" value="">
+                          </div>
 
-                       <label for="title" class="col-12 control-label">Dv:</label>
-                       <input type="text"  required class="form-control" name="txt_dv" id="txt_dv" value="">
-                </div>
+                          <div class="form-group col-12 col-md-6" >
+                            <label for="title" class="col-12 control-label">Apellidos:</label>
+                            <input type="text" required class="form-control" name="txt_apellidos" id="txt_apellidos" value="">
+                          </div>
 
-                <div class="form-group col-12" >
+                          <div class="form-group col-12 col-md-6" >
+                            <label for="title" class="col-12 control-label">Calle:</label>
+                            <input type="text" required class="form-control" name="txt_calle" id="txt_calle" value="">
+                          </div>
 
-                       <label for="title" class="col-12 control-label">Nombre:</label>
-                       <input type="text"  required class="form-control" name="txt_nombre" id="txt_nombre" value="">
-                </div>
+                          <div class="form-group col-12 col-md-6" >
+                            <label for="title" class="col-12 control-label">Número:</label>
+                            <input type="text" required class="form-control" name="txt_numero" id="txt_numero" value="">
+                          </div>
 
-                <div class="form-group col-12" >
+                          <div class="form-group col-12 col-md-6" >
+                            <label for="title" class="col-12 control-label">Observacion:</label>
+                            <input type="text" required class="form-control" name="txt_observacion" id="txt_observacion" value="">
+                          </div>
 
-                       <label for="title" class="col-12 control-label">Apellidos:</label>
-                       <input type="text" required class="form-control" name="txt_apellidos" id="txt_apellidos" value="">
+                          <div class="form-group col-12 col-md-6" >
+                            <label for="title" class="col-12 control-label">Telefono:</label>
+                            <input type="text" required class="form-control" name="txt_telefono" id="txt_telefono" value="">
+                          </div>
 
-                </div>
+                      </div>
+                    </div>
 
-                <div class="form-group col-12" >
-
-                       <label for="title" class="col-12 control-label">Calle:</label>
-                       <input type="text" required class="form-control" name="txt_calle" id="txt_calle" value="">
-
-                </div>
-
-                <div class="form-group col-12" >
-
-                       <label for="title" class="col-12 control-label">Número:</label>
-                       <input type="text" required class="form-control" name="txt_numero" id="txt_numero" value="">
-
-                </div>
-                <div class="form-group col-12" >
-
-                       <label for="title" class="col-12 control-label">Observacion:</label>
-                       <input type="text" required class="form-control" name="txt_observacion" id="txt_observacion" value="">
-
-                </div>
-                <div class="form-group col-12" >
-
-                       <label for="title" class="col-12 control-label">Telefono:</label>
-                       <input type="text" required class="form-control" name="txt_telefono" id="txt_telefono" value="">
 
                 </div>
-
-            </div>
 
                 <div class="form-group" >
-                  <div class="col-12">
-                    <button class="btn btn-success btn-block" type="submit" name="button">Guardar</button>
-                  </div>
+                    <div class="col-12">
+                           <button class="btn btn-success btn-block" type="submit" name="button">Guardar</button>
+                    </div>
                 </div>
-
 
         </form>
 
       </div>
-
 
     </div>
     </div>

@@ -13,63 +13,51 @@ $usuario= $usuario->obtenerUsuarioActual();
 <html lang="en">
 <head>
 
-<style>
-
-
-</style>
-   <title>Agenda DAEM</title>
+   <title>Usuarios</title>
    <?php cargarHead(); ?>
 
   <script src="./js/script_usuarios.js"></script>
+
 </head>
 <body>
-
-  <div class="row">
 
 <?php cargarMenuPrincipal(); ?>
 
 
 
 <div class="container contenedor-principal">
+    <div class="row">
 
-  <div class="row">
-
-      <div class="col-12 col-md-3">
-
-          <div class="card text-dark">
-            <div class="card-header ">
-                OPCIONES
-            </div>
-            <div class="card-body">
-                 <?php cargarMenuConfiguraciones(); ?>
-            </div>
+          <div class="col-12 col-md-3">
+              <div class="card text-dark">
+                <div class="card-header bg-dark text-white">
+                    OPCIONES
+                </div>
+                <div class="card-body">
+                     <?php cargarMenuConfiguraciones(); ?>
+                </div>
+              </div>
           </div>
 
-      </div>
-       <div class="col-12 col-md-9">
+           <div class="col-12 col-md-9">
+              <div  style="" class=" card col-12">
 
-          <div  style="" class=" card col-12">
-            <div class="container">
-              <br>
-                 <button type="button" onclick="limpiarFormularioUsuario();" class="btn btn-info col-12 col-md-4" data-target="#modal_usuario" data-toggle="modal" name="button">Crear nuevo usuario</button>
-            </div>
-            <div class="container">
-              <br>
+                    <div class="container">
+                         <br>
+                         <button type="button" onclick="limpiarFormularioUsuario();" class="btn btn-success col-12 col-md-4" data-target="#modal_usuario" data-toggle="modal" name="button">Crear nuevo usuario</button>
+                    </div>
 
-              <div id='contenedor_listado_usuarios'></div>
+                    <div class="container">
+                          <br>
+                          <div id='contenedor_listado_usuarios' class="table-responsive"></div>
+                    </div>
 
-            </div>
+              </div>
+           </div>
 
-          </div>
-
-       </div>
-
-  </div>
-
+    </div>
 </div>
 
-
-</div>
 
   <!-- MODAL USUARIO-->
   <div class="modal fade" id="modal_usuario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

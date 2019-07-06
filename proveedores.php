@@ -13,45 +13,36 @@ $usuario= $usuario->obtenerUsuarioActual();
 <html lang="en">
 <head>
 
-<style>
-
-
-</style>
    <title>Proveedores</title>
    <?php cargarHead(); ?>
+   <script src="./js/script_proveedores.js"></script>
 
-  <script src="./js/script_proveedores.js"></script>
 </head>
 <body>
 
 
+  <?php cargarMenuPrincipal(); ?>
 
-<div class="row">
+  <div class="container contenedor-principal" >
+      <div  style="" class=" col-12">
 
+              <div>
+                <h4>Proveedores</h4>
+              </div>
 
-        <?php cargarMenuPrincipal(); ?>
+              <div><hr></div>
 
-        <div class="container contenedor-principal" >
+              <div class="row">
+                   <button type="button" onclick="limpiarFormularioProveedor();" class="btn btn-info col-12 col-md-4" data-target="#modal_proveedor" data-toggle="modal" name="button">Crear nuevo proveedor</button>
+                   <input onkeyup="listarProveedor(this.value)" class="form-control col-12 col-md-4" type="text" name="txt_buscar_proveedores" id="txt_buscar_proveedores" value="">
+              </div>
 
-          <div  style="" class=" col-12">
+              <div class="container">
+                <div id='contenedor_listado_proveedores' class="table-responsive"></div>
+              </div>
 
-            <div class="row">
-                 <button type="button" onclick="limpiarFormularioProveedor();" class="btn btn-info col-12 col-md-4" data-target="#modal_proveedor" data-toggle="modal" name="button">Crear nuevo proveedor</button>
-                 <input onkeyup="listarProveedor(this.value)" class="form-control col-12 col-md-4" type="text" name="txt_buscar_proveedores" id="txt_buscar_proveedores" value="">
-            </div>
-
-            <div class="container">
-
-              <div id='contenedor_listado_proveedores'></div>
-
-            </div>
-
-          </div>
-
-       </div>
-
-</div>
-
+      </div>
+  </div>
 
 
 
@@ -72,42 +63,46 @@ $usuario= $usuario->obtenerUsuarioActual();
 
            <div class="form-group card border-info" >
 
-                <div class="form-group col-12" >
+                  <div class="container" >
+                      <div class="row" >
+                          <div class="form-group col-12 col-md-6" >
 
-                       <label for="title" class="col-12 control-label">Rut Proveedor:</label>
-                       <input type="text"  required class="form-control" name="txt_rut_proveedor" id="txt_rut_proveedor" value="">
-                </div>
+                                 <label for="title" class="col-12 control-label">Rut Proveedor:</label>
+                                 <input type="text"  required class="form-control" name="txt_rut_proveedor" id="txt_rut_proveedor" value="">
+                          </div>
 
-                <div class="form-group col-12" >
+                          <div class="form-group col-12 col-md-6" >
 
-                       <label for="title" class="col-12 control-label">Razón Social:</label>
-                       <input type="text" onkeypress="return soloLetras(event);" required class="form-control" name="txt_razon_social" id="txt_razon_social" value="">
+                                 <label for="title" class="col-12 control-label">Razón Social:</label>
+                                 <input type="text" onkeypress="return soloLetras(event);" required class="form-control" name="txt_razon_social" id="txt_razon_social" value="">
 
-                </div>
-                <div class="form-group col-12" >
+                          </div>
+                          <div class="form-group col-12 col-md-6" >
 
-                       <label for="title" class="col-12 control-label">Dirección:</label>
-                       <input type="text" onkeypress="return soloLetras(event);" required class="form-control" name="txt_direccion" id="txt_direccion" value="">
+                                 <label for="title" class="col-12 control-label">Dirección:</label>
+                                 <input type="text" onkeypress="return soloLetras(event);" required class="form-control" name="txt_direccion" id="txt_direccion" value="">
 
-                </div>
-                <div class="form-group col-12" >
+                          </div>
+                          <div class="form-group col-12 col-md-6" >
 
-                       <label for="title" class="col-12 control-label">Teléfono:</label>
-                       <input type="text" onkeypress="return soloNumeros(event);" required class="form-control" name="txt_telefono" id="txt_telefono" value="">
+                                 <label for="title" class="col-12 control-label">Teléfono:</label>
+                                 <input type="text" onkeypress="return soloNumeros(event);" required class="form-control" name="txt_telefono" id="txt_telefono" value="">
 
-                </div>
-                <div class="form-group col-12" >
+                          </div>
+                          <div class="form-group col-12 col-md-6" >
 
-                       <label for="title" class="col-12 control-label">Giro:</label>
-                       <input type="text" onkeypress="return soloLetras(event);" required class="form-control" name="txt_giro" id="txt_giro" value="">
+                                 <label for="title" class="col-12 control-label">Giro:</label>
+                                 <input type="text" onkeypress="return soloLetras(event);" required class="form-control" name="txt_giro" id="txt_giro" value="">
 
-                </div>
-                <div class="form-group col-12" >
+                          </div>
+                          <div class="form-group col-12 col-md-6" >
 
-                       <label for="title" class="col-12 control-label">Correo:</label>
-                       <input type="text" onkeypress="return soloLetras(event);" required class="form-control" name="txt_correo" id="txt_correo" value="">
+                                 <label for="title" class="col-12 control-label">Correo:</label>
+                                 <input type="text" onkeypress="return soloLetras(event);" required class="form-control" name="txt_correo" id="txt_correo" value="">
 
-                </div>
+                          </div>
+                      </div>
+                    </div>
 
           </div>
 

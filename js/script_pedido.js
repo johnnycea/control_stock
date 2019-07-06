@@ -40,7 +40,7 @@ function cambiarEstadoPedido(){
 function listaVenta(venta){
 // alert(venta);
 		$.ajax({
-			url:"./metodos_ajax/pedidos/mostrar_venta_pedido.php?id_venta="+venta,
+			url:"./metodos_ajax/pedidos/mostrar_venta_pedido.php?id_venta="+venta+"&estado_listado_actual="+estado_listado_actual,
 			method:"POST",
 			success:function(respuesta){
 				// alert(respuesta);

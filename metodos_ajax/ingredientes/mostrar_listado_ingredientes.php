@@ -29,8 +29,8 @@ require_once '../../clases/Producto.php';
                                   <td><span id="columna_marca_'.$filas['id_producto'].'" >'.$filas['marca'].'</span></td>
                                   <td><span id="columna_unidad_'.$filas['id_producto'].'" >'.$filas['unidad_medida'].'</span></td>
                                   <td><span id="columna_stock_minimo'.$filas['id_producto'].'" >'.$filas['stock_minimo'].'</span></td>
-                                  <td><button class="btn btn-warning col-6" onclick="cargarModificarIngrediente('.$filas['id_producto'].')" data-target="#modal_ingrediente" data-toggle="modal" ><i class="far fa-edit"></i></button></td>
-                                  <td><button class="btn btn-danger col-6" " onclick="eliminarProductoElaborado('.$filas['id_producto'].')" ><i class="fa fa-trash-alt"></i></button></td>
+                                  <td><button class="btn btn-warning col-12 col-md-6" onclick="cargarModificarIngrediente('.$filas['id_producto'].')" data-target="#modal_ingrediente" data-toggle="modal" ><i class="far fa-edit"></i></button></td>
+                                  <td><button class="btn btn-danger col-12 col-md-6" " onclick="eliminarProductoElaborado('.$filas['id_producto'].')" ><i class="fa fa-trash-alt"></i></button></td>
                                </tr>';
                     }
 

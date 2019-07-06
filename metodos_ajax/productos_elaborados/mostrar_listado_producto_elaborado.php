@@ -1,5 +1,4 @@
 <?php
-require_once '../../clases/Conexion.php';
 require_once '../../clases/Funciones.php';
 require_once '../../clases/ProductoElaborado.php';
 
@@ -11,22 +10,6 @@ require_once '../../clases/ProductoElaborado.php';
                   $listadoProductoElaborado = $ProductoElaborado->obtenerProductoElaborado($texto_buscar," "); //$texto_buscar," where id_estado=1 or id_estado=2 "
 
                     while($filas = $listadoProductoElaborado->fetch_array()){
-
-
-                        // echo '
-                        // <div class="card border-primary mb-3 " style="max-width: 18rem;" >
-                        //   <img class="card-img-top" src="./imagenes/productos_elaborados/'.$filas['imagen'].'" alt="Card image cap">
-                        //   <div class="card-body">
-                        //     <h5 id="columna_descripcion_'.$filas['id_producto_elaborado'].'" class="card-title">'.$filas['descripcion'].'</h5>
-                        //     <h5 id="columna_valor_'.$filas['id_producto_elaborado'].'" class="card-title">$'.number_format($filas['valor'],0,",",".").'</h5>
-                        //     <h5 class="d-none" id="columna_estado_'.$filas['id_producto_elaborado'].'" class="card-title">'.$filas['estado_producto'].'</h5>
-                        //
-                        //     <button class="btn btn-warning " onclick="cargarModificarProductoElaborado('.$filas['id_producto_elaborado'].')" data-target="#modal_nuevo_producto_elaborado" data-toggle="modal">Editar</button>
-                        //     <button class="btn btn-danger "  onclick="eliminarProductoElaborado('.$filas['id_producto_elaborado'].')" >Eliminar</button>
-                        //
-                        //   </div>
-                        // </div>
-                        // ';
 
                         echo '
 
@@ -42,7 +25,7 @@ require_once '../../clases/ProductoElaborado.php';
 
                         </style>
 
-                        <div class="card border-primary col-2" style="padding:0px; margin-left:5px; margin-top:5px;" >
+                        <div class="card border-primary col-5 col-md-2" style="padding:0px; margin-left:5px; margin-top:5px;" >
 
                               <div  id="imagen_producto_'.$filas['id_producto_elaborado'].'">
                                   <div  style="align:bottom; background-color: rgba(0, 0, 0, 0.79); >

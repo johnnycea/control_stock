@@ -13,36 +13,19 @@ $usuario= $usuario->obtenerUsuarioActual();
 <html lang="en">
 <head>
 
-<style>
-
-
-</style>
-   <title>Ventas</title>
+   <title>Stock</title>
    <?php cargarHead(); ?>
-
-  <script src="./js/script_stock.js"></script>
+   <script src="./js/script_stock.js"></script>
 
 </head>
 <body>
 
-
-
-<div class="row">
-
   <?php cargarMenuPrincipal(); ?>
 
-
- <div><hr></div>
-
   <div class="container contenedor-principal" >
-
-
-   <div id="contenedor_stock_ingresos"></div>
-
-
+       <div id="contenedor_stock_ingresos" class="table-responsive"><center><h3>Calculando...</h3></center></div>
   </div>
 
-</div>
 
 
 </body>

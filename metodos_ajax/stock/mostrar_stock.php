@@ -1,5 +1,4 @@
 <?php
-require_once '../../clases/Conexion.php';
 require_once '../../clases/Funciones.php';
 require_once '../../clases/Facturas.php';
 require_once '../../clases/Ventas.php';
@@ -9,11 +8,11 @@ require_once '../../clases/Ventas.php';
   <table class="table table-dark table-bordered  table-sm table-striped table-hover">
      <thead class="" align=center>
 
-        <th>Codigo</th>
-        <th>Descripcion</th>
-        <th>Unidad medida</th>
-        <th>Stock minimo</th>
         <th>Stock</th>
+        <th>Minimo</th>
+        <th>Descripcion</th>
+        <th>U.Medida</th>
+        <th>Codigo</th>
 
      </thead>
      <tbody>';
@@ -24,25 +23,13 @@ require_once '../../clases/Ventas.php';
 
          while($filas = $listadoFacturas->fetch_array()){
 
-               echo '<tr>
-                        <td>'.$filas['id_producto'].'</td>
-                        <td>'.$filas['descripcion'].' '.$filas['marca'].'</td>
-                        <td>'.$filas['unidad_medida'].'</td>
-                        <td>'.$filas['stock_minimo'].'</td>';
-
-
-
                         $cantidad_ingresos = $filas['stock'];
                         $cantidad_salidas;
 
                         $Venta = new Ventas();
                         $cantidad_salidas = $Venta->obtenerCantidadIngredienteVenta($filas['id_producto']);
 
-
                         $stock_total = ($cantidad_ingresos-$cantidad_salidas);
-
-                        // echo 'cantidad entradas: '.$cantidad_ingresos;
-                        // echo 'cantidad salidas: '.$cantidad_salidas;
 
                         $clase_stock = "bg-info";
                         if($stock_total < $filas['stock_minimo']){
@@ -51,10 +38,15 @@ require_once '../../clases/Ventas.php';
                           $clase_stock = "bg-success text-white";
                         }
 
-                        echo '<td class="'.$clase_stock.'">'.$stock_total.'</td>';
+                        echo '<tr>';
 
-              echo '</tr>';
+                            echo '<td class="'.$clase_stock.'">'.$stock_total.'</td>
+                                  <td>'.$filas['stock_minimo'].'</td>
+                                  <td>'.$filas['descripcion'].' '.$filas['marca'].'</td>
+                                  <td>'.$filas['unidad_medida'].'</td>
+                                  <td>'.$filas['id_producto'].'</td>';
 
+                        echo '</tr>';
 
          }
 

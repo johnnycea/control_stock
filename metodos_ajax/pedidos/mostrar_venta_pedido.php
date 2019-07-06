@@ -8,9 +8,9 @@ require_once '../../clases/Ventas.php';
                 <thead class="thead-dark">
                   <th>Producto</th>
                   <th>Descripcion</th>
-                  <th>Cantidad</th>
+                  <!-- <th>Cantidad</th> -->
                   <th>Valor</th>
-                  <th>Total</th>
+                  <!-- <th>Total</th> -->
                 </thead>
                 <tbody>';
 
@@ -20,6 +20,8 @@ require_once '../../clases/Ventas.php';
                  // echo '<script> var id_producto = '.$id_producto.'; </script>';
 
                   $id_venta = $Funciones->limpiarNumeroEntero($_REQUEST['id_venta']);
+                  $estado_listado_actual = $Funciones->limpiarNumeroEntero($_REQUEST['estado_listado_actual']);
+
                  echo '<script> id_venta = '.$id_venta.'; </script>';
 
                   // $id_venta = $Funciones->limpiarNumeroEntero($_REQUEST['id_venta']);
@@ -38,9 +40,9 @@ require_once '../../clases/Ventas.php';
 
                                   <td><span id="_'.$filas['id_producto_elaborado'].'" >'.$filas['id_producto_elaborado'].'</span></td>
                                   <td><span id="_'.$filas['id_producto_elaborado'].'">'.$filas['descripcion'].'</span></td>
-                                  <td><span id="_" >'.$filas['cantidad'].'</span></td>
+                                <!-- <td><span id="_" >'.$filas['cantidad'].'</span></td> -->
                                   <td><span id="_" >$'.number_format($filas['valor_unitario'],0,",",".").'</span></td>
-                                  <td><span id="_" >$'.number_format($filas['valor_total'],0,",",".").'</span></td>
+                                <!-- <td><span id="_" >$'.number_format($filas['valor_total'],0,",",".").'</span></td> -->
                                 <!--  <td><button class="btn btn-danger" onclick="eliminarProductoVenta('.$filas['id_producto_elaborado'].', '.$filas['id_venta'].')" ><i class="fas fa-trash-alt"></i></button></td> -->
                                </tr>';
 
@@ -50,21 +52,22 @@ require_once '../../clases/Ventas.php';
                     echo '
 
                         <tr class="table-info">
-                            <td colspan="4"><strong>Total a pagar</strong></td>
+                            <td colspan="2"><strong>Total a pagar</strong></td>
                             <td><strong>$'.number_format($total,0,',','.').'</strong></td>
                         </tr>
 
                      </tbody>
                   </table>';
 
+if($estado_listado_actual!=4){
 
-echo '
-   <div class="container">
-       <div class="row">
-          <button type="submit"  class="btn btn-success btn-lg btn-block ">LISTO PARA LA ENTREGA</button>
+    echo '
+       <div class="container">
+           <div class="row">
+              <button type="submit"  class="btn btn-success btn-lg btn-block ">LISTO PARA LA ENTREGA</button>
+           </div>
        </div>
-   </div>
-';
+    ';
+}
 
-// onclick="pedidoFinalizado('.$filas['id_venta'].')"
  ?>

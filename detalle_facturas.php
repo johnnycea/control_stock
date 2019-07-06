@@ -46,7 +46,6 @@ $usuario= $usuario->obtenerUsuarioActual();
 
 <?php
 
- //echo "hola el id es: ".$_REQUEST['rut_proveedor'];
 
  $id_factura = $_REQUEST['id_factura'];
 echo '<script> var id_factura = '.$id_factura.'; </script>';
@@ -60,149 +59,150 @@ echo '<script> var id_factura = '.$id_factura.'; </script>';
 
  ?>
 
-
-<div class="row">
-
       <?php cargarMenuPrincipal(); ?>
 
       <div class="container contenedor-principal" >
 
 
-       <div class="container row">
-           <!-- CONTENEDOR FACTURA -->
-           <div class=" card border-info col-3">
+              <div class="container">
+                 <div class=" row">
+                     <!-- CONTENEDOR FACTURA -->
+                     <div class="col-12 col-md-3">
+                         <div class="card border-info">
 
-             <form id="formulario_detalle_factura" class="" action="javascript:guardarFactura()" method="post">
-               <div class="row">
-                 <div class="form-group col-12">
+                           <form id="formulario_detalle_factura" class="" action="javascript:guardarFactura()" method="post">
 
-                   <label for="title" class="control-label">Número factura:</label>
-                   <input type="text" required readonly class="form-control" name="txt_numero_factura" id="txt_numero_factura" value="<?php echo $filas['numero_factura']; ?>">
-                 </div>
+                             <div class="card-body">
+                                   <div class="form-group col-12">
 
-                 <div class="form-group col-12">
-                   <label for="title" class="control-label">Fecha de ingreso</label>
-                   <input value="<?php echo $filas['fecha_factura']; ?>" class="form-control" type="text" id="txt_fecha_ingreso" name="txt_fecha_ingreso" readonly placeholder="Dia/Mes/Año" >
-                 </div>
+                                     <label for="title" class="control-label">Número factura:</label>
+                                     <input type="text" required readonly class="form-control" name="txt_numero_factura" id="txt_numero_factura" value="<?php echo $filas['numero_factura']; ?>">
+                                   </div>
 
-                 <div class="form-group col-12">
-                   <label for="title" class="control-label">Rut proveedor:</label>
+                                   <div class="form-group col-12">
+                                     <label for="title" class="control-label">Fecha de ingreso</label>
+                                     <input value="<?php echo $filas['fecha_factura']; ?>" class="form-control" type="text" id="txt_fecha_ingreso" name="txt_fecha_ingreso" readonly placeholder="Dia/Mes/Año" >
+                                   </div>
 
-                     <?php
-                     $Proveedor = new Proveedor();
-                     $Proveedor->setRutProveedor($filas['rut_proveedor']);
-                     $listaProveedor = $Proveedor->obtenerProveedor();
+                                   <div class="form-group col-12">
+                                     <label for="title" class="control-label">Rut proveedor:</label>
 
-                     $filas_proveedor = $listaProveedor->fetch_array();
+                                       <?php
+                                         $Proveedor = new Proveedor();
+                                         $Proveedor->setRutProveedor($filas['rut_proveedor']);
+                                         $listaProveedor = $Proveedor->obtenerProveedor();
 
-                     echo '<input type="text" value="'.$filas_proveedor['rut_proveedor'].'" required readonly class="form-control" name="txt_rut_proveedor" id="txt_rut_proveedor" >
+                                         $filas_proveedor = $listaProveedor->fetch_array();
 
-                           <label for="title" class="control-label">Razon Social:</label>
-                           <input type="text" value="'.$filas_proveedor['razon_social'].'" required readonly class="form-control" name="txt_rut_proveedor" id="txt_rut_proveedor" >
+                                         echo '<input type="text" value="'.$filas_proveedor['rut_proveedor'].'" required readonly class="form-control" name="txt_rut_proveedor" id="txt_rut_proveedor" >
 
-                     ';
-                     ?>
+                                               <label for="title" class="control-label">Razon Social:</label>
+                                               <input type="text" value="'.$filas_proveedor['razon_social'].'" required readonly class="form-control" name="txt_rut_proveedor" id="txt_rut_proveedor" >';
+                                       ?>
+                                   </div>
 
+
+                             </div>
+                           </form>
+                         </div>
+                     </div>
+
+                     <!-- CONTENEDOR PODUCTO -->
+                     <div class="col-12 col-md-9">
+                       <div class="card  border-info ">
+                         <form id="formulario_detalle_factura_producto" class="" action="javascript:guardarProductoFactura()" method="post">
+
+
+                           <div class="card-header bg-dark text-white">
+                                 <center>AGREGAR PRODUCTO</center>
+                           </div>
+                           <div class="card-body">
+
+                               <div class="row">
+
+                                 <input type="hidden" name="txt_id_estado" id="txt_id_estado" value="1">
+                                 <input type="hidden" name="txt_id_factura" id="txt_id_factura" value="<?php echo $id_factura; ?>">
+
+                                 <div class="form-group col-md-3">
+                                   <label for="title" class="control-label">Codigo Producto:</label>
+                                   <input type="number" onkeyup="cargarDatosProducto(this.value);" required class="form-control" name="txt_codigo_producto" id="txt_codigo_producto" value="">
+                                 </div>
+
+                                 <div class="form-group col-md-5">
+                                   <label for="title" class="control-label">Descripción:</label>
+                                   <input type="text" required class="form-control" name="txt_descripcion_producto" id="txt_descripcion_producto" value="">
+                                 </div>
+
+                                 <div class="form-group col-md-4">
+                                   <label for="title" class="control-label">Unidad medida:</label>
+                                   <select required class="form-control" name="select_unidad_medida" id="select_unidad_medida" value="">
+                                     <?php
+                                     $UnidadMedida = new UnidadMedida();
+                                     $listaUnidadMedida = $UnidadMedida->obtenerUnidadesMedida();
+
+                                     while($filas = $listaUnidadMedida->fetch_array()){
+                                       echo '<option value="'.$filas['id_unidad_medida'].'">'.$filas['descripcion'].'</option>';
+                                     }
+                                     ?>
+                                   </select>
+                                 </div>
+
+                               </div>
+
+
+                               <div class="row">
+
+                                       <div class="form-group col-md-3">
+                                         <label for="title" class="control-label">Marca:</label>
+                                         <input type="text"  required class="form-control" name="txt_marca" id="txt_marca" value="">
+                                       </div>
+
+                                       <div class="form-group col-md-3">
+                                         <label for="title" class="control-label">Stock Minimo:</label>
+                                         <input type="number" required class="form-control" name="txt_stock_minimo" id="txt_stock_minimo" value="">
+                                       </div>
+
+                                       <div class="form-group col-md-3">
+                                         <label for="title" class="control-label">Cantidad:</label>
+                                         <input value="" required class="form-control" type="number" id="txt_cantidad" name="txt_cantidad">
+                                       </div>
+
+                                       <div class="form-group col-md-3">
+                                         <label for="title" class="control-label">Valor Unitario:</label>
+                                         <input type="number" required class="form-control" name="txt_valor_unitario" id="txt_valor_unitario" value="">
+                                       </div>
+
+                                 </div>
+
+                               <div class="form-group" >
+                                 <div class="col-12">
+                                   <button class="btn btn-info btn-block" type="submit" name="button">Guardar</button>
+                                 </div>
+
+                               </div>
+
+                            </div>
+
+
+                         </form>
+                       </div>
+                     </div>
+                     <!-- FIN DEL CARD PRODUCTOS -->
 
                  </div>
                </div>
-             </form>
-           </div>
-
-           <!-- CONTENEDOR PODUCTO -->
-           <div class="card border-info col-9">
-
-             <div class="">
-               <form id="formulario_detalle_factura_producto" class="" action="javascript:guardarProductoFactura()" method="post">
-
-
-                 <div class="card-header">
-                       <center>AGREGAR PRODUCTO</center>
-                 </div>
-                 <div class="card-body">
-
-                     <div class="row">
-
-                       <input type="hidden" name="txt_id_estado" id="txt_id_estado" value="1">
-                       <input type="hidden" name="txt_id_factura" id="txt_id_factura" value="<?php echo $id_factura; ?>">
-
-                       <div class="form-group col-md-4">
-
-                         <label for="title" class="control-label">Codigo Producto:</label>
-                         <input type="number" onkeyup="cargarDatosProducto(this.value);" required class="form-control" name="txt_codigo_producto" id="txt_codigo_producto" value="">
-                       </div>
-
-                       <div class="form-group col-md-4">
-                         <label for="title" class="control-label">Marca:</label>
-                         <input type="text"  required class="form-control" name="txt_marca" id="txt_marca" value="">
-
-                       </div>
-
-                       <div class="form-group col-md-4">
-                         <label for="title" class="control-label">Unidad medida:</label>
-                         <select required class="form-control" name="select_unidad_medida" id="select_unidad_medida" value="">
-                           <?php
-                           $UnidadMedida = new UnidadMedida();
-                           $listaUnidadMedida = $UnidadMedida->obtenerUnidadesMedida();
-
-                           while($filas = $listaUnidadMedida->fetch_array()){
-                             echo '<option value="'.$filas['id_unidad_medida'].'">'.$filas['descripcion'].'</option>';
-                           }
-                           ?>
-                         </select>
-                       </div>
-                     </div>
-
-
-                     <div class="row">
-                       <div class="form-group col-md-3">
-
-                         <label for="title" class="control-label">Descripción:</label>
-                         <input type="text" required class="form-control" name="txt_descripcion_producto" id="txt_descripcion_producto" value="">
-                       </div>
-                       <div class="form-group col-md-3">
-
-                         <label for="title" class="control-label">Stock Minimo:</label>
-                         <input type="number" required class="form-control" name="txt_stock_minimo" id="txt_stock_minimo" value="">
-                       </div>
-                       <div class="form-group col-md-3">
-                         <label for="title" class="control-label">Cantidad:</label>
-                         <input value="" required class="form-control" type="number" id="txt_cantidad" name="txt_cantidad">
-                       </div>
-                       <div class="form-group col-md-3">
-                         <label for="title" class="control-label">Valor Unitario:</label>
-                         <input type="number" required class="form-control" name="txt_valor_unitario" id="txt_valor_unitario" value="">
-                       </div>
-
-
-                     </div>
-
-                     <div class="form-group" >
-                       <div class="col-12">
-                         <button class="btn btn-info btn-block" type="submit" name="button">Guardar</button>
-                       </div>
-
-                     </div>
-
-                  </div>
-
-
-               </form>
-             </div>
-           </div>
-       </div>
 
 
                <br>
                <!-- CONTENEDOR LISTADO DETALLE FACTURA -->
-               <div class="card border-info col-12">
-                     <div class="card-header">
+               <div class="card border-info ">
+
+                     <div class="card-header bg-dark text-white">
                            <center>PRODUCTOS AGREGADOS</center>
                      </div>
                      <div class="card-body">
-
                                <div class="form-group">
-                                    <div id='contenedor_listado_detalle_facturas' class="container"></div>
+                                    <div id='contenedor_listado_detalle_facturas' class="table-responsive"></div>
                                </div>
                     </div>
                </div>
@@ -210,7 +210,6 @@ echo '<script> var id_factura = '.$id_factura.'; </script>';
    </div>
 
 
-</div>
 
 
 <script type="text/javascript" src="./js/script_facturas.js"></script>

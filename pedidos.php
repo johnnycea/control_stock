@@ -13,22 +13,16 @@ $usuario= $usuario->obtenerUsuarioActual();
 <html lang="en">
 <head>
 
-<style>
-
-
-</style>
    <title>Pedidos</title>
    <?php cargarHead(); ?>
 
   <script src="./js/script_pedido.js"></script>
-  <!-- <script src="./js/script_ventas.js"></script> -->
 </head>
 <body>
 
 
 
 
-<div class="row">
 
   <?php cargarMenuPrincipal(); ?>
 
@@ -38,62 +32,40 @@ $usuario= $usuario->obtenerUsuarioActual();
 
 
        <div class="col-12">
-
           <div  class="col-12">
 
+                  <div>
+                    <h4>Pedidos</h4>
+                  </div>
 
-
-
-              <div>
-                <h4>Pedidos</h4>
-              </div>
-              <div><hr></div>
-
+                  <div><hr></div>
 
                   <div class="container">
                       <div class="row">
 
-                         <div class="col-4">
+                         <div class="col-12 col-md-4">
                             <button onclick="listarPedido(2)" class="btn btn-block btn-warning btn-lg" type="button" name="">POR PREPARAR</button>
                          </div>
 
-                         <div class="col-4">
+                         <div class="col-12 col-md-4">
                             <button onclick="listarPedido(3)" class="btn btn-block btn-info btn-lg" type="button" name="">POR REPARTIR</button>
                          </div>
 
-                         <div class="col-4">
+                         <div class="col-12 col-md-4">
                             <button onclick="listarPedido(4)" class="btn btn-block btn-success btn-lg" type="button" name="">ENTREGADOS</button>
                          </div>
 
                       </div>
                   </div>
 
-              <div><hr></div>
+                  <div><hr></div>
 
-              <!-- <div>
-                <button type="button" onclick="limpiarFormularioFactura();" class="btn boton-morado" data-target="#modal_factura" data-toggle="modal" name="button">Crear nueva factura</button>
-
-              </div>
-              <div><hr></div>
-
-              <div id="contenedorBuscador" class="form-group col-4" >
-
-                     Buscar: <input onkeyup="listarPedido(this.value)" class="form-control col-9" type="text" name="txt_buscar_pedido" id="txt_buscar_pedido" value="">
-
-              </div> -->
-
-
-              <div id='contenedor_listado_pedido'></div>
+                  <div id='contenedor_listado_pedido' class="table-responsive"></div>
 
             </div>
-
           </div>
+    </div>
 
-       </div>
-
-  </div>
-
-</div>
 
 
 
@@ -169,7 +141,7 @@ $usuario= $usuario->obtenerUsuarioActual();
     <div class=""><hr></div>
     <center><h5 class="modal-title" id="myModalLabel">Datos de la venta</h5></center>
     <div><hr></div>
-            <div id='contenedor_listado_venta'></div>
+            <div id='contenedor_listado_venta' class="table-responsive"></div>
 
         </form>
 
@@ -184,36 +156,3 @@ $usuario= $usuario->obtenerUsuarioActual();
 
 </body>
 </html>
-
-
-  <!-- <div class="container">
-      <div class="row">
-
-              <div class="col-md-4" >
-                <label for="title" class="col-2 control-label">Id Venta:</label>
-                <input type="text" class="form-control" onkeyup="cargarInformacionVentaPedido(this.value)" name="id_venta" id="id_venta">
-              </div>
-
-               <div class="col-md-4" >
-                   <label for="title" class="col-2 control-label">Id Producto:</label>
-                  <input type="text" class="form-control" name="id_producto" id="id_producto">
-               </div>
-
-               <div class="col-md-4" >
-                   <label for="title" class="col-3 control-label">Valor Unitario:</label>
-                  <input type="text" placeholder="Nombres" class="form-control" name="valor_unitario" id="valor_unitario">
-               </div>
-
-
-               <div class="col-md-4" >
-                   <label for="title" class="col-3 control-label">Cantidad:</label>
-                  <input type="text" placeholder="Apellidos" class="form-control" name="cantidad" id="cantidad">
-               </div>
-
-               <div class="col-md-4" >
-                   <label for="title" class="col-3 control-label">Valor Total:</label>
-                  <input type="text" placeholder="Apellidos" class="form-control" name="valor_total" id="valor_total">
-               </div>
-
-        </div>
-    </div> -->
