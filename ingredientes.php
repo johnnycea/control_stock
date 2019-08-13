@@ -80,7 +80,17 @@ $usuario= $usuario->obtenerUsuarioActual();
 
                     <div class="form-group col-12" >
                            <label for="title" class="col-12 control-label">Marca:</label>
-                           <input type="text" required class="form-control" name="txt_marca" id="txt_marca" value="">
+                           <input type="text" class="form-control" name="txt_marca" id="txt_marca" value="">
+                    </div>
+
+                    <div class="form-group col-12" >
+                           <label for="title" class="col-6 control-label">Editable:</label>
+                           <input type="checkbox" class="form-control" name="txt_editable" id="txt_editable" value="">
+                    </div>
+
+                    <div class="form-group col-12" >
+                      <label for="title" class="col-12 control-label">Valor Agregado:</label>
+                      <input type="text" class="form-control" name="txt_valor_agregado" id="txt_valor_agregado" value="">
                     </div>
 
                     <div class="form-group col-6">

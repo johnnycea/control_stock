@@ -111,10 +111,43 @@ function cargarMenuConfiguraciones(){
 
   echo'<hr>';
 
+  if($url=="productos_elaborados.php"){
+      echo '<a href="./productos_elaborados.php" class="active btn btn-info col-12">Productos </a>';
+  }else{
+      echo '<a href="./productos_elaborados.php" class="btn btn-info col-12">Productos </a>';
+  }
+
+
+  echo'<hr>';
+
   if($url=="unidadMedidad.php"){
       echo '<a href="./unidadMedidad.php" class="active btn btn-info col-12">Unidad de medida </a>';
   }else{
       echo '<a href="./unidadMedidad.php" class="btn btn-info col-12">Unidad de medida </a>';
+  }
+
+  echo'<hr>';
+
+  if($url=="proveedores.php"){
+      echo '<a href="./proveedores.php" class="active btn btn-info col-12">Proveedores</a>';
+  }else{
+      echo '<a href="./proveedores.php" class="btn btn-info col-12">Proveedores</a>';
+  }
+
+  echo'<hr>';
+
+  if($url=="ingredientes.php"){
+      echo '<a href="./ingredientes.php" class="active btn btn-info col-12">Insumos</a>';
+  }else{
+      echo '<a href="./ingredientes.php" class="btn btn-info col-12">Insumos</a>';
+  }
+
+  echo'<hr>';
+
+  if($url=="cliente.php"){
+      echo '<a href="./cliente.php" class="active btn btn-info col-12">Clientes</a>';
+  }else{
+      echo '<a href="./cliente.php" class="btn btn-info col-12">Clientes</a>';
   }
 
   //    echo'<hr>';
@@ -240,6 +273,16 @@ function cargarMenuPrincipal(){
      <?php
 
      $url= basename($_SERVER['PHP_SELF']);
+
+           //UN LINK
+           echo '<li class="nav-item">';
+           if($url=="facturas.php"){
+             echo '<a class="nav-link estilo_opciones_menu active" href="./facturas.php"><i class="fas fa-clipboard-list"></i> Facturas</span></a>';
+           }else{
+             echo '<a class="nav-link estilo_opciones_menu active " href="./facturas.php"><i class="fas fa-clipboard-list"></i> Facturas</span></a>';
+           }
+           echo '</li>';
+
             //UN LINK
             echo '<li class="nav-item">';
                   if($url=="ventas.php"){
@@ -258,32 +301,24 @@ function cargarMenuPrincipal(){
                   }
             echo '</li>';
 
-            //UN LINK
-            echo '<li class="nav-item">';
-                  if($url=="facturas.php"){
-                    echo '<a class="nav-link estilo_opciones_menu active" href="./facturas.php"><i class="fas fa-clipboard-list"></i> Facturas</span></a>';
-                  }else{
-                    echo '<a class="nav-link estilo_opciones_menu active " href="./facturas.php"><i class="fas fa-clipboard-list"></i> Facturas</span></a>';
-                  }
-            echo '</li>';
+            //
+            // //UN LINK
+            // echo '<li class="nav-item">';
+            //       if($url=="productos_elaborados.php"){
+            //         echo '<a class="nav-link estilo_opciones_menu active" href="./productos_elaborados.php"><i class="fas fa-utensils"></i> Productos</span></a>';
+            //       }else{
+            //         echo '<a class="nav-link estilo_opciones_menu active " href="./productos_elaborados.php"><i class="fas fa-utensils"></i> Productos</span></a>';
+            //       }
+            // echo '</li>';
 
             //UN LINK
-            echo '<li class="nav-item">';
-                  if($url=="productos_elaborados.php"){
-                    echo '<a class="nav-link estilo_opciones_menu active" href="./productos_elaborados.php"><i class="fas fa-utensils"></i> Productos</span></a>';
-                  }else{
-                    echo '<a class="nav-link estilo_opciones_menu active " href="./productos_elaborados.php"><i class="fas fa-utensils"></i> Productos</span></a>';
-                  }
-            echo '</li>';
-
-            //UN LINK
-            echo '<li class="nav-item">';
-                  if($url=="ingredientes.php"){
-                    echo '<a class="nav-link estilo_opciones_menu active" href="./ingredientes.php"><i class="fas fa-lemon"></i> Ingredientes</span></a>';
-                  }else{
-                    echo '<a class="nav-link estilo_opciones_menu active " href="./ingredientes.php"><i class="fas fa-lemon"></i> Ingredientes</span></a>';
-                  }
-            echo '</li>';
+            // echo '<li class="nav-item">';
+            //       if($url=="ingredientes.php"){
+            //         echo '<a class="nav-link estilo_opciones_menu active" href="./ingredientes.php"><i class="fas fa-lemon"></i> Insumos</span></a>';
+            //       }else{
+            //         echo '<a class="nav-link estilo_opciones_menu active " href="./ingredientes.php"><i class="fas fa-lemon"></i> Insumos</span></a>';
+            //       }
+            // echo '</li>';
 
 
             //UN LINK
@@ -296,22 +331,22 @@ function cargarMenuPrincipal(){
             echo '</li>';
 
             //UN LINK
-            echo '<li class="nav-item">';
-                  if($url=="cliente.php"){
-                    echo '<a class="nav-link estilo_opciones_menu active" href="./cliente.php"><i class="fas fa-address-card"></i> Clientes</span></a>';
-                  }else{
-                    echo '<a class="nav-link estilo_opciones_menu active " href="./cliente.php"><i class="fas fa-address-card"></i> Clientes</span></a>';
-                  }
-            echo '</li>';
+            // echo '<li class="nav-item">';
+            //       if($url=="cliente.php"){
+            //         echo '<a class="nav-link estilo_opciones_menu active" href="./cliente.php"><i class="fas fa-address-card"></i> Clientes</span></a>';
+            //       }else{
+            //         echo '<a class="nav-link estilo_opciones_menu active " href="./cliente.php"><i class="fas fa-address-card"></i> Clientes</span></a>';
+            //       }
+            // echo '</li>';
 
             //UN LINK
-            echo '<li class="nav-item">';
-                  if($url=="proveedores.php"){
-                    echo '<a class="nav-link estilo_opciones_menu active" href="./proveedores.php"><i class="fas fa-users"></i> Proveedores</span></a>';
-                  }else{
-                    echo '<a class="nav-link estilo_opciones_menu active " href="./proveedores.php"><i class="fas fa-users"></i> Proveedores</span></a>';
-                  }
-            echo '</li>';
+            // echo '<li class="nav-item">';
+            //       if($url=="proveedores.php"){
+            //         echo '<a class="nav-link estilo_opciones_menu active" href="./proveedores.php"><i class="fas fa-users"></i> Proveedores</span></a>';
+            //       }else{
+            //         echo '<a class="nav-link estilo_opciones_menu active " href="./proveedores.php"><i class="fas fa-users"></i> Proveedores</span></a>';
+            //       }
+            // echo '</li>';
 
             //UN LINK
             echo '<li class="nav-item">';
