@@ -27,6 +27,9 @@ require_once '../../clases/Producto.php';
                                   <td><span id="columna_id_producto_'.$filas['id_producto'].'" >'.$filas['id_producto'].'</span></td>
                                   <td><span id="columna_descripcion_'.$filas['id_producto'].'" >'.$filas['descripcion'].'</span></td>
                                   <td><span id="columna_marca_'.$filas['id_producto'].'" >'.$filas['marca'].'</span></td>
+
+                                    <span class="d-none" id="columna_id_unidad_'.$filas['id_producto'].'" >'.$filas['id_unidad_medida'].'</span>
+
                                   <td><span id="columna_unidad_'.$filas['id_producto'].'" >'.$filas['unidad_medida'].'</span></td>
                                   <td><span id="columna_stock_minimo'.$filas['id_producto'].'" >'.$filas['stock_minimo'].'</span></td>
                                   <td><button class="btn btn-warning col-12 col-md-6" onclick="cargarModificarIngrediente('.$filas['id_producto'].')" data-target="#modal_ingrediente" data-toggle="modal" ><i class="far fa-edit"></i></button></td>

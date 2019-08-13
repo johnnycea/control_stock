@@ -17,6 +17,8 @@ function limpiarFormularioIngrediente(){
 	 // $('#txt_id_subvencion').attr("readonly",false);
 	 $("#formulario_modal_ingrediente").attr("action","javascript:guardarIngrediente()");
 
+	 $('#txt_codigo_producto').attr("readonly",false);
+
 }
 
 function cargarModificarIngrediente(id){
@@ -24,15 +26,19 @@ function cargarModificarIngrediente(id){
   var txt_id_ingrediente = $("#columna_id_producto_"+id).html();
 	var txt_descripcion = $("#columna_descripcion_"+id).html();
 	var txt_marca = $("#columna_marca_"+id).html();
-	var txt_unidad = $("#columna_unidad_"+id).html();
+	var txt_unidad = $("#columna_id_unidad_"+id).html();
 	var txt_stock_minimo = $("#columna_stock_minimo"+id).html();
 
 	//carga la informacion recibida en el modal
   $('#txt_codigo_producto').val(txt_id_ingrediente);
 	$('#txt_descripcion').val(txt_descripcion);
 	$('#txt_marca').val(txt_marca);
-	$('#txt_unidad').val(txt_unidad);
+	$('#cmb_unidad_medida').val(txt_unidad);
 	$('#txt_stock_minimo').val(txt_stock_minimo);
+
+
+	$('#txt_codigo_producto').attr("readonly",true);
+
 }
 
 function guardarIngrediente(){

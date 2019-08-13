@@ -38,7 +38,7 @@ class Estado{
     $Conexion = new Conexion();
     $Conexion = $Conexion->conectar();
 
-    $resultado_consulta = $Conexion->query("select * from tb_estado_producto");
+    $resultado_consulta = $Conexion->query("select * from tb_estado_producto where id_estado<>3");
     return $resultado_consulta;
 
  }
