@@ -78,7 +78,7 @@ class Producto{
     $resultado_consulta = $Conexion->query("select p.id_producto, p.unidad_medida as id_unidad_medida, p.descripcion, p.marca, um.descripcion as unidad_medida, p.stock_minimo
                                           FROM tb_productos p
                                           inner join tb_unidades_medida um on p.unidad_medida=um.id_unidad_medida
-                                          where p.id_producto like '%".$texto_buscar."%' or p.descripcion like '%".$texto_buscar."%' ");
+                                          where p.id_producto like '%".$texto_buscar."%' or p.descripcion like '%".$texto_buscar."%' order by p.id_producto asc");
 
 
     return $resultado_consulta;

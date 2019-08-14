@@ -30,6 +30,31 @@
 
   <div class="col-10">
 
+
+<?php
+
+  $Usuario = new Usuario();
+  $usuario_actual = $Usuario->obtenerUsuarioActual();
+  $tipo_usuario_actual = $usuario_actual['tipo_usuario'];
+
+  switch ($tipo_usuario_actual) {
+    case '1'://admin
+      header("Location: ./ventas.php");
+      break;
+    case '2':
+      header("Location: ./ventas.php");
+      break;
+    case '3':
+      header("Location: ./pedidos.php");
+      break;
+
+    default:
+      // code...
+      break;
+  }
+
+ ?>
+
   </div>
 
 </div>

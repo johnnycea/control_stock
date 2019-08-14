@@ -43,17 +43,40 @@ $usuario= $usuario->obtenerUsuarioActual();
                   <div class="container">
                       <div class="row">
 
-                         <div class="col-12 col-md-4">
-                            <button onclick="listarPedido(2)" class="btn btn-block btn-warning btn-lg" type="button" name="">POR PREPARAR</button>
-                         </div>
+                        <?php
+                            if($usuario['tipo_usuario']==1 || $usuario['tipo_usuario']==2){
 
-                         <div class="col-12 col-md-4">
-                            <button onclick="listarPedido(3)" class="btn btn-block btn-info btn-lg" type="button" name="">POR REPARTIR</button>
-                         </div>
+                              echo '
+                              <div class="col-12 col-md-4">
+                                 <button onclick="listarPedido(2)" class="btn btn-block btn-warning btn-lg" type="button" name="">POR PREPARAR</button>
+                              </div>
 
-                         <div class="col-12 col-md-4">
-                            <button onclick="listarPedido(4)" class="btn btn-block btn-success btn-lg" type="button" name="">ENTREGADOS</button>
-                         </div>
+                              <div class="col-12 col-md-4">
+                                 <button onclick="listarPedido(3)" class="btn btn-block btn-info btn-lg" type="button" name="">POR REPARTIR</button>
+                              </div>
+
+                              <div class="col-12 col-md-4">
+                                 <button onclick="listarPedido(4)" class="btn btn-block btn-success btn-lg" type="button" name="">ENTREGADOS</button>
+                              </div>';
+
+                            }
+                            if($usuario['tipo_usuario']==3){
+
+                              echo '
+
+                              <div class="col-12 col-md-4">
+                                 <button onclick="listarPedido(3)" class="btn btn-block btn-info btn-lg" type="button" name="">POR REPARTIR</button>
+                              </div>
+
+                              <script type="text/javascript">
+                                $(document).ready(listarPedido(3));
+                              </script>
+                              ';
+
+                            }
+                         ?>
+
+
 
                       </div>
                   </div>

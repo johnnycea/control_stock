@@ -1,4 +1,5 @@
 <?php
+require_once './clases/Usuario.php';
 function comprobarSession(){
   @session_start();
   if(isset($_SESSION['run']) and isset($_SESSION['nombre'])){
@@ -272,34 +273,75 @@ function cargarMenuPrincipal(){
 
      <?php
 
+     $Usuario = new Usuario();
+     $usuario_actual = $Usuario->obtenerUsuarioActual();
+     $tipo_usuario_actual = $usuario_actual['tipo_usuario'];
+
      $url= basename($_SERVER['PHP_SELF']);
 
-           //UN LINK
-           echo '<li class="nav-item">';
-           if($url=="facturas.php"){
-             echo '<a class="nav-link estilo_opciones_menu active" href="./facturas.php"><i class="fas fa-clipboard-list"></i> Facturas</span></a>';
-           }else{
-             echo '<a class="nav-link estilo_opciones_menu active " href="./facturas.php"><i class="fas fa-clipboard-list"></i> Facturas</span></a>';
-           }
-           echo '</li>';
 
+        if($tipo_usuario_actual==1 || $tipo_usuario_actual==2){
             //UN LINK
             echo '<li class="nav-item">';
-                  if($url=="ventas.php"){
-                    echo '<a class="nav-link estilo_opciones_menu active" href="./ventas.php"><i class="fas fa-shopping-cart"></i> Ventas</span></a>';
-                  }else{
-                    echo '<a class="nav-link estilo_opciones_menu active " href="./ventas.php"><i class="fas fa-shopping-cart"></i> Ventas</span></a>';
-                  }
+            if($url=="facturas.php"){
+              echo '<a class="nav-link estilo_opciones_menu active" href="./facturas.php"><i class="fas fa-clipboard-list"></i> Facturas</span></a>';
+            }else{
+              echo '<a class="nav-link estilo_opciones_menu active " href="./facturas.php"><i class="fas fa-clipboard-list"></i> Facturas</span></a>';
+            }
             echo '</li>';
-            //UN LINK
+        }
+        if($tipo_usuario_actual==1 || $tipo_usuario_actual==2){
+          //UN LINK
+          echo '<li class="nav-item">';
+                if($url=="ventas.php"){
+                  echo '<a class="nav-link estilo_opciones_menu active" href="./ventas.php"><i class="fas fa-shopping-cart"></i> Ventas</span></a>';
+                }else{
+                  echo '<a class="nav-link estilo_opciones_menu active " href="./ventas.php"><i class="fas fa-shopping-cart"></i> Ventas</span></a>';
+                }
+          echo '</li>';
+        }
+        if($tipo_usuario_actual==1 || $tipo_usuario_actual==2 || $tipo_usuario_actual==3){
+          //UN LINK
+          echo '<li class="nav-item">';
+                if($url=="pedidos.php"){
+                  echo '<a class="nav-link estilo_opciones_menu active" href="./pedidos.php"><i class="fas fa-list"></i> Pedidos</span></a>';
+                }else{
+                  echo '<a class="nav-link estilo_opciones_menu active " href="./pedidos.php"><i class="fas fa-list"></i> Pedidos</span></a>';
+                }
+          echo '</li>';
+        }
+        if($tipo_usuario_actual==1 || $tipo_usuario_actual==2){
+          //UN LINK
+          echo '<li class="nav-item">';
+                if($url=="stock.php"){
+                  echo '<a class="nav-link estilo_opciones_menu active" href="./stock.php"><i class="fas fa-sort-amount-down"></i> Stock</span></a>';
+                }else{
+                  echo '<a class="nav-link estilo_opciones_menu active " href="./stock.php"><i class="fas fa-sort-amount-down"></i> Stock</span></a>';
+                }
+          echo '</li>';
+        }
+        if($tipo_usuario_actual==1){
+          //UN LINK
+          echo '<li class="nav-item">';
+                if($url=="informes.php"){
+                  echo '<a class="nav-link estilo_opciones_menu active" href="./informes.php"><i class="fas fa-chart-pie"></i> Informes</span></a>';
+                }else{
+                  echo '<a class="nav-link estilo_opciones_menu active " href="./informes.php"><i class="fas fa-chart-pie"></i> Informes</span></a>';
+                }
+          echo '</li>';
+        }
+        if($tipo_usuario_actual==1){
+          //UN LINK
+          echo '<li class="nav-item">';
+                if($url=="configuraciones.php"){
+                  echo '<a class="nav-link estilo_opciones_menu active" href="./configuraciones.php"><i class="fas fa-cog"></i> Configuraciones</span></a>';
+                }else{
+                  echo '<a class="nav-link estilo_opciones_menu active  laed" href="./configuraciones.php"><i class="fas fa-cog"></i> Configuraciones</span></a>';
+                }
+          echo '</li>';
+        }
 
-            echo '<li class="nav-item">';
-                  if($url=="pedidos.php"){
-                    echo '<a class="nav-link estilo_opciones_menu active" href="./pedidos.php"><i class="fas fa-list"></i> Pedidos</span></a>';
-                  }else{
-                    echo '<a class="nav-link estilo_opciones_menu active " href="./pedidos.php"><i class="fas fa-list"></i> Pedidos</span></a>';
-                  }
-            echo '</li>';
+
 
             //
             // //UN LINK
@@ -320,16 +362,6 @@ function cargarMenuPrincipal(){
             //       }
             // echo '</li>';
 
-
-            //UN LINK
-            echo '<li class="nav-item">';
-                  if($url=="stock.php"){
-                    echo '<a class="nav-link estilo_opciones_menu active" href="./stock.php"><i class="fas fa-sort-amount-down"></i> Stock</span></a>';
-                  }else{
-                    echo '<a class="nav-link estilo_opciones_menu active " href="./stock.php"><i class="fas fa-sort-amount-down"></i> Stock</span></a>';
-                  }
-            echo '</li>';
-
             //UN LINK
             // echo '<li class="nav-item">';
             //       if($url=="cliente.php"){
@@ -347,24 +379,6 @@ function cargarMenuPrincipal(){
             //         echo '<a class="nav-link estilo_opciones_menu active " href="./proveedores.php"><i class="fas fa-users"></i> Proveedores</span></a>';
             //       }
             // echo '</li>';
-
-            //UN LINK
-            echo '<li class="nav-item">';
-                  if($url=="informes.php"){
-                    echo '<a class="nav-link estilo_opciones_menu active" href="./informes.php"><i class="fas fa-chart-pie"></i> Informes</span></a>';
-                  }else{
-                    echo '<a class="nav-link estilo_opciones_menu active " href="./informes.php"><i class="fas fa-chart-pie"></i> Informes</span></a>';
-                  }
-            echo '</li>';
-
-            //UN LINK
-            echo '<li class="nav-item">';
-                  if($url=="configuraciones.php"){
-                    echo '<a class="nav-link estilo_opciones_menu active" href="./configuraciones.php"><i class="fas fa-cog"></i> Configuraciones</span></a>';
-                  }else{
-                    echo '<a class="nav-link estilo_opciones_menu active  laed" href="./configuraciones.php"><i class="fas fa-cog"></i> Configuraciones</span></a>';
-                  }
-            echo '</li>';
 
      ?>
 
