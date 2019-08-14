@@ -65,7 +65,7 @@ $usuario= $usuario->obtenerUsuarioActual();
 
                     <div class="form-group col-12 col-sm-6" >
                            <label for="title" class="col-12 control-label">Codigo:</label>
-                           <input type="text"  required class="form-control" name="txt_codigo_producto" id="txt_codigo_producto" value="">
+                           <input type="number"  required class="form-control" name="txt_codigo_producto" id="txt_codigo_producto" value="">
                     </div>
 
                     <div class="form-group col-12 col-sm-6" >
@@ -92,12 +92,12 @@ $usuario= $usuario->obtenerUsuarioActual();
                       </select>
                     </div>
 
-                    <div class="form-group col-12 col-md-6" >
+                    <div class="form-group col-6" >
                            <label for="title" class="col-12 control-label">Stock minimo:</label>
-                           <input type="text" onkeypress="return soloLetrasNumeros(event);" required class="form-control" name="txt_stock_minimo" id="txt_stock_minimo" value="">
+                           <input type="text" min="0" onkeypress="return soloLetrasNumeros(event);" required class="form-control" name="txt_stock_minimo" id="txt_stock_minimo" value="">
                     </div>
 
-                    <div class="form-group col-12 col-md-6" >
+                    <div class="form-group col-6" >
                       <label for="title" class="col-12 control-label">Marca:</label>
                       <input type="text" class="form-control" name="txt_marca" id="txt_marca" value="">
                     </div>
@@ -105,7 +105,6 @@ $usuario= $usuario->obtenerUsuarioActual();
                     <div class="form-group col-6">
                         <label for="estado">Estado:</label>
                              <select  class="form-control" required name="cmb_estado" id="cmb_estado">
-                               <option value="" selected disabled>Seleccione:</option>
                                 <?php
                                     require_once './clases/Estado.php';
                                     $TipoE= new Estado();
@@ -119,28 +118,29 @@ $usuario= $usuario->obtenerUsuarioActual();
 
                     </div>
 
-                    <div><hr></div>
-
-
-                    <!-- <div class="form-group col-12 col-md-6" >
-                           <label for="title" class="col-6 control-label">Ingrediente Extra:</label>
-                           <input type="checkbox" class="form-control" name="txt_editable" id="txt_editable" value="">
-                    </div>
-
-                    <div class="form-group col-12 col-md-6" >
-                      <label for="title" class="col-12 control-label">Valor Agregado:</label>
-                      <input type="text" class="form-control" name="txt_valor_agregado" id="txt_valor_agregado" value="">
-                    </div> -->
-
-
-
-
             </div>
 
+            <div><hr></div>
+
+            <div class="row border-info" >
+
+              <div class="form-group col-6" >
+                     <label for="title" class="col-6 control-label">Editable:</label>
+                     <select class="form-control " onchange="cambiarSelectEditable(this.value)" name="select_editable" id="select_editable">
+                        <option value="0">No</option>
+                        <option value="1">Si</option>
+                     </select>
+              </div>
+
+              <div id="contenedor_valor_extra" class="d-none form-group col-6" >
+                <label for="title" class="col-12 control-label">Valor Agregado:</label>
+                <input type="number" class="form-control" min="0" name="txt_valor_extra" id="txt_valor_extra" value="">
+              </div>
+            </div>
 
             <div class="form-group" >
               <div class="col-12">
-                <button class="btn btn-success btn-block" type="submit" name="button">Guardar</button>
+                <button id="btn_guardar_ingrediente" class="btn btn-success btn-block" type="submit" name="button">Guardar</button>
               </div>
             </div>
 

@@ -12,6 +12,9 @@ $id_marca = $Funciones->limpiarTexto($_REQUEST['txt_marca']);
 $id_estado = $Funciones->limpiarTexto($_REQUEST['cmb_estado']);
 $unidad_medida = $Funciones->limpiarNumeroEntero($_REQUEST['cmb_unidad_medida']);
 
+$select_editable = $Funciones->limpiarNumeroEntero($_REQUEST['select_editable']);
+$valor_extra = $Funciones->limpiarNumeroEntero($_REQUEST['txt_valor_extra']);
+
 
 $Producto = new Producto();
 $Producto->setIdProducto($txt_codigo_producto);
@@ -20,6 +23,11 @@ $Producto->setStockMinimo($stock_minimo);
 $Producto->setIdUnidadMedida($unidad_medida);
 $Producto->setMarca($id_marca);
 $Producto->setIdEstado(1);
+
+$valor_extra = ($select_editable=="0") ? 0 : $valor_extra;
+
+$Producto->setEditable($select_editable);
+$Producto->setValorExtra($valor_extra);
 
 $consultaExisteProductos = $Producto->obtenerProducto();
 //

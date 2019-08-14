@@ -1,12 +1,35 @@
-function mostrarCargando(contenedor){
+function contenedorCargando(contenedor){
 
   var resultado= "<style>.loader,.loader:before,.loader:after {background: #b63333;-webkit-animation: load1 1s infinite ease-in-out;animation: load1 1s infinite ease-in-out;width: 1em;height: 4em;}.loader:before,.loader:after {position: absolute;top: 0;content: '';}.loader:before {left: -1.5em;}.loader {text-indent: -9999em;margin: 10% auto;position: relative;font-size: 11px;-webkit-animation-delay: 0.16s;animation-delay: 0.16s;}.loader:after {left: 1.5em;-webkit-animation-delay: 0.32s;animation-delay: 0.32s;}@-webkit-keyframes load1 {0%,80%,100% {box-shadow: 0 0 #b63333;height: 4em;}40% {box-shadow: 0 -2em #b63333;height: 5em;}}@keyframes load1 {0%,80%,100% {box-shadow: 0 0 #b63333;height: 4em;}40% {box-shadow: 0 -2em #b63333;height: 5em;}}</style>";
 
   resultado+='<div id="contenedor"><div class="loader" id="loader">Loading...</div></div>';
 
-  $("#"+contenedor).html(resultado);
+  $(contenedor).html(resultado);
 }
 
+
+function botonCargando(boton,opcion){
+	//1: Cargando
+	//2: Normal
+
+	switch (opcion) {
+		case 1:
+
+			var texto_boton = boton.html();
+			sessionStorage.setItem("texto_boton",texto_boton);
+
+			$(boton).attr("disabled",true);
+			$(boton).html("...");
+			break;
+		case 2:
+			$(boton).attr("disabled",false);
+			$(boton).html(sessionStorage.getItem("texto_boton"));
+			break;
+		default:
+
+	}
+
+}
 
  function soloLetras(e){
        key = e.keyCode || e.which;
