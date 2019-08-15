@@ -1,22 +1,22 @@
 listarIngrediente("");
 
-function cambiarSelectEditable(valor){
-	switch(valor){
-		case "0":
-        $("#contenedor_valor_extra").addClass("d-none");
-        $("#txt_valor_extra").attr("required",false);
-			break;
-
-		case "1":
-				$("#contenedor_valor_extra").removeClass("d-none");
-				$("#txt_valor_extra").attr("required",true);
-
-			break;
-
-	 default:
-	}
-
-}
+// function cambiarSelectEditable(valor){
+// 	switch(valor){
+// 		case "0":
+//         $("#contenedor_valor_extra").addClass("d-none");
+//         $("#txt_valor_extra").attr("required",false);
+// 			break;
+//
+// 		case "1":
+// 				$("#contenedor_valor_extra").removeClass("d-none");
+// 				$("#txt_valor_extra").attr("required",true);
+//
+// 			break;
+//
+// 	 default:
+// 	}
+//
+// }
 
 function listarIngrediente(texto){
 
@@ -35,8 +35,8 @@ function limpiarFormularioIngrediente(){
 	 // $('#txt_id_subvencion').attr("readonly",false);
 	 $("#formulario_modal_ingrediente").attr("action","javascript:guardarIngrediente()");
 
-	 $('#txt_codigo_producto').attr("readonly",false);
-	 $('#select_editable').change();
+	 // $('#txt_codigo_producto').attr("readonly",false);
+	 // $('#select_editable').change();
 
 }
 
@@ -47,8 +47,8 @@ function cargarModificarIngrediente(id){
 	var txt_marca = $("#columna_marca_"+id).html();
 	var txt_unidad = $("#columna_id_unidad_"+id).html();
 	var txt_stock_minimo = $("#columna_stock_minimo"+id).html();
-	var txt_editable = $("#columna_id_editable_"+id).html();
-	var txt_valor_extra = $("#columna_valor_extra_"+id).html();
+	// var txt_editable = $("#columna_id_editable_"+id).html();
+	// var txt_valor_extra = $("#columna_valor_extra_"+id).html();
 
 	//carga la informacion recibida en el modal
   $('#txt_codigo_producto').val(txt_id_ingrediente);
@@ -56,9 +56,9 @@ function cargarModificarIngrediente(id){
 	$('#txt_marca').val(txt_marca);
 	$('#cmb_unidad_medida').val(txt_unidad);
 	$('#txt_stock_minimo').val(txt_stock_minimo);
-	$('#select_editable').val(txt_editable);
-	$('#select_editable').change();
-	$('#txt_valor_extra').val(txt_valor_extra);
+	// $('#select_editable').val(txt_editable);
+	// $('#select_editable').change();
+	// $('#txt_valor_extra').val(txt_valor_extra);
 
 	$('#txt_codigo_producto').attr("readonly",true);
 

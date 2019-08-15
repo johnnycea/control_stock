@@ -122,7 +122,7 @@ $usuario= $usuario->obtenerUsuarioActual();
 
             <div><hr></div>
 
-            <div class="row border-info" >
+            <!-- <div class="row border-info" >
 
               <div class="form-group col-6" >
                      <label for="title" class="col-6 control-label">Editable:</label>
@@ -136,7 +136,7 @@ $usuario= $usuario->obtenerUsuarioActual();
                 <label for="title" class="col-12 control-label">Valor Agregado:</label>
                 <input type="number" class="form-control" min="0" name="txt_valor_extra" id="txt_valor_extra" value="">
               </div>
-            </div>
+            </div> -->
 
             <div class="form-group" >
               <div class="col-12">

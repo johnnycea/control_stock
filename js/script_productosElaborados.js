@@ -126,29 +126,39 @@ function guardarModificarProductoElaborado(){
 function agregarIngredienteProducto(id_ingrediente,id_producto_creado){
 
 	var cantidad_ingrediente = $("#txt_ingrediente_"+id_ingrediente).val();
+	var select_editable = $("#select_editable_"+id_ingrediente).val();
+	var valor_extra = $("#txt_valor_extra_"+id_ingrediente).val();
   // alert("id del ingrediente es: "+id_ingrediente+" id producto creado es: "+id_producto_creado+" cantidad: "+cantidad_ingrediente);
 
 	if(cantidad_ingrediente!="" && cantidad_ingrediente>0){
 
-		$.ajax({
-			url:"./metodos_ajax/productos_elaborados/ingresar_ingredientes.php?cantidad_ingrediente="+cantidad_ingrediente+"&id_producto_creado="+id_producto_creado+"&id_ingrediente="+id_ingrediente,
-			method:"POST",
-			success:function(respuesta){
-				 // alert(respuesta);
+				if(select_editable=="1" && valor_extra==""){
 
-						 if(respuesta=="1"){
+					swal("Ingrese valor extra","Indique el valor que se sumará al agregar insumo extra.","info");
 
-							  listarIngredientesSeleccionados(id_producto_creado);
-							  swal("Guardado","Guardado correctamente.","success");
+				}else{
 
-						 }else if(respuesta=="2"){//SE DEBE AGREGAR UNA FUNCION MAS EFECTIVA PARA ESTE MENSAJE
-							 swal("El ingrediente ya fue agregado.","","error");
+					$.ajax({
+						url:"./metodos_ajax/productos_elaborados/ingresar_ingredientes.php?cantidad_ingrediente="+cantidad_ingrediente+"&id_producto_creado="+id_producto_creado+"&id_ingrediente="+id_ingrediente+"&select_editable="+select_editable+"&valor_extra="+valor_extra,
+						method:"POST",
+						success:function(respuesta){
+							 // alert(respuesta);
+							 // console.log(respuesta);
 
-						 }else{
-							 swal("Ocurrió un error","Recargue la página e intente nuevamente.","error");
-						 }
-			}
-		});
+									 if(respuesta=="1"){
+
+											listarIngredientesSeleccionados(id_producto_creado);
+											swal("Guardado","Guardado correctamente.","success");
+
+									 }else if(respuesta=="2"){//SE DEBE AGREGAR UNA FUNCION MAS EFECTIVA PARA ESTE MENSAJE
+										 swal("El ingrediente ya fue agregado.","","error");
+
+									 }else{
+										 swal("Ocurrió un error","Recargue la página e intente nuevamente.","error");
+									 }
+						}
+					});
+				}
 
 	}else{
 		swal("Ingrese cantidad","Ingrese cantidad del ingrediente","info");

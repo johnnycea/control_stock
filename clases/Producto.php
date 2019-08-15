@@ -16,6 +16,13 @@ class Producto{
  private $editable;
  private $valor_extra;
 
+ public function setEditable($parametro){
+   $this->editable = $parametro;
+ }
+ public function setValorExtra($parametro){
+   $this->valor_extra = $parametro;
+ }
+
  public function setIdProducto($id_producto){
    $this->id_producto = $id_producto;
  }
@@ -40,13 +47,20 @@ class Producto{
  public function setCantidad($cantidad){
    $this->cantidad = $cantidad;
  }
- public function setEditable($parametro){
-   $this->editable = $parametro;
- }
- public function setValorExtra($parametro){
-   $this->valor_extra = $parametro;
- }
 
+
+ public function guardarIngredientesProductoElaborado($id_producto_elaborado){
+   $conexion = new Conexion();
+   $conexion = $conexion->conectar();
+
+   $consulta = "insert INTO tb_ingredientes_producto_elaborado
+          (id_producto_elaborado, id_producto_ingrediente, cantidad,editable,valor_extra)
+   VALUES (".$id_producto_elaborado.", ".$this->id_producto.", ".$this->cantidad.", ".$this->editable.", ".$this->valor_extra.")";
+
+   $resultado= $conexion->query($consulta);
+   // echo $consulta;
+   return $resultado;
+ }
 
  function obtenerProductos($texto_buscar){
      $conexion = new Conexion();
@@ -54,12 +68,12 @@ class Producto{
      $consulta="";
 
      if($texto_buscar=="" || $texto_buscar==" "){
-       $consulta= "select p.id_producto, p.editable, p.valor_extra, p.unidad_medida as id_unidad_medida, p.descripcion, p.marca, um.descripcion as unidad_medida, p.stock_minimo
+       $consulta= "select p.id_producto, p.unidad_medida as id_unidad_medida, p.descripcion, p.marca, um.descripcion as unidad_medida, p.stock_minimo
                                              FROM tb_productos p
                                              inner join tb_unidades_medida um on p.unidad_medida=um.id_unidad_medida
                                              where p.id_producto like '%".$texto_buscar."%' or p.descripcion like '%".$texto_buscar."%' order by p.id_producto asc";
      }else{
-       $consulta= "select p.id_producto, p.editable, p.valor_extra, p.unidad_medida as id_unidad_medida, p.descripcion, p.marca, um.descripcion as unidad_medida, p.stock_minimo
+       $consulta= "select p.id_producto, p.unidad_medida as id_unidad_medida, p.descripcion, p.marca, um.descripcion as unidad_medida, p.stock_minimo
                    FROM tb_productos p
                    inner join tb_unidades_medida um on p.unidad_medida=um.id_unidad_medida
                    where id_producto like '%".$texto_buscar."%'
@@ -114,8 +128,8 @@ class Producto{
    $conexion = new Conexion();
    $conexion = $conexion->conectar();
 
-   $consulta = "insert INTO tb_productos (id_producto,descripcion,stock_minimo,marca,id_estado,unidad_medida,editable,valor_extra)
-               VALUES ('".$this->id_producto."', '".$this->descripcion."', '".$this->stock_minimo."',  '".$this->marca."', '".$this->id_estado."', '".$this->id_unidad_medida."',".$this->editable.",".$this->valor_extra.")";
+   $consulta = "insert INTO tb_productos (id_producto,descripcion,stock_minimo,marca,id_estado,unidad_medida)
+               VALUES ('".$this->id_producto."', '".$this->descripcion."', '".$this->stock_minimo."',  '".$this->marca."', '".$this->id_estado."', '".$this->id_unidad_medida."')";
    // echo $consulta;
    $resultado= $conexion->query($consulta);
    return $resultado;
@@ -130,9 +144,7 @@ class Producto{
        descripcion = '".$this->descripcion."',
        stock_minimo = '".$this->stock_minimo."',
        marca = '".$this->marca."',
-       id_estado = '".$this->id_estado."',
-       editable = ".$this->editable.",
-       valor_extra = ".$this->valor_extra."
+       id_estado = '".$this->id_estado."'
         WHERE (id_producto = '".$this->id_producto."');";
 
        $resultado= $conexion->query($consulta);

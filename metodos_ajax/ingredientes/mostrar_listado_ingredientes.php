@@ -10,8 +10,6 @@ require_once '../../clases/Producto.php';
                   <th>Marca</th>
                   <th>U. medida</th>
                   <th>Stock Minimo</th>
-                  <th>Editable</th>
-                  <th>Valor Extra</th>
                   <th></th>
                   <th></th>
                 </thead>
@@ -37,13 +35,13 @@ require_once '../../clases/Producto.php';
                                   <td><span id="columna_stock_minimo'.$filas['id_producto'].'" >'.$filas['stock_minimo'].'</span></td>';
 
 
-                                      $editable = ($filas['editable'] == "0") ? "NO" : "SI";
-                                echo '<span class="d-none" id="columna_id_editable_'.$filas['id_producto'].'" >'.$filas['editable'].'</span>
-                                  <td><span id="columna_editable_'.$filas['id_producto'].'" >'.$editable.'</span></td>
-                                  <td><span id="columna_valor_extra_'.$filas['id_producto'].'" >$'.number_format($filas['valor_extra'],0,",",".").'</span></td>
+                                //       $editable = ($filas['editable'] == "0") ? "NO" : "SI";
+                                // echo '<span class="d-none" id="columna_id_editable_'.$filas['id_producto'].'" >'.$filas['editable'].'</span>
+                                //   <td><span id="columna_editable_'.$filas['id_producto'].'" >'.$editable.'</span></td>
+                                //   <td><span id="columna_valor_extra_'.$filas['id_producto'].'" >$'.number_format($filas['valor_extra'],0,",",".").'</span></td>';
 
 
-                                  <td><button class="btn btn-warning col-12 " onclick="cargarModificarIngrediente('.$filas['id_producto'].')" data-target="#modal_ingrediente" data-toggle="modal" ><i class="far fa-edit"></i></button></td>
+                            echo '<td><button class="btn btn-warning col-12 " onclick="cargarModificarIngrediente('.$filas['id_producto'].')" data-target="#modal_ingrediente" data-toggle="modal" ><i class="far fa-edit"></i></button></td>
                                   <td><button id="btn_eliminar_'.$filas['id_producto'].'" class="btn btn-danger col-12 " " onclick="eliminarIngrediente('.$filas['id_producto'].')" ><i class="fa fa-trash-alt"></i></button></td>
                                </tr>';
                     }

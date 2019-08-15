@@ -11,6 +11,8 @@ require_once '../../clases/Producto.php';
                   <th>Nombre</th>
                   <th>U.Medida</th>
                   <th>Cantidad</th>
+                  <th>Editable</th>
+                  <th>Valor.extra</th>
                   <th></th>
                 </thead>
                 <tbody>';
@@ -29,8 +31,15 @@ require_once '../../clases/Producto.php';
 
                                   <td>'.$filas['descripcion'].' '.$filas['marca'].'</td>
                                   <td>'.$filas['unidad_medida'].'</td>
-                                  <td><input type="number" id="txt_ingrediente_'.$filas['id_producto'].'" class="form-control" value="1"  ></td>
-                                  <td><button onclick="agregarIngredienteProducto('.$filas['id_producto'].','.$id_creado.')" class="btn btn-warning btn-block">Agregar</button></td>
+                                  <td><input type="number" id="txt_ingrediente_'.$filas['id_producto'].'" class="form-control" value="0"  ></td>
+                                  <td>
+                                         <select class="form-control " id="select_editable_'.$filas['id_producto'].'">
+                                            <option value="0">No</option>
+                                            <option value="1">Si</option>
+                                         </select>
+                                  </td>
+                                  <td><input type="number" id="txt_valor_extra_'.$filas['id_producto'].'" class="form-control" value="0" > </td>
+                                  <td><input type="button" onclick="agregarIngredienteProducto('.$filas['id_producto'].','.$id_creado.')" class="btn btn-warning btn-block" value="Agregar"></td>
                                </tr>';
                     }
 

@@ -10,6 +10,8 @@ require_once '../../clases/ProductoElaborado.php';
                   <th>Nombre</th>
                   <th>U. Med</th>
                   <th>Cantidad</th>
+                  <th>Editable</th>
+                  <th>Valor extra</th>
                   <th></th>
                 </thead>
                 <tbody>';
@@ -23,12 +25,16 @@ require_once '../../clases/ProductoElaborado.php';
 
                     while($filas = $listadoIngredientes->fetch_array()){
 
+                      $editable = ($filas['editable']==0) ? "No" : "Si";
+
                           echo '<tr>
                                   <span class="d-none" id="id_producto_'.$filas['id_producto'].'" >'.$filas['id_producto'].'</span>
 
                                   <td>'.$filas['descripcion'].' '.$filas['marca'].'</td>
                                   <td>'.$filas['unidad_medida'].'</td>
                                   <td>'.$filas['cantidad'].'</td>
+                                  <td>'.$editable.'</td>
+                                  <td>'.number_format($filas['valor_extra'],0,",",".").'</td>
                                   <td><button onclick="eliminarIngrediente('.$filas['id_producto'].','.$id_producto_elaborado.')"  class="col-12 btn btn-danger "> <i class="fa fa-trash-alt"></i> </button>
 
                                   </td>

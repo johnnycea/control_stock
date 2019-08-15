@@ -97,16 +97,6 @@ echo $consulta;
 
   }
 
-  public function guardarIngredientesProducto(){
-    $conexion = new Conexion();
-    $conexion = $conexion->conectar();
-
-    $consulta = "insert INTO tb_ingredientes_producto_elaborado (`id_producto_elaborado`, `id_producto_ingrediente`, `cantidad`) VALUES (".$this->id_producto_elaborado.", ".$this->id_ingrediente.", ".$this->cantidad_ingrediente.")";
-    $resultado= $conexion->query($consulta);
-    // echo $consulta;
-    return $resultado;
-  }
-
 
   function modificarProductoElaborado(){
       $Conexion = new Conexion();

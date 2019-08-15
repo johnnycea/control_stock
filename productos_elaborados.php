@@ -46,7 +46,7 @@ $usuario= $usuario->obtenerUsuarioActual();
 
      <!-- MODAL Producto CREAR-->
      <div class="modal fade" id="modal_nuevo_producto_elaborado" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
-       <div class="modal-dialog modal-md" role="document">
+       <div class="modal-dialog modal-lg" role="document">
        <div class="modal-content">
 
          <div class="modal-header">
@@ -108,7 +108,7 @@ $usuario= $usuario->obtenerUsuarioActual();
 
                     <div class="card ">
                         <div class="card-header bg-dark text-white">
-                          <h5 class="card-title"><center>Ingredientes</center></h5>
+                          <h5 class="card-title"><center>Insumos</center></h5>
                         </div>
                         <div class="card-body bg-dark">
                           <div class="" id="contenedor_ingredientes_seleccionando"></div>
@@ -117,17 +117,17 @@ $usuario= $usuario->obtenerUsuarioActual();
 
                     <div class="card ">
                         <div class="card-header bg-dark text-white">
-                          <h5 class="card-title"><center>Agregar ingredientes</center></h5>
+                          <h5 class="card-title"><center>Agregar insumo</center></h5>
                         </div>
                         <div class="card-body bg-dark">
 
                           <div class="form-group col-md-12" >
                             <div class="row">
-                              <input  type="text" placeholder="Buscar ingredientes"  onkeyup="buscarIngredientes()" class="form-control col-12" name="txt_texto_buscar_ingredientes" id="txt_texto_buscar_ingredientes">
+                              <input  type="text" placeholder="Buscar insumo"  onkeyup="buscarIngredientes()" class="form-control col-12" name="txt_texto_buscar_ingredientes" id="txt_texto_buscar_ingredientes">
                             </div>
                           </div>
 
-                          <div class="" id="contenedor_buscar_ingredientes"></div>
+                          <div class="table-responsive" id="contenedor_buscar_ingredientes"></div>
 
                         </div>
                     </div>
