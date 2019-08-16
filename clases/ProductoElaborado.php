@@ -38,6 +38,16 @@ class ProductoElaborado{
   }
 
 
+  public function obtener_ingredientes_venta(){
+    $conexion = new Conexion();
+    $conexion = $conexion->conectar();
+
+    $consulta = "select * from vista_ingrediente_producto_elaborado where id_producto_elaborado=".$this->id_producto_elaborado;
+    // echo $consulta;
+    $resultado= $conexion->query($consulta);
+    return $resultado;
+  }
+
   public function obtener_ingredientes_producto(){
     $conexion = new Conexion();
     $conexion = $conexion->conectar();

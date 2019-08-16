@@ -36,10 +36,31 @@ require_once '../../clases/Ventas.php';
                   $total = 0;
                     while($filas = $listadoVenta->fetch_array()){
 
-                          echo '<tr>
 
+
+                      //inicio pregunta edicion de ingredientes
+                      $descripcion = $filas['descripcion'];
+
+                      $Conexion = new Conexion();
+                      $Conexion = $Conexion->conectar();
+
+                      $ingredientes_venta = $Conexion->query("SELECT * FROM vista_ingredientes_venta where id_detalle_venta=".$filas['id_detalle_venta']);
+
+                      while($filas_ing = $ingredientes_venta->fetch_array()){
+
+                        if($filas_ing['extra']!=0){
+                            $descripcion = $descripcion.": ".$filas_ing['ingrediente']."".$filas_ing['marca']." X".$filas_ing['extra']."; ";
+                        }
+
+                      }
+
+                      //fin de preguntar modificacion de ingredientes
+
+
+
+                          echo '<tr>
                                   <td><span id="_'.$filas['id_producto_elaborado'].'" >'.$filas['id_producto_elaborado'].'</span></td>
-                                  <td><span id="_'.$filas['id_producto_elaborado'].'">'.$filas['descripcion'].'</span></td>
+                                  <td><span id="_'.$filas['id_producto_elaborado'].'">'.$descripcion.'</span></td>
                                 <!-- <td><span id="_" >'.$filas['cantidad'].'</span></td> -->
                                   <td><span id="_" >$'.number_format($filas['valor_unitario'],0,",",".").'</span></td>
                                 <!-- <td><span id="_" >$'.number_format($filas['valor_total'],0,",",".").'</span></td> -->
