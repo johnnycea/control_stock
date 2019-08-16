@@ -17,8 +17,8 @@ $array_listado_ingredientes_producto = $_SESSION['listado_ingredientes_productos
                 <thead class="thead-dark">
 
                   <th>Nombre</th>
-                  <th>U. Med</th>
-                  <th>Cantidad</th>
+                  <th>Cantidad original</th>
+                  <th>Extra</th>
                   <th></th>
                   <th></th>
                 </thead>
@@ -38,7 +38,7 @@ $array_listado_ingredientes_producto = $_SESSION['listado_ingredientes_productos
                        }
                  }
 
-                 if($ingredientes_ya_listados==false){///pregunta si ya estaba listado en el array
+                 if($ingredientes_ya_listados==false){///pregunta si no estaban listados en el array
 
                    // echo "CARGA DESDE BD";
 
@@ -49,6 +49,7 @@ $array_listado_ingredientes_producto = $_SESSION['listado_ingredientes_productos
                        while($filas = $listadoIngredientes->fetch_assoc()){
 
                          $filas["id_detalle_venta"] = $id_detalle_venta;
+                         $filas["extra"] = 0;
 
                          $array_listado_ingredientes_producto[] = $filas;
                        }
@@ -62,15 +63,18 @@ $array_listado_ingredientes_producto = $_SESSION['listado_ingredientes_productos
                    //LISTA LOS INGREDIENTES, ALMACENADOS EN EL ARRAY
                   foreach($array_listado_ingredientes_producto as $ingrediente){
 
-                    if($ingrediente['id_producto_elaborado']==$id_producto_elaborado and $ingrediente['id_detalle_venta']==$id_detalle_venta){
+                    if(($ingrediente['editable']==1) and ($ingrediente['id_producto_elaborado']==$id_producto_elaborado) and ($ingrediente['id_detalle_venta']==$id_detalle_venta)){
+
+                      $extra = ($ingrediente['extra']==0) ? "No" : "X".$ingrediente['extra'];
+
 
                         echo '
                           <span class="d-none" id="id_producto_'.$ingrediente['id_producto'].'" >'.$ingrediente['id_producto'].'</span>
 
                         <tr>
                           <td>'.$ingrediente['descripcion'].' '.$ingrediente['marca'].'</td>
-                          <td>'.$ingrediente['unidad_medida'].'</td>
-                          <td>'.$ingrediente['cantidad'].'</td>
+                          <td>'.$ingrediente['cantidad'].' '.$ingrediente['unidad_medida'].'</td>
+                          <td>'.$extra.'</td>
                           <td><button type="button" onclick="modificarCantidadIngrediente(1,'.$ingrediente['id_producto'].','.$id_producto_elaborado.','.$id_detalle_venta.')"  class="col-12 btn btn-warning "> <i class="fa fa-plus"></i> </button></td>
                           <td><button type="button" onclick="modificarCantidadIngrediente(2,'.$ingrediente['id_producto'].','.$id_producto_elaborado.','.$id_detalle_venta.')"  class="col-12 btn btn-danger "><i class="fas fa-minus"></i> </button></td>
                         </tr>';

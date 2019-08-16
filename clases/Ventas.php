@@ -93,11 +93,12 @@ class Ventas{
     return $resultado_consulta;
  }
 
- public function registrarIngredienteVenta($ingrediente,$cantidad_ingrediente){
+ public function registrarIngredienteVenta($ingrediente,$cantidad_ingrediente,$extra){
     $Conexion = new Conexion();
     $Conexion = $Conexion->conectar();
 
-    $resultado_consulta = $Conexion->query("insert into tb_ingredientes_venta values(".$this->id_detalle_venta.",".$this->id_venta.",".$this->id_producto_elaborado.",".$ingrediente.",".$cantidad_ingrediente.");");
+    $resultado_consulta = $Conexion->query("insert into tb_ingredientes_venta
+    values(".$this->id_detalle_venta.",".$this->id_venta.",".$this->id_producto_elaborado.",".$ingrediente.",".$cantidad_ingrediente.",".$extra.");");
     return $resultado_consulta;
  }
 

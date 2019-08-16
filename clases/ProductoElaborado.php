@@ -37,6 +37,7 @@ class ProductoElaborado{
     $this->imagen = $imagen;
   }
 
+
   public function obtener_ingredientes_producto(){
     $conexion = new Conexion();
     $conexion = $conexion->conectar();

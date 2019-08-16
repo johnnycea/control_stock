@@ -116,11 +116,20 @@ function obtenerIngredientesProducto(id_producto_elaborado,id_detalle_venta){
 function modificarCantidadIngrediente(accion,ingrediente,id_producto_elaborado,id_detalle_venta){
 	//accion= 1:sumar / 2:restar
 
+	  var valor_actual = $("#valor_original_producto_elaborado_"+id_producto_elaborado+"_"+id_detalle_venta).html();
+
+
 		$.ajax({
-			url:"./metodos_ajax/ventas/cambiar_ingredientes_producto_venta.php?id_producto_elaborado="+id_producto_elaborado+"&id_ingrediente="+ingrediente+"&accion="+accion+"&id_detalle_venta="+id_detalle_venta,
+			url:"./metodos_ajax/ventas/cambiar_ingredientes_producto_venta.php?id_producto_elaborado="+id_producto_elaborado+"&id_ingrediente="+ingrediente+"&accion="+accion+"&id_detalle_venta="+id_detalle_venta+"&valor_actual="+valor_actual,
 			method:"POST",
+			dataType:"json",
 			success:function(respuesta){
+				// alert(respuesta.consulta);
+
 				 obtenerIngredientesProducto(id_producto_elaborado,id_detalle_venta);
+
+				 $("#descripcion_producto_elaborado_"+id_producto_elaborado+"_"+id_detalle_venta).html(respuesta.descripcion);
+				 $("#valor_producto_elaborado_"+id_producto_elaborado+"_"+id_detalle_venta).html(respuesta.nuevo_valor);
 			}
 		});
 }
@@ -175,7 +184,9 @@ function confirmarVenta(){
 					 $("#modal_finalizar_venta").modal('hide');
 					 //funcion que cree nueva ventas
 					 //limpiar contenido de la pagina
-					 imprimeComprobante(id_venta,rut_cliente,nombre,apellidos,calle,numero,observacion,telefono);
+
+
+					 // imprimeComprobante(id_venta,rut_cliente,nombre,apellidos,calle,numero,observacion,telefono);
 
 					 //Cargando
 					$("#btn_boton_guardar").attr("disabled",false);

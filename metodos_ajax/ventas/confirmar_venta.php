@@ -59,11 +59,13 @@ while($filas_productos = $productos_venta->fetch_array()){
      // echo "-------------------BUSCA INGREDIENTES EN EL ARRAY----------------------";
      // echo json_encode($ingredientes_producto);
 
-   }else{//si no fuen encontrado en el array; se tomaran los ingredientes del producto desde base de datos
+   }else{//si no fue encontrado en el array; se tomaran los ingredientes del producto desde base de datos
 
      $ProductoElaborado->setIdProductoElaborado($filas_productos['id_producto_elaborado']);
+     //consulta los ingredientes editable y no editables del producto elaborado, con el fin de registrar la cantidad de ingrediente que se ocupa
      $resultado_consulta = $ProductoElaborado->obtener_ingredientes_producto();
      while($filas_ingredientes_bd = $resultado_consulta->fetch_assoc()){
+        $filas_ingredientes_bd['extra'] = 0;
         $ingredientes_producto[] = $filas_ingredientes_bd;
      }
 
@@ -73,7 +75,7 @@ while($filas_productos = $productos_venta->fetch_array()){
    }
 
 
-
+  //AGREGA LOS INGREDIENTES DEL PRODUCTO ELABORADO A TABLA tb_ingredientes_venta
    foreach($ingredientes_producto as $ingrediente_producto_elaborado){
 
        if( ($ingrediente_producto_elaborado['id_producto_elaborado']==$filas_productos['id_producto_elaborado'])  ){
@@ -82,10 +84,19 @@ while($filas_productos = $productos_venta->fetch_array()){
             $Venta->setIdDetalleVenta($filas_productos['id_detalle_venta']);
 
                 $id_ingrediente = $ingrediente_producto_elaborado['id_producto'];
-                $cantidad = $ingrediente_producto_elaborado['cantidad'];
+
+                 $cantidad;
+                 // echo 'extra:'.$ingrediente_producto_elaborado['extra'];
+
+                if($ingrediente_producto_elaborado['extra']>0){
+                    $cantidad = ($ingrediente_producto_elaborado['cantidad']*($ingrediente_producto_elaborado['extra']));
+                }else{
+                    $cantidad = $ingrediente_producto_elaborado['cantidad'];
+                }
+
                 if($cantidad!=0){
 
-                    if($Venta->registrarIngredienteVenta($id_ingrediente,$cantidad)){
+                    if($Venta->registrarIngredienteVenta($id_ingrediente,$cantidad,$ingrediente_producto_elaborado['extra'])){
                       $comprueba_agrega_correctamente = true;
 
                       // echo "AGREGA EL INGREDIENTE ".$id_ingrediente." CANTIDAD: ".$cantidad." en detalleventa: ".$filas_productos['id_detalle_venta'];
@@ -101,7 +112,7 @@ while($filas_productos = $productos_venta->fetch_array()){
 }//fin del while que recoore los productos de la venta (detalle venta)
 
 
-   
+
    if($comprueba_agrega_correctamente){
 
 

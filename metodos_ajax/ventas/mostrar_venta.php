@@ -32,10 +32,11 @@ require_once '../../clases/Ventas.php';
                           echo '<tr>
 
                                   <td><span id="_'.$filas['id_producto_elaborado'].'" >'.$filas['id_producto_elaborado'].'</span></td>
-                                  <td><span id="_'.$filas['id_producto_elaborado'].'">'.$filas['descripcion'].'</span></td>
+                                  <td><span id="descripcion_producto_elaborado_'.$filas['id_producto_elaborado'].'_'.$filas['id_detalle_venta'].'">'.$filas['descripcion'].'</span></td>
                                 <!--  <td><span id="_" >'.$filas['cantidad'].'</span></td> -->
                                 <!--  <td><span id="_" >$'.number_format($filas['valor_unitario'],0,",",".").'</span></td> -->
-                                  <td><span id="_" >$'.number_format($filas['valor_total'],0,",",".").'</span></td>
+                                  <td><span id="valor_producto_elaborado_'.$filas['id_producto_elaborado'].'_'.$filas['id_detalle_venta'].'" >$'.number_format($filas['valor_total'],0,",",".").'</span></td>
+                                      <span class="d-none" id="valor_original_producto_elaborado_'.$filas['id_producto_elaborado'].'_'.$filas['id_detalle_venta'].'" >'.$filas['valor_total'].'</span>
                                   <td>
                                     <button class="btn btn-warning btn-block" data-toggle="modal" data-target="#modal_modificar_ingredientes_producto" onclick="obtenerIngredientesProducto('.$filas['id_producto_elaborado'].','.$filas['id_detalle_venta'].')" ><i class="fas fa-lemon"></i></button>
                                   </td>
