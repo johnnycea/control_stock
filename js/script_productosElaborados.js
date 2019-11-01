@@ -64,7 +64,13 @@ function limpiarModalProductosElaborados(){
 	$("#btn_boton_guardar").attr("disabled",false);
 	$("#contenedor_buscador_ingredientes").addClass("d-none");
 
+	$("#txt_id_producto_elaborado_modificar").val("");
+	$("#txt_id_producto_elaborado_creado").val("");
 	$("#formulario_modal_producto_elaborado")[0].reset();
+
+
+	$("#modal_nuevo_producto_elaborado").modal('show');
+
 }
 
 function guardarModificarProductoElaborado(){

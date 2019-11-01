@@ -1,0 +1,32 @@
+[05-Sep-2019 13:14:14 CST6CDT] PHP Fatal error:  Uncaught Error: Call to a member function fetch_array() on boolean in /home/daemmulc/public_html/caja/metodos_ajax/proveedores/buscar_proveedores_factura.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/daemmulc/public_html/caja/metodos_ajax/proveedores/buscar_proveedores_factura.php on line 21
+[05-Sep-2019 13:14:14 CST6CDT] PHP Fatal error:  Uncaught Error: Call to a member function fetch_array() on boolean in /home/daemmulc/public_html/caja/metodos_ajax/proveedores/buscar_proveedores_factura.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/daemmulc/public_html/caja/metodos_ajax/proveedores/buscar_proveedores_factura.php on line 21
+[05-Sep-2019 13:14:15 CST6CDT] PHP Fatal error:  Uncaught Error: Call to a member function fetch_array() on boolean in /home/daemmulc/public_html/caja/metodos_ajax/proveedores/buscar_proveedores_factura.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/daemmulc/public_html/caja/metodos_ajax/proveedores/buscar_proveedores_factura.php on line 21
+[05-Sep-2019 13:14:15 CST6CDT] PHP Fatal error:  Uncaught Error: Call to a member function fetch_array() on boolean in /home/daemmulc/public_html/caja/metodos_ajax/proveedores/buscar_proveedores_factura.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/daemmulc/public_html/caja/metodos_ajax/proveedores/buscar_proveedores_factura.php on line 21
+[05-Sep-2019 13:14:15 CST6CDT] PHP Fatal error:  Uncaught Error: Call to a member function fetch_array() on boolean in /home/daemmulc/public_html/caja/metodos_ajax/proveedores/buscar_proveedores_factura.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/daemmulc/public_html/caja/metodos_ajax/proveedores/buscar_proveedores_factura.php on line 21
+[05-Sep-2019 13:14:16 CST6CDT] PHP Fatal error:  Uncaught Error: Call to a member function fetch_array() on boolean in /home/daemmulc/public_html/caja/metodos_ajax/proveedores/buscar_proveedores_factura.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/daemmulc/public_html/caja/metodos_ajax/proveedores/buscar_proveedores_factura.php on line 21
+[05-Sep-2019 13:14:17 CST6CDT] PHP Fatal error:  Uncaught Error: Call to a member function fetch_array() on boolean in /home/daemmulc/public_html/caja/metodos_ajax/proveedores/buscar_proveedores_factura.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/daemmulc/public_html/caja/metodos_ajax/proveedores/buscar_proveedores_factura.php on line 21
+[05-Sep-2019 13:14:17 CST6CDT] PHP Fatal error:  Uncaught Error: Call to a member function fetch_array() on boolean in /home/daemmulc/public_html/caja/metodos_ajax/proveedores/buscar_proveedores_factura.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/daemmulc/public_html/caja/metodos_ajax/proveedores/buscar_proveedores_factura.php on line 21

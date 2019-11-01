@@ -1,0 +1,40 @@
+[22-Aug-2019 05:55:06 CST6CDT] PHP Fatal error:  Uncaught Error: Call to a member function fetch_array() on boolean in /home/daemmulc/public_html/cochento.cl/clases/Usuario.php:124
+Stack trace:
+#0 /home/daemmulc/public_html/cochento.cl/stock.php(9): Usuario->obtenerUsuarioActual()
+#1 {main}
+  thrown in /home/daemmulc/public_html/cochento.cl/clases/Usuario.php on line 124
+[22-Aug-2019 05:55:07 CST6CDT] PHP Fatal error:  Uncaught Error: Call to a member function fetch_array() on boolean in /home/daemmulc/public_html/cochento.cl/clases/Usuario.php:124
+Stack trace:
+#0 /home/daemmulc/public_html/cochento.cl/ventas.php(12): Usuario->obtenerUsuarioActual()
+#1 {main}
+  thrown in /home/daemmulc/public_html/cochento.cl/clases/Usuario.php on line 124
+[22-Aug-2019 05:55:08 CST6CDT] PHP Fatal error:  Uncaught Error: Call to a member function fetch_array() on boolean in /home/daemmulc/public_html/cochento.cl/clases/Usuario.php:124
+Stack trace:
+#0 /home/daemmulc/public_html/cochento.cl/ventas.php(12): Usuario->obtenerUsuarioActual()
+#1 {main}
+  thrown in /home/daemmulc/public_html/cochento.cl/clases/Usuario.php on line 124
+[22-Aug-2019 05:55:10 CST6CDT] PHP Fatal error:  Uncaught Error: Call to a member function fetch_array() on boolean in /home/daemmulc/public_html/cochento.cl/clases/Usuario.php:124
+Stack trace:
+#0 /home/daemmulc/public_html/cochento.cl/ventas.php(12): Usuario->obtenerUsuarioActual()
+#1 {main}
+  thrown in /home/daemmulc/public_html/cochento.cl/clases/Usuario.php on line 124
+[22-Aug-2019 14:19:17 CST6CDT] PHP Fatal error:  Uncaught Error: Call to a member function fetch_array() on boolean in /home/daemmulc/public_html/cochento.cl/clases/Usuario.php:124
+Stack trace:
+#0 /home/daemmulc/public_html/cochento.cl/ventas.php(12): Usuario->obtenerUsuarioActual()
+#1 {main}
+  thrown in /home/daemmulc/public_html/cochento.cl/clases/Usuario.php on line 124
+[15-Sep-2019 02:35:52 CST6CDT] PHP Fatal error:  Uncaught Error: Call to a member function fetch_array() on boolean in /home/daemmulc/public_html/caja/clases/Usuario.php:124
+Stack trace:
+#0 /home/daemmulc/public_html/caja/ventas.php(12): Usuario->obtenerUsuarioActual()
+#1 {main}
+  thrown in /home/daemmulc/public_html/caja/clases/Usuario.php on line 124
+[15-Sep-2019 15:56:15 CST6CDT] PHP Fatal error:  Uncaught Error: Call to a member function fetch_array() on boolean in /home/daemmulc/public_html/caja/clases/Usuario.php:124
+Stack trace:
+#0 /home/daemmulc/public_html/caja/productos_elaborados.php(10): Usuario->obtenerUsuarioActual()
+#1 {main}
+  thrown in /home/daemmulc/public_html/caja/clases/Usuario.php on line 124
+[23-Oct-2019 22:32:58 CST6CDT] PHP Fatal error:  Uncaught Error: Call to a member function fetch_array() on boolean in /home/daemmulc/public_html/caja/clases/Usuario.php:124
+Stack trace:
+#0 /home/daemmulc/public_html/caja/facturas.php(9): Usuario->obtenerUsuarioActual()
+#1 {main}
+  thrown in /home/daemmulc/public_html/caja/clases/Usuario.php on line 124
